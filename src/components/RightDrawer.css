@@ -104,6 +104,10 @@
   margin-bottom: 4px;
 }
 
+.field-label.original-label {
+  margin-bottom: 8px;
+}
+
 .field-value {
   font-size: 14px;
   color: var(--text-primary);

@@ -36,12 +36,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
   font-size: 14px;
   color: var(--text-secondary);
   cursor: pointer;
-  border-left: 2px solid transparent;
   transition: background 0.12s, color 0.12s;
 }
 
@@ -53,7 +52,6 @@
 .nav-item.active {
   background: var(--accent-soft);
   color: var(--text-primary);
-  border-left: 2px solid var(--accent);
 }
 
 .nav-item .count {

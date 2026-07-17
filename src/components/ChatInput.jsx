@@ -134,7 +134,7 @@ export default function ChatInput({ onSend, onSync, profile }) {
         <textarea
           ref={ref}
           className="pill-input"
-          placeholder="Ask AI\u2026"
+          placeholder="Ask AI…"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}

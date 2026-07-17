@@ -1,4 +1,5 @@
-import { FileText } from 'lucide-react'
+import { useState } from 'react'
+import { FileText, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import '../shared/Toggle.css'
 import './Profile.css'
@@ -7,10 +8,11 @@ const workFormatKeys = ['remote', 'hybrid', 'office', 'relocate']
 const locations = ['Warsaw', 'Berlin', 'Saint Petersburg', 'Tbilisi', 'London']
 const currencyOptions = ['\u20BD', '$', '\u20AC']
 const experienceOptions = ['0 years', '0\u20132 years', '1\u20133 years', '3+ years']
+const roleSuggestions = ['Product Designer', 'UX/UI Designer', 'Product + UX/UI']
 
 function completenessInfo(profile) {
   const checks = [
-    !!profile.role,
+    profile.role.length > 0,
     !!profile.experience,
     Object.values(profile.workFormat).some(Boolean),
     profile.minSalary !== null,
@@ -23,6 +25,7 @@ const noteColors = { exclude: 'bad', include: 'good', condition: 'warn' }
 
 export default function Profile({ profile, onUpdate }) {
   const { filled, total } = completenessInfo(profile)
+  const [roleInput, setRoleInput] = useState('')
 
   const toggleWF = (key) =>
     onUpdate({ workFormat: { ...profile.workFormat, [key]: !profile.workFormat[key] } })
@@ -35,6 +38,16 @@ export default function Profile({ profile, onUpdate }) {
   }
 
   const activeCurrencyIdx = currencyOptions.indexOf(profile.salaryCurrency)
+
+  const addRole = (role) => {
+    const trimmed = role.trim()
+    if (!trimmed || profile.role.includes(trimmed)) return
+    onUpdate({ role: [...profile.role, trimmed] })
+    setRoleInput('')
+  }
+
+  const removeRole = (role) =>
+    onUpdate({ role: profile.role.filter((r) => r !== role) })
 
   return (
     <div className="profile">
@@ -80,17 +93,34 @@ export default function Profile({ profile, onUpdate }) {
         </div>
       )}
 
-      {/* Role — text input + pills */}
+      {/* Role — chip input */}
       <div className="section">
         <div className="section-head">Role</div>
-        <input
-          className="custom-input"
-          type="text"
-          placeholder="e.g. Product Designer"
-          value={profile.role}
-          onChange={(e) => onUpdate({ role: e.target.value })}
-        />
-
+        <div className="role-chips-input">
+          {profile.role.map((r) => (
+            <span key={r} className="role-chip">
+              {r}
+              <button type="button" onClick={() => removeRole(r)} aria-label={`Remove ${r}`}>
+                <X size={12} />
+              </button>
+            </span>
+          ))}
+          <input
+            className="role-chip-input"
+            type="text"
+            placeholder={profile.role.length ? 'Add another…' : 'e.g. Product Designer'}
+            value={roleInput}
+            onChange={(e) => setRoleInput(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addRole(roleInput) } }}
+          />
+        </div>
+        <div className="role-suggestions">
+          {roleSuggestions.filter((r) => !profile.role.includes(r)).map((r) => (
+            <button key={r} type="button" className="role-pill" onClick={() => addRole(r)}>
+              + {r}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Experience */}
@@ -111,10 +141,16 @@ export default function Profile({ profile, onUpdate }) {
             const checked = profile.workFormat[key]
             const label = key.charAt(0).toUpperCase() + key.slice(1)
             return (
-              <label key={key} className={`checkbox-label ${checked ? 'checked' : ''}`} onClick={() => toggleWF(key)}>
-                <input type="checkbox" checked={checked} readOnly />
+              <button
+                type="button"
+                key={key}
+                className={`checkbox-label ${checked ? 'checked' : ''}`}
+                role="checkbox"
+                aria-checked={checked}
+                onClick={() => toggleWF(key)}
+              >
                 {label}
-              </label>
+              </button>
             )
           })}
         </div>
@@ -128,10 +164,16 @@ export default function Profile({ profile, onUpdate }) {
               {locations.map((loc) => {
                 const checked = profile.officeLocations.includes(loc)
                 return (
-                  <label key={loc} className={`checkbox-label ${checked ? 'checked' : ''}`} onClick={() => toggleOfficeLocation(loc)}>
-                    <input type="checkbox" checked={checked} readOnly />
+                  <button
+                    type="button"
+                    key={loc}
+                    className={`checkbox-label ${checked ? 'checked' : ''}`}
+                    role="checkbox"
+                    aria-checked={checked}
+                    onClick={() => toggleOfficeLocation(loc)}
+                  >
                     {loc}
-                  </label>
+                  </button>
                 )
               })}
             </div>

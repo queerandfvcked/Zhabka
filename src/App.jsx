@@ -1,11 +1,12 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
-import { Menu, Search, Calendar, X } from 'lucide-react'
+import { Menu, Search, X } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import JobCard from './components/JobCard'
 import ChatInput from './components/ChatInput'
 import RightDrawer from './components/RightDrawer'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+import JumpToDatePopover from './components/JumpToDatePopover'
 import vacancies from './data/vacancies.json'
 import { groupByDate, dateGroupLabels } from './utils/ai'
 import './App.css'
@@ -13,7 +14,7 @@ import './App.css'
 const SEEN_KEY = 'zhabka:seenIds'
 
 const defaultProfile = {
-  role: '',
+  role: [],
   experience: '1-3 years',
   workFormat: { remote: true, hybrid: false, office: false, relocate: false },
   officeLocations: [],
@@ -46,7 +47,6 @@ export default function App() {
   const [lastSync, setLastSync] = useState('18:00')
   const [seenIds, setSeenIds] = useState(loadSeen)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [calOpen, setCalOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
   const searchRef = useRef(null)
 
@@ -110,9 +110,16 @@ export default function App() {
       const patch = {}
       const newNotes = [...profile.aiNotes]
 
-      if (/product designer|продукт.*дизайн/.test(lower)) patch.role = 'Product Designer'
-      else if (/ux\/?ui/.test(lower)) patch.role = message
-      else if (/no.*(?:commercial )?experience|опыт[аа]?\s*нет/i.test(lower)) patch.experience = '0 years'
+      if (/product designer|продукт.*дизайн/.test(lower)) {
+        if (!profile.role.includes('Product Designer')) {
+          patch.role = [...profile.role, 'Product Designer']
+        }
+      } else if (/ux\/?ui/.test(lower)) {
+        const trimmed = message.trim()
+        if (!profile.role.includes(trimmed)) {
+          patch.role = [...profile.role, trimmed]
+        }
+      } else if (/no.*(?:commercial )?experience|опыт[аа]?\s*нет/i.test(lower)) patch.experience = '0 years'
 
       if (/не.*аутсорс|no.*outsource/i.test(lower)) {
         if (!newNotes.find((n) => n.text.toLowerCase().includes('outsource')))
@@ -136,7 +143,7 @@ export default function App() {
       }
 
       const changes = []
-      if (patch.role) changes.push(`role \u2192 ${patch.role}`)
+      if (patch.role) changes.push(`role \u2192 ${patch.role.join(', ')}`)
       if (patch.experience) changes.push(`experience \u2192 ${patch.experience}`)
       if (hasNotesChange) changes.push('+1 preference noted')
 
@@ -265,7 +272,7 @@ export default function App() {
                 ref={searchRef}
                 className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
                 type="text"
-                placeholder="Search vacancies\u2026"
+                placeholder="Search vacancies…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onBlur={handleSearchBlur}
@@ -277,33 +284,11 @@ export default function App() {
                 </button>
               )}
             </div>
-            <div className="floating-btn" onClick={() => setCalOpen(!calOpen)}>
-              <Calendar size={18} />
-            </div>
-            {calOpen && (
-              <div className="cal-popover">
-                <div className="cal-popover-header">
-                  <span>Jump to date</span>
-                  <button className="cal-close" onClick={() => setCalOpen(false)}><X size={14} /></button>
-                </div>
-                <div className="cal-list">
-                  {uniqueDates.map((d) => (
-                    <button
-                      key={d}
-                      className={`cal-item ${selectedDate === d ? 'active' : ''}`}
-                      onClick={() => { setSelectedDate(selectedDate === d ? null : d); setCalOpen(false) }}
-                    >
-                      {d}
-                    </button>
-                  ))}
-                  {selectedDate && (
-                    <button className="cal-item cal-clear" onClick={() => { setSelectedDate(null); setCalOpen(false) }}>
-                      Show all dates
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
+            <JumpToDatePopover
+              selectedDate={selectedDate}
+              onDateSelect={setSelectedDate}
+              availableDates={uniqueDates}
+            />
           </div>
         )}
 
@@ -341,11 +326,10 @@ export default function App() {
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') {
-      if (calOpen) setCalOpen(false)
-      else if (searchOpen) setSearchOpen(false)
+      if (searchOpen) setSearchOpen(false)
       else setSelectedVacancy(null)
     }
-  }, [calOpen, searchOpen])
+  }, [searchOpen])
 
   useEffect(() => {
     if (selectedVacancy) markSeen(selectedVacancy)

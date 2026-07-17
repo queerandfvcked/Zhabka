@@ -760,10 +760,220 @@ Settings → Provider) — оба рендерят нестилизуемое с
 
 ---
 
-Пройдись по `Profile.jsx`, `Profile.css`, `Settings.jsx`, `Settings.css`,
-`ChatInput.jsx`, `ChatInput.css`, `Sidebar.jsx`, `Sidebar.css`,
-`RightDrawer.jsx`, `RightDrawer.css`, `theme.css`, `App.jsx`, `App.css`
-и приведи их в соответствие с этим документом, используя приложенные
-`CustomSelect.jsx`/`CustomSelect.css`. JobCard (кроме уже описанного в
-13.8 согласования с RightDrawer) пока не трогай — отдельный шаг позже.
-Ничего не изобретай заново за пределами описанного здесь.
+---
+
+## 14. Дополнение: баг двойного клика, опечатка с юникодом, роли-чипы, скругления сайдбара
+
+### 14.1 Опечатка: `\u2022` в RightDrawer.jsx
+
+```jsx
+<span className="list-bullet">\u2022</span>
+```
+Это не escape-последовательность (она работает только внутри строк в
+кавычках), а буквальный текст между тегами — на экране показывается как
+"\u2022". Замени на настоящий символ:
+```jsx
+<span className="list-bullet">•</span>
+```
+Заодно перенеси оставшийся инлайн-стиль в этом же файле
+(`style={{ marginBottom: 8 }}` у `.field-label` перед "Original post")
+в CSS-класс — этот случай пропустили в прошлый раз (раздел 13.3).
+
+### 14.2 Баг: чипы Work format/City не переключаются (двойной клик)
+
+Причина — известная особенность `<label>`, оборачивающего `<input>`, с
+`onClick` на самом label: клик по label пересылается на input (нативное
+поведение браузера), а затем всплывает обратно на label — один клик
+пользователя вызывает `onClick` дважды подряд, переключение отменяет
+само себя визуально. Раз чекбокс всё равно скрыт (`display: none
+!important`) — он не нужен как реальный form-элемent, замени на кнопку
+с ARIA-атрибутами вместо label+input, у кнопок нет этого поведения:
+
+```jsx
+{workFormatKeys.map((key) => {
+  const checked = profile.workFormat[key]
+  const label = key.charAt(0).toUpperCase() + key.slice(1)
+  return (
+    <button
+      type="button"
+      key={key}
+      className={`checkbox-label ${checked ? 'checked' : ''}`}
+      role="checkbox"
+      aria-checked={checked}
+      onClick={() => toggleWF(key)}
+    >
+      {label}
+    </button>
+  )
+})}
+```
+
+Применить точно так же к чипам `officeLocations` (та же конструкция,
+тот же баг). `.checkbox-label` в CSS уже полностью стилизован сам по
+себе — на кнопке достаточно сбросить браузерные дефолты, если понадобится
+(`border: none` уже задан классом, `font: inherit` можно добавить при
+необходимости).
+
+Логика `toggleWF`/`toggleOfficeLocation` уже поддерживает и мультивыбор,
+и снятие повторным кликом — это чинится само после замены на кнопку,
+дополнительная логика не нужна.
+
+### 14.3 Role — чипы вместо одной строки
+
+`profile.role` меняется со строки на массив — уже обновлено в
+`profile.json` (`["Product Designer", "UX/UI Designer"]`). Затронутые
+места:
+
+**App.jsx** — `defaultProfile.role: ''` → `defaultProfile.role: []`.
+В `handleChatSend` сейчас `patch.role = 'Product Designer'`
+(перезаписывает полностью) — замени на добавление в массив, не
+перезапись:
+```js
+if (/product designer|продукт.*дизайн/.test(lower)) {
+  if (!profile.role.includes('Product Designer')) {
+    patch.role = [...profile.role, 'Product Designer']
+  }
+}
+```
+
+**Profile.jsx** — `completenessInfo`: `!!profile.role` →
+`profile.role.length > 0`. Сама секция Role:
+
+```jsx
+const [roleInput, setRoleInput] = useState('')
+const roleSuggestions = ['Product Designer', 'UX/UI Designer', 'Product + UX/UI']
+
+const addRole = (role) => {
+  const trimmed = role.trim()
+  if (!trimmed || profile.role.includes(trimmed)) return
+  onUpdate({ role: [...profile.role, trimmed] })
+  setRoleInput('')
+}
+const removeRole = (role) =>
+  onUpdate({ role: profile.role.filter((r) => r !== role) })
+```
+
+```jsx
+<div className="section">
+  <div className="section-head">Role</div>
+  <div className="role-chips-input">
+    {profile.role.map((r) => (
+      <span key={r} className="role-chip">
+        {r}
+        <button type="button" onClick={() => removeRole(r)} aria-label={`Remove ${r}`}>
+          <X size={12} />
+        </button>
+      </span>
+    ))}
+    <input
+      className="role-chip-input"
+      type="text"
+      placeholder={profile.role.length ? 'Add another…' : 'e.g. Product Designer'}
+      value={roleInput}
+      onChange={(e) => setRoleInput(e.target.value)}
+      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addRole(roleInput) } }}
+    />
+  </div>
+  <div className="role-suggestions">
+    {roleSuggestions.filter((r) => !profile.role.includes(r)).map((r) => (
+      <button key={r} type="button" className="role-pill" onClick={() => addRole(r)}>
+        + {r}
+      </button>
+    ))}
+  </div>
+</div>
+```
+
+CSS (в `Profile.css`):
+```css
+.role-chips-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 6px 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.role-chips-input:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  padding: 4px 6px 4px 12px;
+  font-size: 13px;
+}
+.role-chip button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+}
+.role-chip button:hover { background: var(--bg-hover); color: var(--text-primary); }
+.role-chip-input {
+  flex: 1;
+  min-width: 120px;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  padding: 6px 4px;
+}
+.role-chip-input::placeholder { color: var(--text-muted); }
+```
+
+Сам интерфейс (добавление по Enter, крестик на удаление) объясняет
+себя — не нужно текстом уточнять "можно несколько".
+
+### 14.4 Sidebar — скруглённые пункты навигации
+
+`.nav-item` сейчас `border-radius: var(--radius-sm)` (8px) + акцент
+активного состояния через `border-left: 2px solid`. При общей
+пилюльной стилистике приложения это выделяется как "квадратное" рядом
+с остальным. Приведи к пилюле, полностью убрав левую полоску (жёсткая
+прямая линия плохо сочетается с округлыми краями — активное состояние
+и так хорошо читается через заливку):
+
+```css
+.nav-item {
+  border-radius: var(--radius-full);
+  border-left: none;
+  padding: 10px 16px;
+}
+.nav-item.active {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+```
+
+### 14.5 Общее правило на будущее — не всё обязано быть пилюлей
+
+Чтобы не перекруглить в другую сторону: **интерактивные, самодостаточные
+элементы** (кнопки, чипы, теги, пункты навигации, инпуты) —
+`var(--radius-full)`. **Многострочные контентные блоки** (карточка
+вакансии, `.settings-card`, drawer, `.ai-note-item`) — оставляем
+`var(--radius-lg)`/`var(--radius-md)`, им не нужна форма таблетки, это
+контейнеры с содержимым, а не элементы управления. Также проверь hover-
+состояния списковых айтемов (`.source-item` в Settings — сейчас
+`var(--radius-sm)`, при пилюльных полях ввода вокруг него это тоже
+может ощущаться как "квадратное" — можно поднять до `var(--radius-md)`
+для более мягкого перехода, не обязательно до полной пилюли).
+
+---
+
+Пройдись по `Profile.jsx`, `Profile.css`, `App.jsx`, `RightDrawer.jsx`,
+`Sidebar.css`, `Settings.css` и приведи их в соответствие с этим
+документом. Ничего не изобретай заново за пределами описанного здесь.

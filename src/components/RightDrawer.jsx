@@ -105,7 +105,7 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
               <div className="list-value">
                 {v.requirements.map((req, i) => (
                   <div key={i} className="list-item">
-                    <span className="list-bullet">\u2022</span>
+                    <span className="list-bullet">•</span>
                     <span>{req}</span>
                   </div>
                 ))}
@@ -115,7 +115,7 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
 
           <hr className="divider" />
 
-          <div className="field-label" style={{ marginBottom: 8 }}>Original post</div>
+          <div className="field-label original-label">Original post</div>
           <div className="original-block">
             {showFull || !hasFull ? v.original_text : excerpt}
           </div>

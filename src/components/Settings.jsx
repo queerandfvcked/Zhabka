@@ -106,7 +106,7 @@ export default function Settings() {
         <input
           className="source-search"
           type="text"
-          placeholder="Search sources\u2026"
+          placeholder="Search sources…"
           value={sourceSearch}
           onChange={(e) => setSourceSearch(e.target.value)}
         />
