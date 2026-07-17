@@ -12,6 +12,14 @@
   top: 0;
 }
 
+/* Новый контейнер-флекс для шапки */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Логотип слева, крестик справа */
+  padding: 4px 10px 28px;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -21,7 +29,6 @@
   font-size: 18px;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  padding: 4px 10px 28px;
   user-select: none;
 }
 
@@ -166,6 +173,11 @@
     animation: slideIn 0.2s ease;
   }
 
+  /* Подгоняем отступы шапки внутри мобильной шторки */
+  .sidebar-mobile .sidebar-header {
+    padding: 0 4px 20px;
+  }
+
   @keyframes slideIn {
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }
@@ -175,8 +187,15 @@
     background: none;
     border: none;
     color: var(--text-secondary);
-    padding: 4px 8px 16px;
-    align-self: flex-end;
+    padding: 8px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.12s;
+  }
+
+  .close-btn:hover {
+    color: var(--text-primary);
   }
 }

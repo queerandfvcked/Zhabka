@@ -138,7 +138,7 @@
 .feed {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 /* Empty states */
@@ -153,11 +153,27 @@
 
 /* Chat pinned to bottom */
 .chat-area {
-  padding: 0 24px 24px;
+  padding: 32px 24px 24px;
+  /* Увеличили верхний паддинг для мягкого перехода */
   max-width: 680px;
   margin: 0 auto;
   width: 100%;
   flex-shrink: 0;
+
+  /* Магия воздуха: плавное размытие фона снизу вверх */
+  position: relative;
+  background: linear-gradient(to top,
+      var(--bg-app) 0%,
+      /* В самом низу плотный фон приложения */
+      var(--bg-app) 70%,
+      /* Держим плотность вокруг инпута */
+      transparent 100%
+      /* Плавно растворяемся в прозрачность к ленте */
+    );
+
+  /* Если контент подлезает под инпут, этот паддинг не даст ему прилипнуть */
+  margin-top: -32px;
+  z-index: 5;
 }
 
 /* Seen / new divider */
@@ -248,7 +264,12 @@
   }
 
   .chat-area {
-    padding: 0 16px 16px;
+    padding: 24px 16px 16px;
+    background: linear-gradient(to top,
+        var(--bg-app) 0%,
+        var(--bg-app) 80%,
+        transparent 100%);
+    margin-top: -24px;
   }
 
   .view-page {

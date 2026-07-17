@@ -50,13 +50,24 @@ export default function Sidebar({
     )
   }
 
-  const sidebarContent = (
-    <>
+  // Общий блок шапки (крестик рендерится только если showCloseBtn === true)
+  const renderHeader = (showCloseBtn = false) => (
+    <div className="sidebar-header">
       <div className="brand">
         <img src="/logo.svg" height="60" alt="Zhabka" style={{ flexShrink: 0 }} />
         Zhabka
       </div>
+      {showCloseBtn && (
+        <button className="close-btn" onClick={onMobileClose}>
+          <X size={20} />
+        </button>
+      )}
+    </div>
+  )
 
+  // Общий блок навигации и футера
+  const renderNavigation = () => (
+    <>
       <ul className="nav-list">{navItems.map(renderItem)}</ul>
 
       <hr className="divider" />
@@ -86,15 +97,18 @@ export default function Sidebar({
 
   return (
     <>
-      <nav className="sidebar">{sidebarContent}</nav>
+      {/* Десктопный сайдбар (без крестика) */}
+      <nav className="sidebar">
+        {renderHeader(false)}
+        {renderNavigation()}
+      </nav>
 
+      {/* Мобильный сайдбар (с крестиком) */}
       {isMobileOpen && (
         <div className="sidebar-mobile-overlay" onClick={onMobileClose}>
           <div className="sidebar-mobile" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={onMobileClose}>
-              <X size={20} />
-            </button>
-            {sidebarContent}
+            {renderHeader(true)}
+            {renderNavigation()}
           </div>
         </div>
       )}
