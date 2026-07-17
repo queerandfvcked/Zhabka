@@ -1,0 +1,327 @@
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: radial-gradient(circle at 15% -10%, rgba(127, 178, 255, 0.06), transparent 45%),
+    var(--bg-app);
+}
+
+/* Scrollbar at edge */
+.scroll-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-inner {
+  padding: 24px 24px 0;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+/* Top bar (mobile only) */
+.topbar {
+  display: none;
+}
+
+/* Floating header — search + calendar */
+.floating-header {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: -60px;
+  pointer-events: none;
+  padding: 0 24px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.floating-btn {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: width 0.25s ease, background 0.15s;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.floating-btn:hover {
+  color: var(--text-primary);
+}
+
+.floating-btn.search-btn.expanded {
+  width: 320px;
+  border-radius: 22px;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 0 14px;
+  cursor: default;
+}
+
+.floating-search-input {
+  display: none;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  flex: 1;
+  font-family: var(--font-body);
+}
+
+.floating-search-input.visible {
+  display: block;
+}
+
+.floating-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.floating-search-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  padding: 2px;
+}
+
+/* Calendar popover */
+.cal-popover {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  z-index: 20;
+  min-width: 200px;
+  pointer-events: auto;
+}
+
+.cal-popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.cal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+}
+
+.cal-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 6px 8px;
+}
+
+.cal-item {
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.1s;
+  font-family: var(--font-mono);
+}
+
+.cal-item:hover {
+  background: var(--bg-hover);
+}
+
+.cal-item.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.cal-item.cal-clear {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+  padding-top: 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Date groups */
+.date-group {
+  margin-bottom: 24px;
+}
+
+.date-head {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Empty states */
+.empty-state {
+  margin-top: 80px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Chat pinned to bottom */
+.chat-area {
+  padding: 0 24px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Seen / new divider */
+.seen-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.seen-divider::before,
+.seen-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.seen-divider span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Bookmarks header */
+.bookmarks-header {
+  margin-bottom: 16px;
+}
+
+.bookmarks-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.bookmarks-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* View wrapper for profile/settings pages */
+.view-page {
+  padding: 24px 24px 40px;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-app);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  .menu-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 4px 6px;
+    display: flex;
+  }
+
+  .topbar-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+
+  .main-inner {
+    padding: 16px 16px 0;
+  }
+
+  .floating-header {
+    padding: 0 16px;
+  }
+
+  .chat-area {
+    padding: 0 16px 16px;
+  }
+
+  .view-page {
+    padding: 16px 16px 24px;
+  }
+}

@@ -1,0 +1,99 @@
+/* В CustomSelect.css */
+.custom-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Главный триггер (кнопка) — приводим к форме пилла */
+.custom-select-trigger {
+  width: 100%;
+  height: 44px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full); /* Идеально круглое скругление под стиль чата */
+  padding: 0 16px; /* Чуть увеличили отступ для баланса с круглыми краями */
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.12s;
+}
+
+.custom-select-trigger:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-hover); /* Мягкий ховер-эффект */
+}
+
+/* Активное состояние и фокус */
+.custom-select-trigger.open,
+.custom-select-trigger:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  background: var(--bg-elevated);
+  outline: none;
+}
+
+.custom-select-chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.custom-select-trigger.open .custom-select-chevron {
+  transform: rotate(180deg);
+}
+
+/* Выпадающее меню */
+.custom-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border); /* Меняем стеклянный бордер на наш консистентный */
+  border-radius: 16px; /* Красивое, глубокое скругление для плавающего меню */
+  box-shadow: var(--shadow-soft); /* Мягкая тень */
+  padding: 6px; /* Чуть увеличили внутренний паддинг */
+  z-index: 30;
+  animation: customSelectIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); /* Делаем анимацию приятнее */
+  overflow: hidden;
+}
+
+@keyframes customSelectIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Пункты меню (опции) */
+.custom-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px; /* Сделали кликабельную зону приятнее */
+  border-radius: var(--radius-full); /* Опции тоже скругляем — это тренд */
+  font-size: 13px; /* Слегка уменьшили для аккуратности */
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.custom-select-option:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Выбранная опция */
+.custom-select-option.selected {
+  color: var(--accent);
+  background: var(--accent-soft);
+}

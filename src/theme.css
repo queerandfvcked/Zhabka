@@ -1,0 +1,36 @@
+:root {
+  --bg-app: #0B0E13;
+  --bg-elevated: #12161D;
+  --bg-hover: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text-primary: #E7EAEE;
+  --text-secondary: #9AA3AF;
+  --text-muted: #626B77;
+
+  --accent: #7FB2FF;
+  --accent-soft: rgba(127, 178, 255, 0.12);
+  --accent-strong: #A9CBFF;
+
+  --good: #6FCF97;
+  --good-bg: rgba(111, 207, 151, 0.10);
+  --warn: #F2C94C;
+  --warn-bg: rgba(242, 201, 76, 0.10);
+  --bad: #EB5757;
+  --bad-bg: rgba(235, 87, 87, 0.10);
+
+  --glass-bg: rgba(18, 22, 29, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.28);
+  --shadow-soft-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
+
+  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --radius-full: 9999px;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
