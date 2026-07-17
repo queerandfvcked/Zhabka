@@ -16,8 +16,14 @@ const reasonClass = (type) => {
 
 export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBookmark }) {
   const [showFull, setShowFull] = useState(false)
+  const [closing, setClosing] = useState(false)
   const v = vacancy
   const ai = v.aiVerdict
+
+  const handleClose = () => {
+    setClosing(true)
+    setTimeout(() => onClose(), 250) // Время совпадает с длительностью анимации slideOut
+  }
 
   const hasDetails =
     v.salary || v.experience?.value || v.workFormat || v.location
@@ -26,7 +32,12 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
   const hasFull = v.sourceExcerpt && v.sourceExcerpt !== v.original_text
 
   return (
-    <div className="drawer">
+    <>
+      {/* Затемняющий фон под панелью (на десктопе скрыт через CSS, на мобилке плавно проявляется) */}
+      <div className={`drawer-overlay ${closing ? 'closing' : ''}`} onClick={handleClose} />
+
+      <div className={`drawer ${closing ? 'closing' : ''}`}>
+        {/* Шапка */}
         <div className="drawer-header">
           <div className="drawer-header-left">
             <div>
@@ -37,18 +48,21 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
             </div>
           </div>
           <div className="drawer-actions">
-            <button className="drawer-icon-btn" onClick={onToggleBookmark}>
+            <button className="drawer-icon-btn" onClick={onToggleBookmark} type="button">
               <Bookmark size={18} fill={isBookmarked ? 'var(--accent)' : 'none'} />
             </button>
-            <button className="drawer-icon-btn" onClick={onClose}>
+            <button className="drawer-icon-btn" onClick={handleClose} type="button">
               <X size={20} />
             </button>
           </div>
         </div>
 
+        {/* Тело */}
         <div className="drawer-body">
+          {/* Хэндл виден только на мобилке */}
           <div className="drawer-handle" />
 
+          {/* Вердикт AI */}
           {ai && ai.reasons && (
             <div className="drawer-reasons">
               {ai.reasons.map((r, i) => {
@@ -63,8 +77,9 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
             </div>
           )}
 
+          {/* Сетка параметров вакансии */}
           {hasDetails && (
-            <>
+            <div className="details-grid">
               {v.salary && (
                 <div className="field">
                   <div className="field-label">Salary</div>
@@ -96,16 +111,17 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
                   <div className="field-value">{v.location}</div>
                 </div>
               )}
-            </>
+            </div>
           )}
 
+          {/* Требования */}
           {v.requirements?.length > 0 && (
             <div className="field">
               <div className="field-label">Requirements</div>
               <div className="list-value">
                 {v.requirements.map((req, i) => (
                   <div key={i} className="list-item">
-                    <span className="list-bullet">•</span>
+                    <span className="list-bullet">●</span>
                     <span>{req}</span>
                   </div>
                 ))}
@@ -113,30 +129,32 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
             </div>
           )}
 
-          <hr className="divider" />
+          {/* Оригинальный пост */}
+          <div className="original-section">
+            <div className="field-label">Original post</div>
+            <div className="original-block">
+              {showFull || !hasFull ? v.original_text : excerpt}
+            </div>
 
-          <div className="field-label original-label">Original post</div>
-          <div className="original-block">
-            {showFull || !hasFull ? v.original_text : excerpt}
+            {hasFull && (
+              <button className="show-full-toggle" onClick={() => setShowFull(!showFull)} type="button">
+                {showFull ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                {showFull ? 'Show excerpt' : 'Show full post'}
+              </button>
+            )}
+
+            <a
+              className="source-link"
+              href={v.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink size={14} />
+              Open source
+            </a>
           </div>
-
-          {hasFull && (
-            <button className="show-full-toggle" onClick={() => setShowFull(!showFull)}>
-              {showFull ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              {showFull ? 'Show excerpt' : 'Show full post'}
-            </button>
-          )}
-
-          <a
-            className="source-link"
-            href={v.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ExternalLink size={14} />
-            Open source
-          </a>
         </div>
       </div>
+    </>
   )
 }

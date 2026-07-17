@@ -1,3 +1,4 @@
+/* RightDrawer.css */
 .drawer {
   width: 520px;
   max-width: 60vw;
@@ -8,13 +9,26 @@
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+  z-index: 150;
 }
 
+.drawer.closing {
+  animation: slideOutRight 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Десктопный оверлей не нужен, так как панель встроена в интерфейс сбоку */
+.drawer-overlay {
+  display: none;
+}
+
+/* Шапка панели */
 .drawer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 24px;
+  padding: 24px;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
@@ -22,96 +36,126 @@
 .drawer-header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.drawer-actions {
-  display: flex;
-  gap: 4px;
-}
-
-.drawer-icon-btn {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  padding: 6px;
-  display: flex;
-  border-radius: var(--radius-sm);
-  transition: background 0.1s, color 0.1s;
-}
-
-.drawer-icon-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.drawer-body {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 24px;
-  word-break: break-word;
+  gap: 12px;
 }
 
 .drawer-company {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
 }
 
 .drawer-job-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.drawer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.drawer-icon-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: all 0.12s ease;
+  cursor: pointer;
+}
+
+.drawer-icon-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
   color: var(--text-primary);
 }
 
-/* Reasons — same style as JobCard */
+/* Скрываем хэндл на десктопе, чтобы он не создавал лишнюю дырку */
+.drawer-handle {
+  display: none;
+}
+
+/* Тело панели */
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Убрали верхний паддинг, чтобы компенсировать отступы карточек */
+  padding: 0 24px 24px 24px; 
+  display: flex;
+  flex-direction: column;
+  gap: 24px; 
+  word-break: break-word;
+}
+
+/* AI-Вердикт */
 .drawer-reasons {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 8px;
+  background: var(--bg-hover);
+  padding: 16px;
+  border-radius: 14px;
+  /* Добавляем небольшой отступ сверху только для первого элемента, чтобы он не прилипал к границе header */
+  margin-top: 24px; 
 }
 
 .drawer-reasons .reason-row {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   font-size: 13px;
   line-height: 1.5;
 }
 
 .drawer-reasons .reason-icon {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .drawer-reasons .reason-good { color: var(--good); }
 .drawer-reasons .reason-warn { color: var(--warn); }
 .drawer-reasons .reason-bad { color: var(--bad); }
 
-.field {
-  margin-bottom: 20px;
+/* Сетка параметров */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  /* Если AI вердикта нет, и сетка идет первой — задаем ей аккуратный отступ сверху */
+  margin-top: 24px; 
+}
+
+/* Если сетка идет после вердикта AI, сбрасываем верхний маргин, так как сработает gap у drawer-body */
+.drawer-reasons + .details-grid {
+  margin-top: 0;
 }
 
 .field-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.field-label.original-label {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .field-value {
   font-size: 14px;
+  font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .field-value.mono {
@@ -122,7 +166,7 @@
 .list-value {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 8px;
 }
 
 .list-item {
@@ -130,19 +174,23 @@
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 10px;
+  line-height: 1.5;
 }
 
 .list-bullet {
-  color: var(--accent);
+  color: var(--border-strong);
+  font-size: 8px;
+  margin-top: 6px;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
-.divider {
-  border: none;
+.original-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   border-top: 1px solid var(--border);
-  margin: 24px 0;
+  padding-top: 24px;
 }
 
 .original-block {
@@ -150,70 +198,143 @@
   line-height: 1.6;
   white-space: pre-wrap;
   color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .show-full-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 8px;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
   transition: color 0.12s;
+  align-self: flex-start;
 }
 
 .show-full-toggle:hover {
-  color: var(--text-secondary);
+  color: var(--accent-strong);
 }
 
 .source-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
+  font-weight: 600;
   color: var(--accent);
-  margin-top: 16px;
+  align-self: flex-start;
+  margin-top: 8px;
 }
 
 .source-link:hover {
   color: var(--accent-strong);
 }
 
-/* Mobile bottom sheet */
+/* Анимации появления */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0.8; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0.8; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Мобильный вид (Bottom Sheet) */
 @media (max-width: 768px) {
+  /* Включаем оверлей на мобилке */
+  .drawer-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Полупрозрачное темное облако */
+    z-index: 140; /* Чуть ниже самого drawer */
+    animation: fadeIn 0.25s ease-out forwards;
+    backdrop-filter: blur(4px); /* Добавит премиального размытия на бэкграунде */
+  }
+
+  .drawer-overlay.closing {
+    animation: fadeOut 0.2s ease-in forwards;
+  }
+
   .drawer {
     position: fixed;
     top: auto;
     left: 0;
     right: 0;
     bottom: 0;
+    animation: slideInBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     width: 100%;
     height: 85vh;
     max-width: 100vw;
     border-left: none;
-    border-top-left-radius: var(--radius-lg);
-    border-top-right-radius: var(--radius-lg);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     z-index: 150;
   }
 
+  /* Включаем и настраиваем хэндл на мобилке */
+  .drawer-handle {
+    display: block;
+    width: 40px;
+    height: 5px;
+    border-radius: var(--radius-full);
+    background: var(--text-muted);
+    margin: 12px auto 0; /* Опускаем чуть ниже */
+    opacity: 0.3;
+    flex-shrink: 0;
+  }
+
   .drawer-header {
-    padding: 14px 20px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
   }
 
   .drawer-body {
-    padding: 16px 20px;
+    padding: 16px 20px 24px;
+    gap: 20px;
   }
 
-  .drawer-handle {
-    width: 36px;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--text-muted);
-    margin: 0 auto 10px;
-    opacity: 0.3;
+  /* Сбрасываем лишние маргины первого элемента на мобилке, так как там есть хэндл и свои отступы */
+  .drawer-reasons, .details-grid {
+    margin-top: 0;
+  }
+
+  .drawer.closing {
+    animation: slideOutBottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInBottom {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes slideOutBottom {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
   }
 }
