@@ -1,86 +1,87 @@
+/* JobCard.css */
 .card {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 22px 24px;
+  border-radius: 16px; /* Глубокое мягкое скругление */
+  padding: 24px;
   cursor: pointer;
-  transition: border-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Естественный отступ между логическими блоками вместо линий */
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.15s, 
+              box-shadow 0.15s;
 }
 
+/* Дорогой ховер-эффект */
 .card:hover {
   border-color: var(--border-strong);
+  transform: translateY(-2px); /* Карточка слегка приподнимается */
+  box-shadow: var(--shadow-soft);
 }
 
+/* Шапка карточки */
 .card-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
 }
 
 .card-channel {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent); /* Делаем фокус на источнике мягким акцентом */
 }
 
 .card-time {
-  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-muted);
 }
 
-/* 1. Title */
+/* Заголовок вакансии */
 .card-title {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 10px;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
-/* 2. Experience — separate line, its own breathing room */
+/* Опыт работы */
 .card-experience {
   font-size: 13px;
   color: var(--text-secondary);
-  margin-bottom: 18px;
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: -4px; /* Прижимаем ближе к заголовку */
 }
 
+/* Минималистичные аккуратные бэджи */
 .exp-badge {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  font-weight: 500;
 }
 
 .exp-required {
-  background: var(--bad-bg);
-  color: var(--bad);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .exp-not-strict {
-  background: var(--good-bg);
-  color: var(--good);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
 }
 
-/* Divider before requirements */
-.card-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0 0 16px;
-}
-
-/* 3. Requirements — compact list, but with room to breathe */
+/* Требования (делаем список аккуратнее) */
 .card-reqs {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-bottom: 18px;
+  gap: 8px;
 }
 
 .card-req {
@@ -88,60 +89,74 @@
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   line-height: 1.5;
 }
 
+/* Красивая кастомная точка вместо дефолтной жирной точки */
 .card-req-bullet {
-  color: var(--text-muted);
-  flex-shrink: 0;
+  color: var(--border-strong);
+  font-size: 8px;
+  margin-top: 5px;
 }
 
-/* 4. Reasons — checklist without category label */
+/* Секция вердикта AI */
 .reasons-section {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  background: var(--bg-hover); /* Легкая подложка выделяет блок AI-анализа */
+  padding: 12px 14px;
+  border-radius: 12px;
 }
 
 .reason-row {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .reason-icon {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .reason-good { color: var(--good); }
 .reason-warn { color: var(--warn); }
 .reason-bad { color: var(--bad); }
 
-/* 5. Bottom row — company, salary, tags */
+/* Подвал карточки (компания, зп, теги) */
 .card-bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  margin-top: auto; /* Прижимает подвал к самому низу, если карточки в сетке */
   padding-top: 16px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border); /* Оставляем только ОДИН аккуратный бордер снизу */
 }
 
 .bottom-company {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-right: 4px;
 }
 
+/* Стильные теги-пилюли */
 .card-tag {
-  font-family: var(--font-mono);
   font-size: 11px;
-  padding: 3px 9px;
+  font-weight: 500;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   background: var(--bg-hover);
+  border: 1px solid var(--border);
   color: var(--text-secondary);
+  transition: border-color 0.15s;
+}
+
+.card:hover .card-tag {
+  border-color: var(--border-strong);
 }

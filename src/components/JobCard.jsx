@@ -19,56 +19,57 @@ export default function JobCard({ vacancy, onClick }) {
 
   return (
     <div className="card" onClick={onClick}>
+      {/* Шапка */}
       <div className="card-meta">
         <span className="card-channel">@{v.channel_username}</span>
         <span className="card-time">{timeAgo(v.date)}</span>
       </div>
 
-      {v.title && <div className="card-title">{v.title}</div>}
+      {/* Контентная часть */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {v.title && <div className="card-title">{v.title}</div>}
 
-      {v.experience?.value && (
-        <div className="card-experience">
-          <span>{v.experience.value}</span>
-          {v.experience.strict === true && (
-            <span className="exp-badge exp-required">required</span>
-          )}
-          {v.experience.strict === false && (
-            <span className="exp-badge exp-not-strict">not strict</span>
-          )}
+        {v.experience?.value && (
+          <div className="card-experience">
+            <span>{v.experience.value}</span>
+            {v.experience.strict === true && (
+              <span className="exp-badge exp-required">required</span>
+            )}
+            {v.experience.strict === false && (
+              <span className="exp-badge exp-not-strict">not strict</span>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Требования */}
+      {v.requirements?.length > 0 && (
+        <div className="card-reqs">
+          {v.requirements.map((req, i) => (
+            <div key={i} className="card-req">
+              <span className="card-req-bullet">●</span>
+              <span>{req}</span>
+            </div>
+          ))}
         </div>
       )}
 
-      {v.requirements?.length > 0 && (
-        <>
-          <hr className="card-divider" />
-          <div className="card-reqs">
-            {v.requirements.map((req, i) => (
-              <div key={i} className="card-req">
-                <span className="card-req-bullet">•</span>
-                <span>{req}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
+      {/* AI Вердикт (в симпатичном мягком блоке) */}
       {v.aiVerdict?.reasons?.length > 0 && (
-        <>
-          {(v.requirements?.length > 0) && <hr className="card-divider" />}
-          <div className="reasons-section">
-            {v.aiVerdict.reasons.map((r, i) => {
-              const Icon = reasonIcon(r.type)
-              return (
-                <div key={i} className={`reason-row ${reasonClass(r.type)}`}>
-                  <Icon size={13} className="reason-icon" />
-                  <span>{r.text}</span>
-                </div>
-              )
-            })}
-          </div>
-        </>
+        <div className="reasons-section">
+          {v.aiVerdict.reasons.map((r, i) => {
+            const Icon = reasonIcon(r.type)
+            return (
+              <div key={i} className={`reason-row ${reasonClass(r.type)}`}>
+                <Icon size={13} className="reason-icon" />
+                <span>{r.text}</span>
+              </div>
+            )
+          })}
+        </div>
       )}
 
+      {/* Подвал */}
       <div className="card-bottom">
         {v.company && <span className="bottom-company">{v.company}</span>}
         {v.salary && <span className="card-tag">{v.salary}</span>}
