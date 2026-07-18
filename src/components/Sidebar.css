@@ -26,10 +26,11 @@
   gap: 10px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 18px;
+  font-size: var(--fs-h3);
   letter-spacing: -0.02em;
   color: var(--text-primary);
   user-select: none;
+  line-height: var(--lh-h3);
 }
 
 .nav-list {
@@ -45,7 +46,7 @@
   gap: 10px;
   padding: 10px 16px;
   border-radius: var(--radius-full);
-  font-size: 14px;
+  font-size: var(--fs-body);
   color: var(--text-secondary);
   cursor: pointer;
   transition: background 0.12s, color 0.12s;
@@ -64,7 +65,7 @@
 .nav-item .count {
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-badge);
   color: var(--text-muted);
   background: var(--bg-hover);
   padding: 1px 7px;
@@ -90,7 +91,7 @@
   margin-top: auto;
   padding: 16px 10px 4px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-mono);
   color: var(--text-muted);
   border-top: 1px dashed var(--border);
   display: flex;

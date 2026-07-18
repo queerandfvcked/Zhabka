@@ -34,12 +34,12 @@
 .msg-user {
   align-self: flex-end;
   background: var(--accent-soft);
-  border-radius: 14px 14px 4px 14px;
+  border-radius: var(--radius-md) var(--radius-md) 4px var(--radius-md);
   padding: 8px 14px;
-  font-size: 14px;
+  font-size: var(--fs-body);
   color: var(--text-primary);
   max-width: 80%;
-  line-height: 1.5;
+  line-height: var(--lh-body);
 }
 
 .msg-ai {
@@ -56,9 +56,9 @@
 }
 
 .msg-ai-text {
-  font-size: 14px;
+  font-size: var(--fs-body);
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: var(--lh-body);
 }
 
 .msg-card {
@@ -109,8 +109,8 @@
   border: none;
   outline: none;
   color: var(--text-primary);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
   resize: none;
   min-height: 28px;
   max-height: 100px;
@@ -131,7 +131,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--bg-app);
+  color: var(--btn-primary-text);
   cursor: pointer;
   flex-shrink: 0;
   transition: opacity 0.15s;
