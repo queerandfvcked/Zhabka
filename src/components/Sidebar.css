@@ -5,7 +5,7 @@
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 20px 8px;
+  padding: var(--space-5) var(--space-3);
   overflow-y: auto;
   height: 100vh;
   position: sticky;
@@ -17,13 +17,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Логотип слева, крестик справа */
-  padding: 4px 10px 28px;
+  padding: var(--space-2) var(--space-4) var(--space-6);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-4);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-h3);
@@ -37,14 +37,14 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--space-1);
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-full);
   font-size: var(--fs-body);
   color: var(--text-secondary);
@@ -84,12 +84,12 @@
 .divider {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 12px 10px;
+  margin: var(--space-4) var(--space-4);
 }
 
 .foot {
   margin-top: auto;
-  padding: 16px 10px 4px;
+  padding: var(--space-5) var(--space-4) var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
   color: var(--text-muted);
@@ -118,7 +118,7 @@
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 4px;
+  padding: var(--space-2);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -169,14 +169,14 @@
     z-index: 31;
     display: flex;
     flex-direction: column;
-    padding: 24px 12px;
+    padding: var(--space-6) var(--space-4);
     overflow-y: auto;
     animation: slideIn 0.2s ease;
   }
 
   /* Подгоняем отступы шапки внутри мобильной шторки */
   .sidebar-mobile .sidebar-header {
-    padding: 0 4px 20px;
+    padding: 0 var(--space-2) var(--space-5);
   }
 
   @keyframes slideIn {
@@ -188,7 +188,7 @@
     background: none;
     border: none;
     color: var(--text-secondary);
-    padding: 8px;
+    padding: var(--space-3);
     display: flex;
     align-items: center;
     justify-content: center;

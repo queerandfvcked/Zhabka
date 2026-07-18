@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { X, Bookmark, ExternalLink, Check, AlertTriangle, X as XIcon, ChevronDown, ChevronUp } from 'lucide-react'
+import { renderTelegramMarkdown } from '../utils/markdownRender'
 import './RightDrawer.css'
 
 const reasonIcon = (type) => {
@@ -132,9 +133,12 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
           {/* Оригинальный пост */}
           <div className="original-section">
             <div className="field-label">Original post</div>
-            <div className="original-block">
-              {showFull || !hasFull ? v.original_text : excerpt}
-            </div>
+            <div
+              className="original-block"
+              dangerouslySetInnerHTML={{
+                __html: renderTelegramMarkdown(showFull || !hasFull ? v.original_text : excerpt),
+              }}
+            />
 
             {hasFull && (
               <button className="show-full-toggle" onClick={() => setShowFull(!showFull)} type="button">

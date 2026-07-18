@@ -4,34 +4,35 @@
     "company": "ОсОО Тру Айти",
     "salary": null,
     "experience": {
-      "value": "junior",
-      "strict": false
+      "value": null,
+      "strict": null
     },
     "workFormat": "remote",
     "location": "Тбилиси",
     "requirements": [
-      "Дизайнер UX/UI (видит, мыслит, творит, генерирует идеи)",
-      "Опыт фриланса",
-      "Самозанятый или ИП",
-      "Внимательный, старательный, надежный",
-      "Тяга создавать новое",
-      "Желание развиваться"
+      "Дизайнер (видит, мыслит, творит, генерирует идеи, предлагает, объясняет почему)",
+      "внимательный",
+      "старательный",
+      "надежный",
+      "тяга создавать новое красивое",
+      "желает гордиться тем что делает",
+      "продолжает обучаться и всегда стремится вперед"
     ],
-    "sourceExcerpt": "UX/UI Designer Remote в ОсОО Тру Айти Тбилиси\nв офис\njunior\nне указана\nИщем дизайнера UX/UI фрилансера, удаленно, самостоятельного\n \nУДАЛЕННО, ФРИЛАНС, САМОЗАНЯТЫЙ или ИП\n \nНужен именно Дизайнер (видит, мыслит, творит, генерирует идеи, предлагает, объясняет почему), а не оператор figma и photoshop (который делает то что сказали)",
+    "sourceExcerpt": "- [UX/UI Designer Remote в ОсОО Тру Айти](https://youngjunior.ru/дизайнер/jobs/40389)",
     "aiVerdict": {
       "show": true,
       "reasons": [
         {
           "type": "good",
-          "text": "Matches user role: UX/UI Designer"
+          "text": "Matches profile role: UX/UI Designer"
         },
         {
           "type": "good",
-          "text": "Remote format supported"
+          "text": "Remote work format"
         },
         {
           "type": "warn",
-          "text": "Requires self-employed status (ИП/Самозанятый)"
+          "text": "Not enough details in the post — open original to check requirements in detail"
         }
       ]
     },
@@ -40,129 +41,7 @@
     "date": "2026-07-16T15:00:22+00:00",
     "link": "https://t.me/newdirections/6845",
     "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Системный аналитик (ученик) в Aston](https://youngjunior.ru/analyst/jobs/40188)\n\n**__Продакт/Менеджер:__**\n- [Junior Project Manager в Onpoint](https://youngjunior.ru/project/jobs/40105)\n- [Технический проджект-менеджер в Смартхим](https://youngjunior.ru/project/jobs/40430)\n\n**__Дизайн/UX:__**\n- [UX/UI Designer Remote в ОсОО Тру Айти](https://youngjunior.ru/дизайнер/jobs/40389)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
-    "pipeline_version": "2026-07-14-v3",
-    "id": "34ff997ffe77bae9"
-  },
-  {
-    "title": "Веб-дизайнер (WordPress, Elementor)",
-    "company": "Веб Лидер",
-    "salary": "40 000 ₽/мес",
-    "experience": {
-      "value": null,
-      "strict": null
-    },
-    "workFormat": "remote",
-    "location": "Москва",
-    "requirements": [
-      "Знание PHP, HTML, CSS",
-      "Опыт работы с WordPress, Elementor",
-      "Ответственность и внимательность к деталям"
-    ],
-    "sourceExcerpt": "- [Веб-дизайнер (WordPress, Elementor) в Веб Лидер](https://youngjunior.ru/дизайнер/jobs/40411)\n[Full details from Веб-дизайнер (WordPress, Elementor) в Веб Лидер]:\nВеб-дизайнер (WordPress, Elementor) в Веб Лидер Москва | Young&Junior\nАвтоотклики\nОпубликовано \n2 дня назад\nПожаловаться\nВеб-дизайнер (WordPress, Elementor) в Веб Лидер Москва\nв офис\njunior\n40 000 ₽/мес \nИщем талантливого веб-разработчика, который готов создавать современные и функциональные сайты с использованием PHP, HTML, CSS, WordPress, Elementor.\n \nОбеспечиваем комфортную атмосферу и психологическую поддержку. Не ругаем и не наказываем за ошибки, а разбираемся в ситуации и вместе думаем как решить проблему. Для нас любой наш сотрудник важнее, чем любой из клиентов. Мы любим наших людей и заботимся о них. И за 20 лет работы компании мы ни разу не задержали зарплату.\nОбязанности\n \n \nРазработка и поддержка веб-сайтов на базе Elementor, WordPress.\n \nВерстка страниц с использованием HTML и CSS.\n \nПрограммирование на PHP для реализации функционала сайтов.\n \nИнтеграция и настройка плагинов и конструкторов сайтов.\n \nОптимизация и тестирование сайтов для корректной работы.\n \nТехническая SEO-оптимизация.\n \n \nТребования\n \n \nЗнание PHP, HTML, CSS.\n \nОпыт работы с WordPress, Elementor.\n \nОтветственность и внимательность к деталям.\n \n \nУсловия\n \n \nУдаленная работа с гибким графиком.\n \nОплата почасовая, сдельная: 300-500 рублей в час. Будем согласовывать количество часов и стоимость каждого проекта.\n \nЭту вакансию мы нашли в\n \nHH.ru\nВЛ\nВеб Лидер\nМосква\nПолучить оффер\nОткликнуться\nПодготовиться к собеседованию в \nВеб Лидер\nПохожие вакансии\nЭто единственная вакансия по вашему фильтру\nНе",
-    "aiVerdict": {
-      "show": true,
-      "reasons": [
-        {
-          "type": "good",
-          "text": "Matches role profile (Web designer)"
-        },
-        {
-          "type": "good",
-          "text": "Remote work format"
-        },
-        {
-          "type": "warn",
-          "text": "Title says Web-designer, but requirements are heavy on development (PHP/HTML/CSS/WordPress), check if this is the product design work you are looking for"
-        }
-      ]
-    },
-    "channel_username": "juno_jobs",
-    "channel_title": "junojobs → стажировки в IT",
-    "date": "2026-07-16T15:00:15+00:00",
-    "link": "https://t.me/juno_jobs/2364",
-    "original_text": "**Подборка джуновских вакансий**\n\n**__Frontend:__**\n- [Frontend Developer в yourhr.tech](https://youngjunior.ru/javascript/jobs/40392)\n- [Разработчик Python в Финансовая Группа ЕвроГарант](https://youngjunior.ru/javascript/jobs/40162)\n\n**__Backend:__**\n- [PHP-разработчик в Север Телеком](https://youngjunior.ru/php/jobs/40407)\n- [Веб-дизайнер (WordPress, Elementor) в Веб Лидер](https://youngjunior.ru/дизайнер/jobs/40411)\n\n**__Аналитика:__**\n- [ML-инженер в Донской колос](https://youngjunior.ru/data/jobs/40197)\n- [Бизнес аналитик/Python (автоматизация бизнес-процессов) в ПК ГУДПАРТС](https://youngjunior.ru/analyst/jobs/40292)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
-    "pipeline_version": "2026-07-14-v3",
-    "id": "edcbba83d7088136"
-  },
-  {
-    "title": "Senior продуктовый дизайнер",
-    "company": "ProductHow",
-    "salary": null,
-    "experience": {
-      "value": "Senior",
-      "strict": false
-    },
-    "workFormat": "Удалённо",
-    "location": null,
-    "requirements": [],
-    "sourceExcerpt": "ProductHow 30 июн. Senior продуктовый дизайнер ЗП не указана, ≈ 189 841 ₽ Удалённо Senior",
-    "aiVerdict": {
-      "show": true,
-      "reasons": [
-        {
-          "type": "good",
-          "text": "Matches role: Product Designer"
-        },
-        {
-          "type": "good",
-          "text": "Remote work format matches profile"
-        },
-        {
-          "type": "warn",
-          "text": "Not enough details in the post — open original to check requirements"
-        }
-      ]
-    },
-    "channel_username": "hcareers_jobs",
-    "channel_title": "Эйч Вакансии",
-    "date": "2026-07-16T13:33:00+00:00",
-    "link": "https://t.me/hcareers_jobs/2147",
-    "original_text": "**Подборка вакансий для специалистов по искусственному интеллекту:**\n\n🏢 [ML-продакт-менеджер](https://h.careers/job/4fb06c65-07a5-4f7a-af34-560654bc52a0?utm_source=tg_h&utm_medium=post&utm_campaign=16.07.26) в Т-Банк\nMiddle, Любой город\n\n🏢 [Anti-fraud Senior Machine Learning Engineer](https://h.careers/job/23946f60-c4ff-43e3-9ccb-76045790d9de?utm_source=tg_h&utm_medium=post&utm_campaign=16.07.26) в Газпромбанк\nSenior, Москва\n\n🏢 [Специалист разметки данных для нейросетей (г. Псков работа из офиса)](https://h.careers/job/54bc5913-a5bb-4b05-b6c4-f1f2c6f1c7a6?utm_source=tg_h&utm_medium=post&utm_campaign=16.07.26) в Сбер\nJunior, Псков\n\n🏢 [Principal Machine Learning Engineer](https://h.careers/job/87a77e84-f0c0-4e7c-bb2a-0fbd15c5b9bf?utm_source=tg_h&utm_medium=post&utm_campaign=16.07.26) в Bumble\nLead, UK London\n\n______________________\n\n⚡ Сервисы Эйч:\n\n[Найти ментора](https://h.careers/curators?utm_source=tg_hjobs&utm_medium=jobpost)\n[Готовое резюме](https://h.careers/your-cv/ready-resume?utm_source=tg_hjobs&utm_medium=jobpost)\n[Сопровождение до оффера](https://h.careers/offer?utm_source=tg_hjobs&utm_medium=jobpost)\n[Все вакансии](https://h.careers/jobs?utm_source=tg_hjobs&utm_medium=jobpost)\n[Трекер откликов](https://h.careers/mentee/tracker?utm_source=tg_hjobs&utm_medium=jobpost)\n[Конструктор резюме](https://h.careers/mentee/resumes?utm_source=tg_hjobs&utm_medium=jobpost)\n[Вопросы с собеседований](https://h.careers/interview-questions?utm_source=tg_hjobs&utm_medium=jobpost)\n[Задачи с собеседований](https://h.careers/interview-tasks?utm_source=tg_hjobs&utm_medium=jobpost)\n[AI-Проверятор резюме](https://h.careers/mentee/cv-check?utm_source=tg_hjobs&utm_medium=jobpost)\n[Генератор сопроводительных](https://h.careers/mentee/cover-letters?utm_source=tg_hjobs&utm_medium=jobpost)",
-    "pipeline_version": "2026-07-14-v3",
-    "id": "43f1d25258118b32"
-  },
-  {
-    "title": "Веб-дизайнер",
-    "company": "Профиматика",
-    "salary": "70 000₽",
-    "experience": {
-      "value": "2–3 года",
-      "strict": false
-    },
-    "workFormat": "Remote",
-    "location": "Москва",
-    "requirements": [
-      "Опыт коммерческой работы веб-дизайнером — от 2–3 лет",
-      "Уверенное владение Figma и Tilda (Zero Block)",
-      "Понимание композиции и типографики",
-      "Умение работать с готовой дизайн-системой",
-      "Базовое понимание HTML/CSS для работы с кодовыми вставками",
-      "Опыт работы с нейросетями для генерации изображений (ChatGPT, Midjourney, Flux, Ideogram, Kling)"
-    ],
-    "sourceExcerpt": "Веб-дизайнер в онлайн-школу «Профиматика»\nОнлайн-школа «Профиматика» — помогаем школьникам 8–11 классов сдавать ЕГЭ на высокие баллы. Сейчас часть страниц основного сайта уже реализована, ищем дизайнера, который продолжит развивать сайт в рамках существующей дизайн-системы.\n\nЧто нужно делать:\n— Проектировать новые страницы сайта в Figma.\n— Верстать страницы и лендинги в Tilda (Zero Block) с адаптивом под мобилки.\n— Поддерживать единый визуальный стиль сайта.\n— Создавать маркетинговые и учебные материалы (баннеры, презентации). Иногда — визуальные концепции для новых запусков.\n— Разработка лендингов для отдельных продуктов школы\n\nПожелания к кандидату:\n— Опыт коммерческой работы веб-дизайнером — от 2–3 лет.\n— Уверенное владение Figma и Tilda (Zero Block).\n— Хороший вкус, понимание композиции и типографики.\n— Умение работать с готовой дизайн-системой.\n— Самостоятельность, внимание к деталям, соблюдение сроков.\n— Базовое понимание HTML/CSS для работы с кодовыми вставками\n— Опыт работы с нейросетями для генерации изображений (ChatGPT, Midjourney, Flux, Ideogram, Kling)\n\nБудет плюсом:\n— Опыт в EdTech или онлайн-школе.\n\nЧто предлагаем:\n— Удалёнка.\n— График 5/2: с 10:00 до 19:00 (МСК) на связи.\n— Зарплата 70 000 ₽.\n— Возможность работать из офиса в Москве.\n— Сильная дизайн-команда и обратная связь.",
-    "aiVerdict": {
-      "show": true,
-      "reasons": [
-        {
-          "type": "good",
-          "text": "Role matches Product/UX/UI Designer"
-        },
-        {
-          "type": "good",
-          "text": "Remote format available"
-        },
-        {
-          "type": "warn",
-          "text": "Experience requirement (2-3 years) mentioned, but treat as non-strict per profile condition as no 'mandatory' phrasing used."
-        }
-      ]
-    },
-    "channel_username": "design_jobs_uxui",
-    "channel_title": "Вакансии для Дизайнеров",
-    "date": "2026-07-16T07:08:01+00:00",
-    "link": "https://t.me/design_jobs_uxui/1208",
-    "original_text": "[**Веб-дизайнер в онлайн-школу**](https://www.vseti.app/vakansii/43834843943034034349343443)\n70 000₽\nУдалённо\n\nВеб-дизайнер в онлайн-школу «Профиматика»\nОнлайн-школа «Профиматика» — помогаем школьникам 8–11 классов сдавать ЕГЭ на высокие баллы. Сейчас часть страниц основного сайта уже реализована, ищем дизайнера, который продолжит развивать сайт в рамках существующей дизайн-системы.\n‍\n**Что нужно делать:**\n— Проектировать новые страницы сайта в Figma.\n— Верстать страницы и лендинги в Tilda (Zero Block) с адаптивом под мобилки.\n— Поддерживать единый визуальный стиль сайта.\n— Создавать маркетинговые и учебные материалы (баннеры, презентации). Иногда — визуальные концепции для новых запусков.\n— Разработка лендингов для отдельных продуктов школы\n‍\n**Пожелания к кандидату:**\n— Опыт коммерческой работы веб-дизайнером — от 2–3 лет.\n— Уверенное владение Figma и Tilda (Zero Block).\n— Хороший вкус, понимание композиции и типографики.\n— Умение работать с готовой дизайн-системой.\n— Самостоятельность, внимание к деталям, соблюдение сроков.\n— Базовое понимание HTML/CSS для работы с кодовыми вставками\n— Опыт работы с нейросетями для генерации изображений (ChatGPT, Midjourney, Flux, Ideogram, Kling)\n‍\n**Будет плюсом:**\n— Опыт в EdTech или онлайн-школе.\n‍\n**Что предлагаем:**\n— Удалёнка.\n— График 5/2: с 10:00 до 19:00 (МСК) на связи.\n— Зарплата 70 000 ₽.\n— Возможность работать из офиса в Москве.\n— Сильная дизайн-команда и обратная связь.\n‍\nДля отклика [заполни анкету](https://forms.yandex.ru/cloud/6a4e116990fa7b39186640ec)\n\n\nПонравилась вакансия?\n💚 — да\n🌚 — нет\n\n\n———\n\n🖤[ ](http://ya.ru/)[Разместить вакансию](https://www.vseti.app/b2b) \n💙 [Удалёнка](https://t.me/+LyGXnOpjrztmN2Ix) 🫶 [Удалёнка джунам](https://t.me/+1yyM8jKGVr8xZjMy) \n🫶[ ](https://t.me/+BO4DcXIAKqg1ODYy)[Стажировки](https://t.me/+hDTdPzgIbhozMTUy) 💚[ Разрабам](https://t.me/+QiDNhxIWmTUwMTdi)\n💖[ Дизайнерам](https://t.me/+9cosivWJhhE4M2Ri) 🟠[ Маркетологам](https://t.me/+vJsBiYSXJ65mNTky) \n🖤 [HR](https://t.me/+jHYEvaAUg_5kNWZi) 💜 [QA](https://t.me/+UxBpbQAyg6M0ZjUy) 🟡 [Менеджерам](https://t.me/+riZ3PFenvGJkNTAy)\n\n__мы также есть там, куда всех хотят отправить — ____https://max.ru/it_vakansii_jobs__",
-    "pipeline_version": "2026-07-14-v3",
-    "id": "7db1cb348598134d"
+    "pipeline_version": "2026-07-17-v4",
+    "id": "b89f36a7f4cd086b"
   }
 ]

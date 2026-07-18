@@ -19,12 +19,12 @@ from telethon.tl.functions.chatlists import CheckChatlistInviteRequest
 from telethon.tl.types.chatlists import ChatlistInvite, ChatlistInviteAlready
 
 # --- Заполни своими данными ---
-API_ID = 37460353
-API_HASH = "57b8f6086831f18134d4270fe6d34858"
+API_ID = 12345678
+API_HASH = "your_api_hash_here"
 
 SESSION_NAME = "job_radar_session"
 
-FOLDER_LINK = "https://t.me/addlist/jyx71VPASmJjNmJl"
+FOLDER_LINK = "https://t.me/addlist/FDJaOUlv0-ozNTRi"
 HOURS_BACK = 24
 MESSAGES_PER_CHANNEL = 20
 
@@ -399,16 +399,21 @@ def main():
         posts = collect_posts(client, channels, HOURS_BACK)
         print(f"Собрано постов: {len(posts)}")
 
-    data_path = "src/data/raw_vacancies.json"
-    with open(data_path, "w", encoding="utf-8") as f:
+    with open("vacancies.json", "w", encoding="utf-8") as f:
         json.dump(posts, f, ensure_ascii=False, indent=2)
-    print(f"Сохранено: {data_path}")
+    print("Сохранено: vacancies.json")
+
+    # Полный список подключённых каналов — отдельно от результатов сбора.
+    # Нужен фронтенду (Settings), чтобы показывать ВСЕ источники, а не
+    # только те, из которых сегодня что-то прошло классификацию.
+    with open("sources.json", "w", encoding="utf-8") as f:
+        json.dump(channels, f, ensure_ascii=False, indent=2)
+    print("Сохранено: sources.json")
 
     html = HTML_TEMPLATE.replace("__DATA_JSON__", json.dumps(posts, ensure_ascii=False))
-    inbox_path = "public/inbox.html"
-    with open(inbox_path, "w", encoding="utf-8") as f:
+    with open("inbox.html", "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"Сохранено: {inbox_path} — открой его в браузере")
+    print("Сохранено: inbox.html — открой его в браузере")
 
 
 if __name__ == "__main__":

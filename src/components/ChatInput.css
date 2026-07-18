@@ -1,5 +1,5 @@
 .chat-wrapper {
-  padding: 12px 0 12px;
+  padding: var(--space-4) 0 var(--space-4);
   position: relative;
 }
 
@@ -25,8 +25,8 @@
 .messages {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
   max-height: 300px;
   overflow-y: auto;
 }
@@ -35,7 +35,7 @@
   align-self: flex-end;
   background: var(--accent-soft);
   border-radius: var(--radius-md) var(--radius-md) 4px var(--radius-md);
-  padding: 8px 14px;
+  padding: var(--space-3) var(--space-4);
   font-size: var(--fs-body);
   color: var(--text-primary);
   max-width: 80%;
@@ -45,14 +45,14 @@
 .msg-ai {
   align-self: flex-start;
   display: flex;
-  gap: 8px;
+  gap: var(--space-3);
   align-items: flex-start;
   max-width: 85%;
 }
 
 .msg-ai-icon {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: var(--space-1);
 }
 
 .msg-ai-text {
@@ -69,11 +69,11 @@
 .chat-pill {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-2);
   background: var(--bg-elevated);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  padding: 4px 4px 4px 10px;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
   box-shadow: var(--shadow-soft-sm);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -115,7 +115,7 @@
   min-height: 28px;
   max-height: 100px;
   font-family: var(--font-body);
-  padding: 6px 0;
+  padding: var(--space-2) 0;
 }
 
 .pill-input::placeholder {

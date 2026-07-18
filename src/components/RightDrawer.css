@@ -28,7 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
+  padding: var(--space-6);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
@@ -36,14 +36,14 @@
 .drawer-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-4);
 }
 
 .drawer-company {
   font-size: var(--fs-caption);
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 8px;
+  margin-bottom: var(--space-3);
 }
 
 .drawer-job-title {
@@ -56,7 +56,7 @@
 
 .drawer-actions {
   display: flex;
-  gap: 8px;
+  gap: var(--space-3);
 }
 
 .drawer-icon-btn {
@@ -90,10 +90,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   /* Убрали верхний паддинг, чтобы компенсировать отступы карточек */
-  padding: 0 24px 24px 24px; 
+  padding: 0 var(--space-6) var(--space-6) var(--space-6); 
   display: flex;
   flex-direction: column;
-  gap: 24px; 
+  gap: var(--space-6); 
   word-break: break-word;
 }
 
@@ -101,18 +101,18 @@
 .drawer-reasons {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-3);
   background: var(--bg-hover);
-  padding: 16px;
+  padding: var(--space-5);
   border-radius: var(--radius-md);
   /* Добавляем небольшой отступ сверху только для первого элемента, чтобы он не прилипал к границе header */
-  margin-top: 24px; 
+  margin-top: var(--space-6); 
 }
 
 .drawer-reasons .reason-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: var(--space-4);
   font-size: var(--fs-sub);
   line-height: var(--lh-body);
 }
@@ -130,13 +130,13 @@
 .details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: var(--space-5);
   background: rgba(255, 255, 255, 0.02);
-  padding: 16px;
+  padding: var(--space-5);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   /* Если AI вердикта нет, и сетка идет первой — задаем ей аккуратный отступ сверху */
-  margin-top: 24px; 
+  margin-top: var(--space-6); 
 }
 
 /* Если сетка идет после вердикта AI, сбрасываем верхний маргин, так как сработает gap у drawer-body */
@@ -144,11 +144,16 @@
   margin-top: 0;
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .field-label {
   font-size: var(--fs-caption);
   font-weight: 500;
   color: var(--text-muted);
-  margin-bottom: 6px;
 }
 
 .field-value {
@@ -166,7 +171,7 @@
 .list-value {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-3);
 }
 
 .list-item {
@@ -174,23 +179,23 @@
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: var(--space-4);
   line-height: var(--lh-body);
 }
 
 .list-bullet {
   color: var(--border-strong);
   font-size: 8px;
-  margin-top: 6px;
+  margin-top: var(--space-2);
   flex-shrink: 0;
 }
 
 .original-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-4);
   border-top: 1px solid var(--border);
-  padding-top: 24px;
+  padding-top: var(--space-6);
 }
 
 .original-block {
@@ -199,7 +204,7 @@
   white-space: pre-wrap;
   color: var(--text-secondary);
   background: rgba(0, 0, 0, 0.15);
-  padding: 16px;
+  padding: var(--space-5);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   max-height: 300px;
@@ -209,7 +214,7 @@
 .show-full-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
   font-size: var(--fs-sub);
   font-weight: 500;
   color: var(--accent);
@@ -228,12 +233,12 @@
 .source-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-3);
   font-size: var(--fs-sub);
   font-weight: 600;
   color: var(--accent);
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: var(--space-3);
 }
 
 .source-link:hover {
@@ -304,19 +309,19 @@
     height: 5px;
     border-radius: var(--radius-full);
     background: var(--text-muted);
-    margin: 12px auto 0; /* Опускаем чуть ниже */
+    margin: var(--space-4) auto 0; /* Опускаем чуть ниже */
     opacity: 0.3;
     flex-shrink: 0;
   }
 
   .drawer-header {
-    padding: 16px 20px;
+    padding: var(--space-5) var(--space-5);
     border-bottom: 1px solid var(--border);
   }
 
   .drawer-body {
-    padding: 16px 20px 24px;
-    gap: 20px;
+    padding: var(--space-5) var(--space-5) var(--space-6);
+    gap: var(--space-5);
   }
 
   /* Сбрасываем лишние маргины первого элемента на мобилке, так как там есть хэндл и свои отступы */

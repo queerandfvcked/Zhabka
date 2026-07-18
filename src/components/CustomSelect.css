@@ -11,7 +11,7 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-full); /* Идеально круглое скругление под стиль чата */
-  padding: 0 16px; /* Чуть увеличили отступ для баланса с круглыми краями */
+  padding: 0 var(--space-5); /* Чуть увеличили отступ для баланса с круглыми краями */
   color: var(--text-primary);
   font-size: var(--fs-body);
   font-family: var(--font-body);
@@ -56,7 +56,7 @@
   border: 1px solid var(--border); /* Меняем стеклянный бордер на наш консистентный */
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft); /* Мягкая тень */
-  padding: 6px; /* Чуть увеличили внутренний паддинг */
+  padding: var(--space-2); /* Чуть увеличили внутренний паддинг */
   z-index: 30;
   animation: customSelectIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); /* Делаем анимацию приятнее */
   overflow: hidden;
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px; /* Сделали кликабельную зону приятнее */
+  padding: var(--space-4) var(--space-4); /* Сделали кликабельную зону приятнее */
   border-radius: var(--radius-full); /* Опции тоже скругляем — это тренд */
   font-size: var(--fs-sub);
   font-weight: 500;

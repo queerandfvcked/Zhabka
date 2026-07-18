@@ -3,11 +3,11 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: var(--space-6);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Естественный отступ между логическими блоками вместо линий */
+  gap: var(--space-5); /* Естественный отступ между логическими блоками вместо линий */
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.15s, 
               box-shadow 0.15s;
@@ -53,8 +53,8 @@
   color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: -4px; /* Прижимаем ближе к заголовку */
+  gap: var(--space-3);
+  margin-top: calc(-1 * var(--space-2)); /* Прижимаем ближе к заголовку */
 }
 
 /* Минималистичные аккуратные бэджи */
@@ -63,7 +63,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  padding: 2px 8px;
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
 }
 
@@ -81,7 +81,7 @@
 .card-reqs {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-3);
 }
 
 .card-req {
@@ -89,7 +89,7 @@
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: var(--space-4);
   line-height: var(--lh-body);
 }
 
@@ -104,16 +104,16 @@
 .reasons-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-3);
   background: var(--bg-hover); /* Легкая подложка выделяет блок AI-анализа */
-  padding: 12px 14px;
+  padding: var(--space-4) var(--space-4);
   border-radius: var(--radius-md);
 }
 
 .reason-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: var(--space-4);
   font-size: var(--fs-sub);
   line-height: var(--lh-sub);
 }
@@ -132,9 +132,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-3);
   margin-top: auto; /* Прижимает подвал к самому низу, если карточки в сетке */
-  padding-top: 16px;
+  padding-top: var(--space-5);
   border-top: 1px solid var(--border); /* Оставляем только ОДИН аккуратный бордер снизу */
 }
 
@@ -142,14 +142,14 @@
   font-size: var(--fs-sub);
   font-weight: 600;
   color: var(--text-secondary);
-  margin-right: 4px;
+  margin-right: var(--space-2);
 }
 
 /* Стильные теги-пилюли */
 .card-tag {
   font-size: var(--fs-badge);
   font-weight: 500;
-  padding: 4px 10px;
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
   background: var(--bg-hover);
   border: 1px solid var(--border);
