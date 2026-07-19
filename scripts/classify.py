@@ -1,29 +1,32 @@
 """
 Классификация вакансий через бесплатный Gemini Flash.
 
-Берёт сырые посты из vacancies.json (результат collect_and_generate.py),
+Берёт сырые посты из raw_vacancies.json (результат collect_and_generate.py),
 для каждого поста:
   1. пробует обогатить текст через resolver.py (hh.ru API / generic fetch),
   2. отправляет в Gemini вместе с profile.json,
   3. получает структурированный JSON — один пост может вернуть НЕСКОЛЬКО
      вакансий (для постов-дайджестов вида "Вакансии на сегодня: 1... 2...").
 
-Результат сохраняется в vacancies_classified.json — именно этот файл
-нужно скопировать в src/data/vacancies.json во фронтенд-проекте.
+Результат сохраняется в src/data/vacancies.json — этот файл фронтенд
+читает напрямую.
 
 Установка:
-    pip install requests beautifulsoup4
+    pip install requests beautifulsoup4 python-dotenv
 
-Получить API-ключ: https://aistudio.google.com -> API keys -> Create key.
+Ключ хранится в .env (не в коде, не в git) — файл .env должен содержать
+строку вида:
+    GCP_API_KEY=твой_ключ_с_aistudio.google.com
+
 Уточни на месте актуальное имя модели в разделе моделей — на момент
 написания это семейство "gemini-*-flash", но версии обновляются.
 """
 
 import json
+import os
 import re
 import time
 import hashlib
-import os
 import difflib
 import requests
 from dotenv import load_dotenv
@@ -202,7 +205,17 @@ def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[d
 
     wait = 15  # стартовая пауза при 429, растёт с каждой повторной попыткой
     for attempt in range(max_retries):
-        resp = requests.post(GEMINI_URL, json=payload, timeout=30)
+        try:
+            resp = requests.post(GEMINI_URL, json=payload, timeout=30)
+        except requests.exceptions.RequestException as e:
+            # Таймаут, обрыв соединения и т.п. — не роняем весь скрипт,
+            # ждём и пробуем снова, как при 429. Данные уже сохранённых
+            # постов не теряются благодаря сохранению после каждого поста.
+            print(f"  Сетевая ошибка ({type(e).__name__}), жду {wait}с и "
+                  f"пробую снова (попытка {attempt + 1}/{max_retries})...")
+            time.sleep(wait)
+            wait *= 2
+            continue
 
         if resp.status_code == 200:
             data = resp.json()
@@ -328,12 +341,21 @@ def main():
     for i, post in enumerate(posts_to_process):
         print(f"[{i + 1}/{len(posts_to_process)}] @{post['channel_username']}...")
 
-        # Обогащаем ВСЕ ссылки внутри текста поста (не только одну ссылку
-        # на сам пост в Telegram) — для дайджестов это критично, там на
-        # каждую вакансию своя ссылка на hh.ru/другую площадку.
-        enriched_text = enrich_links_in_text(post["text"])
+        try:
+            # Обогащаем ВСЕ ссылки внутри текста поста (не только одну ссылку
+            # на сам пост в Telegram) — для дайджестов это критично, там на
+            # каждую вакансию своя ссылка на hh.ru/другую площадку.
+            enriched_text = enrich_links_in_text(post["text"])
 
-        vacancies = classify_post(enriched_text, profile)
+            vacancies = classify_post(enriched_text, profile)
+        except Exception as e:
+            # Что угодно неожиданное на одном посте — не должно ронять
+            # весь прогон на оставшихся сотнях постов. Пропускаем и идём
+            # дальше, уже сохранённое не теряется.
+            print(f"  Неожиданная ошибка на этом посте, пропускаю: "
+                  f"{type(e).__name__}: {e}")
+            time.sleep(5)
+            continue
 
         for v in vacancies:
             if not v.get("aiVerdict", {}).get("show", True):

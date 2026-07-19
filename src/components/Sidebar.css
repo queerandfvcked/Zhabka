@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Логотип слева, крестик справа */
-  padding: var(--space-2) var(--space-4) var(--space-6);
+  padding: var(--space-2) var(--space-4) var(--space-7);
 }
 
 .brand {
@@ -66,9 +66,10 @@
   margin-left: auto;
   font-family: var(--font-mono);
   font-size: var(--fs-badge);
+  font-weight: 500;
   color: var(--text-muted);
   background: var(--bg-hover);
-  padding: 1px 7px;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
 }
 
@@ -97,7 +98,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3px;
+  gap: var(--space-1);
 }
 
 .foot-sources {
@@ -176,7 +177,7 @@
 
   /* Подгоняем отступы шапки внутри мобильной шторки */
   .sidebar-mobile .sidebar-header {
-    padding: 0 var(--space-2) var(--space-5);
+    padding: 0 var(--space-2) var(--space-6);
   }
 
   @keyframes slideIn {

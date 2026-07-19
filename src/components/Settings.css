@@ -37,9 +37,10 @@
 .source-count-badge {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
+  font-weight: 500;
   color: var(--text-muted);
   background: var(--bg-hover);
-  padding: 1px 7px;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
 }
 
@@ -76,39 +77,44 @@
   color: var(--text-secondary);
 }
 
-/* Add source — pill input with circular button inside */
+/* Add source — превращаем строку в правильный флекс-контейнер-пилюлю */
 .add-source-row {
-  position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-5);
-}
-
-.add-source-input {
-  width: 100%;
-  height: 44px;
   background: var(--input-bg-alt);
   border: 1px solid var(--input-border);
   border-radius: var(--radius-full);
-  padding: 0 48px 0 var(--space-5);
-  color: var(--text-primary);
-  font-size: var(--fs-body);
-  outline: none;
+  /* Слева space-5 для текста, сверху/снизу/справа — space-2 (8px) для кнопки */
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  margin-bottom: var(--space-5);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.add-source-input:focus {
+/* При фокусе подсвечиваем всю рамку контейнера, как в чате */
+.add-source-row:focus-within {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Сам инпут теперь просто прозрачный и забирает всё свободное место */
+.add-source-input {
+  flex: 1;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-size: var(--fs-body);
+  outline: none;
 }
 
 .add-source-input::placeholder {
   color: var(--text-muted);
 }
 
+/* Кнопка больше не абсолютная, она просто стоит справа с зазором space-2 от края */
 .add-source-btn {
-  position: absolute;
-  right: 4px;
+  flex-shrink: 0;
   width: 36px;
   height: 36px;
   border-radius: 50%;

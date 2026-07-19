@@ -12,6 +12,7 @@
 """
 
 import json
+import os
 from datetime import datetime, timedelta, timezone
 
 from telethon.sync import TelegramClient
@@ -24,7 +25,7 @@ API_HASH = "your_api_hash_here"
 
 SESSION_NAME = "job_radar_session"
 
-FOLDER_LINK = "https://t.me/addlist/FDJaOUlv0-ozNTRi"
+FOLDER_LINK = "https://t.me/addlist/jyx71VPASmJjNmJl"
 HOURS_BACK = 24
 MESSAGES_PER_CHANNEL = 20
 
@@ -399,16 +400,20 @@ def main():
         posts = collect_posts(client, channels, HOURS_BACK)
         print(f"Собрано постов: {len(posts)}")
 
-    with open("vacancies.json", "w", encoding="utf-8") as f:
+    # Пишем напрямую туда же, откуда читает classify.py — без ручного
+    # переноса файла между скриптами, это и было источником путаницы.
+    os.makedirs("src/data", exist_ok=True)
+
+    with open("src/data/raw_vacancies.json", "w", encoding="utf-8") as f:
         json.dump(posts, f, ensure_ascii=False, indent=2)
-    print("Сохранено: vacancies.json")
+    print("Сохранено: src/data/raw_vacancies.json")
 
     # Полный список подключённых каналов — отдельно от результатов сбора.
     # Нужен фронтенду (Settings), чтобы показывать ВСЕ источники, а не
     # только те, из которых сегодня что-то прошло классификацию.
-    with open("sources.json", "w", encoding="utf-8") as f:
+    with open("src/data/sources.json", "w", encoding="utf-8") as f:
         json.dump(channels, f, ensure_ascii=False, indent=2)
-    print("Сохранено: sources.json")
+    print("Сохранено: src/data/sources.json")
 
     html = HTML_TEMPLATE.replace("__DATA_JSON__", json.dumps(posts, ensure_ascii=False))
     with open("inbox.html", "w", encoding="utf-8") as f:

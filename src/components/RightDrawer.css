@@ -114,12 +114,15 @@
   align-items: flex-start;
   gap: var(--space-4);
   font-size: var(--fs-sub);
-  line-height: var(--lh-body);
+  line-height: var(--lh-sub);
 }
 
 .drawer-reasons .reason-icon {
   flex-shrink: 0;
-  margin-top: 3px;
+  /* Центрируем иконку ровно по высоте первой строки (18px) */
+  height: 18px;
+  display: flex;
+  align-items: center;
 }
 
 .drawer-reasons .reason-good { color: var(--good); }
@@ -160,7 +163,7 @@
   font-size: var(--fs-body);
   font-weight: 600;
   color: var(--text-primary);
-  line-height: var(--lh-sub);
+  line-height: var(--lh-body);
 }
 
 .field-value.mono {
@@ -186,8 +189,11 @@
 .list-bullet {
   color: var(--border-strong);
   font-size: 8px;
-  margin-top: var(--space-2);
   flex-shrink: 0;
+  /* Центрируем точку ровно по высоте первой строки body (20px) */
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .original-section {
@@ -200,7 +206,7 @@
 
 .original-block {
   font-size: var(--fs-sub);
-  line-height: var(--lh-body);
+  line-height: var(--lh-sub);
   white-space: pre-wrap;
   color: var(--text-secondary);
   background: rgba(0, 0, 0, 0.15);

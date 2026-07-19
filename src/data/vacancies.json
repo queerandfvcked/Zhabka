@@ -1,47 +1,152 @@
 [
   {
-    "title": "UX/UI Designer Remote",
-    "company": "ОсОО Тру Айти",
+    "title": "Продуктовый дизайнер / Клиентские продукты в Wildberries",
+    "company": "Wildberries",
     "salary": null,
     "experience": {
       "value": null,
       "strict": null
     },
     "workFormat": "remote",
-    "location": "Тбилиси",
-    "requirements": [
-      "Дизайнер (видит, мыслит, творит, генерирует идеи, предлагает, объясняет почему)",
-      "внимательный",
-      "старательный",
-      "надежный",
-      "тяга создавать новое красивое",
-      "желает гордиться тем что делает",
-      "продолжает обучаться и всегда стремится вперед"
-    ],
-    "sourceExcerpt": "- [UX/UI Designer Remote в ОсОО Тру Айти](https://youngjunior.ru/дизайнер/jobs/40389)",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "- [Продуктовый дизайнер / Клиентские продукты в Wildberries](https://youngjunior.ru/дизайнер/jobs/41419)",
     "aiVerdict": {
       "show": true,
       "reasons": [
         {
           "type": "good",
-          "text": "Matches profile role: UX/UI Designer"
+          "text": "Role matches: Product Designer"
         },
         {
           "type": "good",
-          "text": "Remote work format"
+          "text": "Work format: remote"
         },
         {
           "type": "warn",
-          "text": "Not enough details in the post — open original to check requirements in detail"
+          "text": "Not enough details in the post — open original to check"
         }
       ]
     },
-    "channel_username": "newdirections",
-    "channel_title": "New directions: вакансии и стажировки",
-    "date": "2026-07-16T15:00:22+00:00",
-    "link": "https://t.me/newdirections/6845",
-    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Системный аналитик (ученик) в Aston](https://youngjunior.ru/analyst/jobs/40188)\n\n**__Продакт/Менеджер:__**\n- [Junior Project Manager в Onpoint](https://youngjunior.ru/project/jobs/40105)\n- [Технический проджект-менеджер в Смартхим](https://youngjunior.ru/project/jobs/40430)\n\n**__Дизайн/UX:__**\n- [UX/UI Designer Remote в ОсОО Тру Айти](https://youngjunior.ru/дизайнер/jobs/40389)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-07-18T15:00:08+00:00",
+    "link": "https://t.me/junior_designers/1411",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Графический дизайнер рекламных креативов в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/41191)\n- [Графический дизайнер в команду AI PDLC в АО \"СберТех\"](https://youngjunior.ru/дизайнер/jobs/41436)\n- [Стажер UX-исследователь в T2](https://youngjunior.ru/дизайнер/jobs/41157)\n\n**__Junior-дизайнер:__**\n- [Продуктовый дизайнер / Клиентские продукты в Wildberries](https://youngjunior.ru/дизайнер/jobs/41419)\n- [Продуктовый дизайнер / Финтех B2B в Wildberries](https://youngjunior.ru/дизайнер/jobs/41417)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
     "pipeline_version": "2026-07-17-v4",
-    "id": "b89f36a7f4cd086b"
+    "id": "8ca30c755859c4b7"
+  },
+  {
+    "title": "Продуктовый дизайнер / Финтех B2B в Wildberries",
+    "company": "Wildberries",
+    "salary": null,
+    "experience": {
+      "value": "middle",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "- [Продуктовый дизайнер / Финтех B2B в Wildberries](https://youngjunior.ru/дизайнер/jobs/41417)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches: Product Designer"
+        },
+        {
+          "type": "good",
+          "text": "Work format: remote"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-07-18T15:00:08+00:00",
+    "link": "https://t.me/junior_designers/1411",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Графический дизайнер рекламных креативов в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/41191)\n- [Графический дизайнер в команду AI PDLC в АО \"СберТех\"](https://youngjunior.ru/дизайнер/jobs/41436)\n- [Стажер UX-исследователь в T2](https://youngjunior.ru/дизайнер/jobs/41157)\n\n**__Junior-дизайнер:__**\n- [Продуктовый дизайнер / Клиентские продукты в Wildberries](https://youngjunior.ru/дизайнер/jobs/41419)\n- [Продуктовый дизайнер / Финтех B2B в Wildberries](https://youngjunior.ru/дизайнер/jobs/41417)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-17-v4",
+    "id": "0ed6f1500ecfa4ab"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "WB Банк / Wildberries",
+    "salary": null,
+    "experience": {
+      "value": "middle",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": "удаленно",
+    "requirements": [],
+    "sourceExcerpt": "**Продуктовый дизайнер / WB Банк / Wildberries**\n\n**Обязанности:**\n- to-end-формату, в котором будут закрыты все ключевые продуктовые потребности.\n\n➡ [Откликнуться](https://youngjunior.ru/дизайнер/jobs/41420)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile"
+        },
+        {
+          "type": "warn",
+          "text": "Experience listed as 'middle', but not explicitly stated as strictly mandatory in text; acceptable per profile conditions"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check for specific skill requirements"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-07-18T11:00:20+00:00",
+    "link": "https://t.me/junior_designers/1410",
+    "original_text": "**Продуктовый дизайнер / WB Банк / Wildberries**\n\n**Обязанности:**\n- to-end-формату, в котором будут закрыты все ключевые продуктовые потребности.\n\n➡ [Откликнуться](https://youngjunior.ru/дизайнер/jobs/41420)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-17-v4",
+    "id": "df6de0df99a18257"
+  },
+  {
+    "title": "вебдизайнер",
+    "company": null,
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "создание сайтов на тильда под ключ"
+    ],
+    "sourceExcerpt": "#вебдизайнер\nдля проектной работы в команду маркетолога. основное направление - создание сайтов на тильда под ключ. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Web/UX/UI Designer role"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check remote status and other requirements"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-07-18T06:00:12+00:00",
+    "link": "https://t.me/designwork_vacansii/8525",
+    "original_text": "[​](https://hooks.pro/media/2026/07/17/bot2039943905/photos/1Jh5/file_3722.jpg)#вебдизайнер\nдля проектной работы в команду маркетолога. основное направление - создание сайтов на тильда под ключ.  \n[Отклик](https://docs.google.com/forms/d/e/1faipqlsd5jgmt2jci__lyscm8mb9vclc7pim0-fftsat6zupx0ate5w/viewform?usp=dialog)\n\n#дизайнер\nкоторый знает как работать со спецификой предпечатной подготовки материала\nкарточки рассадки, приглашения, план рассадки и тд\nв лс, с примерами работ и стоимостью за разработку дизайна\n@Katebuz\n\n#дизайнер\nищу 2d и 3d моушн дизайнера, для работы под проекты.\nнужно работать с текстовой инфографикой, анимацией её, создание лого и его анимация\nВ лс портфолио\n@grigorievmax\n\n#дизайнер\nдля работы в adobe illustrator\nпишите в лс с портфолио\n@Nasstassikk\n\n#дизайнер\nна поток карточек. ищу аккуратного и ответственного. жду в личку\nВакансия закрыта\n\n#дизайнера\nесли любишь свое ‍дело и не пропадаешь  после первого заказа — давай познакомимся\n@alexa_lead",
+    "pipeline_version": "2026-07-17-v4",
+    "id": "24bc0e2d707bc612"
   }
 ]

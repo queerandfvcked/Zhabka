@@ -90,14 +90,18 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
-  line-height: var(--lh-body);
+  line-height: var(--lh-sub);
 }
 
 /* Красивая кастомная точка вместо дефолтной жирной точки */
 .card-req-bullet {
   color: var(--border-strong);
   font-size: 8px;
-  margin-top: 5px;
+  flex-shrink: 0;
+  /* Центрируем точку ровно посередине первой строки текста (18px) */
+  height: 18px;
+  display: flex;
+  align-items: center;
 }
 
 /* Секция вердикта AI */
@@ -120,7 +124,10 @@
 
 .reason-icon {
   flex-shrink: 0;
-  margin-top: 3px;
+  /* Центрируем иконку ровно посередине первой строки текста (18px) */
+  height: 18px;
+  display: flex;
+  align-items: center;
 }
 
 .reason-good { color: var(--good); }
