@@ -37,7 +37,7 @@ export default function CustomSelect({ value, onChange, options, placeholder }) 
         onKeyDown={handleKeyDown}
       >
         <span>{value || placeholder}</span>
-        <ChevronDown size={16} className="custom-select-chevron" />
+        <ChevronDown size={14} className="custom-select-chevron" />
       </button>
 
       {open && (

@@ -7,16 +7,18 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: var(--space-5); /* Естественный отступ между логическими блоками вместо линий */
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.15s, 
-              box-shadow 0.15s;
+  gap: var(--space-5);
+  /* Естественный отступ между логическими блоками вместо линий */
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 /* Дорогой ховер-эффект */
 .card:hover {
   border-color: var(--border-strong);
-  transform: translateY(-2px); /* Карточка слегка приподнимается */
+  transform: translateY(-2px);
+  /* Карточка слегка приподнимается */
   box-shadow: var(--shadow-soft);
 }
 
@@ -30,12 +32,21 @@
 .card-channel {
   font-size: var(--fs-caption);
   font-weight: 600;
-  color: var(--accent); /* Делаем фокус на источнике мягким акцентом */
+  color: var(--accent);
+  /* Делаем фокус на источнике мягким акцентом */
 }
 
 .card-time {
   font-size: var(--fs-badge);
   color: var(--text-muted);
+}
+
+/* Блок-группа для заголовка и опыта */
+.card-header-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  /* Человеческий зазор вместо жестких 10px */
 }
 
 /* Заголовок вакансии */
@@ -54,7 +65,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-top: calc(-1 * var(--space-2)); /* Прижимаем ближе к заголовку */
+  margin-top: 0;
+  /* Убрали костыльный отрицательный отступ */
 }
 
 /* Минималистичные аккуратные бэджи */
@@ -109,7 +121,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  background: var(--bg-hover); /* Легкая подложка выделяет блок AI-анализа */
+  background: var(--bg-hover);
+  /* Легкая подложка выделяет блок AI-анализа */
   padding: var(--space-4) var(--space-4);
   border-radius: var(--radius-md);
 }
@@ -130,9 +143,17 @@
   align-items: center;
 }
 
-.reason-good { color: var(--good); }
-.reason-warn { color: var(--warn); }
-.reason-bad { color: var(--bad); }
+.reason-good {
+  color: var(--good);
+}
+
+.reason-warn {
+  color: var(--warn);
+}
+
+.reason-bad {
+  color: var(--bad);
+}
 
 /* Подвал карточки (компания, зп, теги) */
 .card-bottom {
@@ -140,9 +161,11 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-  margin-top: auto; /* Прижимает подвал к самому низу, если карточки в сетке */
+  margin-top: auto;
+  /* Прижимает подвал к самому низу, если карточки в сетке */
   padding-top: var(--space-5);
-  border-top: 1px solid var(--border); /* Оставляем только ОДИН аккуратный бордер снизу */
+  border-top: 1px solid var(--border);
+  /* Оставляем только ОДИН аккуратный бордер снизу */
 }
 
 .bottom-company {
@@ -166,4 +189,17 @@
 
 .card:hover .card-tag {
   border-color: var(--border-strong);
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-4);
+    /* Чуть уменьшаем внутренние падинги самой карточки */
+  }
+
+  .card-header-group {
+    gap: var(--space-5);
+    /* Заголовок и опыт работы становятся чуть плотнее друг к другу на мелких экранах */
+  }
 }

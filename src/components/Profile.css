@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--space-5);
-  height: 48px;
+  height: 44px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);

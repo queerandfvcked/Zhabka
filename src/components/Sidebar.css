@@ -88,6 +88,7 @@
   margin: var(--space-4) var(--space-4);
 }
 
+/* Sidebar.css — Кнопка синхронизации на второй строке */
 .foot {
   margin-top: auto;
   padding: var(--space-5) var(--space-4) var(--space-2);
@@ -95,42 +96,64 @@
   font-size: var(--fs-mono);
   color: var(--text-muted);
   border-top: 1px dashed var(--border);
-  display: flex;
-  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* Левая колонка под текст, правая — под кнопку */
+  row-gap: var(--space-2);
   align-items: center;
-  gap: var(--space-1);
 }
 
 .foot-sources {
+  grid-column: 1 / span 2;
+  /* Теперь источники занимают всю первую строку */
+  grid-row: 1;
   cursor: pointer;
   transition: color 0.12s;
+  font-weight: 500;
 }
 
 .foot-sources:hover {
   color: var(--text-primary);
 }
 
-.foot-sep {
-  color: var(--border);
+.foot-sync-time {
+  grid-column: 1;
+  /* Текст синхронизации уходит в первую колонку */
+  grid-row: 2;
+  /* Строго вторая строка */
+  font-size: calc(var(--fs-mono) - 1px);
+  opacity: 0.8;
+  white-space: nowrap;
 }
 
 .foot-sync-btn {
+  grid-column: 2;
+  /* Кнопка встает во вторую колонку (справа) */
+  grid-row: 2;
+  /* Строго на вторую строку, напротив времени */
   background: none;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: var(--space-2);
+  padding: var(--space-1);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: background 0.12s, color 0.12s;
-  margin-left: auto;
+  width: var(--btn-icon-sm);
+  height: var(--btn-icon-sm);
+  flex-shrink: 0;
 }
 
 .foot-sync-btn:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
+}
+
+.foot-sep {
+  display: none;
 }
 
 .foot-sync-btn.spinning svg {
@@ -195,6 +218,8 @@
     justify-content: center;
     cursor: pointer;
     transition: color 0.12s;
+    width: var(--btn-icon-md);
+    height: var(--btn-icon-md);
   }
 
   .close-btn:hover {

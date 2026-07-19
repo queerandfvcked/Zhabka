@@ -115,8 +115,8 @@
 /* Кнопка больше не абсолютная, она просто стоит справа с зазором space-2 от края */
 .add-source-btn {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: var(--btn-icon-md);
+  height: var(--btn-icon-md);
   border-radius: 50%;
   background: var(--accent);
   border: none;

@@ -98,7 +98,7 @@ export default function Settings() {
             onKeyDown={handleKeyDown}
           />
           <button className="add-source-btn" onClick={handleAddSource} disabled={!newSource.trim()}>
-            <Plus size={16} />
+            <Plus size={18} />
             <span>Add</span>
           </button>
         </div>

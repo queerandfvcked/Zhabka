@@ -1076,8 +1076,101 @@ import { renderTelegramMarkdown } from '../utils/markdownRender'
 
 ---
 
-Пройдись по `Settings.jsx`, `RightDrawer.jsx` и приведи их в
-соответствие с этим документом, используя приложенный
-`markdownRender.js` (положи в `src/utils/`). Не забудь скопировать
-новый `sources.json` из результата `collect_and_generate.py` в
-`src/data/`. Ничего не изобретай заново за пределами описанного здесь.
+---
+
+## 16. Дополнение: система размеров icon-кнопок и иконок внутри них
+
+Обнаружен разнобой без функционального обоснования — одни и те же по
+смыслу круглые icon-кнопки имеют 6+ разных фиксированных размеров
+(44/38/36/32/28px) плюс несколько кнопок вообще без заданного размера
+(размер "плавает" от паддинга и иконки внутри). Аналогично — сами
+иконки внутри них: 20/18/16/14/13px без системы. Сводим к шкале.
+
+### 16.1 Токены размера круглых icon-кнопок (добавить в theme.css)
+
+```css
+--btn-icon-sm: 32px;   /* компактные кнопки внутри других контролов —
+                           чат-пилюля, мелкие inline-действия */
+--btn-icon-md: 36px;   /* самостоятельная icon-кнопка по умолчанию —
+                           большинство случаев в интерфейсе */
+--btn-icon-lg: 44px;   /* акцентные "плавающие" стеклянные кнопки —
+                           поиск, календарь в Inbox */
+```
+
+### 16.2 Правило парности: размер иконки зависит от размера кнопки
+
+```
+--btn-icon-sm (32px)  → иконка 16px
+--btn-icon-md (36px)  → иконка 18px
+--btn-icon-lg (44px)  → иконка 20px
+```
+
+Отдельно — маленькие иконки РЯДОМ с текстом (не внутри круглой кнопки,
+а инлайн: шеврон в select, "показать полностью", внешняя ссылка) — свой
+токен, не путать с кнопочной шкалой:
+```css
+--icon-inline: 14px;
+```
+
+### 16.3 Конкретные правки по файлам
+
+**CSS — привести размер кнопки к токену:**
+| Файл | Селектор | Было | Станет |
+|---|---|---|---|
+| `RightDrawer.css` | `.drawer-icon-btn` | 38px | `var(--btn-icon-md)` |
+| `Settings.css` | `.add-source-btn` | 36px (хардкод) | `var(--btn-icon-md)` |
+| `ChatInput.css` | `.pill-send` | 36px (хардкод) | `var(--btn-icon-md)` |
+| `ChatInput.css` | `.pill-icon-btn` | 32px (хардкод) | `var(--btn-icon-sm)` |
+| `App.css` | `.floating-btn` | 44px (хардкод) | `var(--btn-icon-lg)` |
+| `JumpToDatePopover.css` | `.calendar-trigger-btn` | 44px (хардкод) | `var(--btn-icon-lg)` |
+
+**CSS — сейчас размер не задан явно, добавить (используют паддинг+иконку,
+из-за чего реальный размер не контролируется и может съехать):**
+| Файл | Селектор | Добавить |
+|---|---|---|
+| `Sidebar.css` | `.foot-sync-btn` | `width/height: var(--btn-icon-sm)` |
+| `Sidebar.css` | `.close-btn` | `width/height: var(--btn-icon-md)` |
+| `App.css` | `.floating-search-close` | `width/height: var(--btn-icon-sm)` |
+| `App.css` | `.menu-btn` | `width/height: var(--btn-icon-md)` |
+| `JumpToDatePopover.css` | `.popover-close-btn` | `width/height: var(--btn-icon-sm)` |
+
+**MiniCalendar.css — `.mc-nav` сейчас 28px.** Реши осознанно: если это
+из-за тесноты попапа (260px) — оставь как единственное документированное
+исключение с комментарием в CSS почему; если места достаточно — подними
+до `var(--btn-icon-sm)`.
+
+**JSX — привести size у иконок к парности с кнопкой (16.2):**
+| Файл | Место | Было | Станет |
+|---|---|---|---|
+| `RightDrawer.jsx` | `X` в `.drawer-icon-btn` (закрыть) | `size={20}` | `size={18}` (парность с md-кнопкой; Bookmark рядом уже верно `size={18}`) |
+| `Settings.jsx` | `Plus` в `.add-source-btn` | `size={16}` | `size={18}` (кнопка md) |
+| `App.jsx` | `Search` в `.floating-btn` | `size={18}` | `size={20}` (кнопка lg) |
+| `App.jsx` | `Menu` в `.menu-btn` | `size={20}` | `size={18}` (кнопка md) |
+
+**JSX — привести к единому `--icon-inline` (14px):**
+| Файл | Место | Было | Станет |
+|---|---|---|---|
+| `CustomSelect.jsx` | `ChevronDown` (шеврон селекта) | `size={16}` | `size={14}` |
+
+Остальные инлайн-иконки (`ChevronUp/Down` в show-full-toggle,
+`ExternalLink` в source-link, оба `size={14}`) уже соответствуют —
+не трогать. `reason-icon` (`size={13}` в `JobCard.jsx` и
+`RightDrawer.jsx`) уже одинаковы между собой в обоих местах — тоже не
+трогать, это отдельная, уже консистентная пара.
+
+### 16.4 Заодно — высота `.resume-area`
+
+`Profile.css` → `.resume-area`: `height: 48px` — единственное
+расхождение с остальными полями/строками профиля, которые везде `44px`
+(`.custom-input`, `.custom-select-trigger`, `.role-chips-input`,
+`.currency-selector`). Привести к `44px`.
+
+---
+
+Пройдись по `theme.css`, `RightDrawer.css`/`.jsx`, `Settings.css`/`.jsx`,
+`ChatInput.css`, `App.css`/`.jsx`, `Sidebar.css`, `JumpToDatePopover.css`,
+`MiniCalendar.css`, `CustomSelect.jsx`, `Profile.css` и приведи их в
+соответствие с таблицами выше. Ничего не изобретай заново за пределами
+описанного здесь — если встретишь ещё одну круглую icon-кнопку или
+инлайн-иконку не из этого списка, подбери ближайший по смыслу токен из
+16.1/16.2, а не вводи новое значение.

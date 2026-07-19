@@ -18,32 +18,35 @@
   animation: slideOutRight 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Десктопный оверлей не нужен, так как панель встроена в интерфейс сбоку */
+/* Десктопный оверлей не нужен */
 .drawer-overlay {
   display: none;
 }
 
-/* Шапка панели */
+/* Шапка панели - НАДЕЖНЫЙ ФЛЕКС С ЦЕНТРИРОВАНИЕМ */
 .drawer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Возвращаем строгое выравнивание по центру */
   padding: var(--space-6);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  gap: var(--space-5);
 }
 
 .drawer-header-left {
   display: flex;
-  align-items: center;
-  gap: var(--space-4);
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .drawer-company {
   font-size: var(--fs-caption);
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .drawer-job-title {
@@ -52,19 +55,22 @@
   font-size: var(--fs-h2);
   color: var(--text-primary);
   line-height: var(--lh-h2);
+  word-wrap: break-word;
 }
 
 .drawer-actions {
   display: flex;
   gap: var(--space-3);
+  flex-shrink: 0;
+  /* Убираем маргин-топ, который тянул кнопки вверх */
 }
 
 .drawer-icon-btn {
   background: none;
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  width: 38px;
-  height: 38px;
+  width: var(--btn-icon-md);
+  height: var(--btn-icon-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +85,7 @@
   color: var(--text-primary);
 }
 
-/* Скрываем хэндл на десктопе, чтобы он не создавал лишнюю дырку */
+/* Скрываем хэндл на десктопе */
 .drawer-handle {
   display: none;
 }
@@ -89,11 +95,10 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Убрали верхний паддинг, чтобы компенсировать отступы карточек */
-  padding: 0 var(--space-6) var(--space-6) var(--space-6); 
+  padding: 0 var(--space-6) var(--space-6) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6); 
+  gap: var(--space-6);
   word-break: break-word;
 }
 
@@ -105,8 +110,7 @@
   background: var(--bg-hover);
   padding: var(--space-5);
   border-radius: var(--radius-md);
-  /* Добавляем небольшой отступ сверху только для первого элемента, чтобы он не прилипал к границе header */
-  margin-top: var(--space-6); 
+  margin-top: var(--space-6);
 }
 
 .drawer-reasons .reason-row {
@@ -119,15 +123,22 @@
 
 .drawer-reasons .reason-icon {
   flex-shrink: 0;
-  /* Центрируем иконку ровно по высоте первой строки (18px) */
   height: 18px;
   display: flex;
   align-items: center;
 }
 
-.drawer-reasons .reason-good { color: var(--good); }
-.drawer-reasons .reason-warn { color: var(--warn); }
-.drawer-reasons .reason-bad { color: var(--bad); }
+.drawer-reasons .reason-good {
+  color: var(--good);
+}
+
+.drawer-reasons .reason-warn {
+  color: var(--warn);
+}
+
+.drawer-reasons .reason-bad {
+  color: var(--bad);
+}
 
 /* Сетка параметров */
 .details-grid {
@@ -138,12 +149,10 @@
   padding: var(--space-5);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  /* Если AI вердикта нет, и сетка идет первой — задаем ей аккуратный отступ сверху */
-  margin-top: var(--space-6); 
+  margin-top: var(--space-6);
 }
 
-/* Если сетка идет после вердикта AI, сбрасываем верхний маргин, так как сработает gap у drawer-body */
-.drawer-reasons + .details-grid {
+.drawer-reasons+.details-grid {
   margin-top: 0;
 }
 
@@ -190,7 +199,6 @@
   color: var(--border-strong);
   font-size: 8px;
   flex-shrink: 0;
-  /* Центрируем точку ровно по высоте первой строки body (20px) */
   height: 20px;
   display: flex;
   align-items: center;
@@ -251,30 +259,52 @@
   color: var(--accent-strong);
 }
 
-/* Анимации появления */
 @keyframes slideInRight {
-  from { transform: translateX(100%); opacity: 0.8; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideOutRight {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(100%); opacity: 0.8; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0.8;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 /* Мобильный вид (Bottom Sheet) */
 @media (max-width: 768px) {
-  /* Включаем оверлей на мобилке */
   .drawer-overlay {
     display: block;
     position: fixed;
@@ -282,10 +312,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); /* Полупрозрачное темное облако */
-    z-index: 140; /* Чуть ниже самого drawer */
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 140;
     animation: fadeIn 0.25s ease-out forwards;
-    backdrop-filter: blur(4px); /* Добавит премиального размытия на бэкграунде */
+    backdrop-filter: blur(4px);
   }
 
   .drawer-overlay.closing {
@@ -308,21 +338,21 @@
     z-index: 150;
   }
 
-  /* Включаем и настраиваем хэндл на мобилке */
   .drawer-handle {
     display: block;
     width: 40px;
     height: 5px;
     border-radius: var(--radius-full);
     background: var(--text-muted);
-    margin: var(--space-4) auto 0; /* Опускаем чуть ниже */
+    margin: var(--space-4) auto 0;
     opacity: 0.3;
     flex-shrink: 0;
   }
 
   .drawer-header {
-    padding: var(--space-5) var(--space-5);
-    border-bottom: 1px solid var(--border);
+    padding: var(--space-4) var(--space-5) var(--space-5);
+    /* Чуть поджали верхний отступ под хэндл */
+    gap: var(--space-4);
   }
 
   .drawer-body {
@@ -330,8 +360,8 @@
     gap: var(--space-5);
   }
 
-  /* Сбрасываем лишние маргины первого элемента на мобилке, так как там есть хэндл и свои отступы */
-  .drawer-reasons, .details-grid {
+  .drawer-reasons,
+  .details-grid {
     margin-top: 0;
   }
 
@@ -340,12 +370,22 @@
   }
 
   @keyframes slideInBottom {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
   }
 
   @keyframes slideOutBottom {
-    from { transform: translateY(0); }
-    to { transform: translateY(100%); }
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(100%);
+    }
   }
 }

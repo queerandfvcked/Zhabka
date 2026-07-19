@@ -53,7 +53,7 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
               <Bookmark size={18} fill={isBookmarked ? 'var(--accent)' : 'none'} />
             </button>
             <button className="drawer-icon-btn" onClick={handleClose} type="button">
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
         </div>

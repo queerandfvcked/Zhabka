@@ -73,7 +73,7 @@
   background: var(--bg-elevated);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-2);
   box-shadow: var(--shadow-soft-sm);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -84,8 +84,8 @@
 }
 
 .pill-icon-btn {
-  width: 32px;
-  height: 32px;
+  width: var(--btn-icon-sm);
+  height: var(--btn-icon-sm);
   border-radius: 50%;
   background: none;
   border: none;
@@ -123,8 +123,8 @@
 }
 
 .pill-send {
-  width: 36px;
-  height: 36px;
+  width: var(--btn-icon-md);
+  height: var(--btn-icon-md);
   border-radius: 50%;
   background: var(--accent);
   border: none;

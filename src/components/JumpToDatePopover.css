@@ -6,8 +6,8 @@
 
 .calendar-trigger-btn {
   pointer-events: auto;
-  width: 44px;
-  height: 44px;
+  width: var(--btn-icon-lg);
+  height: var(--btn-icon-lg);
   border-radius: 50%;
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
@@ -88,6 +88,8 @@
   padding: var(--space-2);
   border-radius: var(--radius-full);
   transition: background 0.12s, color 0.12s;
+  width: var(--btn-icon-sm);
+  height: var(--btn-icon-sm);
 }
 
 .popover-close-btn:hover {

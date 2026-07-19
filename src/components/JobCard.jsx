@@ -15,7 +15,7 @@ const reasonClass = (type) => {
 }
 
 export default function JobCard({ vacancy, onClick }) {
-  const v = vacancy
+  const v = vacancy;
 
   return (
     <div className="card" onClick={onClick}>
@@ -25,8 +25,8 @@ export default function JobCard({ vacancy, onClick }) {
         <span className="card-time">{timeAgo(v.date)}</span>
       </div>
 
-      {/* Контентная часть */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      {/* Контентная часть — заменили инлайн стили на класс */}
+      <div className="card-header-group">
         {v.title && <div className="card-title">{v.title}</div>}
 
         {v.experience?.value && (

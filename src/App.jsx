@@ -267,7 +267,7 @@ export default function App() {
         {isMainInbox && (
           <div className="floating-header">
             <div className={`floating-btn search-btn ${searchOpen ? 'expanded' : ''}`} onClick={searchOpen ? undefined : handleSearchToggle}>
-              <Search size={18} />
+              <Search size={20} />
               <input
                 ref={searchRef}
                 className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
@@ -352,7 +352,7 @@ export default function App() {
         <main className="main">
           <div className="topbar">
             <button className="menu-btn" onClick={() => setSidebarOpen(true)}>
-              <Menu size={20} />
+              <Menu size={18} />
             </button>
             <span className="topbar-title">
               {activeView === 'inbox' ? 'Inbox' : activeView === 'bookmarks' ? 'Bookmarks' : activeView === 'profile' ? 'Profile' : 'Settings'}
