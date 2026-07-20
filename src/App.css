@@ -116,10 +116,29 @@
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  display: flex;
-  padding: var(--space-1);
+
+  /* Гарантируем идеальное флекс-центрирование */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
   width: var(--btn-icon-sm);
   height: var(--btn-icon-sm);
+  border-radius: var(--radius-full);
+
+  /* Не даем кнопке сжиматься, если инпут длинный */
+  flex-shrink: 0;
+  margin-left: auto;
+  /* Прижимает крестик строго к правому краю раскрытого инпута */
+
+  transition: color 0.12s, background 0.12s;
+}
+
+.floating-search-close:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  /* Мягкий ховер под иконку */
 }
 
 /* Date groups */
@@ -151,6 +170,12 @@
   font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+.empty-today {
+  font-size: var(--fs-sub);
+  color: var(--text-muted);
+  padding: var(--space-3) 0;
 }
 
 /* Chat pinned to bottom */

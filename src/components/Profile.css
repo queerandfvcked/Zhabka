@@ -117,8 +117,10 @@
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-4);
+  padding: 6px 12px;
+  /* Фиксированные боковые и вертикальные отступы */
   transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-border;
 }
 
 .role-chips-input:focus-within {
@@ -129,38 +131,55 @@
 .role-chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  height: 28px;
   background: var(--accent-soft);
   color: var(--text-primary);
   border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
-  font-size: var(--fs-sub);
+  padding-left: var(--space-4);
+  /* 12px слева до текста */
+  padding-right: 6px;
+  /* 6px справа от кнопки */
+  font-size: var(--fs-caption);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .role-chip button {
   background: none;
   border: none;
   color: var(--text-secondary);
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: var(--space-1);
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin-left: 6px;
+  /* Гарантированный воздух между текстом и крестиком */
   border-radius: 50%;
+  transition: background 0.12s, color 0.12s;
 }
 
 .role-chip button:hover {
-  background: var(--bg-hover);
+  background: rgba(255, 255, 255, 0.15);
   color: var(--text-primary);
 }
 
 .role-chip-input {
   flex: 1;
   min-width: 120px;
+  height: 28px;
+  /* Высота совпадает с чипом */
   background: none;
   border: none;
   outline: none;
   color: var(--text-primary);
-  font-size: var(--fs-body);
-  padding: var(--space-2) var(--space-2);
+  font-size: var(--fs-sub);
+  /* Выравниваем размер шрифта с чипом */
+  padding: 0 8px;
+  /* Убираем вертикальный padding, оставляем боковой */
+  margin: 0;
 }
 
 .role-chip-input::placeholder {
@@ -175,8 +194,11 @@
 }
 
 .role-pill {
-  font-size: var(--fs-caption);
-  padding: var(--space-2) var(--space-4);
+  height: 36px;
+  padding: 0 var(--space-5);
+  font-size: var(--fs-sub);
+  display: flex;
+  align-items: center;
   border-radius: var(--radius-full);
   background: var(--bg-elevated);
   border: 1px solid var(--border);

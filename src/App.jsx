@@ -19,7 +19,7 @@ const defaultProfile = {
   workFormat: { remote: true, hybrid: false, office: false, relocate: false },
   officeLocations: [],
   minSalary: null,
-  salaryCurrency: '\u20BD',
+  salaryCurrency: '₽',
   hideWithoutSalary: false,
   resume: { filename: null, uploadedAt: null },
   aiNotes: [],
@@ -48,7 +48,10 @@ export default function App() {
   const [seenIds, setSeenIds] = useState(loadSeen)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
+
   const searchRef = useRef(null)
+  const scrollWrapperRef = useRef(null)
+  const seenDividerRef = useRef(null)
 
   const inboxCount = vacancies.length
 
@@ -57,7 +60,7 @@ export default function App() {
     vacancies.forEach((v) => {
       if (v.date) set.add(v.date.slice(0, 10))
     })
-    return [...set].sort().reverse()
+    return [...set].sort()
   }, [])
 
   const filteredVacancies = useMemo(() => {
@@ -81,8 +84,13 @@ export default function App() {
     return list
   }, [searchQuery, selectedDate])
 
-  const grouped = useMemo(() => groupByDate(filteredVacancies), [filteredVacancies])
-  const orderedGroups = ['today', 'yesterday', 'older']
+  // Реверсим массив для чатовой логики (снизу свежие)
+  const sortedVacancies = useMemo(() => {
+    return [...filteredVacancies].reverse()
+  }, [filteredVacancies])
+
+  const grouped = useMemo(() => groupByDate(sortedVacancies), [sortedVacancies])
+  const orderedGroups = ['older', 'yesterday', 'today']
 
   const markSeen = useCallback((v) => {
     const id = vacancyId(v)
@@ -143,8 +151,8 @@ export default function App() {
       }
 
       const changes = []
-      if (patch.role) changes.push(`role \u2192 ${patch.role.join(', ')}`)
-      if (patch.experience) changes.push(`experience \u2192 ${patch.experience}`)
+      if (patch.role) changes.push(`role → ${patch.role.join(', ')}`)
+      if (patch.experience) changes.push(`experience → ${patch.experience}`)
       if (hasNotesChange) changes.push('+1 preference noted')
 
       if (changes.length > 0) return `Got it. Updated: ${changes.join(', ')}.`
@@ -186,6 +194,21 @@ export default function App() {
 
   const isBookmarked = (v) => bookmarked.has(vacancyId(v))
 
+  // Автоматический скролл к первому непрочитанному или в самый низ
+  useEffect(() => {
+    if (activeView !== 'inbox') return
+
+    const timer = setTimeout(() => {
+      if (seenDividerRef.current) {
+        seenDividerRef.current.scrollIntoView({ block: 'top', behavior: 'smooth' })
+      } else if (scrollWrapperRef.current) {
+        scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
+      }
+    }, 50)
+
+    return () => clearTimeout(timer)
+  }, [activeView, filteredVacancies.length])
+
   const renderContent = () => {
     if (activeView === 'profile') {
       return (
@@ -211,17 +234,17 @@ export default function App() {
       activeView === 'bookmarks'
         ? vacancies.filter((v) => isBookmarked(v))
         : activeView === 'inbox'
-          ? filteredVacancies
+          ? sortedVacancies
           : []
 
     const isMainInbox = activeView === 'inbox'
 
-    // Split items by seen status for divider
-    let seenIdx = -1
+    // Находим индекс первой НЕПРОЧИТАННОЙ вакансии для разделителя
+    let unseenIdx = -1
     if (isMainInbox) {
       for (let i = 0; i < items.length; i++) {
-        if (seenIds.has(vacancyId(items[i]))) {
-          seenIdx = i
+        if (!seenIds.has(vacancyId(items[i]))) {
+          unseenIdx = i
           break
         }
       }
@@ -231,19 +254,37 @@ export default function App() {
       if (isMainInbox) {
         let totalRendered = 0
         return orderedGroups.map((key) => {
-          const group = grouped[key]
-          if (!group || group.length === 0) return null
+          const group = grouped[key] || []
+
+          if (group.length === 0) {
+            if (key === 'today') {
+              return (
+                <div key={key} className="date-group">
+                  <div className="date-head">{dateGroupLabels[key]}</div>
+                  <div className="empty-today">No vacancies today — check back later.</div>
+                </div>
+              )
+            }
+            return null
+          }
+
           const groupCards = group.map((v, gi) => {
             const globalIdx = totalRendered + gi
-            const isFirstSeen = seenIdx >= 0 && globalIdx === seenIdx
+            const isFirstUnseen = unseenIdx >= 0 && globalIdx === unseenIdx
             totalRendered++
+
             return (
               <div key={vacancyId(v)}>
-                {isFirstSeen && <div className="seen-divider"><span>Earlier</span></div>}
+                {isFirstUnseen && (
+                  <div ref={seenDividerRef} className="seen-divider">
+                    <span>Unread</span>
+                  </div>
+                )}
                 <JobCard vacancy={v} onClick={() => handleCardClick(v)} />
               </div>
             )
           })
+
           return (
             <div key={key} className="date-group">
               <div className="date-head">{dateGroupLabels[key]}</div>
@@ -292,28 +333,28 @@ export default function App() {
           </div>
         )}
 
-        <div className="scroll-wrapper">
+        <div className="scroll-wrapper" ref={scrollWrapperRef}>
           <div className="main-inner">
-          {activeView === 'bookmarks' && (
-            <div className="bookmarks-header">
-              <div className="bookmarks-title">Bookmarks</div>
-              <div className="bookmarks-count">{items.length} vacancies</div>
-            </div>
-          )}
-
-          {items.length === 0 ? (
-            activeView === 'inbox' ? (
-              <div className="empty-state">
-                No vacancies yet.<br />Zhabka is watching your sources.
+            {activeView === 'bookmarks' && (
+              <div className="bookmarks-header">
+                <div className="bookmarks-title">Bookmarks</div>
+                <div className="bookmarks-count">{items.length} vacancies</div>
               </div>
+            )}
+
+            {items.length === 0 ? (
+              activeView === 'inbox' ? (
+                <div className="empty-state">
+                  No vacancies yet.<br />Zhabka is watching your sources.
+                </div>
+              ) : (
+                <div className="empty-state">Nothing saved yet.</div>
+              )
             ) : (
-              <div className="empty-state">Nothing saved yet.</div>
-            )
-          ) : (
-            renderCardList()
-          )}
+              renderCardList()
+            )}
+          </div>
         </div>
-      </div>
 
         {isMainInbox && (
           <div className="chat-area">
