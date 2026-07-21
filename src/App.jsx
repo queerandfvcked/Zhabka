@@ -84,9 +84,9 @@ export default function App() {
     return list
   }, [searchQuery, selectedDate])
 
-  // Реверсим массив для чатовой логики (снизу свежие)
+  // Хронологический порядок для чата: старые вверху, новые внизу
   const sortedVacancies = useMemo(() => {
-    return [...filteredVacancies].reverse()
+    return [...filteredVacancies].sort((a, b) => new Date(a.date) - new Date(b.date))
   }, [filteredVacancies])
 
   const grouped = useMemo(() => groupByDate(sortedVacancies), [sortedVacancies])
@@ -194,17 +194,17 @@ export default function App() {
 
   const isBookmarked = (v) => bookmarked.has(vacancyId(v))
 
-  // Автоматический скролл к первому непрочитанному или в самый низ
+  // Скролл к первой непрочитанной карточке или в самый низ ленты
   useEffect(() => {
     if (activeView !== 'inbox') return
 
     const timer = setTimeout(() => {
       if (seenDividerRef.current) {
-        seenDividerRef.current.scrollIntoView({ block: 'top', behavior: 'smooth' })
+        seenDividerRef.current.scrollIntoView({ block: 'center', behavior: 'smooth' })
       } else if (scrollWrapperRef.current) {
         scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
       }
-    }, 50)
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [activeView, filteredVacancies.length])
@@ -239,7 +239,7 @@ export default function App() {
 
     const isMainInbox = activeView === 'inbox'
 
-    // Находим индекс первой НЕПРОЧИТАННОЙ вакансии для разделителя
+    // Индекс первой НЕПРОЧИТАННОЙ вакансии во всем хронологическом списке
     let unseenIdx = -1
     if (isMainInbox) {
       for (let i = 0; i < items.length; i++) {
@@ -253,13 +253,14 @@ export default function App() {
     const renderCardList = () => {
       if (isMainInbox) {
         let totalRendered = 0
+
         return orderedGroups.map((key) => {
           const group = grouped[key] || []
 
           if (group.length === 0) {
             if (key === 'today') {
               return (
-                <div key={key} className="date-group">
+                <div key={key} className="date-section">
                   <div className="date-head">{dateGroupLabels[key]}</div>
                   <div className="empty-today">No vacancies today — check back later.</div>
                 </div>
@@ -268,27 +269,27 @@ export default function App() {
             return null
           }
 
-          const groupCards = group.map((v, gi) => {
-            const globalIdx = totalRendered + gi
-            const isFirstUnseen = unseenIdx >= 0 && globalIdx === unseenIdx
-            totalRendered++
-
-            return (
-              <div key={vacancyId(v)}>
-                {isFirstUnseen && (
-                  <div ref={seenDividerRef} className="seen-divider">
-                    <span>Unread</span>
-                  </div>
-                )}
-                <JobCard vacancy={v} onClick={() => handleCardClick(v)} />
-              </div>
-            )
-          })
-
           return (
-            <div key={key} className="date-group">
+            <div key={key} className="date-section">
               <div className="date-head">{dateGroupLabels[key]}</div>
-              <div className="feed">{groupCards}</div>
+              <div className="feed">
+                {group.map((v) => {
+                  const globalIdx = totalRendered
+                  const isFirstUnseen = unseenIdx >= 0 && globalIdx === unseenIdx
+                  totalRendered++
+
+                  return (
+                    <div key={vacancyId(v)}>
+                      {isFirstUnseen && (
+                        <div ref={seenDividerRef} className="seen-divider">
+                          <span>Unread</span>
+                        </div>
+                      )}
+                      <JobCard vacancy={v} onClick={() => handleCardClick(v)} />
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )
         })

@@ -22,7 +22,11 @@ import requests
 from bs4 import BeautifulSoup
 
 HEADERS = {
-    "User-Agent": "ZhabkaJobBot/1.0 (personal project; contact: your_email@example.com)"
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
 }
 
 
@@ -52,11 +56,13 @@ def fetch_hh_vacancy(vacancy_id: str):
 def fetch_generic_page(url: str):
     """Универсальный fallback: любая публичная страница без логина."""
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-    except requests.RequestException:
+        resp = requests.get(url, headers=HEADERS, timeout=15)
+    except requests.RequestException as e:
+        print(f"    [resolver] {url} -> ошибка запроса: {type(e).__name__}")
         return None
 
     if resp.status_code != 200:
+        print(f"    [resolver] {url} -> HTTP {resp.status_code}, пропускаю")
         return None
 
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -66,8 +72,11 @@ def fetch_generic_page(url: str):
     text = soup.get_text(separator="\n")
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
 
-    # Слишком короткий текст — вероятно, страница за логином или заблокировала запрос
+    # Слишком короткий текст — вероятно, страница за логином, JS-рендерится
+    # или заблокировала запрос
     if len(text) < 200:
+        print(f"    [resolver] {url} -> получено всего {len(text)} символов, "
+              f"похоже на JS-страницу или блокировку, пропускаю")
         return None
 
     return {"description": text}

@@ -141,9 +141,10 @@
   /* Мягкий ховер под иконку */
 }
 
-/* Date groups */
-.date-group {
-  margin-bottom: var(--space-6);
+/* Date sections */
+.date-section {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .date-head {
@@ -153,6 +154,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+  text-align: center;
   margin-bottom: var(--space-4);
 }
 
