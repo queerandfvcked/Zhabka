@@ -289,22 +289,23 @@
   align-items: center;
 }
 
-/* Salary row */
-.salary-row .custom-input {
+/* Salary & Location inputs */
+.salary-row .custom-input,
+.office-locations .custom-input {
   flex: 1;
   background: var(--input-bg);
-  /* Явно задаем токен для зарплаты */
 }
 
-/* Currency selector — seamless, pill-style */
+/* Currency selector — exact Figma specs (124x44) */
 .currency-selector {
   position: relative;
   display: flex;
+  width: 124px;
+  height: 44px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   padding: var(--space-1);
-  height: 44px;
   box-sizing: border-box;
   align-items: center;
   flex-shrink: 0;
@@ -313,10 +314,11 @@
 .currency-thumb {
   position: absolute;
   top: 2px;
-  bottom: 2px;
   left: 2px;
-  width: calc((100% - 4px) / 3);
-  border-radius: var(--radius-full);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  /* Идеально круглый ползунок, как в Фигме */
   background: var(--accent-soft);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
@@ -324,8 +326,7 @@
 
 .currency-opt {
   flex: 1;
-  width: 44px;
-  height: 100%;
+  height: 38px;
   background: none;
   border: none;
   color: var(--text-muted);
@@ -338,7 +339,7 @@
   align-items: center;
   justify-content: center;
   transition: color 0.2s;
-  border-radius: var(--radius-full);
+  padding: 0;
 }
 
 .currency-opt:hover {
@@ -348,7 +349,6 @@
 .currency-opt.active {
   color: var(--accent);
 }
-
 /* Salary toggle */
 .salary-toggle-row {
   display: flex;

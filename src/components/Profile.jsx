@@ -5,9 +5,9 @@ import '../shared/Toggle.css'
 import './Profile.css'
 
 const workFormatKeys = ['remote', 'hybrid', 'office', 'relocate']
-const locations = ['Warsaw', 'Berlin', 'Saint Petersburg', 'Tbilisi', 'London']
+
 const currencyOptions = ['\u20BD', '$', '\u20AC']
-const experienceOptions = ['0 years', '0\u20132 years', '1\u20133 years', '3+ years']
+const experienceOptions = ['Any experience', 'No experience', '0\u20131 years', '1\u20133 years', '3+ years']
 const roleSuggestions = ['Product Designer', 'UX/UI Designer', 'Product + UX/UI']
 
 function completenessInfo(profile) {
@@ -29,13 +29,6 @@ export default function Profile({ profile, onUpdate }) {
 
   const toggleWF = (key) =>
     onUpdate({ workFormat: { ...profile.workFormat, [key]: !profile.workFormat[key] } })
-
-  const toggleOfficeLocation = (loc) => {
-    const next = profile.officeLocations.includes(loc)
-      ? profile.officeLocations.filter((l) => l !== loc)
-      : [...profile.officeLocations, loc]
-    onUpdate({ officeLocations: next })
-  }
 
   const activeCurrencyIdx = currencyOptions.indexOf(profile.salaryCurrency)
 
@@ -155,28 +148,25 @@ export default function Profile({ profile, onUpdate }) {
           })}
         </div>
 
-        {profile.workFormat.office && (
+        {(profile.workFormat.office || profile.workFormat.hybrid) && (
           <div className="office-locations">
             <div className="section-head" style={{ marginTop: 24, marginBottom: 12 }}>
               Preferred city
             </div>
-            <div className="checkbox-group">
-              {locations.map((loc) => {
-                const checked = profile.officeLocations.includes(loc)
-                return (
-                  <button
-                    type="button"
-                    key={loc}
-                    className={`checkbox-label ${checked ? 'checked' : ''}`}
-                    role="checkbox"
-                    aria-checked={checked}
-                    onClick={() => toggleOfficeLocation(loc)}
-                  >
-                    {loc}
-                  </button>
-                )
-              })}
-            </div>
+            <input
+              className="custom-input"
+              type="text"
+              placeholder="e.g. Warsaw"
+              value={profile.officeLocations.join(', ')}
+              onChange={(e) =>
+                onUpdate({
+                  officeLocations: e.target.value
+                    .split(',')
+                    .map((s) => s.trim())
+                    .filter(Boolean),
+                })
+              }
+            />
           </div>
         )}
       </div>
@@ -193,8 +183,11 @@ export default function Profile({ profile, onUpdate }) {
             onChange={(e) => onUpdate({ minSalary: e.target.value ? e.target.value : null })}
           />
           <div className="currency-selector">
-            <div className="currency-thumb" style={{ transform: `translateX(${Math.max(0, activeCurrencyIdx) * 100}%)` }} />
-            {currencyOptions.map((c, i) => (
+            <div
+              className="currency-thumb"
+              style={{ transform: `translateX(${Math.max(0, activeCurrencyIdx) * 40}px)` }}
+            />
+            {currencyOptions.map((c) => (
               <button
                 key={c}
                 className={`currency-opt ${profile.salaryCurrency === c ? 'active' : ''}`}
