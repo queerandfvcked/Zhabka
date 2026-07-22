@@ -157,7 +157,7 @@ export default function Profile({ profile, onUpdate }) {
 
         {profile.workFormat.office && (
           <div className="office-locations">
-            <div className="section-head" style={{ marginTop: 12, marginBottom: 8 }}>
+            <div className="section-head" style={{ marginTop: 24, marginBottom: 12 }}>
               Preferred city
             </div>
             <div className="checkbox-group">

@@ -28,7 +28,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -69,7 +69,7 @@
 .field-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .field-label {
@@ -211,4 +211,25 @@
   text-align: center;
   font-size: var(--fs-sub);
   color: var(--text-muted);
+}
+/* Переопределяем цвета селекта ТОЛЬКО внутри карточки настроек */
+.settings-card .custom-select-trigger {
+  background: var(--input-bg-alt);
+  border-color: var(--input-border);
+}
+
+.settings-card .custom-select-trigger:hover {
+  background: var(--bg-hover);
+}
+
+.settings-card .custom-select-trigger.open,
+.settings-card .custom-select-trigger:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  background: var(--input-bg-alt);
+}
+
+.settings-card .custom-select-menu {
+  background: var(--input-bg-alt);
+  border-color: var(--input-border);
 }

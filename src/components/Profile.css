@@ -14,20 +14,21 @@
 .profile-subtitle {
   font-size: var(--fs-sub);
   color: var(--text-muted);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-7);
 }
 
 .section {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-7);
 }
 
-.section-head {
+.profile .section-head {
   font-size: var(--fs-badge);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
   margin-bottom: var(--space-4);
+  /* Поставил поменьше, как ты и хотел */
 }
 
 /* Resume */
@@ -288,8 +289,11 @@
   align-items: center;
 }
 
+/* Salary row */
 .salary-row .custom-input {
   flex: 1;
+  background: var(--input-bg);
+  /* Явно задаем токен для зарплаты */
 }
 
 /* Currency selector — seamless, pill-style */
