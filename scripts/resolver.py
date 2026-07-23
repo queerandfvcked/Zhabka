@@ -85,7 +85,7 @@ def fetch_generic_page(url: str):
 LINK_PATTERN = re.compile(r"\[([^\]]+)\]\((https?://[^\)]+)\)")
 
 
-def enrich_links_in_text(text: str, max_chars_per_link: int = 1500) -> str:
+def enrich_links_in_text(text: str, max_chars_per_link: int = 4000) -> str:
     """
     Находит ВСЕ markdown-ссылки внутри текста поста (актуально для
     постов-дайджестов, где на каждую из нескольких вакансий — своя

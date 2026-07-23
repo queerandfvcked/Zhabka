@@ -42,6 +42,11 @@
   display: none;
 }
 
+/* Скрываем мобильную шапку на десктопе по умолчанию */
+.mobile-top-bar {
+  display: none;
+}
+
 /* Floating header — search + calendar */
 .floating-header {
   position: sticky;
@@ -117,7 +122,6 @@
   color: var(--text-muted);
   cursor: pointer;
 
-  /* Гарантируем идеальное флекс-центрирование */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -127,10 +131,8 @@
   height: var(--btn-icon-sm);
   border-radius: var(--radius-full);
 
-  /* Не даем кнопке сжиматься, если инпут длинный */
   flex-shrink: 0;
   margin-left: auto;
-  /* Прижимает крестик строго к правому краю раскрытого инпута */
 
   transition: color 0.12s, background 0.12s;
 }
@@ -138,7 +140,6 @@
 .floating-search-close:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
-  /* Мягкий ховер под иконку */
 }
 
 /* Date sections */
@@ -183,24 +184,17 @@
 /* Chat pinned to bottom */
 .chat-area {
   padding: var(--space-7) var(--space-6) var(--space-6);
-  /* Увеличили верхний паддинг для мягкого перехода */
   max-width: 680px;
   margin: 0 auto;
   width: 100%;
   flex-shrink: 0;
 
-  /* Магия воздуха: плавное размытие фона снизу вверх */
   position: relative;
   background: linear-gradient(to top,
       var(--bg-app) 0%,
-      /* В самом низу плотный фон приложения */
       var(--bg-app) 70%,
-      /* Держим плотность вокруг инпута */
-      transparent 100%
-      /* Плавно растворяемся в прозрачность к ленте */
-    );
+      transparent 100%);
 
-  /* Если контент подлезает под инпут, этот паддинг не даст ему прилипнуть */
   margin-top: calc(-1 * var(--space-7));
   z-index: 5;
 }
@@ -257,54 +251,135 @@
   width: 100%;
 }
 
+/* --- MOBILE BREAKPOINT --- */
 @media (max-width: 768px) {
   .topbar {
+    display: none !important;
+  }
+
+  /* Показываем шапку ТОЛЬКО на мобилке */
+  .mobile-top-bar {
+    display: flex;
+    position: sticky;
+    top: 12px;
+    z-index: 20;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 var(--space-4);
+    margin-bottom: -52px;
+    pointer-events: none;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .mobile-nav-left {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-4) var(--space-5);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-app);
-    position: sticky;
-    top: 0;
-    z-index: 5;
+    gap: 8px;
+    pointer-events: auto;
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 200px;
   }
 
-  .menu-btn {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    padding: var(--space-2) var(--space-2);
+  .mobile-top-bar.search-active .mobile-nav-left {
+    opacity: 0;
+    max-width: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    transform: translateX(-20px);
+  }
+
+  .mobile-menu-btn {
+    width: var(--btn-icon-lg);
+    height: var(--btn-icon-lg);
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft-sm);
     display: flex;
-    width: var(--btn-icon-md);
-    height: var(--btn-icon-md);
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
   }
 
-  .topbar-title {
+  .mobile-title-pill {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft-sm);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-primary);
-  }
-
-  .main-inner {
-    padding: var(--space-5) var(--space-5) 0;
+    white-space: nowrap;
   }
 
   .floating-header {
-    padding: 0 var(--space-5);
+    position: static;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    pointer-events: auto;
+  }
+
+  .floating-btn.search-btn {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .floating-btn.search-btn.expanded {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1;
+  }
+
+  .floating-search-input {
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   .chat-area {
-    padding: var(--space-6) var(--space-5) var(--space-5);
+    padding: var(--space-5) var(--space-4) var(--space-4);
     background: linear-gradient(to top,
         var(--bg-app) 0%,
         var(--bg-app) 80%,
         transparent 100%);
-    margin-top: calc(-1 * var(--space-6));
+    margin-top: calc(-1 * var(--space-5));
   }
 
-  .view-page {
-    padding: var(--space-5) var(--space-5) var(--space-6);
+  /* Скрываем дублирующие заголовки H1 на мобилке */
+  .profile-title,
+  .settings-title,
+  .bookmarks-title {
+    display: none !important;
+  }
+
+  /* Чуть воздуха для подзаголовка */
+  .profile-subtitle,
+  .settings-subtitle {
+    margin-top: 4px;
+    margin-bottom: var(--space-5) !important;
+  }
+
+  /* Отодвигаем весь контент от плавающей шапки */
+  .view-page,
+  .main-inner {
+    padding: 82px var(--space-4) var(--space-5) !important;
   }
 }

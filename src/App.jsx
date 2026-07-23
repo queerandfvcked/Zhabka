@@ -84,7 +84,6 @@ export default function App() {
     return list
   }, [searchQuery, selectedDate])
 
-  // Хронологический порядок для чата: старые вверху, новые внизу
   const sortedVacancies = useMemo(() => {
     return [...filteredVacancies].sort((a, b) => new Date(a.date) - new Date(b.date))
   }, [filteredVacancies])
@@ -194,7 +193,6 @@ export default function App() {
 
   const isBookmarked = (v) => bookmarked.has(vacancyId(v))
 
-  // Скролл к первой непрочитанной карточке или в самый низ ленты
   useEffect(() => {
     if (activeView !== 'inbox') return
 
@@ -239,7 +237,6 @@ export default function App() {
 
     const isMainInbox = activeView === 'inbox'
 
-    // Индекс первой НЕПРОЧИТАННОЙ вакансии во всем хронологическом списке
     let unseenIdx = -1
     if (isMainInbox) {
       for (let i = 0; i < items.length; i++) {
@@ -306,34 +303,6 @@ export default function App() {
 
     return (
       <>
-        {isMainInbox && (
-          <div className="floating-header">
-            <div className={`floating-btn search-btn ${searchOpen ? 'expanded' : ''}`} onClick={searchOpen ? undefined : handleSearchToggle}>
-              <Search size={20} />
-              <input
-                ref={searchRef}
-                className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
-                type="text"
-                placeholder="Search vacancies…"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onBlur={handleSearchBlur}
-                onKeyDown={(e) => e.key === 'Escape' && handleSearchToggle()}
-              />
-              {searchOpen && (
-                <button className="floating-search-close" onClick={handleSearchToggle} tabIndex={-1}>
-                  <X size={16} />
-                </button>
-              )}
-            </div>
-            <JumpToDatePopover
-              selectedDate={selectedDate}
-              onDateSelect={setSelectedDate}
-              availableDates={uniqueDates}
-            />
-          </div>
-        )}
-
         <div className="scroll-wrapper" ref={scrollWrapperRef}>
           <div className="main-inner">
             {activeView === 'bookmarks' && (
@@ -392,13 +361,44 @@ export default function App() {
 
       <div className="content-area">
         <main className="main">
-          <div className="topbar">
-            <button className="menu-btn" onClick={() => setSidebarOpen(true)}>
-              <Menu size={18} />
-            </button>
-            <span className="topbar-title">
-              {activeView === 'inbox' ? 'Inbox' : activeView === 'bookmarks' ? 'Bookmarks' : activeView === 'profile' ? 'Profile' : 'Settings'}
-            </span>
+          {/* Mobile Top Floating Bar */}
+          <div className={`mobile-top-bar ${searchOpen ? 'search-active' : ''}`}>
+            <div className="mobile-nav-left">
+              <button className="mobile-menu-btn" onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+                <Menu size={18} />
+              </button>
+              <span className="mobile-title-pill">
+                {activeView === 'inbox' ? 'Inbox' : activeView === 'bookmarks' ? 'Bookmarks' : activeView === 'profile' ? 'Profile' : 'Settings'}
+              </span>
+            </div>
+
+            {activeView === 'inbox' && (
+              <div className="floating-header">
+                <div className={`floating-btn search-btn ${searchOpen ? 'expanded' : ''}`} onClick={searchOpen ? undefined : handleSearchToggle}>
+                  <Search size={20} />
+                  <input
+                    ref={searchRef}
+                    className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
+                    type="text"
+                    placeholder="Search vacancies…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onBlur={handleSearchBlur}
+                    onKeyDown={(e) => e.key === 'Escape' && handleSearchToggle()}
+                  />
+                  {searchOpen && (
+                    <button className="floating-search-close" onClick={handleSearchToggle} tabIndex={-1}>
+                      <X size={16} />
+                    </button>
+                  )}
+                </div>
+                <JumpToDatePopover
+                  selectedDate={selectedDate}
+                  onDateSelect={setSelectedDate}
+                  availableDates={uniqueDates}
+                />
+              </div>
+            )}
           </div>
 
           {renderContent()}
