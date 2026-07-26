@@ -51,7 +51,7 @@ PROFILE_FILE = "profile.json"
 # Версия пайплайна — меняй эту строку при ЛЮБОМ изменении промпта/схемы
 # в этом файле или в resolver.py. Записи с другой версией считаются
 # устаревшими и пересчитываются автоматически, без ручного удаления файла.
-PIPELINE_VERSION = "2026-07-22-v6"
+PIPELINE_VERSION = "2026-07-22-v7"
 
 
 SYSTEM_PROMPT = """Ты — модуль извлечения структуры из постов о вакансиях
@@ -284,6 +284,36 @@ def normalize_text(text: str) -> str:
     return re.sub(r"\s+", " ", text.strip().lower())
 
 
+BARE_LINK_PATTERN = re.compile(r"^[—\-•]\s*\[[^\]]+\]\(https?://\S+\)\s*$")
+
+
+def is_bare_footer_link(v: dict) -> bool:
+    """
+    Ловит случаи вида "Другие вакансии в компании: — [Senior Product
+    Designer](url)" — модель иногда всё равно превращает такую строчку
+    в отдельную вакансию, несмотря на прямой запрет в промпте. Не
+    полагаемся только на промпт — механически отсекаем: если excerpt —
+    это ЦЕЛИКОМ одна строка "тире + markdown-ссылка" и вообще никаких
+    других данных не извлечено (ни зарплаты, ни формата, ни опыта, ни
+    требований) — это, почти наверняка, ссылка из сноски, а не реальный
+    пункт дайджеста (у настоящих пунктов в этих каналах всегда есть
+    хотя бы грейд/формат/зарплата рядом).
+    """
+    excerpt = (v.get("sourceExcerpt") or "").strip()
+    if not BARE_LINK_PATTERN.match(excerpt):
+        return False
+
+    exp = v.get("experience") or {}
+    has_any_data = (
+        v.get("salary")
+        or exp.get("value")
+        or v.get("workFormat")
+        or v.get("location")
+        or v.get("requirements")
+    )
+    return not has_any_data
+
+
 def excerpt_is_grounded(excerpt: str, source_text: str, threshold: float = 0.6) -> bool:
     """
     Проверяет, что sourceExcerpt реально взят из исходного текста поста,
@@ -398,6 +428,14 @@ def main():
             if not excerpt_is_grounded(v.get("sourceExcerpt", ""), post["text"]):
                 print(f"  Пропускаю '{v.get('title')}' — sourceExcerpt не "
                       f"найден в исходном посте (похоже на галлюцинацию)")
+                continue
+
+            # Защита от "других вакансий в компании" — модель иногда
+            # превращает ссылку из сноски в отдельную вакансию, несмотря
+            # на прямой запрет в промпте. Механическая подстраховка.
+            if is_bare_footer_link(v):
+                print(f"  Пропускаю '{v.get('title')}' — похоже на ссылку "
+                      f"из сноски 'другие вакансии', а не реальный пункт")
                 continue
 
             v["channel_username"] = post["channel_username"]

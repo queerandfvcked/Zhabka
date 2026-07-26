@@ -7,7 +7,8 @@ import RightDrawer from './components/RightDrawer'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 import JumpToDatePopover from './components/JumpToDatePopover'
-import vacancies from './data/vacancies.json'
+import Toast from './components/Toast'
+import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage } from './api'
 import { groupByDate, dateGroupLabels } from './utils/ai'
 import './App.css'
 
@@ -48,6 +49,11 @@ export default function App() {
   const [seenIds, setSeenIds] = useState(loadSeen)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
+  const [vacancies, setVacancies] = useState([])
+
+  // Toast state & ref
+  const [showToast, setShowToast] = useState(false)
+  const toastTimerRef = useRef(null)
 
   const searchRef = useRef(null)
   const scrollWrapperRef = useRef(null)
@@ -55,13 +61,21 @@ export default function App() {
 
   const inboxCount = vacancies.length
 
+  const triggerToast = useCallback(() => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
+    setShowToast(true)
+    toastTimerRef.current = setTimeout(() => {
+      setShowToast(false)
+    }, 2500)
+  }, [])
+
   const uniqueDates = useMemo(() => {
     const set = new Set()
     vacancies.forEach((v) => {
       if (v.date) set.add(v.date.slice(0, 10))
     })
     return [...set].sort()
-  }, [])
+  }, [vacancies])
 
   const filteredVacancies = useMemo(() => {
     let list = vacancies
@@ -82,7 +96,7 @@ export default function App() {
       list = list.filter((v) => v.date && v.date.startsWith(selectedDate))
     }
     return list
-  }, [searchQuery, selectedDate])
+  }, [vacancies, searchQuery, selectedDate])
 
   const sortedVacancies = useMemo(() => {
     return [...filteredVacancies].sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -102,68 +116,63 @@ export default function App() {
     })
   }, [])
 
+  useEffect(() => {
+    getVacancies().then(setVacancies)
+  }, [])
+
+  useEffect(() => {
+    getProfile().then((p) => {
+      if (p && Object.keys(p).length > 0) setProfile(p)
+    })
+  }, [])
+
   const handleCardClick = useCallback((v) => {
     setSelectedVacancy(v)
     markSeen(v)
   }, [markSeen])
 
   const handleProfileUpdate = useCallback((patch) => {
-    setProfile((prev) => (typeof patch === 'function' ? patch(prev) : { ...prev, ...patch }))
+    setProfile((prev) => {
+      const next = typeof patch === 'function' ? patch(prev) : { ...prev, ...patch }
+      saveProfile(next)
+      return next
+    })
+    triggerToast()
+  }, [triggerToast])
+
+  const handleChatSend = useCallback(async (message) => {
+    const result = await sendChatMessage(message)
+    if (result.profile) setProfile(result.profile)
+    return result.reply
   }, [])
 
-  const handleChatSend = useCallback(
-    (message) => {
-      const lower = message.toLowerCase()
-      const patch = {}
-      const newNotes = [...profile.aiNotes]
-
-      if (/product designer|продукт.*дизайн/.test(lower)) {
-        if (!profile.role.includes('Product Designer')) {
-          patch.role = [...profile.role, 'Product Designer']
-        }
-      } else if (/ux\/?ui/.test(lower)) {
-        const trimmed = message.trim()
-        if (!profile.role.includes(trimmed)) {
-          patch.role = [...profile.role, trimmed]
-        }
-      } else if (/no.*(?:commercial )?experience|опыт[аа]?\s*нет/i.test(lower)) patch.experience = '0 years'
-
-      if (/не.*аутсорс|no.*outsource/i.test(lower)) {
-        if (!newNotes.find((n) => n.text.toLowerCase().includes('outsource')))
-          newNotes.push({ type: 'exclude', text: 'Outsource' })
-      }
-      if (/relocat|релокац/i.test(lower)) {
-        if (!newNotes.find((n) => n.text.toLowerCase().includes('relocat')))
-          newNotes.push({ type: 'condition', text: 'Open to relocation' })
-      }
-      if (/b2b/i.test(lower)) {
-        if (!newNotes.find((n) => n.text.toLowerCase().includes('b2b')))
-          newNotes.push({ type: 'exclude', text: 'B2B' })
-      }
-
-      const structuredFields = ['role', 'experience']
-      const hasStructuredChange = structuredFields.some((f) => f in patch)
-      const hasNotesChange = newNotes.length > profile.aiNotes.length
-
-      if (hasStructuredChange || hasNotesChange) {
-        setProfile((prev) => ({ ...prev, ...patch, aiNotes: newNotes }))
-      }
-
-      const changes = []
-      if (patch.role) changes.push(`role → ${patch.role.join(', ')}`)
-      if (patch.experience) changes.push(`experience → ${patch.experience}`)
-      if (hasNotesChange) changes.push('+1 preference noted')
-
-      if (changes.length > 0) return `Got it. Updated: ${changes.join(', ')}.`
-      return `Noted. I'll keep that in mind.`
-    },
-    [profile]
-  )
-
   const handleSyncNow = useCallback(async () => {
-    const now = new Date()
-    setLastSync(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
-    return 'Sync complete. No new vacancies found.'
+    try {
+      const res = await startRefresh()
+      if (res.status === 'already_running') {
+        return 'Sync already in progress.'
+      }
+    } catch {
+      return 'Failed to start sync — is the backend running?'
+    }
+
+    return new Promise((resolve) => {
+      const poll = setInterval(async () => {
+        try {
+          const status = await getRefreshStatus()
+          if (!status.running) {
+            clearInterval(poll)
+            const freshVacancies = await getVacancies()
+            setVacancies(freshVacancies)
+            setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
+            resolve('Sync complete. Check the feed for new vacancies.')
+          }
+        } catch {
+          clearInterval(poll)
+          resolve('Sync failed — network error.')
+        }
+      }, 3000)
+    })
   }, [])
 
   const handleBookmark = () => {
@@ -413,6 +422,8 @@ export default function App() {
           />
         )}
       </div>
+
+      <Toast show={showToast} message="Changes saved" />
     </div>
   )
 }

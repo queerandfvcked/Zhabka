@@ -1,13 +1,18 @@
 {
-  "role": ["Product Designer", "UX/UI Designer"],
+  "role": [
+    "Product Designer",
+    "UX/UI Designer"
+  ],
   "experience": "0-2 years",
   "workFormat": {
     "remote": true,
-    "hybrid": false,
+    "hybrid": true,
     "office": false,
     "relocate": false
   },
-  "officeLocations": [],
+  "officeLocations": [
+    "Санкт-Петербург"
+  ],
   "minSalary": null,
   "currency": "RUB",
   "resume": {
@@ -15,11 +20,29 @@
     "uploadedAt": null
   },
   "aiNotes": [
-    { "type": "exclude", "text": "Gamedev" },
-    { "type": "exclude", "text": "Communication design / branding / illustration / motion / print design — not Product/UX/UI" },
-    { "type": "exclude", "text": "Analyst roles (product analyst, research analyst) even if product-related — not design" },
-    { "type": "condition", "text": "3+ years is fine if not stated as strictly required" },
-    { "type": "condition", "text": "No commercial experience, but 3 years of self-directed practice: building and shipping own product, understands metrics and product thinking, has real problem-solving experience. Treat this as comparable to junior-to-middle practical skill level, not as zero experience." },
-    { "type": "condition", "text": "If a posting is graded '3-6 years' (e.g. on hh.ru) but the requirements text does not explicitly say commercial/professional experience is mandatory, treat experience as not strict and show the vacancy if skills otherwise match." }
+    {
+      "type": "exclude",
+      "text": "Gamedev"
+    },
+    {
+      "type": "exclude",
+      "text": "Communication design / branding / illustration / motion / print design — not Product/UX/UI"
+    },
+    {
+      "type": "exclude",
+      "text": "Analyst roles (product analyst, research analyst) even if product-related — not design"
+    },
+    {
+      "type": "condition",
+      "text": "3+ years is fine if not stated as strictly required"
+    },
+    {
+      "type": "condition",
+      "text": "No commercial experience, but 3 years of self-directed practice: building and shipping own product, understands metrics and product thinking, has real problem-solving experience. Treat this as comparable to junior-to-middle practical skill level, not as zero experience."
+    },
+    {
+      "type": "condition",
+      "text": "If a posting is graded '3-6 years' (e.g. on hh.ru) but the requirements text does not explicitly say commercial/professional experience is mandatory, treat experience as not strict and show the vacancy if skills otherwise match."
+    }
   ]
 }

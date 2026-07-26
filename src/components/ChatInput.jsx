@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
-import { ArrowUp, Paperclip, Loader } from 'lucide-react'
+import { ArrowUp, Paperclip, Loader, RefreshCw } from 'lucide-react'
+import { uploadResume } from '../api'
 import './ChatInput.css'
 
 export default function ChatInput({ onSend, onSync, profile }) {
@@ -10,12 +11,12 @@ export default function ChatInput({ onSend, onSync, profile }) {
   const ref = useRef(null)
   const fileRef = useRef(null)
 
-  const handleSend = () => {
+  const handleSend = async () => {
     const trimmed = value.trim()
     if (!trimmed) return
 
     const userMsg = { type: 'user', text: trimmed }
-    const response = onSend(trimmed)
+    const response = await onSend(trimmed)
     const aiMsg = { type: 'ai', text: response }
 
     setMessages((prev) => [...prev, userMsg, aiMsg])
@@ -32,17 +33,24 @@ export default function ChatInput({ onSend, onSync, profile }) {
     fileRef.current?.click()
   }
 
-  const handleFile = useCallback((file) => {
+  const handleFile = useCallback(async (file) => {
     if (!file || file.type !== 'application/pdf') return
     setProcessing(true)
-    setTimeout(() => {
-      setProcessing(false)
+    try {
+      const result = await uploadResume(file)
       setMessages((prev) => [
         ...prev,
         { type: 'user', text: `Uploaded CV: ${file.name}` },
-        { type: 'ai', text: `Got it. Resume "${file.name}" saved. I'll use it to improve matching.` },
+        { type: 'ai', text: `Got it. Resume "${result.filename}" saved. I'll use it to improve matching.` },
       ])
-    }, 500)
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        { type: 'ai', text: 'Failed to upload resume — is the backend running?' },
+      ])
+    } finally {
+      setProcessing(false)
+    }
   }, [])
 
   const handleFileChange = (e) => {
@@ -130,6 +138,9 @@ export default function ChatInput({ onSend, onSync, profile }) {
       <div className={`chat-pill ${processing ? 'processing' : ''}`}>
         <button className="pill-icon-btn" onClick={handleAttach} title="Add CV (PDF)">
           {processing ? <Loader size={16} className="spin" /> : <Paperclip size={16} />}
+        </button>
+        <button className="pill-icon-btn" onClick={handleSync} title="Sync now">
+          <RefreshCw size={16} />
         </button>
         <textarea
           ref={ref}
