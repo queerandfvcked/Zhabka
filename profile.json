@@ -33,6 +33,10 @@
       "text": "Analyst roles (product analyst, research analyst) even if product-related — not design"
     },
     {
+      "type": "exclude",
+      "text": "Tilda (web-building platforms)"
+    },
+    {
       "type": "condition",
       "text": "3+ years is fine if not stated as strictly required"
     },

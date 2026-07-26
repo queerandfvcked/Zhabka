@@ -13,6 +13,8 @@ import { groupByDate, dateGroupLabels } from './utils/ai'
 import './App.css'
 
 const SEEN_KEY = 'zhabka:seenIds'
+const MESSAGES_KEY = 'zhabka:messages'
+const LASTSYNC_KEY = 'zhabka:lastSync'
 
 const defaultProfile = {
   role: [],
@@ -38,6 +40,35 @@ function saveSeen(ids) {
   localStorage.setItem(SEEN_KEY, JSON.stringify([...ids]))
 }
 
+function loadMessages() {
+  try {
+    return JSON.parse(localStorage.getItem(MESSAGES_KEY) || '[]')
+  } catch { return [] }
+}
+
+function saveMessages(msgs) {
+  localStorage.setItem(MESSAGES_KEY, JSON.stringify(msgs))
+}
+
+function loadLastSync() {
+  try {
+    return localStorage.getItem(LASTSYNC_KEY) || '—'
+  } catch { return '—' }
+}
+
+function saveLastSync(val) {
+  localStorage.setItem(LASTSYNC_KEY, val)
+}
+
+const FrogIcon = () => (
+  <svg width="16" height="12" viewBox="0 0 34 20" style={{ flexShrink: 0 }}>
+    <circle cx="9" cy="10" r="9" fill="var(--accent-soft)" />
+    <circle cx="25" cy="10" r="9" fill="var(--accent-soft)" />
+    <circle cx="9" cy="10" r="3.5" fill="var(--accent)" />
+    <circle cx="25" cy="10" r="3.5" fill="var(--accent)" />
+  </svg>
+)
+
 export default function App() {
   const [activeView, setActiveView] = useState('inbox')
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -45,11 +76,18 @@ export default function App() {
   const [bookmarked, setBookmarked] = useState(new Set())
   const [searchQuery, setSearchQuery] = useState('')
   const [profile, setProfile] = useState(defaultProfile)
-  const [lastSync, setLastSync] = useState('18:00')
+  const [lastSync, _setLastSync] = useState(loadLastSync)
+  const setLastSync = useCallback((val) => {
+    _setLastSync(val)
+    saveLastSync(val)
+  }, [])
   const [seenIds, setSeenIds] = useState(loadSeen)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
   const [vacancies, setVacancies] = useState([])
+
+  // Стейт для сообщений чата
+  const [messages, setMessages] = useState(loadMessages)
 
   // Toast state & ref
   const [showToast, setShowToast] = useState(false)
@@ -121,6 +159,10 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    saveMessages(messages)
+  }, [messages])
+
+  useEffect(() => {
     getProfile().then((p) => {
       if (p && Object.keys(p).length > 0) setProfile(p)
     })
@@ -141,19 +183,22 @@ export default function App() {
   }, [triggerToast])
 
   const handleChatSend = useCallback(async (message) => {
+    setMessages((prev) => [...prev, { type: 'user', text: message }])
     const result = await sendChatMessage(message)
     if (result.profile) setProfile(result.profile)
-    return result.reply
+    setMessages((prev) => [...prev, { type: 'ai', text: result.reply }])
   }, [])
 
   const handleSyncNow = useCallback(async () => {
     try {
       const res = await startRefresh()
       if (res.status === 'already_running') {
-        return 'Sync already in progress.'
+        setMessages((prev) => [...prev, { type: 'ai', text: 'Sync already in progress.' }])
+        return
       }
     } catch {
-      return 'Failed to start sync — is the backend running?'
+      setMessages((prev) => [...prev, { type: 'ai', text: 'Failed to start sync — is the backend running?' }])
+      return
     }
 
     return new Promise((resolve) => {
@@ -165,11 +210,13 @@ export default function App() {
             const freshVacancies = await getVacancies()
             setVacancies(freshVacancies)
             setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
-            resolve('Sync complete. Check the feed for new vacancies.')
+            setMessages((prev) => [...prev, { type: 'ai', text: 'Sync complete. Check the feed for new vacancies.' }])
+            resolve()
           }
         } catch {
           clearInterval(poll)
-          resolve('Sync failed — network error.')
+          setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.' }])
+          resolve()
         }
       }, 3000)
     })
@@ -201,6 +248,16 @@ export default function App() {
   }
 
   const isBookmarked = (v) => bookmarked.has(vacancyId(v))
+
+  // Автоскролл вниз при появлении новых сообщений
+  useEffect(() => {
+    if (messages.length > 0 && scrollWrapperRef.current) {
+      scrollWrapperRef.current.scrollTo({
+        top: scrollWrapperRef.current.scrollHeight,
+        behavior: 'smooth'
+      })
+    }
+  }, [messages])
 
   useEffect(() => {
     if (activeView !== 'inbox') return
@@ -332,12 +389,46 @@ export default function App() {
             ) : (
               renderCardList()
             )}
+
+            {isMainInbox && messages.length > 0 && (
+              <div className="messages-container">
+                {messages.map((msg, i) => {
+                  if (msg.type === 'user') {
+                    return (
+                      <div key={i} className="msg-row msg-row-user">
+                        <div className="msg-bubble msg-bubble-user">
+                          {msg.text}
+                        </div>
+                      </div>
+                    )
+                  }
+                  if (msg.type === 'ai') {
+                    return (
+                      <div key={i} className="msg-row msg-row-ai">
+                        <div className="msg-avatar">
+                          <FrogIcon />
+                        </div>
+                        <div className="msg-bubble msg-bubble-ai">
+                          {msg.text}
+                        </div>
+                      </div>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            )}
           </div>
         </div>
 
         {isMainInbox && (
           <div className="chat-area">
-            <ChatInput onSend={handleChatSend} onSync={handleSyncNow} profile={profile} />
+            <ChatInput
+              onSend={handleChatSend}
+              onSync={handleSyncNow}
+              profile={profile}
+              setMessages={setMessages}
+            />
           </div>
         )}
       </>
