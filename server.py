@@ -61,8 +61,12 @@ app.add_middleware(
 def get_vacancies():
     if not VACANCIES_FILE.exists():
         return []
+    mtime = datetime.fromtimestamp(VACANCIES_FILE.stat().st_mtime, tz=timezone.utc).isoformat()
     with open(VACANCIES_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+        vacs = json.load(f)
+    for vac in vacs:
+        vac.setdefault("fetchedAt", mtime)
+    return vacs
 
 
 # ---------- GET/POST /profile ----------
@@ -99,6 +103,7 @@ def _run_pipeline():
     try:
         for script in scripts:
             pipeline_state["log"].append(f"--- запускаю {script} ---")
+            env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
             proc = subprocess.Popen(
                 [sys.executable, script],
                 cwd=str(BASE_DIR),
@@ -107,6 +112,7 @@ def _run_pipeline():
                 text=True,
                 bufsize=1,
                 encoding="utf-8",
+                env=env,
             )
             for line in proc.stdout:
                 pipeline_state["log"].append(line.rstrip())
@@ -120,6 +126,17 @@ def _run_pipeline():
     finally:
         pipeline_state["running"] = False
         pipeline_state["last_finished_at"] = datetime.now(timezone.utc).isoformat()
+
+    # Ставим fetchedAt + batchId на все собранные вакансии
+    if VACANCIES_FILE.exists():
+        now_iso = datetime.now(timezone.utc).isoformat()
+        with open(VACANCIES_FILE, "r", encoding="utf-8") as f:
+            vacs = json.load(f)
+        for vac in vacs:
+            vac["fetchedAt"] = now_iso
+            vac["batchId"] = now_iso
+        with open(VACANCIES_FILE, "w", encoding="utf-8") as f:
+            json.dump(vacs, f, ensure_ascii=False, indent=2)
 
 
 @app.post("/refresh")

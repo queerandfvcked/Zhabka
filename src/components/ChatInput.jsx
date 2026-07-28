@@ -30,13 +30,13 @@ export default function ChatInput({ onSend, onSync, setMessages }) {
       const result = await uploadResume(file)
       setMessages((prev) => [
         ...prev,
-        { type: 'user', text: `Uploaded CV: ${file.name}` },
-        { type: 'ai', text: `Got it. Resume "${result.filename}" saved. I'll use it to improve matching.` },
+        { type: 'user', text: `Uploaded CV: ${file.name}`, _ts: Date.now() },
+        { type: 'ai', text: `Got it. Resume "${result.filename}" saved. I'll use it to improve matching.`, _ts: Date.now() },
       ])
     } catch {
       setMessages((prev) => [
         ...prev,
-        { type: 'ai', text: 'Failed to upload resume — is the backend running?' },
+        { type: 'ai', text: 'Failed to upload resume — is the backend running?', _ts: Date.now() },
       ])
     } finally {
       setProcessing(false)

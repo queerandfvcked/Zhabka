@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  position: relative;
   background: radial-gradient(circle at 15% -10%, rgba(127, 178, 255, 0.06), transparent 45%),
     var(--bg-app);
 }
@@ -47,11 +48,11 @@
   display: none;
 }
 
-/* Floating header — search + calendar */
+/* Floating header — search + calendar (desktop: sticky over content) */
 .floating-header {
   position: sticky;
   top: 20px;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: flex-end;
   gap: var(--space-3);
@@ -158,6 +159,31 @@
   text-align: center;
   margin-bottom: var(--space-4);
 }
+
+.date-head-sm {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.date-head-sm::before,
+.date-head-sm::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: calc(50% - 40px);
+  background: var(--border);
+}
+
+.date-head-sm::before { left: 0; }
+.date-head-sm::after { right: 0; }
 
 .feed {
   display: flex;
@@ -326,16 +352,22 @@
   }
 
   .floating-header {
-    position: static;
+    position: absolute;
+    top: 12px;
+    right: var(--space-4);
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    flex: 1;
-    min-width: 0;
+    width: auto;
+    max-width: none;
+    z-index: 20;
     pointer-events: auto;
+  }
+
+  .mobile-top-bar.search-active ~ .floating-header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 var(--space-4);
   }
 
   .floating-btn.search-btn {

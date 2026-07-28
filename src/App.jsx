@@ -9,7 +9,6 @@ import Settings from './components/Settings'
 import JumpToDatePopover from './components/JumpToDatePopover'
 import Toast from './components/Toast'
 import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage } from './api'
-import { groupByDate, dateGroupLabels } from './utils/ai'
 import './App.css'
 
 const SEEN_KEY = 'zhabka:seenIds'
@@ -29,6 +28,15 @@ const defaultProfile = {
 }
 
 const vacancyId = (v) => v.id || v.link
+
+function getDateLabel(date) {
+  const d = new Date(date)
+  const today = new Date()
+  const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1)
+  if (d.toDateString() === today.toDateString()) return 'Today'
+  if (d.toDateString() === yesterday.toDateString()) return 'Yesterday'
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+}
 
 function loadSeen() {
   try {
@@ -95,7 +103,6 @@ export default function App() {
 
   const searchRef = useRef(null)
   const scrollWrapperRef = useRef(null)
-  const seenDividerRef = useRef(null)
 
   const inboxCount = vacancies.length
 
@@ -136,12 +143,26 @@ export default function App() {
     return list
   }, [vacancies, searchQuery, selectedDate])
 
-  const sortedVacancies = useMemo(() => {
-    return [...filteredVacancies].sort((a, b) => new Date(a.date) - new Date(b.date))
-  }, [filteredVacancies])
-
-  const grouped = useMemo(() => groupByDate(sortedVacancies), [sortedVacancies])
-  const orderedGroups = ['older', 'yesterday', 'today']
+  const timeline = useMemo(() => {
+    const items = []
+    messages.forEach((msg, i) => {
+      items.push({
+        id: `msg-${msg._ts || i}`,
+        type: 'message',
+        sortTime: new Date(msg._ts || Date.now()),
+        data: msg,
+      })
+    })
+    filteredVacancies.forEach((vac) => {
+      items.push({
+        id: `vac-${vacancyId(vac)}`,
+        type: 'vacancy',
+        sortTime: new Date(vac.fetchedAt || vac.date),
+        data: vac,
+      })
+    })
+    return items.sort((a, b) => a.sortTime - b.sortTime)
+  }, [messages, filteredVacancies])
 
   const markSeen = useCallback((v) => {
     const id = vacancyId(v)
@@ -183,21 +204,21 @@ export default function App() {
   }, [triggerToast])
 
   const handleChatSend = useCallback(async (message) => {
-    setMessages((prev) => [...prev, { type: 'user', text: message }])
+    setMessages((prev) => [...prev, { type: 'user', text: message, _ts: Date.now() }])
     const result = await sendChatMessage(message)
     if (result.profile) setProfile(result.profile)
-    setMessages((prev) => [...prev, { type: 'ai', text: result.reply }])
+    setMessages((prev) => [...prev, { type: 'ai', text: result.reply, _ts: Date.now() }])
   }, [])
 
   const handleSyncNow = useCallback(async () => {
     try {
       const res = await startRefresh()
       if (res.status === 'already_running') {
-        setMessages((prev) => [...prev, { type: 'ai', text: 'Sync already in progress.' }])
+        setMessages((prev) => [...prev, { type: 'ai', text: 'Sync already in progress.', _ts: Date.now() }])
         return
       }
     } catch {
-      setMessages((prev) => [...prev, { type: 'ai', text: 'Failed to start sync — is the backend running?' }])
+      setMessages((prev) => [...prev, { type: 'ai', text: 'Failed to start sync — is the backend running?', _ts: Date.now() }])
       return
     }
 
@@ -207,15 +228,24 @@ export default function App() {
           const status = await getRefreshStatus()
           if (!status.running) {
             clearInterval(poll)
+            const log = status.log || []
+            const errors = log.filter((l) => l.includes('ошибкой'))
+            const tail = log.slice(-6).join('\n')
+            let msg
+            if (errors.length > 0) {
+              msg = `Sync finished with errors:\n\`\`\`\n${tail}\n\`\`\``
+            } else {
+              msg = 'Sync complete. Check the feed for new vacancies.'
+            }
             const freshVacancies = await getVacancies()
             setVacancies(freshVacancies)
             setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
-            setMessages((prev) => [...prev, { type: 'ai', text: 'Sync complete. Check the feed for new vacancies.' }])
+            setMessages((prev) => [...prev, { type: 'ai', text: msg, _ts: Date.now() }])
             resolve()
           }
         } catch {
           clearInterval(poll)
-          setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.' }])
+          setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.', _ts: Date.now() }])
           resolve()
         }
       }, 3000)
@@ -260,17 +290,8 @@ export default function App() {
   }, [messages])
 
   useEffect(() => {
-    if (activeView !== 'inbox') return
-
-    const timer = setTimeout(() => {
-      if (seenDividerRef.current) {
-        seenDividerRef.current.scrollIntoView({ block: 'center', behavior: 'smooth' })
-      } else if (scrollWrapperRef.current) {
-        scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
-      }
-    }, 100)
-
-    return () => clearTimeout(timer)
+    if (activeView !== 'inbox' || !scrollWrapperRef.current) return
+    scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
   }, [activeView, filteredVacancies.length])
 
   const renderContent = () => {
@@ -294,76 +315,38 @@ export default function App() {
       )
     }
 
+    const isMainInbox = activeView === 'inbox'
+
     const items =
       activeView === 'bookmarks'
         ? vacancies.filter((v) => isBookmarked(v))
-        : activeView === 'inbox'
-          ? sortedVacancies
-          : []
+        : []
 
-    const isMainInbox = activeView === 'inbox'
-
-    let unseenIdx = -1
-    if (isMainInbox) {
-      for (let i = 0; i < items.length; i++) {
-        if (!seenIds.has(vacancyId(items[i]))) {
-          unseenIdx = i
-          break
-        }
-      }
-    }
-
-    const renderCardList = () => {
-      if (isMainInbox) {
-        let totalRendered = 0
-
-        return orderedGroups.map((key) => {
-          const group = grouped[key] || []
-
-          if (group.length === 0) {
-            if (key === 'today') {
-              return (
-                <div key={key} className="date-section">
-                  <div className="date-head">{dateGroupLabels[key]}</div>
-                  <div className="empty-today">No vacancies today — check back later.</div>
-                </div>
-              )
-            }
-            return null
-          }
-
+    const renderTimelineItem = (item) => {
+      if (item.type === 'message') {
+        const msg = item.data
+        if (msg.type === 'user') {
           return (
-            <div key={key} className="date-section">
-              <div className="date-head">{dateGroupLabels[key]}</div>
-              <div className="feed">
-                {group.map((v) => {
-                  const globalIdx = totalRendered
-                  const isFirstUnseen = unseenIdx >= 0 && globalIdx === unseenIdx
-                  totalRendered++
-
-                  return (
-                    <div key={vacancyId(v)}>
-                      {isFirstUnseen && (
-                        <div ref={seenDividerRef} className="seen-divider">
-                          <span>Unread</span>
-                        </div>
-                      )}
-                      <JobCard vacancy={v} onClick={() => handleCardClick(v)} />
-                    </div>
-                  )
-                })}
+            <div className="msg-row msg-row-user">
+              <div className="msg-bubble msg-bubble-user">
+                {msg.text}
               </div>
             </div>
           )
-        })
+        }
+        return (
+          <div className="msg-row msg-row-ai">
+            <div className="msg-avatar">
+              <FrogIcon />
+            </div>
+            <div className="msg-bubble msg-bubble-ai">
+              {msg.text}
+            </div>
+          </div>
+        )
       }
-
       return (
-        <div className="feed">
-          {items.map((v) => (
-            <JobCard key={vacancyId(v)} vacancy={v} onClick={() => handleCardClick(v)} />
-          ))}
-        </div>
+        <JobCard vacancy={item.data} onClick={() => handleCardClick(item.data)} />
       )
     }
 
@@ -378,44 +361,78 @@ export default function App() {
               </div>
             )}
 
-            {items.length === 0 ? (
-              activeView === 'inbox' ? (
+            {activeView === 'inbox' ? (
+              timeline.length === 0 ? (
                 <div className="empty-state">
                   No vacancies yet.<br />Zhabka is watching your sources.
                 </div>
               ) : (
-                <div className="empty-state">Nothing saved yet.</div>
-              )
-            ) : (
-              renderCardList()
-            )}
+                <div className="timeline">
+                  {(() => {
+                    const elements = []
+                    let lastDateStr = null
+                    let msgBuffer = []
+                    let seenUnreadDivider = false
 
-            {isMainInbox && messages.length > 0 && (
-              <div className="messages-container">
-                {messages.map((msg, i) => {
-                  if (msg.type === 'user') {
-                    return (
-                      <div key={i} className="msg-row msg-row-user">
-                        <div className="msg-bubble msg-bubble-user">
-                          {msg.text}
-                        </div>
-                      </div>
-                    )
-                  }
-                  if (msg.type === 'ai') {
-                    return (
-                      <div key={i} className="msg-row msg-row-ai">
-                        <div className="msg-avatar">
-                          <FrogIcon />
-                        </div>
-                        <div className="msg-bubble msg-bubble-ai">
-                          {msg.text}
-                        </div>
-                      </div>
-                    )
-                  }
-                  return null
-                })}
+                    const flushMsgBuffer = () => {
+                      if (msgBuffer.length > 0) {
+                        elements.push(
+                          <div key={`msg-group-${msgBuffer[0].id}`} className="messages-container">
+                            {msgBuffer.map((item) => (
+                              <div key={item.id}>{renderTimelineItem(item)}</div>
+                            ))}
+                          </div>
+                        )
+                        msgBuffer = []
+                      }
+                    }
+
+                    timeline.forEach((item) => {
+                      const dateStr = item.sortTime.toDateString()
+
+                      // Date section header when day changes
+                      if (dateStr !== lastDateStr) {
+                        flushMsgBuffer()
+                        lastDateStr = dateStr
+                        elements.push(
+                          <div key={`date-${dateStr}`} className="date-head-sm">
+                            {getDateLabel(item.sortTime)}
+                          </div>
+                        )
+                      }
+
+                      // "Unread" divider before first unseen vacancy
+                      if (!seenUnreadDivider && item.type === 'vacancy' && !seenIds.has(vacancyId(item.data))) {
+                        flushMsgBuffer()
+                        seenUnreadDivider = true
+                        elements.push(
+                          <div key="unread-divider" className="seen-divider">
+                            <span>Unread</span>
+                          </div>
+                        )
+                      }
+
+                      if (item.type === 'message') {
+                        msgBuffer.push(item)
+                      } else {
+                        flushMsgBuffer()
+                        elements.push(
+                          <div key={item.id}>{renderTimelineItem(item)}</div>
+                        )
+                      }
+                    })
+                    flushMsgBuffer()
+                    return elements
+                  })()}
+                </div>
+              )
+            ) : items.length === 0 ? (
+              <div className="empty-state">Nothing saved yet.</div>
+            ) : (
+              <div className="feed">
+                {items.map((v) => (
+                  <JobCard key={vacancyId(v)} vacancy={v} onClick={() => handleCardClick(v)} />
+                ))}
               </div>
             )}
           </div>
@@ -461,7 +478,7 @@ export default function App() {
 
       <div className="content-area">
         <main className="main">
-          {/* Mobile Top Floating Bar */}
+          {/* Mobile top bar (mobile only) */}
           <div className={`mobile-top-bar ${searchOpen ? 'search-active' : ''}`}>
             <div className="mobile-nav-left">
               <button className="mobile-menu-btn" onClick={() => setSidebarOpen(true)} aria-label="Open menu">
@@ -471,35 +488,36 @@ export default function App() {
                 {activeView === 'inbox' ? 'Inbox' : activeView === 'bookmarks' ? 'Bookmarks' : activeView === 'profile' ? 'Profile' : 'Settings'}
               </span>
             </div>
-
-            {activeView === 'inbox' && (
-              <div className="floating-header">
-                <div className={`floating-btn search-btn ${searchOpen ? 'expanded' : ''}`} onClick={searchOpen ? undefined : handleSearchToggle}>
-                  <Search size={20} />
-                  <input
-                    ref={searchRef}
-                    className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
-                    type="text"
-                    placeholder="Search vacancies…"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onBlur={handleSearchBlur}
-                    onKeyDown={(e) => e.key === 'Escape' && handleSearchToggle()}
-                  />
-                  {searchOpen && (
-                    <button className="floating-search-close" onClick={handleSearchToggle} tabIndex={-1}>
-                      <X size={16} />
-                    </button>
-                  )}
-                </div>
-                <JumpToDatePopover
-                  selectedDate={selectedDate}
-                  onDateSelect={setSelectedDate}
-                  availableDates={uniqueDates}
-                />
-              </div>
-            )}
           </div>
+
+          {/* Floating header — search + calendar (desktop: sticky, mobile: in flow) */}
+          {activeView === 'inbox' && (
+            <div className="floating-header">
+              <div className={`floating-btn search-btn ${searchOpen ? 'expanded' : ''}`} onClick={searchOpen ? undefined : handleSearchToggle}>
+                <Search size={20} />
+                <input
+                  ref={searchRef}
+                  className={`floating-search-input ${searchOpen ? 'visible' : ''}`}
+                  type="text"
+                  placeholder="Search vacancies…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onBlur={handleSearchBlur}
+                  onKeyDown={(e) => e.key === 'Escape' && handleSearchToggle()}
+                />
+                {searchOpen && (
+                  <button className="floating-search-close" onClick={handleSearchToggle} tabIndex={-1}>
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+              <JumpToDatePopover
+                selectedDate={selectedDate}
+                onDateSelect={setSelectedDate}
+                availableDates={uniqueDates}
+              />
+            </div>
+          )}
 
           {renderContent()}
         </main>

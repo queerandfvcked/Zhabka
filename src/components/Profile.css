@@ -105,7 +105,7 @@
 .ai-notes-hint {
   font-size: var(--fs-badge);
   color: var(--text-muted);
-  margin-top: var(--space-2);
+  margin-top: var(--space-3);
 }
 
 /* Role chips input */

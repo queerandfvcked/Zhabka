@@ -21,6 +21,16 @@
   pointer-events: none;
 }
 
+/* Unified timeline: vacancies + messages in chronological order */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-5);
+}
+
 .messages-container {
   display: flex;
   flex-direction: column;
