@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import Settings from './components/Settings'
 import JumpToDatePopover from './components/JumpToDatePopover'
 import Toast from './components/Toast'
+import TypewriterText from './components/TypewriterText'
 import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage } from './api'
 import './App.css'
 
@@ -96,6 +97,9 @@ export default function App() {
 
   // Стейт для сообщений чата
   const [messages, setMessages] = useState(loadMessages)
+
+  // Стейт для живого статуса синхронизации
+  const [syncStatus, setSyncStatus] = useState(null)
 
   // Toast state & ref
   const [showToast, setShowToast] = useState(false)
@@ -222,12 +226,16 @@ export default function App() {
       return
     }
 
+    setSyncStatus('Starting sync...')
+
     return new Promise((resolve) => {
       const poll = setInterval(async () => {
         try {
           const status = await getRefreshStatus()
+          if (status.message) setSyncStatus(status.message)
           if (!status.running) {
             clearInterval(poll)
+            setSyncStatus(null)
             const log = status.log || []
             const errors = log.filter((l) => l.includes('ошибкой'))
             const tail = log.slice(-6).join('\n')
@@ -245,10 +253,11 @@ export default function App() {
           }
         } catch {
           clearInterval(poll)
+          setSyncStatus(null)
           setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.', _ts: Date.now() }])
           resolve()
         }
-      }, 3000)
+      }, 2000)
     })
   }, [])
 
@@ -440,6 +449,12 @@ export default function App() {
 
         {isMainInbox && (
           <div className="chat-area">
+            {syncStatus && (
+              <div className="sync-status-bubble">
+                <span className="sync-status-dot" />
+                <TypewriterText text={syncStatus} />
+              </div>
+            )}
             <ChatInput
               onSend={handleChatSend}
               onSync={handleSyncNow}

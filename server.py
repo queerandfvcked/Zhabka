@@ -91,6 +91,7 @@ def save_profile(profile: dict):
 pipeline_state = {
     "running": False,
     "log": [],
+    "message": "",
     "last_finished_at": None,
 }
 
@@ -102,6 +103,7 @@ def _run_pipeline():
     scripts = ["scripts/collect_and_generate.py", "scripts/classify.py"]
     try:
         for script in scripts:
+            pipeline_state["message"] = f"Running {script}..."
             pipeline_state["log"].append(f"--- запускаю {script} ---")
             env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
             proc = subprocess.Popen(
@@ -115,7 +117,9 @@ def _run_pipeline():
                 env=env,
             )
             for line in proc.stdout:
-                pipeline_state["log"].append(line.rstrip())
+                line_clean = line.rstrip()
+                pipeline_state["log"].append(line_clean)
+                pipeline_state["message"] = line_clean
                 if len(pipeline_state["log"]) > 800:
                     pipeline_state["log"] = pipeline_state["log"][-800:]
             proc.wait()
@@ -125,6 +129,7 @@ def _run_pipeline():
                 )
     finally:
         pipeline_state["running"] = False
+        pipeline_state["message"] = ""
         pipeline_state["last_finished_at"] = datetime.now(timezone.utc).isoformat()
 
     # Ставим fetchedAt + batchId на все собранные вакансии
