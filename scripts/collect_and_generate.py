@@ -391,10 +391,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
 
 def main():
+    disabled_raw = os.environ.get("ZHABKA_DISABLED_SOURCES", "[]")
+    disabled_sources = set(json.loads(disabled_raw))
+
     with TelegramClient(SESSION_NAME, API_ID, API_HASH) as client:
         print("Получаю список каналов из папки...")
         channels = get_channels_from_folder(client, FOLDER_LINK)
         print(f"Найдено каналов с публичным username: {len(channels)}")
+
+        if disabled_sources:
+            before = len(channels)
+            channels = [ch for ch in channels if ch["username"] not in disabled_sources]
+            print(f"Исключено выключенных каналов: {before - len(channels)}")
 
         print(f"Собираю посты за последние {HOURS_BACK}ч...")
         posts = collect_posts(client, channels, HOURS_BACK)

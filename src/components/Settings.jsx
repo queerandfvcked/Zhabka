@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Plus } from 'lucide-react'
 import CustomSelect from './CustomSelect'
-import { getSources } from '../api'
+import { getSources, getProfile, saveProfile } from '../api'
 import '../shared/Toggle.css'
 import './Settings.css'
 
@@ -14,15 +14,20 @@ export default function Settings() {
   const [sources, setSources] = useState([])
 
   useEffect(() => {
-    getSources().then((list) => {
-      setSources(list.map((s) => ({ ...s, enabled: true })))
+    Promise.all([getSources(), getProfile()]).then(([srcList, prof]) => {
+      const disabled = new Set(prof?.disabledSources || [])
+      setSources(srcList.map((s) => ({ ...s, enabled: !disabled.has(s.username) })))
     })
   }, [])
 
-  const toggleSource = (username) => {
-    setSources((prev) =>
-      prev.map((s) => (s.username === username ? { ...s, enabled: !s.enabled } : s))
+  const toggleSource = async (username) => {
+    const next = sources.map((s) =>
+      s.username === username ? { ...s, enabled: !s.enabled } : s
     )
+    setSources(next)
+    const disabled = next.filter((s) => !s.enabled).map((s) => s.username)
+    const prof = await getProfile()
+    await saveProfile({ ...(prof || {}), disabledSources: disabled })
   }
 
   const handleAddSource = () => {

@@ -26,6 +26,7 @@ const defaultProfile = {
   hideWithoutSalary: false,
   resume: { filename: null, uploadedAt: null },
   aiNotes: [],
+  disabledSources: [],
 }
 
 const vacancyId = (v) => v.id || v.link

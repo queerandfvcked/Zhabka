@@ -140,12 +140,21 @@ def _run_pipeline():
     # перезапишут vacancies.json только свежесобранным уловом.
     previous_by_id = _load_vacancies_snapshot()
 
+    disabled_sources = []
+    if PROFILE_FILE.exists():
+        with open(PROFILE_FILE, "r", encoding="utf-8") as f:
+            prof = json.load(f)
+        disabled_sources = prof.get("disabledSources", [])
+
     scripts = ["scripts/collect_and_generate.py", "scripts/classify.py"]
+    base_env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    if disabled_sources:
+        base_env["ZHABKA_DISABLED_SOURCES"] = json.dumps(disabled_sources)
     try:
         for script in scripts:
             pipeline_state["message"] = f"Running {script}..."
             pipeline_state["log"].append(f"--- запускаю {script} ---")
-            env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+            env = dict(base_env)
             proc = subprocess.Popen(
                 [sys.executable, script],
                 cwd=str(BASE_DIR),
