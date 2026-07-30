@@ -90,11 +90,11 @@
 }
 
 .floating-btn.search-btn.expanded {
-  width: 320px;
+  width: 360px;
   border-radius: var(--radius-xl);
   justify-content: flex-start;
-  gap: var(--space-3);
-  padding: 0 var(--space-4);
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
   cursor: default;
 }
 
@@ -105,7 +105,8 @@
   outline: none;
   color: var(--text-primary);
   font-size: var(--fs-body);
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   font-family: var(--font-body);
 }
 
@@ -141,6 +142,43 @@
 .floating-search-close:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
+}
+
+.search-match-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.search-nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.12s;
+}
+.search-nav-btn:hover {
+  color: var(--text-primary);
+}
+
+.search-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+mark.search-highlight {
+  background: rgba(127, 178, 255, 0.28);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
 }
 
 /* Date sections */

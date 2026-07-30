@@ -14,24 +14,41 @@ const reasonClass = (type) => {
   return 'reason-warn'
 }
 
-export default function JobCard({ vacancy, onClick }) {
+function highlightText(text, query) {
+  if (!query || !text) return text
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const parts = text.split(new RegExp(`(${escaped})`, 'gi'))
+  return parts.map((part, i) =>
+    part.toLowerCase() === query.toLowerCase()
+      ? <mark key={i} className="search-highlight">{part}</mark>
+      : part
+  )
+}
+
+function hl(value, query) {
+  if (!query) return value
+  return highlightText(value, query)
+}
+
+export default function JobCard({ vacancy, onClick, searchQuery }) {
   const v = vacancy;
+  const q = searchQuery?.trim()
 
   return (
     <div className="card" onClick={onClick}>
       {/* Шапка */}
       <div className="card-meta">
-        <span className="card-channel">@{v.channel_username}</span>
+        <span className="card-channel">@{hl(v.channel_username, q)}</span>
         <span className="card-time">{timeAgo(v.date)}</span>
       </div>
 
       {/* Контентная часть — заменили инлайн стили на класс */}
       <div className="card-header-group">
-        {v.title && <div className="card-title">{v.title}</div>}
+        {v.title && <div className="card-title">{hl(v.title, q)}</div>}
 
         {v.experience?.value && (
           <div className="card-experience">
-            <span>{v.experience.value}</span>
+            <span>{hl(v.experience.value, q)}</span>
             {v.experience.strict === true && (
               <span className="exp-badge exp-required">required</span>
             )}
@@ -48,7 +65,7 @@ export default function JobCard({ vacancy, onClick }) {
           {v.requirements.map((req, i) => (
             <div key={i} className="card-req">
               <span className="card-req-bullet">●</span>
-              <span>{req}</span>
+              <span>{hl(req, q)}</span>
             </div>
           ))}
         </div>
@@ -71,10 +88,10 @@ export default function JobCard({ vacancy, onClick }) {
 
       {/* Подвал */}
       <div className="card-bottom">
-        {v.company && <span className="bottom-company">{v.company}</span>}
+        {v.company && <span className="bottom-company">{hl(v.company, q)}</span>}
         {v.salary && <span className="card-tag">{v.salary}</span>}
-        {v.workFormat && <span className="card-tag">{v.workFormat}</span>}
-        {v.location && <span className="card-tag">{v.location}</span>}
+        {v.workFormat && <span className="card-tag">{hl(v.workFormat, q)}</span>}
+        {v.location && <span className="card-tag">{hl(v.location, q)}</span>}
       </div>
     </div>
   )

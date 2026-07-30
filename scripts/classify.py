@@ -51,7 +51,7 @@ PROFILE_FILE = "profile.json"
 # Версия пайплайна — меняй эту строку при ЛЮБОМ изменении промпта/схемы
 # в этом файле или в resolver.py. Записи с другой версией считаются
 # устаревшими и пересчитываются автоматически, без ручного удаления файла.
-PIPELINE_VERSION = "2026-07-22-v7"
+PIPELINE_VERSION = "2026-07-28-v8"
 
 
 SYSTEM_PROMPT = """Ты — модуль извлечения структуры из постов о вакансиях
@@ -125,6 +125,17 @@ SYSTEM_PROMPT = """Ты — модуль извлечения структуры
      "Бренд-дизайнер", "Иллюстратор", "Моушн-дизайнер", "Полиграфический
      дизайнер" — если профиль явно не просит эти специализации через
      role или aiNotes include, считай их show=false;
+   - ОСОБЕННО ВАЖНО: любые управленческие/владельческие роли —
+     "Product Manager", "Product Owner", "Project Manager", "Program
+     Manager", "PM", "CPO", "Head of Product" и подобные. Слово
+     "Product" в названии НЕ означает совпадение с "Product Designer" —
+     это принципиально разные профессии: управление/координация
+     продукта vs визуальное/UX-проектирование. Не давай слову "Product"
+     само по себе перевешивать очевидный факт, что суть роли —
+     менеджмент, а не дизайн-крафт. Формулировка в духе "Product
+     Management role matches product-focused design skills" — это
+     ошибка рассуждения, которую нужно не допускать: management-роль
+     НЕ matches дизайн-профиль, даже если оба слова "product" совпали.
    - формулировки вроде "требует продуктового мышления" или
      "качественные/количественные исследования" НЕ делают роль
      дизайнерской сами по себе — оценивай именно название и суть роли,
@@ -286,6 +297,29 @@ def normalize_text(text: str) -> str:
 
 BARE_LINK_PATTERN = re.compile(r"^[—\-•]\s*\[[^\]]+\]\(https?://\S+\)\s*$")
 
+NON_DESIGN_ROLE_PATTERN = re.compile(
+    r"\b(product manager|project manager|program manager|product owner|"
+    r"scrum master|delivery manager|business analyst|product analyst|"
+    r"account manager|sales manager|hr\s?manager|marketing manager)\b",
+    re.IGNORECASE,
+)
+
+
+def is_non_design_management_role(title: str, profile: dict) -> bool:
+    """
+    Механическая подстраховка: некоторые менеджерские роли ("Product
+    Manager", "Product Owner" и т.п.) модель иногда путает с дизайном
+    из-за общего слова "Product", несмотря на прямой запрет в промпте
+    (уже дважды так случалось). Отсекаем по названию должности, если
+    только пользователь явно не указал такую роль в своём профиле.
+    """
+    if not title or not NON_DESIGN_ROLE_PATTERN.search(title):
+        return False
+    user_roles = " ".join(profile.get("role", [])).lower()
+    if NON_DESIGN_ROLE_PATTERN.search(user_roles):
+        return False  # пользователь сам ищет такую роль — не отсекаем
+    return True
+
 
 def is_bare_footer_link(v: dict) -> bool:
     """
@@ -436,6 +470,13 @@ def main():
             if is_bare_footer_link(v):
                 print(f"  Пропускаю '{v.get('title')}' — похоже на ссылку "
                       f"из сноски 'другие вакансии', а не реальный пункт")
+                continue
+
+            # Защита от менеджерских ролей (Product Manager/Owner и т.п.),
+            # которые модель иногда путает с дизайном из-за слова "Product".
+            if is_non_design_management_role(v.get("title", ""), profile):
+                print(f"  Пропускаю '{v.get('title')}' — менеджерская роль, "
+                      f"не дизайн (несмотря на слово 'Product' в названии)")
                 continue
 
             v["channel_username"] = post["channel_username"]

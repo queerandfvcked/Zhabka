@@ -103,6 +103,9 @@ export default function App() {
   // Стейт для живого статуса синхронизации
   const [syncStatus, setSyncStatus] = useState(null)
 
+  // Стейт для навигации по поисковым совпадениям
+  const [currentMatchIdx, setCurrentMatchIdx] = useState(0)
+
   // Toast state & ref
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
@@ -148,6 +151,37 @@ export default function App() {
     }
     return list
   }, [vacancies, searchQuery, selectedDate])
+
+  const matchCount = filteredVacancies.length
+
+  useEffect(() => {
+    setCurrentMatchIdx(0)
+  }, [searchQuery])
+
+  const navigateToMatch = useCallback((delta) => {
+    setCurrentMatchIdx((prev) => {
+      const next = prev + delta
+      if (next < 0) return matchCount - 1
+      if (next >= matchCount) return 0
+      return next
+    })
+  }, [matchCount])
+
+  useEffect(() => {
+    const vac = filteredVacancies[currentMatchIdx]
+    if (!vac) return
+    const id = `timeline-item-vac-${vacancyId(vac)}`
+    const el = document.getElementById(id)
+    if (el) {
+      const wrapper = el.closest('.scroll-wrapper')
+      if (wrapper) {
+        const top = el.offsetTop - wrapper.offsetTop - 120
+        wrapper.scrollTo({ top, behavior: 'smooth' })
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+  }, [currentMatchIdx, filteredVacancies])
 
   const timeline = useMemo(() => {
     const items = []
@@ -353,7 +387,7 @@ export default function App() {
         ? vacancies.filter((v) => isBookmarked(v))
         : []
 
-    const renderTimelineItem = (item) => {
+    const renderTimelineItem = (item, idxInTimeline) => {
       if (item.type === 'message') {
         const msg = item.data
         if (msg.type === 'user') {
@@ -377,7 +411,7 @@ export default function App() {
         )
       }
       return (
-        <JobCard vacancy={item.data} onClick={() => handleCardClick(item.data)} />
+        <JobCard vacancy={item.data} onClick={() => handleCardClick(item.data)} searchQuery={searchQuery} />
       )
     }
 
@@ -448,7 +482,7 @@ export default function App() {
                       } else {
                         flushMsgBuffer()
                         elements.push(
-                          <div key={item.id}>{renderTimelineItem(item)}</div>
+                          <div key={item.id} id={`timeline-item-${item.id}`}>{renderTimelineItem(item)}</div>
                         )
                       }
                     })
@@ -542,6 +576,19 @@ export default function App() {
                   onBlur={handleSearchBlur}
                   onKeyDown={(e) => e.key === 'Escape' && handleSearchToggle()}
                 />
+                {searchOpen && searchQuery.trim() && matchCount > 0 && (
+                  <div className="search-nav-controls">
+                    <span className="search-match-count">
+                      {currentMatchIdx + 1}/{matchCount}
+                    </span>
+                    <button className="search-nav-btn" onClick={() => navigateToMatch(-1)} tabIndex={-1} title="Previous match">
+                      ▲
+                    </button>
+                    <button className="search-nav-btn" onClick={() => navigateToMatch(1)} tabIndex={-1} title="Next match">
+                      ▼
+                    </button>
+                  </div>
+                )}
                 {searchOpen && (
                   <button className="floating-search-close" onClick={handleSearchToggle} tabIndex={-1}>
                     <X size={16} />
