@@ -233,3 +233,57 @@
   background: var(--input-bg-alt);
   border-color: var(--input-border);
 }
+/* ==========================================================================
+   Auto Sync Section
+   ========================================================================== */
+.sync-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.sync-header .section-head {
+  margin-bottom: 0;
+}
+
+.sync-desc {
+  font-size: var(--fs-sub);
+  color: var(--text-muted);
+  line-height: var(--lh-sub);
+  margin-bottom: var(--space-5);
+}
+
+.sync-slots-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  padding-top: var(--space-5);
+}
+
+/* Кнопка добавления нового слота */
+.add-time-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 34px;
+  /* Фиксируем 34px под фигмовский автолейаут */
+  padding: var(--space-3) var(--space-5);
+  /* Верх/низ по 8px, как в Hug */
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: var(--fs-sub);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.add-time-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}

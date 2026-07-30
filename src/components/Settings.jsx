@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Plus } from 'lucide-react'
 import CustomSelect from './CustomSelect'
+import CustomTimePicker from './CustomTimePicker'
 import { getSources, getProfile, saveProfile } from '../api'
 import '../shared/Toggle.css'
 import './Settings.css'
@@ -13,10 +14,17 @@ export default function Settings() {
 
   const [sources, setSources] = useState([])
 
+  // Стейты авто-синхронизации
+  const [autoSyncEnabled, setAutoSyncEnabled] = useState(false)
+  const [syncTimes, setSyncTimes] = useState(['09:00', '18:00'])
+
   useEffect(() => {
     Promise.all([getSources(), getProfile()]).then(([srcList, prof]) => {
       const disabled = new Set(prof?.disabledSources || [])
       setSources(srcList.map((s) => ({ ...s, enabled: !disabled.has(s.username) })))
+
+      if (prof?.autoSync !== undefined) setAutoSyncEnabled(prof.autoSync)
+      if (prof?.syncTimes) setSyncTimes(prof.syncTimes)
     })
   }, [])
 
@@ -28,6 +36,35 @@ export default function Settings() {
     const disabled = next.filter((s) => !s.enabled).map((s) => s.username)
     const prof = await getProfile()
     await saveProfile({ ...(prof || {}), disabledSources: disabled })
+  }
+
+  const handleToggleAutoSync = async () => {
+    const nextState = !autoSyncEnabled
+    setAutoSyncEnabled(nextState)
+    const prof = await getProfile()
+    await saveProfile({ ...(prof || {}), autoSync: nextState, syncTimes })
+  }
+
+  const handleTimeChange = async (index, newTime) => {
+    const nextTimes = [...syncTimes]
+    nextTimes[index] = newTime
+    setSyncTimes(nextTimes)
+    const prof = await getProfile()
+    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+  }
+
+  const handleAddTime = async () => {
+    const nextTimes = [...syncTimes, '12:00']
+    setSyncTimes(nextTimes)
+    const prof = await getProfile()
+    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+  }
+
+  const handleRemoveTime = async (index) => {
+    const nextTimes = syncTimes.filter((_, i) => i !== index)
+    setSyncTimes(nextTimes)
+    const prof = await getProfile()
+    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
   }
 
   const handleAddSource = () => {
@@ -64,7 +101,7 @@ export default function Settings() {
       <div className="settings-title">Settings</div>
       <div className="settings-subtitle">App config &amp; sources</div>
 
-      {/* AI Provider */}
+      {/* 1. AI Provider */}
       <div className="settings-card">
         <div className="section-head">AI</div>
         <div className="field-group">
@@ -77,13 +114,21 @@ export default function Settings() {
         </div>
         <div className="field-group" style={{ marginTop: 16 }}>
           <div className="field-label">API Key</div>
-          <input className="custom-input" type="password" placeholder="sk-..." value={apiKey} onChange={(e) => setApiKey(e.target.value)} />
+          <input
+            className="custom-input"
+            type="password"
+            placeholder="sk-..."
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
         </div>
       </div>
 
-      {/* Sources */}
+      {/* 2. Sources */}
       <div className="settings-card">
-        <div className="section-head">Sources <span className="source-count-badge">{sourceCount}</span></div>
+        <div className="section-head">
+          Sources <span className="source-count-badge">{sourceCount}</span>
+        </div>
 
         <div className="add-source-row">
           <input
@@ -94,7 +139,11 @@ export default function Settings() {
             onChange={(e) => setNewSource(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button className="add-source-btn" onClick={handleAddSource} disabled={!newSource.trim()}>
+          <button
+            className="add-source-btn"
+            onClick={handleAddSource}
+            disabled={!newSource.trim()}
+          >
             <Plus size={18} />
             <span>Add</span>
           </button>
@@ -113,7 +162,11 @@ export default function Settings() {
             <div className="source-empty">No sources match your search.</div>
           ) : (
             filteredSources.map((s) => (
-              <div key={s.username} className={`source-item ${!s.enabled ? 'disabled' : ''}`} onClick={() => toggleSource(s.username)}>
+              <div
+                key={s.username}
+                className={`source-item ${!s.enabled ? 'disabled' : ''}`}
+                onClick={() => toggleSource(s.username)}
+              >
                 <div className={`toggle ${s.enabled ? 'on' : ''}`}>
                   <div className="toggle-knob" />
                 </div>
@@ -123,6 +176,40 @@ export default function Settings() {
             ))
           )}
         </div>
+      </div>
+
+      {/* 3. Auto Synchronization (теперь в самом конце) */}
+      <div className="settings-card">
+        <div className="sync-header">
+          <div className="section-head" style={{ marginBottom: 0 }}>
+            Auto Synchronization
+          </div>
+          <div
+            className={`toggle ${autoSyncEnabled ? 'on' : ''}`}
+            onClick={handleToggleAutoSync}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="toggle-knob" />
+          </div>
+        </div>
+
+        {autoSyncEnabled && (
+          <div className="sync-slots-container">
+            {syncTimes.map((time, idx) => (
+              <CustomTimePicker
+                key={idx}
+                value={time}
+                onChange={(newTime) => handleTimeChange(idx, newTime)}
+                onRemove={() => handleRemoveTime(idx)}
+                canRemove={syncTimes.length > 1}
+              />
+            ))}
+
+            <button className="add-time-btn" onClick={handleAddTime}>
+              <Plus size={14} /> Add time
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
