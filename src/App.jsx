@@ -149,25 +149,41 @@ export default function App() {
 
   const timeline = useMemo(() => {
     const items = []
+
+    // 1. Сообщения
     messages.forEach((msg, i) => {
+      const rawTime = msg._ts || msg.timestamp || msg.createdAt
+      let ms = typeof rawTime === 'number' ? rawTime : new Date(rawTime).getTime()
+
+      if (isNaN(ms) || !rawTime) {
+        ms = 0
+      }
+
       items.push({
         id: `msg-${msg._ts || i}`,
         type: 'message',
-        sortTime: new Date(msg._ts || Date.now()),
+        sortTime: new Date(ms), // Передаем обратно полноценный Date
         data: msg,
       })
     })
+
+    // 2. Вакансии
     filteredVacancies.forEach((vac) => {
+      const rawDate = vac.fetchedAt || vac.date
+      const ms = new Date(rawDate).getTime()
+
       items.push({
         id: `vac-${vacancyId(vac)}`,
         type: 'vacancy',
-        sortTime: new Date(vac.fetchedAt || vac.date),
+        sortTime: new Date(isNaN(ms) ? 0 : ms), // Передаем обратно полноценный Date
         data: vac,
       })
     })
-    return items.sort((a, b) => a.sortTime - b.sortTime)
-  }, [messages, filteredVacancies])
 
+    // 3. Сортировка через .getTime() (гарантирует корректное сравнение чисел)
+    return items.sort((a, b) => a.sortTime.getTime() - b.sortTime.getTime())
+  }, [messages, filteredVacancies])
+  
   const markSeen = useCallback((v) => {
     const id = vacancyId(v)
     setSeenIds((prev) => {

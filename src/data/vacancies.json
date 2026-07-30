@@ -765,5 +765,83 @@
     "id": "72fe787db97aee23",
     "fetchedAt": "2026-07-29T01:09:23.468843+00:00",
     "batchId": "2026-07-29T01:09:23.468843+00:00"
+  },
+  {
+    "title": "Product Designer Platform",
+    "company": "Revolut",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "И еще [вакансия](https://www.revolut.com/careers/position/product-designer-platform-1182efdd-0355-4b8e-8d09-975f04aef43b/)\n[Full details from вакансия]:",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check requirements"
+        }
+      ]
+    },
+    "channel_username": "sweetmartinvacancies",
+    "channel_title": "сладенькие вакансии в дизайне",
+    "date": "2026-07-29T16:42:08+00:00",
+    "link": "https://t.me/sweetmartinvacancies/1042",
+    "original_text": "Revolut ещё вакансии\n\nИщут 3+ года опыта работы. \n\nВыделяют плюсом:  \n• техническое образование;\n• умение программировать;\n• опыт создания дизайн-систем;\n• опыт работы в быстрорастущем стартапе. \n\nИнтересно, конечно, что уже просят опыт программирования 👀\n\n\nДенежки\n\nДля Польши указано: 13 200–38 300** PLN gross в месяц.**\n\nЭто примерно:\n\n• **≈ 285–830 тыс. ₽ gross в месяц** (в зависимости от курса и уровня).\n\nДля остальных стран зарплата обсуждается индивидуально.\n\n\nЧто за команда — не указали :(\n\n\n[Вакансия](https://www.revolut.com/careers/position/product-designer-3c464d62-846f-49eb-81a3-67747a9b8cfd/)\n\nИ еще [вакансия](https://www.revolut.com/careers/position/product-designer-platform-1182efdd-0355-4b8e-8d09-975f04aef43b/), в продукт платформа \n\n\nГлобально, я не знаю советовать вам идти работать в револют или нет, но решать вам. Плата, револют — имеют схожий вайб. Моим знакомым там не понравилось. Другим знакомым понравилось, но была прямая цитата «нужно быть перфекционистом». Любить много работать, хотеть много работать. \n\nСкоро уже на своем канале напишу про опыт собеседований в револют, какой там был вайб и тд. \n\nА так, все мы разные и каждому свое — не спорю))",
+    "pipeline_version": "2026-07-22-v7",
+    "id": "d530e861c03e38ad",
+    "fetchedAt": "2026-07-29T23:59:13.366058+00:00",
+    "batchId": "2026-07-29T23:59:13.366058+00:00"
+  },
+  {
+    "title": "UX/UI Designer (трайб Digital)",
+    "company": "ОТП Банк",
+    "salary": null,
+    "experience": {
+      "value": "3-6 лет",
+      "strict": false
+    },
+    "workFormat": "Remote",
+    "location": "Москва",
+    "requirements": [
+      "Уверенное владение Figma и другими инструментами для прототипирования и дизайна",
+      "Опыт проектирования для мобильных платформ и веб-приложений",
+      "Знание работы с инструментами и сервисами: iOS, Android, Web, а также Figma, графические и текстовые AI инструменты"
+    ],
+    "sourceExcerpt": "— [UX/UI Designer ОТП Банк](https://hh.ru/vacancy/135057290)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote format"
+        },
+        {
+          "type": "warn",
+          "text": "3-6 years experience mentioned, but strictness is not explicitly stated in text"
+        }
+      ]
+    },
+    "channel_username": "vitrinajobs",
+    "channel_title": "витрина | vitrina.jobs",
+    "date": "2026-07-29T16:05:26+00:00",
+    "link": "https://t.me/vitrinajobs/7420",
+    "original_text": "Вы просили, а мы собрали 11 вакансий на полной удалёнке 💻\n\n__Смотрим!__\n\n**При отклике укажите, пожалуйста, что вы от витрины | ****vitrina.jobs** 🖱\n\n— [Ассистент в образовательные DS-проекты Авито](https://career.avito.com/vacancies/data-science/20047/)\n— [Старший веб-дизайнер в Яндекс Практикум](https://yandex.ru/jobs/vacancies/starshiy-veb-dizayner-v-praktikum-46779)\n— [Менеджер по кросс-маркетингу Гемотест](https://hh.ru/vacancy/135551433)\n— [Менеджер по маркетплейсам с функцией аналитика Альпина](https://hh.ru/vacancy/135588480)\n— [CRM-маркетолог Циан](https://hh.ru/vacancy/135658736)\n— [Product Manager Юрент](https://hh.ru/vacancy/131814263)\n— [Marketing Lead ЛАНИТ](https://hh.ru/vacancy/135230596)\n— [Аккаунт Менеджер Островок!](https://hh.ru/vacancy/134761677)\n— [SEO-специалист VK](https://team.vk.company/vacancy/46269/)\n— [UX/UI Designer ОТП Банк](https://hh.ru/vacancy/135057290)\n— [Графический дизайнер Золотое Яблоко](https://job.goldapple.ru/vacancy/6a44c7ed731e036dab61f512-graficheskijj-dizajjner)\n\n[Разместить свою вакансию\n](https://vitrina.jobs/main#rec637981865)\n[Пройти опрос по карьерным предпочтениям](https://t.me/vitrinaroles_bot)\n\n#дайджест_витрина",
+    "pipeline_version": "2026-07-22-v7",
+    "id": "68180637a60c6327",
+    "fetchedAt": "2026-07-29T23:59:13.366058+00:00",
+    "batchId": "2026-07-29T23:59:13.366058+00:00"
   }
 ]

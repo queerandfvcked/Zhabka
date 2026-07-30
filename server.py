@@ -96,9 +96,27 @@ pipeline_state = {
 }
 
 
+def _vacancy_id(vac: dict) -> str:
+    return vac.get("id") or vac.get("link")
+
+
+def _load_vacancies_snapshot() -> dict:
+    """id -> vac, для того что лежало в файле ДО запуска скриптов."""
+    if not VACANCIES_FILE.exists():
+        return {}
+    with open(VACANCIES_FILE, "r", encoding="utf-8") as f:
+        vacs = json.load(f)
+    return {_vacancy_id(v): v for v in vacs if _vacancy_id(v)}
+
+
 def _run_pipeline():
     pipeline_state["running"] = True
     pipeline_state["log"] = []
+
+    # Снэпшот ДО запуска — нужен, чтобы после мёржа не потерять старые
+    # вакансии и не перештамповать им fetchedAt, даже если скрипты
+    # перезапишут vacancies.json только свежесобранным уловом.
+    previous_by_id = _load_vacancies_snapshot()
 
     scripts = ["scripts/collect_and_generate.py", "scripts/classify.py"]
     try:
@@ -132,16 +150,39 @@ def _run_pipeline():
         pipeline_state["message"] = ""
         pipeline_state["last_finished_at"] = datetime.now(timezone.utc).isoformat()
 
-    # Ставим fetchedAt + batchId на все собранные вакансии
+    # Мёржим то, что скрипты записали в vacancies.json, со снэпшотом,
+    # снятым до запуска. Так:
+    #  - у вакансий, которые уже были и остаются — fetchedAt/batchId
+    #    НЕ трогаем (иначе они каждый раз "молодеют" и перескакивают
+    #    в конец таймлайна, выше более ранних сообщений в чате);
+    #  - у по-настоящему новых вакансий — проставляем текущее время;
+    #  - вакансии, которые были раньше, но скрипт их в этот раз не
+    #    вернул (например classify.py отсеял как несовпадение), не
+    #    теряются — остаются в файле с прежним fetchedAt.
     if VACANCIES_FILE.exists():
         now_iso = datetime.now(timezone.utc).isoformat()
         with open(VACANCIES_FILE, "r", encoding="utf-8") as f:
-            vacs = json.load(f)
-        for vac in vacs:
-            vac["fetchedAt"] = now_iso
-            vac["batchId"] = now_iso
+            fresh_vacs = json.load(f)
+
+        merged_by_id = dict(previous_by_id)  # стартуем со старого снэпшота
+        for vac in fresh_vacs:
+            vid = _vacancy_id(vac)
+            if not vid:
+                continue
+            if vid in previous_by_id:
+                # уже видели — сохраняем исходные fetchedAt/batchId,
+                # но подхватываем остальные поля на случай, если
+                # classify.py их обновил (например verdict/reasons)
+                old = previous_by_id[vid]
+                merged = {**vac, "fetchedAt": old.get("fetchedAt", now_iso),
+                          "batchId": old.get("batchId", now_iso)}
+            else:
+                merged = {**vac, "fetchedAt": now_iso, "batchId": now_iso}
+            merged_by_id[vid] = merged
+
+        merged_vacs = list(merged_by_id.values())
         with open(VACANCIES_FILE, "w", encoding="utf-8") as f:
-            json.dump(vacs, f, ensure_ascii=False, indent=2)
+            json.dump(merged_vacs, f, ensure_ascii=False, indent=2)
 
 
 @app.post("/refresh")
