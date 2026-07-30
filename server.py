@@ -33,6 +33,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 PROFILE_FILE = BASE_DIR / "profile.json"
 VACANCIES_FILE = BASE_DIR / "src" / "data" / "vacancies.json"
+SOURCES_FILE = BASE_DIR / "src" / "data" / "sources.json"
 RESUME_DIR = BASE_DIR / "uploads"
 RESUME_DIR.mkdir(exist_ok=True)
 
@@ -67,6 +68,27 @@ def get_vacancies():
     for vac in vacs:
         vac.setdefault("fetchedAt", mtime)
     return vacs
+
+
+# ---------- GET /sources ----------
+
+@app.get("/sources")
+def get_sources():
+    if not SOURCES_FILE.exists():
+        return []
+    with open(SOURCES_FILE, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+
+    # merge with vacancy counts
+    counts = {}
+    if VACANCIES_FILE.exists():
+        with open(VACANCIES_FILE, "r", encoding="utf-8") as f:
+            for v in json.load(f):
+                u = v.get("channel_username")
+                if u:
+                    counts[u] = counts.get(u, 0) + 1
+
+    return [{**s, "count": counts.get(s.get("username"), 0)} for s in raw]
 
 
 # ---------- GET/POST /profile ----------

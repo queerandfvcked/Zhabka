@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Plus } from 'lucide-react'
 import CustomSelect from './CustomSelect'
-import vacancies from '../data/vacancies.json'
+import { getSources } from '../api'
 import '../shared/Toggle.css'
 import './Settings.css'
 
@@ -11,21 +11,13 @@ export default function Settings() {
   const [sourceSearch, setSourceSearch] = useState('')
   const [newSource, setNewSource] = useState('')
 
-  const [sources, setSources] = useState(() => {
-    const map = new Map()
-    vacancies.forEach((v) => {
-      if (!map.has(v.channel_username)) {
-        map.set(v.channel_username, {
-          username: v.channel_username,
-          title: v.channel_title,
-          enabled: true,
-          count: 0,
-        })
-      }
-      map.get(v.channel_username).count++
+  const [sources, setSources] = useState([])
+
+  useEffect(() => {
+    getSources().then((list) => {
+      setSources(list.map((s) => ({ ...s, enabled: true })))
     })
-    return Array.from(map.values())
-  })
+  }, [])
 
   const toggleSource = (username) => {
     setSources((prev) =>

@@ -9,7 +9,7 @@ import Settings from './components/Settings'
 import JumpToDatePopover from './components/JumpToDatePopover'
 import Toast from './components/Toast'
 import TypewriterText from './components/TypewriterText'
-import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage } from './api'
+import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage, getSources } from './api'
 import './App.css'
 
 const SEEN_KEY = 'zhabka:seenIds'
@@ -94,6 +94,7 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
   const [vacancies, setVacancies] = useState([])
+  const [sources, setSources] = useState([])
 
   // Стейт для сообщений чата
   const [messages, setMessages] = useState(loadMessages)
@@ -200,6 +201,10 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    getSources().then(setSources)
+  }, [])
+
+  useEffect(() => {
     saveMessages(messages)
   }, [messages])
 
@@ -288,7 +293,7 @@ export default function App() {
     })
   }
 
-  const activeSources = 7
+  const activeSources = sources.length
 
   const handleSearchToggle = () => {
     setSearchOpen((prev) => {

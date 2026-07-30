@@ -5,6 +5,11 @@ export async function getVacancies() {
   return res.json()
 }
 
+export async function getSources() {
+  const res = await fetch(`${API_BASE}/sources`)
+  return res.json()
+}
+
 export async function getProfile() {
   const res = await fetch(`${API_BASE}/profile`)
   return res.json()
