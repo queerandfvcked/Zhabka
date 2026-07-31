@@ -27,6 +27,7 @@ import requests
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
@@ -42,6 +43,10 @@ DEFAULT_GEMINI_API_KEY = os.getenv("GCP_API_KEY")
 MODEL_NAME = "gemini-3.1-flash-lite"  # держи синхронно с classify.py
 
 app = FastAPI()
+
+# Отдаём загруженные файлы (резюме) по HTTP, чтобы фронтенд мог
+# открыть PDF в новой вкладке.
+app.mount("/uploads", StaticFiles(directory=str(RESUME_DIR)), name="uploads")
 
 # Vite dev server и FastAPI — разные порты, нужен CORS, иначе браузер
 # заблокирует запросы с фронтенда к этому серверу.
@@ -283,11 +288,12 @@ async def upload_resume(file: UploadFile = File(...)):
     profile["resume"] = {
         "filename": file.filename,
         "uploadedAt": datetime.now(timezone.utc).isoformat(),
+        "url": "/uploads/resume.pdf",
     }
     with open(PROFILE_FILE, "w", encoding="utf-8") as f:
         json.dump(profile, f, ensure_ascii=False, indent=2)
 
-    return {"status": "saved", "filename": file.filename}
+    return {"status": "saved", "filename": file.filename, "url": "/uploads/resume.pdf"}
 
 
 # ---------- POST /chat — обновление профиля через диалог ----------

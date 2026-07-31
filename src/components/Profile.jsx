@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { FileText, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
+import { uploadResume, API_BASE } from '../api'
 import '../shared/Toggle.css'
 import './Profile.css'
 
@@ -26,6 +27,31 @@ const noteColors = { exclude: 'bad', include: 'good', condition: 'warn' }
 export default function Profile({ profile, onUpdate }) {
   const { filled, total } = completenessInfo(profile)
   const [roleInput, setRoleInput] = useState('')
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef(null)
+
+  const handleResumeClick = () => fileRef.current?.click()
+
+  const handleResumeUpload = async (e) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file || file.type !== 'application/pdf') return
+    setUploading(true)
+    try {
+      const result = await uploadResume(file)
+      onUpdate({
+        resume: {
+          filename: result.filename,
+          uploadedAt: new Date().toISOString(),
+          url: result.url || '/uploads/resume.pdf',
+        },
+      })
+    } catch {
+      setUploading(false)
+      return
+    }
+    setUploading(false)
+  }
 
   const toggleWF = (key) =>
     onUpdate({ workFormat: { ...profile.workFormat, [key]: !profile.workFormat[key] } })
@@ -52,22 +78,63 @@ export default function Profile({ profile, onUpdate }) {
       {/* Resume */}
       <div className="section">
         <div className="section-head">Resume</div>
-        <div className="resume-area">
+        <div className={`resume-area ${uploading ? 'uploading' : ''}`}>
           {profile.resume.filename ? (
             <>
               <div className="resume-name">
                 <FileText size={16} />
-                <span>{profile.resume.filename}</span>
+                {/* Делаем название кликабельным */}
+                <a
+                  href={`${API_BASE}${profile.resume.url || '/uploads/resume.pdf'}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume-filename-link"
+                  title="Open resume in new tab"
+                >
+                  {uploading ? 'Uploading…' : profile.resume.filename}
+                </a>
               </div>
-              <button className="resume-replace">Replace</button>
+
+              <div className="resume-actions">
+                <button
+                  type="button"
+                  className="resume-replace"
+                  onClick={handleResumeClick}
+                  disabled={uploading}
+                >
+                  Replace
+                </button>
+
+                <button
+                  type="button"
+                  className="resume-delete"
+                  onClick={() => onUpdate({ resume: { filename: null, uploadedAt: null, url: null } })}
+                  title="Remove resume"
+                  disabled={uploading}
+                >
+                  <X size={14} />
+                </button>
+              </div>
             </>
           ) : (
-            <div className="resume-empty">
+            <div
+              className="resume-empty"
+              onClick={!uploading ? handleResumeClick : undefined}
+              role="button"
+              tabIndex={0}
+            >
               <FileText size={16} />
-              <span>No resume uploaded</span>
+              <span>{uploading ? 'Uploading…' : 'Upload resume (PDF)'}</span>
             </div>
           )}
         </div>
+        <input
+          ref={fileRef}
+          type="file"
+          accept=".pdf,application/pdf"
+          className="file-input-hidden"
+          onChange={handleResumeUpload}
+        />
       </div>
 
       {/* AI Notes — read-only typed */}

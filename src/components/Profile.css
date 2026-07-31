@@ -49,6 +49,14 @@
   gap: var(--space-4);
   font-size: var(--fs-body);
   color: var(--text-primary);
+  overflow: hidden;
+}
+
+.resume-filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .resume-empty {
@@ -57,6 +65,15 @@
   gap: var(--space-4);
   font-size: var(--fs-body);
   color: var(--text-muted);
+  width: 100%;
+  cursor: pointer;
+}
+
+.resume-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .resume-replace {
@@ -65,10 +82,58 @@
   cursor: pointer;
   background: none;
   border: none;
+  padding: 0;
+  transition: color 0.15s;
 }
 
 .resume-replace:hover {
   color: var(--accent-strong);
+}
+
+.resume-replace:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.resume-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+}
+
+.resume-delete:hover {
+  color: var(--bad);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.resume-delete:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.resume-area.uploading {
+  opacity: 0.7;
+}
+
+.resume-filename-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+  transition: color 0.15s;
+}
+
+.resume-filename-link:hover {
+  color: var(--accent);
 }
 
 /* AI Notes */

@@ -16,8 +16,8 @@
   "minSalary": null,
   "currency": "RUB",
   "resume": {
-    "filename": null,
-    "uploadedAt": null
+    "filename": "resume_ru.pdf",
+    "uploadedAt": "2026-07-31T18:34:02.394403+00:00"
   },
   "aiNotes": [
     {
@@ -49,7 +49,7 @@
       "text": "If a posting is graded '3-6 years' (e.g. on hh.ru) but the requirements text does not explicitly say commercial/professional experience is mandatory, treat experience as not strict and show the vacancy if skills otherwise match."
     }
   ],
-  "autoSync": false,
+  "autoSync": true,
   "syncTimes": [
     "12:00"
   ],
