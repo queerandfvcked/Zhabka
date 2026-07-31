@@ -263,6 +263,17 @@
   100% { transform: scale(0.8); opacity: 0.5; }
 }
 
+.sync-status-bubble.error {
+  border-color: rgba(255, 80, 80, 0.3);
+  background: rgba(255, 80, 80, 0.08);
+  color: var(--text-primary);
+}
+
+.sync-status-dot.error {
+  background: #ff5050;
+  animation: none;
+}
+
 /* Hidden file input */
 .file-input-hidden {
   display: none;

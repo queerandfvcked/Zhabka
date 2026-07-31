@@ -103,6 +103,9 @@ export default function App() {
   // Стейт для живого статуса синхронизации
   const [syncStatus, setSyncStatus] = useState(null)
 
+  // Стейт для ошибок AI (неверный ключ, таймаут и т.п.)
+  const [aiError, setAiError] = useState(null)
+
   // Стейт для навигации по поисковым совпадениям
   const [currentMatchIdx, setCurrentMatchIdx] = useState(0)
 
@@ -265,9 +268,21 @@ export default function App() {
 
   const handleChatSend = useCallback(async (message) => {
     setMessages((prev) => [...prev, { type: 'user', text: message, _ts: Date.now() }])
-    const result = await sendChatMessage(message)
-    if (result.profile) setProfile(result.profile)
-    setMessages((prev) => [...prev, { type: 'ai', text: result.reply, _ts: Date.now() }])
+    try {
+      const result = await sendChatMessage(message)
+      if (result.error) {
+        setAiError(`AI error: ${result.error}`)
+        setTimeout(() => setAiError(null), 8000)
+      } else {
+        setAiError(null)
+      }
+      if (result.profile) setProfile(result.profile)
+      setMessages((prev) => [...prev, { type: 'ai', text: result.reply, _ts: Date.now() }])
+    } catch {
+      setAiError('AI request failed — is the backend running?')
+      setTimeout(() => setAiError(null), 8000)
+      setMessages((prev) => [...prev, { type: 'ai', text: 'Network error — try again later.', _ts: Date.now() }])
+    }
   }, [])
 
   const handleSyncNow = useCallback(async () => {
@@ -374,7 +389,7 @@ export default function App() {
       return (
         <div className="scroll-wrapper">
           <div className="view-page">
-            <Settings />
+            <Settings onToast={triggerToast} />
           </div>
         </div>
       )
@@ -509,6 +524,12 @@ export default function App() {
               <div className="sync-status-bubble">
                 <span className="sync-status-dot" />
                 <TypewriterText text={syncStatus} />
+              </div>
+            )}
+            {aiError && (
+              <div className="sync-status-bubble error">
+                <span className="sync-status-dot error" />
+                {aiError}
               </div>
             )}
             <ChatInput

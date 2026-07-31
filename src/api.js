@@ -52,3 +52,17 @@ export async function uploadResume(file) {
   })
   return res.json()
 }
+
+export async function getAiConfig() {
+  const res = await fetch(`${API_BASE}/ai-config`)
+  return res.json()
+}
+
+export async function saveAiConfig(config) {
+  const res = await fetch(`${API_BASE}/ai-config`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(config),
+  })
+  return res.json()
+}

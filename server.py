@@ -32,17 +32,14 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
 PROFILE_FILE = BASE_DIR / "profile.json"
+AI_CONFIG_FILE = BASE_DIR / "ai_config.json"
 VACANCIES_FILE = BASE_DIR / "src" / "data" / "vacancies.json"
 SOURCES_FILE = BASE_DIR / "src" / "data" / "sources.json"
 RESUME_DIR = BASE_DIR / "uploads"
 RESUME_DIR.mkdir(exist_ok=True)
 
-GEMINI_API_KEY = os.getenv("GCP_API_KEY")
+DEFAULT_GEMINI_API_KEY = os.getenv("GCP_API_KEY")
 MODEL_NAME = "gemini-3.1-flash-lite"  # держи синхронно с classify.py
-GEMINI_URL = (
-    f"https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
-)
 
 app = FastAPI()
 
@@ -108,6 +105,41 @@ def save_profile(profile: dict):
     return {"status": "saved"}
 
 
+# ---------- GET/POST /ai-config — отдельно от profile ----------
+
+def _load_ai_config() -> dict:
+    """Load ai_config.json with migration from profile.json."""
+    if AI_CONFIG_FILE.exists():
+        with open(AI_CONFIG_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    # migrate from legacy profile.json fields
+    if PROFILE_FILE.exists():
+        with open(PROFILE_FILE, "r", encoding="utf-8") as f:
+            prof = json.load(f)
+        migrated = {}
+        if "provider" in prof:
+            migrated["provider"] = prof["provider"]
+        if "apiKey" in prof:
+            migrated["apiKey"] = prof["apiKey"]
+        if migrated:
+            with open(AI_CONFIG_FILE, "w", encoding="utf-8") as f:
+                json.dump(migrated, f, ensure_ascii=False, indent=2)
+            return migrated
+    return {"provider": "Gemini", "apiKey": ""}
+
+
+@app.get("/ai-config")
+def get_ai_config():
+    return _load_ai_config()
+
+
+@app.post("/ai-config")
+def save_ai_config(ai_config: dict):
+    with open(AI_CONFIG_FILE, "w", encoding="utf-8") as f:
+        json.dump(ai_config, f, ensure_ascii=False, indent=2)
+    return {"status": "saved"}
+
+
 # ---------- POST /refresh — запуск пайплайна в фоне ----------
 
 pipeline_state = {
@@ -140,16 +172,21 @@ def _run_pipeline():
     # перезапишут vacancies.json только свежесобранным уловом.
     previous_by_id = _load_vacancies_snapshot()
 
-    disabled_sources = []
+    prof = {}
     if PROFILE_FILE.exists():
         with open(PROFILE_FILE, "r", encoding="utf-8") as f:
             prof = json.load(f)
-        disabled_sources = prof.get("disabledSources", [])
+
+    disabled_sources = prof.get("disabledSources", [])
+    ai_config = _load_ai_config()
+    saved_api_key = ai_config.get("apiKey") or ""
 
     scripts = ["scripts/collect_and_generate.py", "scripts/classify.py"]
     base_env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
     if disabled_sources:
         base_env["ZHABKA_DISABLED_SOURCES"] = json.dumps(disabled_sources)
+    if saved_api_key:
+        base_env["GCP_API_KEY"] = saved_api_key
     try:
         for script in scripts:
             pipeline_state["message"] = f"Running {script}..."
@@ -285,38 +322,110 @@ CHAT_SYSTEM_PROMPT = """Ты помогаешь обновлять профил�
 """
 
 
-def _call_gemini_chat(profile: dict, message: str) -> dict:
+def _load_provider_config():
+    try:
+        return _load_ai_config()
+    except Exception:
+        return {}
+
+
+def _call_ai_chat(profile: dict, message: str) -> dict:
+    pconf = _load_provider_config()
+    provider = pconf.get("provider", "Gemini")
+    api_key = pconf.get("apiKey") or DEFAULT_GEMINI_API_KEY
+
     user_content = (
         f"ТЕКУЩИЙ ПРОФИЛЬ:\n{json.dumps(profile, ensure_ascii=False)}\n\n"
         f"СООБЩЕНИЕ ПОЛЬЗОВАТЕЛЯ:\n{message}"
     )
-    payload = {
-        "systemInstruction": {"parts": [{"text": CHAT_SYSTEM_PROMPT}]},
-        "contents": [{"role": "user", "parts": [{"text": user_content}]}],
-        "generationConfig": {"responseMimeType": "application/json"},
-    }
 
-    for attempt in range(3):
+    last_error = ""
+    for attempt in range(0, 3):
         try:
-            resp = requests.post(GEMINI_URL, json=payload, timeout=20)
-        except requests.exceptions.RequestException:
-            time.sleep(3)
-            continue
+            if provider == "Gemini":
+                url = (
+                    f"https://generativelanguage.googleapis.com/v1beta/models/"
+                    f"{MODEL_NAME}:generateContent?key={api_key}"
+                )
+                payload = {
+                    "systemInstruction": {"parts": [{"text": CHAT_SYSTEM_PROMPT}]},
+                    "contents": [{"role": "user", "parts": [{"text": user_content}]}],
+                    "generationConfig": {"responseMimeType": "application/json"},
+                }
+                resp = requests.post(url, json=payload, timeout=20)
+                if resp.status_code != 200:
+                    raise Exception(f"Gemini API error {resp.status_code}: {resp.text[:200]}")
+                data = resp.json()
+                raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
 
-        if resp.status_code == 200:
-            data = resp.json()
-            raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
+            elif provider == "OpenRouter":
+                url = "https://openrouter.ai/api/v1/chat/completions"
+                headers = {"Authorization": f"Bearer {api_key}"}
+                payload = {
+                    "model": "google/gemini-3.1-flash-lite",
+                    "messages": [
+                        {"role": "system", "content": CHAT_SYSTEM_PROMPT},
+                        {"role": "user", "content": user_content},
+                    ],
+                    "response_format": {"type": "json_object"},
+                }
+                resp = requests.post(url, json=payload, headers=headers, timeout=20)
+                if resp.status_code != 200:
+                    raise Exception(f"OpenRouter error {resp.status_code}: {resp.text[:200]}")
+                raw_text = resp.json()["choices"][0]["message"]["content"]
+
+            elif provider == "OpenAI":
+                url = "https://api.openai.com/v1/chat/completions"
+                headers = {"Authorization": f"Bearer {api_key}"}
+                payload = {
+                    "model": "gpt-4o-mini",
+                    "messages": [
+                        {"role": "system", "content": CHAT_SYSTEM_PROMPT},
+                        {"role": "user", "content": user_content},
+                    ],
+                    "response_format": {"type": "json_object"},
+                }
+                resp = requests.post(url, json=payload, headers=headers, timeout=20)
+                if resp.status_code != 200:
+                    raise Exception(f"OpenAI error {resp.status_code}: {resp.text[:200]}")
+                raw_text = resp.json()["choices"][0]["message"]["content"]
+
+            elif provider == "Anthropic":
+                url = "https://api.anthropic.com/v1/messages"
+                headers = {
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                }
+                payload = {
+                    "model": "claude-sonnet-4-20250514",
+                    "max_tokens": 2048,
+                    "system": CHAT_SYSTEM_PROMPT,
+                    "messages": [{"role": "user", "content": user_content}],
+                }
+                resp = requests.post(url, json=payload, headers=headers, timeout=20)
+                if resp.status_code != 200:
+                    raise Exception(f"Anthropic error {resp.status_code}: {resp.text[:200]}")
+                raw_text = resp.json()["content"][0]["text"]
+
+            else:
+                raise Exception(f"Unknown provider: {provider}")
+
             decoder = json.JSONDecoder()
             parsed, _ = decoder.raw_decode(raw_text.strip())
             return parsed
 
-        if resp.status_code == 429:
-            time.sleep(5)
+        except requests.exceptions.RequestException as e:
+            last_error = f"Connection error: {e}"
+            time.sleep(3)
+            continue
+        except Exception as e:
+            last_error = str(e) if str(e) else "Unknown error"
+            if attempt == 2:
+                break
+            time.sleep(3)
             continue
 
-        break
-
-    return {"profile_patch": {}, "reply": "Sorry, something went wrong — try again."}
+    return {"error": last_error, "profile_patch": {}, "reply": "Sorry, something went wrong — try again."}
 
 
 @app.post("/chat")
@@ -330,7 +439,7 @@ def chat(payload: dict):
         with open(PROFILE_FILE, "r", encoding="utf-8") as f:
             profile = json.load(f)
 
-    result = _call_gemini_chat(profile, message)
+    result = _call_ai_chat(profile, message)
     patch = result.get("profile_patch", {}) or {}
 
     if patch:

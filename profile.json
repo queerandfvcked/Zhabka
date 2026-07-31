@@ -49,9 +49,11 @@
       "text": "If a posting is graded '3-6 years' (e.g. on hh.ru) but the requirements text does not explicitly say commercial/professional experience is mandatory, treat experience as not strict and show the vacancy if skills otherwise match."
     }
   ],
-  "autoSync": true,
+  "autoSync": false,
   "syncTimes": [
     "12:00"
   ],
-  "salaryCurrency": "₽"
+  "salaryCurrency": "₽",
+  "provider": "Gemini",
+  "apiKey": ""
 }

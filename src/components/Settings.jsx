@@ -2,11 +2,11 @@ import { useState, useMemo, useEffect } from 'react'
 import { Plus } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import CustomTimePicker from './CustomTimePicker'
-import { getSources, getProfile, saveProfile } from '../api'
+import { getSources, getProfile, saveProfile, getAiConfig, saveAiConfig } from '../api'
 import '../shared/Toggle.css'
 import './Settings.css'
 
-export default function Settings() {
+export default function Settings({ onToast }) {
   const [provider, setProvider] = useState('OpenRouter')
   const [apiKey, setApiKey] = useState('')
   const [sourceSearch, setSourceSearch] = useState('')
@@ -19,12 +19,14 @@ export default function Settings() {
   const [syncTimes, setSyncTimes] = useState(['09:00', '18:00'])
 
   useEffect(() => {
-    Promise.all([getSources(), getProfile()]).then(([srcList, prof]) => {
+    Promise.all([getSources(), getProfile(), getAiConfig()]).then(([srcList, prof, ai]) => {
       const disabled = new Set(prof?.disabledSources || [])
       setSources(srcList.map((s) => ({ ...s, enabled: !disabled.has(s.username) })))
 
       if (prof?.autoSync !== undefined) setAutoSyncEnabled(prof.autoSync)
       if (prof?.syncTimes) setSyncTimes(prof.syncTimes)
+      if (ai?.provider) setProvider(ai.provider)
+      if (ai?.apiKey) setApiKey(ai.apiKey)
     })
   }, [])
 
@@ -65,6 +67,19 @@ export default function Settings() {
     setSyncTimes(nextTimes)
     const prof = await getProfile()
     await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+  }
+
+  const handleProviderChange = async (val) => {
+    setProvider(val)
+    await saveAiConfig({ provider: val, apiKey })
+    if (onToast) onToast()
+  }
+
+  const handleApiKeyBlur = async (e) => {
+    const val = e.target.value.trim()
+    setApiKey(val)
+    await saveAiConfig({ provider, apiKey: val })
+    if (onToast) onToast()
   }
 
   const handleAddSource = () => {
@@ -108,8 +123,8 @@ export default function Settings() {
           <div className="field-label">Provider</div>
           <CustomSelect
             value={provider}
-            onChange={setProvider}
-            options={['OpenRouter', 'OpenAI', 'Anthropic']}
+            onChange={handleProviderChange}
+            options={['Gemini', 'OpenRouter', 'OpenAI', 'Anthropic']}
           />
         </div>
         <div className="field-group" style={{ marginTop: 16 }}>
@@ -120,6 +135,7 @@ export default function Settings() {
             placeholder="sk-..."
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
+            onBlur={handleApiKeyBlur}
           />
         </div>
       </div>
