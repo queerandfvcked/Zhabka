@@ -34,6 +34,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 PROFILE_FILE = BASE_DIR / "profile.json"
 AI_CONFIG_FILE = BASE_DIR / "ai_config.json"
+SOURCES_CONFIG_FILE = BASE_DIR / "sources_config.json"
 VACANCIES_FILE = BASE_DIR / "src" / "data" / "vacancies.json"
 SOURCES_FILE = BASE_DIR / "src" / "data" / "sources.json"
 RESUME_DIR = BASE_DIR / "uploads"
@@ -145,6 +146,41 @@ def save_ai_config(ai_config: dict):
     return {"status": "saved"}
 
 
+# ---------- GET/POST /sources-config — отдельно от profile ----------
+
+def _load_sources_config() -> dict:
+    """Load sources_config.json with migration from profile.json."""
+    if SOURCES_CONFIG_FILE.exists():
+        with open(SOURCES_CONFIG_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    # migrate from legacy profile.json fields
+    if PROFILE_FILE.exists():
+        with open(PROFILE_FILE, "r", encoding="utf-8") as f:
+            prof = json.load(f)
+        migrated = {}
+        if "disabledSources" in prof:
+            migrated["disabledSources"] = prof["disabledSources"]
+        if "manualSources" in prof:
+            migrated["manualSources"] = prof["manualSources"]
+        if migrated:
+            with open(SOURCES_CONFIG_FILE, "w", encoding="utf-8") as f:
+                json.dump(migrated, f, ensure_ascii=False, indent=2)
+            return migrated
+    return {"disabledSources": [], "manualSources": []}
+
+
+@app.get("/sources-config")
+def get_sources_config():
+    return _load_sources_config()
+
+
+@app.post("/sources-config")
+def save_sources_config(cfg: dict):
+    with open(SOURCES_CONFIG_FILE, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, ensure_ascii=False, indent=2)
+    return {"status": "saved"}
+
+
 # ---------- POST /refresh — запуск пайплайна в фоне ----------
 
 pipeline_state = {
@@ -177,12 +213,9 @@ def _run_pipeline():
     # перезапишут vacancies.json только свежесобранным уловом.
     previous_by_id = _load_vacancies_snapshot()
 
-    prof = {}
-    if PROFILE_FILE.exists():
-        with open(PROFILE_FILE, "r", encoding="utf-8") as f:
-            prof = json.load(f)
-
-    disabled_sources = prof.get("disabledSources", [])
+    sources_cfg = _load_sources_config()
+    disabled_sources = sources_cfg.get("disabledSources", [])
+    manual_sources = sources_cfg.get("manualSources", [])
     ai_config = _load_ai_config()
     saved_api_key = ai_config.get("apiKey") or ""
 
@@ -190,6 +223,8 @@ def _run_pipeline():
     base_env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
     if disabled_sources:
         base_env["ZHABKA_DISABLED_SOURCES"] = json.dumps(disabled_sources)
+    if manual_sources:
+        base_env["ZHABKA_MANUAL_SOURCES"] = json.dumps(manual_sources)
     if saved_api_key:
         base_env["GCP_API_KEY"] = saved_api_key
     try:

@@ -99,6 +99,7 @@
 /* Сам инпут теперь просто прозрачный и забирает всё свободное место */
 .add-source-input {
   flex: 1;
+  min-width: 0;
   height: 100%;
   background: none;
   border: none;
@@ -174,6 +175,7 @@
   gap: var(--space-1);
   max-height: 320px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .source-item {
@@ -198,12 +200,36 @@
 
 .source-name {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .source-count {
   font-family: var(--font-mono);
   font-size: var(--fs-badge);
   color: var(--text-muted);
+}
+
+.source-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s;
+}
+
+.source-remove:hover {
+  background: rgba(255, 80, 80, 0.12);
+  color: #ff5050;
 }
 
 .source-empty {

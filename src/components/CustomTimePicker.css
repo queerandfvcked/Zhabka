@@ -61,8 +61,8 @@
 }
 
 .time-picker-remove:hover {
-  background: rgba(235, 87, 87, 0.15);
-  color: var(--bad);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
 }
 
 /* Нативный скрытый инпут для мобилок */

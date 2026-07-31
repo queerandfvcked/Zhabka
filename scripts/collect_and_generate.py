@@ -390,14 +390,34 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 
+def merge_sources(folder_channels: list, manual_sources: list) -> list:
+    """Объединяем каналы из папки с вручную добавленными, без дубликатов."""
+    seen = {ch["username"]: ch for ch in folder_channels}
+    for m in manual_sources:
+        if isinstance(m, str):
+            username = m.strip().lstrip("@")
+            title = m.strip()
+        else:
+            username = (m.get("username") or "").strip().lstrip("@")
+            title = m.get("title") or username
+        if username and username not in seen:
+            seen[username] = {"username": username, "title": title}
+    return list(seen.values())
+
+
 def main():
     disabled_raw = os.environ.get("ZHABKA_DISABLED_SOURCES", "[]")
     disabled_sources = set(json.loads(disabled_raw))
+    manual_raw = os.environ.get("ZHABKA_MANUAL_SOURCES", "[]")
+    manual_sources = json.loads(manual_raw)
 
     with TelegramClient(SESSION_NAME, API_ID, API_HASH) as client:
         print("Получаю список каналов из папки...")
-        channels = get_channels_from_folder(client, FOLDER_LINK)
-        print(f"Найдено каналов с публичным username: {len(channels)}")
+        folder_channels = get_channels_from_folder(client, FOLDER_LINK)
+        print(f"Найдено каналов с публичным username: {len(folder_channels)}")
+
+        channels = merge_sources(folder_channels, manual_sources)
+        print(f"Всего источников (папка + ручные): {len(channels)}")
 
         if disabled_sources:
             before = len(channels)
@@ -416,9 +436,8 @@ def main():
         json.dump(posts, f, ensure_ascii=False, indent=2)
     print("Сохранено: src/data/raw_vacancies.json")
 
-    # Полный список подключённых каналов — отдельно от результатов сбора.
-    # Нужен фронтенду (Settings), чтобы показывать ВСЕ источники, а не
-    # только те, из которых сегодня что-то прошло классификацию.
+    # Полный список активных каналов (папка + ручные, минус выключенные).
+    # Только для отображения в UI — источником данных он НЕ является.
     with open("src/data/sources.json", "w", encoding="utf-8") as f:
         json.dump(channels, f, ensure_ascii=False, indent=2)
     print("Сохранено: src/data/sources.json")

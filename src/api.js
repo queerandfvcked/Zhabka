@@ -66,3 +66,17 @@ export async function saveAiConfig(config) {
   })
   return res.json()
 }
+
+export async function getSourcesConfig() {
+  const res = await fetch(`${API_BASE}/sources-config`)
+  return res.json()
+}
+
+export async function saveSourcesConfig(config) {
+  const res = await fetch(`${API_BASE}/sources-config`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(config),
+  })
+  return res.json()
+}

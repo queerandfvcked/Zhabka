@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import CustomTimePicker from './CustomTimePicker'
-import { getSources, getProfile, saveProfile, getAiConfig, saveAiConfig } from '../api'
+import { getSources, getProfile, saveProfile, getAiConfig, saveAiConfig, getSourcesConfig, saveSourcesConfig } from '../api'
 import '../shared/Toggle.css'
 import './Settings.css'
 
@@ -18,10 +18,27 @@ export default function Settings({ onToast }) {
   const [autoSyncEnabled, setAutoSyncEnabled] = useState(false)
   const [syncTimes, setSyncTimes] = useState(['09:00', '18:00'])
 
+  const normalizeSource = (s) =>
+    typeof s === 'string'
+      ? { username: s.replace(/^@/, '').trim(), title: s.trim() }
+      : { username: (s.username || '').replace(/^@/, '').trim(), title: s.title || s.username }
+
   useEffect(() => {
-    Promise.all([getSources(), getProfile(), getAiConfig()]).then(([srcList, prof, ai]) => {
-      const disabled = new Set(prof?.disabledSources || [])
-      setSources(srcList.map((s) => ({ ...s, enabled: !disabled.has(s.username) })))
+    Promise.all([getSources(), getProfile(), getSourcesConfig(), getAiConfig()]).then(([srcList, prof, srcCfg, ai]) => {
+      const disabled = new Set(srcCfg?.disabledSources || [])
+      const manual = (srcCfg?.manualSources || []).map(normalizeSource).filter((s) => s.username)
+      const manualByUsername = new Set(manual.map((s) => s.username))
+
+      const folder = srcList.map((s) => ({
+        ...s,
+        enabled: !disabled.has(s.username),
+        isManual: manualByUsername.has(s.username),
+      }))
+      const manualOnly = manual
+        .filter((s) => !srcList.some((x) => x.username === s.username))
+        .map((s) => ({ ...s, enabled: !disabled.has(s.username), isManual: true, count: 0 }))
+
+      setSources([...folder, ...manualOnly])
 
       if (prof?.autoSync !== undefined) setAutoSyncEnabled(prof.autoSync)
       if (prof?.syncTimes) setSyncTimes(prof.syncTimes)
@@ -36,8 +53,8 @@ export default function Settings({ onToast }) {
     )
     setSources(next)
     const disabled = next.filter((s) => !s.enabled).map((s) => s.username)
-    const prof = await getProfile()
-    await saveProfile({ ...(prof || {}), disabledSources: disabled })
+    const cfg = await getSourcesConfig()
+    await saveSourcesConfig({ ...(cfg || {}), disabledSources: disabled })
   }
 
   const handleToggleAutoSync = async () => {
@@ -82,17 +99,35 @@ export default function Settings({ onToast }) {
     if (onToast) onToast()
   }
 
-  const handleAddSource = () => {
+  const handleAddSource = async () => {
     const val = newSource.trim()
     if (!val) return
-    const username = val.replace(/^@/, '').replace(/https?:\/\/t\.me\//, '').split('/')[0]
-    if (username && !sources.find((s) => s.username === username)) {
+    const username = val.replace(/^@/, '').replace(/https?:\/\/t\.me\//, '').split('/')[0].trim()
+    if (!username || sources.find((s) => s.username === username)) {
+      setNewSource('')
+      return
+    }
+    const cfg = await getSourcesConfig()
+    const manual = (cfg?.manualSources || []).map(normalizeSource)
+    if (!manual.some((s) => s.username === username)) {
+      const newManual = [...manual, { username, title: username }]
+      await saveSourcesConfig({ ...(cfg || {}), manualSources: newManual })
       setSources((prev) => [
         ...prev,
-        { username, title: username, enabled: true, count: 0 },
+        { username, title: username, enabled: true, isManual: true, count: 0 },
       ])
     }
     setNewSource('')
+  }
+
+  const handleRemoveSource = async (username) => {
+    setSources((prev) => prev.filter((s) => s.username !== username))
+    const cfg = await getSourcesConfig()
+    const manual = (cfg?.manualSources || []).filter(
+      (s) => normalizeSource(s).username !== username
+    )
+    const disabled = (cfg?.disabledSources || []).filter((u) => u !== username)
+    await saveSourcesConfig({ ...(cfg || {}), manualSources: manual, disabledSources: disabled })
   }
 
   const filteredSources = useMemo(
@@ -188,6 +223,18 @@ export default function Settings({ onToast }) {
                 </div>
                 <span className="source-name">@{s.username}</span>
                 <span className="source-count">{s.count}</span>
+                {s.isManual && (
+                  <button
+                    className="source-remove"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleRemoveSource(s.username)
+                    }}
+                    title="Remove manual source"
+                  >
+                    <X size={14} />
+                  </button>
+                )}
               </div>
             ))
           )}

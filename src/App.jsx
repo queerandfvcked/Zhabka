@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
-import { Menu, Search, X } from 'lucide-react'
+import { Menu, Search, X, ArrowDown } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import JobCard from './components/JobCard'
 import ChatInput from './components/ChatInput'
@@ -109,6 +109,9 @@ export default function App() {
   // Стейт для навигации по поисковым совпадениям
   const [currentMatchIdx, setCurrentMatchIdx] = useState(0)
 
+  // Показываем кнопку «вниз», когда ускроллили от низа
+  const [showJumpToBottom, setShowJumpToBottom] = useState(false)
+
   // Toast state & ref
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
@@ -126,10 +129,17 @@ export default function App() {
     }, 2500)
   }, [])
 
+  // Даты для календаря — берём из того же поля, по которому группируется
+  // таймлайн (fetchedAt || date), чтобы заголовок дня в ленте всегда
+  // существовал для любой доступной в календаре даты.
   const uniqueDates = useMemo(() => {
     const set = new Set()
     vacancies.forEach((v) => {
-      if (v.date) set.add(v.date.slice(0, 10))
+      const d = new Date(v.fetchedAt || v.date)
+      if (isNaN(d.getTime())) return
+      set.add(
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+      )
     })
     return [...set].sort()
   }, [vacancies])
@@ -149,11 +159,8 @@ export default function App() {
         return searchable.includes(q)
       })
     }
-    if (selectedDate) {
-      list = list.filter((v) => v.date && v.date.startsWith(selectedDate))
-    }
     return list
-  }, [vacancies, searchQuery, selectedDate])
+  }, [vacancies, searchQuery])
 
   const matchCount = filteredVacancies.length
 
@@ -374,6 +381,37 @@ export default function App() {
     scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
   }, [activeView, filteredVacancies.length])
 
+  // Jump to date: плавно скроллим к заголовку выбранного дня, не фильтруя ленту.
+  useEffect(() => {
+    if (!selectedDate || activeView !== 'inbox') return
+    const wrapper = scrollWrapperRef.current
+    const el = document.getElementById(`date-head-${selectedDate}`)
+    if (!wrapper || !el) return
+    const wrapperTop = wrapper.getBoundingClientRect().top
+    const elTop = el.getBoundingClientRect().top
+    const target = wrapper.scrollTop + (elTop - wrapperTop) - 96
+    wrapper.scrollTo({ top: Math.max(0, target), behavior: 'smooth' })
+  }, [selectedDate, activeView])
+
+  // Показываем кнопку «вниз», если юзер ускроллил от низа более чем на 600px
+  useEffect(() => {
+    const wrapper = scrollWrapperRef.current
+    if (activeView !== 'inbox' || !wrapper) return
+    const onScroll = () => {
+      const dist = wrapper.scrollHeight - wrapper.scrollTop - wrapper.clientHeight
+      setShowJumpToBottom(dist > 600)
+    }
+    wrapper.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => wrapper.removeEventListener('scroll', onScroll)
+  }, [activeView, filteredVacancies.length, messages.length])
+
+  const handleJumpToBottom = () => {
+    const wrapper = scrollWrapperRef.current
+    if (!wrapper) return
+    wrapper.scrollTo({ top: wrapper.scrollHeight, behavior: 'smooth' })
+  }
+
   const renderContent = () => {
     if (activeView === 'profile') {
       return (
@@ -469,13 +507,14 @@ export default function App() {
 
                     timeline.forEach((item) => {
                       const dateStr = item.sortTime.toDateString()
+                      const dateKey = `${item.sortTime.getFullYear()}-${String(item.sortTime.getMonth() + 1).padStart(2, '0')}-${String(item.sortTime.getDate()).padStart(2, '0')}`
 
                       // Date section header when day changes
                       if (dateStr !== lastDateStr) {
                         flushMsgBuffer()
                         lastDateStr = dateStr
                         elements.push(
-                          <div key={`date-${dateStr}`} className="date-head-sm">
+                          <div key={`date-${dateStr}`} id={`date-head-${dateKey}`} className="date-head-sm">
                             {getDateLabel(item.sortTime)}
                           </div>
                         )
@@ -531,6 +570,11 @@ export default function App() {
                 <span className="sync-status-dot error" />
                 {aiError}
               </div>
+            )}
+            {showJumpToBottom && (
+              <button className="jump-bottom-btn" onClick={handleJumpToBottom} title="Jump to latest">
+                <ArrowDown size={18} />
+              </button>
             )}
             <ChatInput
               onSend={handleChatSend}

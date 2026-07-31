@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { FileText, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import { uploadResume, API_BASE } from '../api'
@@ -29,6 +29,24 @@ export default function Profile({ profile, onUpdate }) {
   const [roleInput, setRoleInput] = useState('')
   const [uploading, setUploading] = useState(false)
   const fileRef = useRef(null)
+  const chipsRef = useRef(null)
+
+  // Радиус чип-инпута зависит от высоты: в одну строку — полный радиус
+  // (пилюля), при переносе на несколько строк скругление уменьшается,
+  // чтобы контейнер не превращался в овальную сардельку.
+  useEffect(() => {
+    const el = chipsRef.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const update = () => {
+      const h = el.offsetHeight
+      const radius = h <= 50 ? h / 2 : 22
+      el.style.setProperty('--chips-radius', `${radius}px`)
+    }
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    update()
+    return () => ro.disconnect()
+  }, [])
 
   const handleResumeClick = () => fileRef.current?.click()
 
@@ -156,7 +174,7 @@ export default function Profile({ profile, onUpdate }) {
       {/* Role — chip input */}
       <div className="section">
         <div className="section-head">Role</div>
-        <div className="role-chips-input">
+        <div className="role-chips-input" ref={chipsRef}>
           {profile.role.map((r) => (
             <span key={r} className="role-chip">
               {r}
