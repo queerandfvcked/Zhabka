@@ -110,7 +110,7 @@
 
 .resume-delete:hover {
   color: var(--bad);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(235, 87, 87, 0.15);
 }
 
 .resume-delete:disabled {
