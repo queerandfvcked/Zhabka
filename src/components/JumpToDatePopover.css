@@ -20,16 +20,19 @@
   color: var(--text-secondary);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
+  outline: none;
 }
 
 .calendar-trigger-btn:hover {
   color: var(--text-primary);
 }
 
+.calendar-trigger-btn:focus-visible,
 .calendar-trigger-btn.active {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-soft-sm);
+  border-color: var(--glass-border);
+  color: var(--accent);
+  outline: none;
 }
 
 .jump-to-date-popover {

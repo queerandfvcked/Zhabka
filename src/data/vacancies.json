@@ -1088,5 +1088,1852 @@
     "id": "c35e1e6df4843070",
     "fetchedAt": "2026-07-31T23:24:47.577392+00:00",
     "batchId": "2026-07-31T23:24:47.577392+00:00"
+  },
+  {
+    "title": "Старший продуктовый дизайнер",
+    "company": "Яндекс (команда Люмены)",
+    "salary": null,
+    "experience": {
+      "value": "от 5 лет",
+      "strict": true
+    },
+    "workFormat": "гибридный",
+    "location": "Москва / Санкт-Петербург",
+    "requirements": [
+      "Работали в продуктовом дизайне от пяти лет",
+      "Умеете собирать идеи в работающую систему",
+      "Понимаете продуктовые метрики",
+      "Хорошо работаете в команде и умеете доводить решения до реализации",
+      "Внимательны к эстетике и эмоциям в дизайне продуктов",
+      "Готовы показать портфолио и рассказать про несколько кейсов, где видна ваша самостоятельная роль",
+      "Опыт запуска продуктов с нуля / работы в стартапах (желательно)",
+      "Опыт работы с контентными сервисами (желательно)"
+    ],
+    "sourceExcerpt": "**Старший продуктовый дизайнер**\nв **Люмены** — команда Яндекса, которая создаёт персональных AI-компаньонов. Люмены – эмпатичные AI-персонажи, созданные, чтобы делать взаимодействие пользователя с сервисами более «человечным».\n**Москва / Санкт-Петербург. Гибридный формат работы.**",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Design role matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Hybrid work format in Saint Petersburg is acceptable"
+        },
+        {
+          "type": "warn",
+          "text": "Senior level / 5+ years experience required"
+        }
+      ]
+    },
+    "channel_username": "mnogovakansiy",
+    "channel_title": "Многовакансий | Design, IT вакансии",
+    "date": "2026-08-03T14:06:44+00:00",
+    "link": "https://t.me/mnogovakansiy/1470",
+    "original_text": "**Старший продуктовый дизайнер**\nв **Люмены** — команда Яндекса, которая создаёт персональных AI-компаньонов. Люмены – эмпатичные AI-персонажи, созданные, чтобы делать взаимодействие пользователя с сервисами более «человечным».\n**Москва / Санкт-Петербург. Гибридный формат работы.**\n[Описание вакансии](https://yandex.ru/jobs/vacancies/produktoviy-dizayner-v-komandu-lyumena-46854).\nИщет Ирина Логинова, её [пост на LinkedIn](https://www.linkedin.com/posts/lolginova_%D0%B8%D1%89%D1%83-c%D1%82%D0%B0%D1%80%D1%88%D0%B5%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B5%D1%80%D0%B0-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%83-share-7489972145603928064-T-NV/).",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "98a871196e85903f",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "Цифра",
+    "salary": "189 841 ₽",
+    "experience": {
+      "value": "Middle",
+      "strict": null
+    },
+    "workFormat": "Удалённо",
+    "location": null,
+    "requirements": [
+      "3+ года в продуктовом дизайне",
+      "участие в проектах со сложными пользовательскими сценариями (B2C: web и mobile интерфейсы, личные кабинеты, формы, сервисные сценарии)",
+      "работа в среде с несколькими стейкхолдерами и кросс-функциональной командой",
+      "Figma (компоненты, auto layout, variants, прототипы, дизайн-системы)"
+    ],
+    "sourceExcerpt": "🏢 [Продуктовый дизайнер](https://h.careers/job/6d44e5ce-22b8-4e5b-9068-52c38b011746)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work available"
+        }
+      ]
+    },
+    "channel_username": "careerwithh",
+    "channel_title": "Эйч",
+    "date": "2026-08-03T13:53:06+00:00",
+    "link": "https://t.me/careerwithh/9914",
+    "original_text": "**20 удалённых вакансий: дизайн, продакт, QA, маркетинг**\n\nСобрали в базе Эйч и сверили с источниками — все открыты на 3 августа, по пять в категории.\n\n➡️ Дизайнеры:\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/6d44e5ce-22b8-4e5b-9068-52c38b011746) в Цифра\nMiddle, Удалённо\n\n🏢 [Старший продуктовый дизайнер](https://h.careers/job/9cd00ac6-bdff-4767-a732-2ae11493cb2b) в Домклик\nSenior, Удалённо\n\n🏢 [Моушн-дизайнер](https://h.careers/job/bee0f2b0-5960-4c89-884b-c726cdb94835) в YADRO\nУдалённо\n\n🏢 [Ведущий продуктовый дизайнер](https://h.careers/job/e6429e97-b0c8-4957-a5ea-58c46a21656b) в Tripster\nLead, Удалённо\n\n🏢 [Графический дизайнер](https://h.careers/job/9d9dd339-c132-4820-9480-2d713dda08e7) в Яндекс\nУдалённо\n\n➡️ Продакты и проджекты:\n\n🏢 [Менеджер продукта на направление «Страны»](https://h.careers/job/e9c9b46e-9d68-4a49-b2ec-86afcca351cf) в HeadHunter\nMiddle, Удалённо\n\n🏢 [Менеджер продукта](https://h.careers/job/0d239bee-d994-43ef-8b3a-1de82303447c) в Ozon\nУдалённо\n\n🏢 [Technical Product Manager (CRM)](https://h.careers/job/8b2a2114-f66e-46e7-9a09-e5fdf77fd5ce) в ВсеИнструменты.ру\nMiddle, Удалённо\n\n🏢 [Product Manager (B2B, Ground Transportation)](https://h.careers/job/0676cab0-6c8c-4c80-a14b-a69b4c1ced46) в Островок\nMiddle, Удалённо\n\n🏢 [Product Owner](https://h.careers/job/c66973ef-2441-4f53-ab6e-8b5af1780b1f) в Usetech\nMiddle, Удалённо\n\n➡️ QA:\n\n🏢 [Tech Lead QA](https://h.careers/job/35d7eecc-ee4a-4b7f-a6cf-2831a8f10c84) в Альфа-Банк\nLead, Удалённо\n\n🏢 [QA Engineer (КИОН Музыка)](https://h.careers/job/07f02822-77f8-443e-b6e5-11389da07162) в МТС\nMiddle, Удалённо\n\n🏢 [QA инженер](https://h.careers/job/231f6d90-5432-49b3-aa99-e27e5bcbb9b4) в Tripster\nУдалённо\n\n🏢 [Главный инженер функционального тестирования](https://h.careers/job/cb85742a-aceb-476a-a492-37d83265213a) в ВТБ\nLead, Удалённо\n\n🏢 [Senior QA Automation Engineer в команду AI-агенты](https://h.careers/job/c2da34b8-0889-4333-9af1-0c0a6800e347) в 2ГИС\nSenior, Удалённо\n\n➡️ Маркетинг:\n\n🏢 [PR Manager](https://h.careers/job/fe0e2411-7a95-40af-a5eb-5e9cd3f45fe2) в Авиасейлс\nMiddle/Senior, Удалённо\n\n🏢 [CRM-маркетолог](https://h.careers/job/de1a66fb-3df0-47ad-b88c-1b312113bebf) в Авито\nMiddle, Удалённо\n\n🏢 [Performance-маркетолог](https://h.careers/job/3f87dade-1f1e-4f17-894b-4eacf4fce95b) в Tripster\nMiddle, Удалённо\n\n🏢 [Продуктовый маркетолог](https://h.careers/job/d2d6a678-5210-427c-8c2b-f8976fb6a4dd) в Фоксфорд\nMiddle, Удалённо\n\n🏢 [Контент-маркетолог](https://h.careers/job/a46e73da-b4d3-4b86-afcb-3bab796e041f) в Контур\nSenior, Удалённо\n\nОткликаетесь вы сами — рутину вокруг отклика забирает Эйч Плюс: подборка под вашу стратегию, адаптация резюме, контакты HR и нанимающих, гайды к собеседованиям 💙\n\n↗️ [Подключить Эйч Плюс](https://h.careers/search?utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)\n\n↗️ [Все удалённые вакансии (8 822)](https://h.careers/jobs?work_format=remote&utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "a8b1330113b9ed47",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Старший продуктовый дизайнер",
+    "company": "Домклик",
+    "salary": "189 841 ₽",
+    "experience": {
+      "value": "Senior",
+      "strict": null
+    },
+    "workFormat": "Удалённо",
+    "location": null,
+    "requirements": [
+      "сильный уровень UI и визуальный вкус",
+      "навыки работы с эмоциональным дизайном",
+      "умение аргументированно отстаивать и защищать свои решения",
+      "работал в продуктовых командах",
+      "навыки системного мышления и работы с метриками"
+    ],
+    "sourceExcerpt": "🏢 [Старший продуктовый дизайнер](https://h.careers/job/9cd00ac6-bdff-4767-a732-2ae11493cb2b)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work available"
+        }
+      ]
+    },
+    "channel_username": "careerwithh",
+    "channel_title": "Эйч",
+    "date": "2026-08-03T13:53:06+00:00",
+    "link": "https://t.me/careerwithh/9914",
+    "original_text": "**20 удалённых вакансий: дизайн, продакт, QA, маркетинг**\n\nСобрали в базе Эйч и сверили с источниками — все открыты на 3 августа, по пять в категории.\n\n➡️ Дизайнеры:\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/6d44e5ce-22b8-4e5b-9068-52c38b011746) в Цифра\nMiddle, Удалённо\n\n🏢 [Старший продуктовый дизайнер](https://h.careers/job/9cd00ac6-bdff-4767-a732-2ae11493cb2b) в Домклик\nSenior, Удалённо\n\n🏢 [Моушн-дизайнер](https://h.careers/job/bee0f2b0-5960-4c89-884b-c726cdb94835) в YADRO\nУдалённо\n\n🏢 [Ведущий продуктовый дизайнер](https://h.careers/job/e6429e97-b0c8-4957-a5ea-58c46a21656b) в Tripster\nLead, Удалённо\n\n🏢 [Графический дизайнер](https://h.careers/job/9d9dd339-c132-4820-9480-2d713dda08e7) в Яндекс\nУдалённо\n\n➡️ Продакты и проджекты:\n\n🏢 [Менеджер продукта на направление «Страны»](https://h.careers/job/e9c9b46e-9d68-4a49-b2ec-86afcca351cf) в HeadHunter\nMiddle, Удалённо\n\n🏢 [Менеджер продукта](https://h.careers/job/0d239bee-d994-43ef-8b3a-1de82303447c) в Ozon\nУдалённо\n\n🏢 [Technical Product Manager (CRM)](https://h.careers/job/8b2a2114-f66e-46e7-9a09-e5fdf77fd5ce) в ВсеИнструменты.ру\nMiddle, Удалённо\n\n🏢 [Product Manager (B2B, Ground Transportation)](https://h.careers/job/0676cab0-6c8c-4c80-a14b-a69b4c1ced46) в Островок\nMiddle, Удалённо\n\n🏢 [Product Owner](https://h.careers/job/c66973ef-2441-4f53-ab6e-8b5af1780b1f) в Usetech\nMiddle, Удалённо\n\n➡️ QA:\n\n🏢 [Tech Lead QA](https://h.careers/job/35d7eecc-ee4a-4b7f-a6cf-2831a8f10c84) в Альфа-Банк\nLead, Удалённо\n\n🏢 [QA Engineer (КИОН Музыка)](https://h.careers/job/07f02822-77f8-443e-b6e5-11389da07162) в МТС\nMiddle, Удалённо\n\n🏢 [QA инженер](https://h.careers/job/231f6d90-5432-49b3-aa99-e27e5bcbb9b4) в Tripster\nУдалённо\n\n🏢 [Главный инженер функционального тестирования](https://h.careers/job/cb85742a-aceb-476a-a492-37d83265213a) в ВТБ\nLead, Удалённо\n\n🏢 [Senior QA Automation Engineer в команду AI-агенты](https://h.careers/job/c2da34b8-0889-4333-9af1-0c0a6800e347) в 2ГИС\nSenior, Удалённо\n\n➡️ Маркетинг:\n\n🏢 [PR Manager](https://h.careers/job/fe0e2411-7a95-40af-a5eb-5e9cd3f45fe2) в Авиасейлс\nMiddle/Senior, Удалённо\n\n🏢 [CRM-маркетолог](https://h.careers/job/de1a66fb-3df0-47ad-b88c-1b312113bebf) в Авито\nMiddle, Удалённо\n\n🏢 [Performance-маркетолог](https://h.careers/job/3f87dade-1f1e-4f17-894b-4eacf4fce95b) в Tripster\nMiddle, Удалённо\n\n🏢 [Продуктовый маркетолог](https://h.careers/job/d2d6a678-5210-427c-8c2b-f8976fb6a4dd) в Фоксфорд\nMiddle, Удалённо\n\n🏢 [Контент-маркетолог](https://h.careers/job/a46e73da-b4d3-4b86-afcb-3bab796e041f) в Контур\nSenior, Удалённо\n\nОткликаетесь вы сами — рутину вокруг отклика забирает Эйч Плюс: подборка под вашу стратегию, адаптация резюме, контакты HR и нанимающих, гайды к собеседованиям 💙\n\n↗️ [Подключить Эйч Плюс](https://h.careers/search?utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)\n\n↗️ [Все удалённые вакансии (8 822)](https://h.careers/jobs?work_format=remote&utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "cd3bb5b22fb5c5de",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Ведущий продуктовый дизайнер",
+    "company": "Tripster",
+    "salary": "189 841 ₽",
+    "experience": {
+      "value": "Lead",
+      "strict": null
+    },
+    "workFormat": "Удалённо",
+    "location": null,
+    "requirements": [
+      "опыт продуктового дизайнера не менее 5 лет",
+      "опыт ведущего дизайнера или лида не менее 1 года",
+      "релевантное портфолио с классным UI",
+      "умение проектировать сложные сценарии",
+      "понимание продуктовых метрик (JTBD, CJM, research-подходы)"
+    ],
+    "sourceExcerpt": "🏢 [Ведущий продуктовый дизайнер](https://h.careers/job/e6429e97-b0c8-4957-a5ea-58c46a21656b)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work available"
+        }
+      ]
+    },
+    "channel_username": "careerwithh",
+    "channel_title": "Эйч",
+    "date": "2026-08-03T13:53:06+00:00",
+    "link": "https://t.me/careerwithh/9914",
+    "original_text": "**20 удалённых вакансий: дизайн, продакт, QA, маркетинг**\n\nСобрали в базе Эйч и сверили с источниками — все открыты на 3 августа, по пять в категории.\n\n➡️ Дизайнеры:\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/6d44e5ce-22b8-4e5b-9068-52c38b011746) в Цифра\nMiddle, Удалённо\n\n🏢 [Старший продуктовый дизайнер](https://h.careers/job/9cd00ac6-bdff-4767-a732-2ae11493cb2b) в Домклик\nSenior, Удалённо\n\n🏢 [Моушн-дизайнер](https://h.careers/job/bee0f2b0-5960-4c89-884b-c726cdb94835) в YADRO\nУдалённо\n\n🏢 [Ведущий продуктовый дизайнер](https://h.careers/job/e6429e97-b0c8-4957-a5ea-58c46a21656b) в Tripster\nLead, Удалённо\n\n🏢 [Графический дизайнер](https://h.careers/job/9d9dd339-c132-4820-9480-2d713dda08e7) в Яндекс\nУдалённо\n\n➡️ Продакты и проджекты:\n\n🏢 [Менеджер продукта на направление «Страны»](https://h.careers/job/e9c9b46e-9d68-4a49-b2ec-86afcca351cf) в HeadHunter\nMiddle, Удалённо\n\n🏢 [Менеджер продукта](https://h.careers/job/0d239bee-d994-43ef-8b3a-1de82303447c) в Ozon\nУдалённо\n\n🏢 [Technical Product Manager (CRM)](https://h.careers/job/8b2a2114-f66e-46e7-9a09-e5fdf77fd5ce) в ВсеИнструменты.ру\nMiddle, Удалённо\n\n🏢 [Product Manager (B2B, Ground Transportation)](https://h.careers/job/0676cab0-6c8c-4c80-a14b-a69b4c1ced46) в Островок\nMiddle, Удалённо\n\n🏢 [Product Owner](https://h.careers/job/c66973ef-2441-4f53-ab6e-8b5af1780b1f) в Usetech\nMiddle, Удалённо\n\n➡️ QA:\n\n🏢 [Tech Lead QA](https://h.careers/job/35d7eecc-ee4a-4b7f-a6cf-2831a8f10c84) в Альфа-Банк\nLead, Удалённо\n\n🏢 [QA Engineer (КИОН Музыка)](https://h.careers/job/07f02822-77f8-443e-b6e5-11389da07162) в МТС\nMiddle, Удалённо\n\n🏢 [QA инженер](https://h.careers/job/231f6d90-5432-49b3-aa99-e27e5bcbb9b4) в Tripster\nУдалённо\n\n🏢 [Главный инженер функционального тестирования](https://h.careers/job/cb85742a-aceb-476a-a492-37d83265213a) в ВТБ\nLead, Удалённо\n\n🏢 [Senior QA Automation Engineer в команду AI-агенты](https://h.careers/job/c2da34b8-0889-4333-9af1-0c0a6800e347) в 2ГИС\nSenior, Удалённо\n\n➡️ Маркетинг:\n\n🏢 [PR Manager](https://h.careers/job/fe0e2411-7a95-40af-a5eb-5e9cd3f45fe2) в Авиасейлс\nMiddle/Senior, Удалённо\n\n🏢 [CRM-маркетолог](https://h.careers/job/de1a66fb-3df0-47ad-b88c-1b312113bebf) в Авито\nMiddle, Удалённо\n\n🏢 [Performance-маркетолог](https://h.careers/job/3f87dade-1f1e-4f17-894b-4eacf4fce95b) в Tripster\nMiddle, Удалённо\n\n🏢 [Продуктовый маркетолог](https://h.careers/job/d2d6a678-5210-427c-8c2b-f8976fb6a4dd) в Фоксфорд\nMiddle, Удалённо\n\n🏢 [Контент-маркетолог](https://h.careers/job/a46e73da-b4d3-4b86-afcb-3bab796e041f) в Контур\nSenior, Удалённо\n\nОткликаетесь вы сами — рутину вокруг отклика забирает Эйч Плюс: подборка под вашу стратегию, адаптация резюме, контакты HR и нанимающих, гайды к собеседованиям 💙\n\n↗️ [Подключить Эйч Плюс](https://h.careers/search?utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)\n\n↗️ [Все удалённые вакансии (8 822)](https://h.careers/jobs?work_format=remote&utm_source=tg_h&utm_medium=post&utm_campaign=03.08.26)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "579006617b7a1762",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Product Designer",
+    "company": "01.tech",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "гибкий формат",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "• Product Designer",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-03T11:32:09+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1313",
+    "original_text": "**Смотрю на вакансии и на новости про сокращения, и одна штука уже прям бесит**\n\nДизайнеров режут раньше всех. Потом спокойно пишут, что команда теперь будет работать эффективнее с AI. Из пяти человек остаются двое, им выдают Claude или Gemini, и дальше эти двое тянут тот же объём. Только уже без коллег)\n\nПоэтому так приятно ловить обратные истории. Когда ИИ снимает рутину, а не становится красивым словом в письме про оптимизацию. И ещё приятнее, когда компания на этом фоне не сжимает дизайн, а наоборот набирает людей.\n\nВот 01.tech сейчас как раз расширяет команду. Холдинг с платформенными решениями для entertainment, большие проекты, гибкий формат и нормальная среда, где экспертиза не пылится, а растёт.\n\nищут сразу на несколько позиций в команду дизайна\n• Product Designer\n• UX/UI Designer\n• Graphic Designer\n\nПлюс открыты ещё направления\n– C-level / Head\n– Project Management\n– Разработка / IT / Data\n– Product Management\n– Маркетинг\n– HR / Recruitment\n– Sales & Accounting\n\n01.tech продолжает масштабироваться, так что ролей будет ещё больше.\n\n**🔥**** Следи за актуальными вакансиями в **[**канале ребят**](https://t.me/+9qb86qU3XnJhNmM6)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "b212820d723cc23b",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "UX/UI Designer",
+    "company": "01.tech",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "гибкий формат",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "• UX/UI Designer",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches UX/UI Designer role"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-03T11:32:09+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1313",
+    "original_text": "**Смотрю на вакансии и на новости про сокращения, и одна штука уже прям бесит**\n\nДизайнеров режут раньше всех. Потом спокойно пишут, что команда теперь будет работать эффективнее с AI. Из пяти человек остаются двое, им выдают Claude или Gemini, и дальше эти двое тянут тот же объём. Только уже без коллег)\n\nПоэтому так приятно ловить обратные истории. Когда ИИ снимает рутину, а не становится красивым словом в письме про оптимизацию. И ещё приятнее, когда компания на этом фоне не сжимает дизайн, а наоборот набирает людей.\n\nВот 01.tech сейчас как раз расширяет команду. Холдинг с платформенными решениями для entertainment, большие проекты, гибкий формат и нормальная среда, где экспертиза не пылится, а растёт.\n\nищут сразу на несколько позиций в команду дизайна\n• Product Designer\n• UX/UI Designer\n• Graphic Designer\n\nПлюс открыты ещё направления\n– C-level / Head\n– Project Management\n– Разработка / IT / Data\n– Product Management\n– Маркетинг\n– HR / Recruitment\n– Sales & Accounting\n\n01.tech продолжает масштабироваться, так что ролей будет ещё больше.\n\n**🔥**** Следи за актуальными вакансиями в **[**канале ребят**](https://t.me/+9qb86qU3XnJhNmM6)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "8b31e6c5027372ae",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Дизайнер",
+    "company": null,
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "графические анонсы",
+      "лендинги для спецпроектов",
+      "email-рассылки",
+      "Figma"
+    ],
+    "sourceExcerpt": "#дизайнер\nАгентство ищет дизайнера на частичную занятость — от трёх часов в день. Задачи: графические анонсы, лендинги для спецпроектов и email-рассылки. Работа в Figma, предусмотрен доступ к AI-инструментам\n➡️ @hi_kinetica",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UX/UI related tasks (landing pages)"
+        },
+        {
+          "type": "warn",
+          "text": "Requires graphic design tasks alongside design, but fits generalist profile"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-03T08:00:11+00:00",
+    "link": "https://t.me/designwork_vacansii/8635",
+    "original_text": "[​](https://hooks.pro/media/2026/08/02/bot2039943905/photos/mCbI/file_3936.jpg)#дизайнер\nАгентство ищет дизайнера на частичную занятость — от трёх часов в день. Задачи: графические анонсы, лендинги для спецпроектов и email-рассылки. Работа в Figma, предусмотрен доступ к AI-инструментам\n➡️ @hi_kinetica\n\n#2dаниматор\nИщут 2D-аниматора для создания роликов. Пример требуемой анимации предоставят в личных сообщениях\n➡️ @emir522\n➡️ @ultraagency\n\n#дизайнер\nИщут дизайнеров обложек для Reels. При отклике необходимо сразу прислать профильное портфолио и стоимость работы\n➡️ @NuxyeBo",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "624f333a63f0b965",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Product Designer в один из крупнейших российских B2C-бигтехов (сервис лояльности)",
+    "company": "Сёрч",
+    "salary": null,
+    "experience": {
+      "value": "Middle - Senior",
+      "strict": false
+    },
+    "workFormat": "Remote",
+    "location": "Россия",
+    "requirements": [
+      "проектировать и развивать продуктовые сценарии внутри сервиса лояльности",
+      "работать над UX/UI-решениями вместе с продуктовой командой и аналитиками",
+      "развивать и поддерживать дизайн-систему",
+      "усиливать визуальное качество продукта, создавая выразительные интерфейсы",
+      "участвовать в развитии процессов команды и внедрении современных инструментов"
+    ],
+    "sourceExcerpt": "[Middle+ Product Designer в один из крупнейших российских B2C-бигтехов](https://www.vseti.app/vakansii/43374438439430430433493434)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches user profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work allowed."
+        }
+      ]
+    },
+    "channel_username": "it_vakansii_jobs",
+    "channel_title": "СЕТИ — IT & Digital вакансии",
+    "date": "2026-08-03T07:03:02+00:00",
+    "link": "https://t.me/it_vakansii_jobs/3120",
+    "original_text": "**С понедельником, коллеги!**\n\nЧтобы поднять вам настроение, мы подготовили **эти** 🔢 **вакансий.** \nПриятного просмотра!\n\n**📍****HR**\n\n[**Middle+ Менеджер по оценке и развитию персонала в EdTech**](https://www.vseti.app/vakansii/434734384394343034034434343)\nУдалённо\n\n[**Стажер HR / IT-сорсер в крупнейший интегратор**](https://www.vseti.app/vakansii/4384343943430430434343)\nУдалённо\n**\n****📍****Backend**\n\n[**Senior CV Engineer / Team Lead в NDA**](https://www.vseti.app/vakansii/438349340430434834343433432)\nНовосибирск, офис\n\n[**Стажер AI-разработчик в крупнейший интегратор**](https://www.vseti.app/vakansii/433449349343043043434343)\nУдалённо\n**\n****📍****Аналитика**\n\n[**Senior Data Scientist в Lamoda**](https://www.vseti.app/vakansii/4383493443043430434343)\nМосква, гибрид\n\n[**Middle Researcher в HR-партнер крупных компаний**](https://www.vseti.app/vakansii/4347343834934430340433443433)\nУдалённо\n**\n****📍****Тестирование**\n\n[**Middle Инженер по автоматизации тестирования в ДОМ.РФ**](https://www.vseti.app/vakansii/348438439439434393483443434343)\nМосква, гибрид\n\n**📍****Менеджмент**\n\n[**Senior Product Manager в антивирус**](https://www.vseti.app/vakansii/3473483493443434383483434)\nот 3 500 до 5 000$\nУдалённо (Мир)\n\n[**Senior Product Manager в международный продукт**](https://www.vseti.app/vakansii/4873484394343430349344343)\nПольша, удалённо\n\n[**Middle+ Аккаунт-менеджер в digital-интегратор**](https://t.me/products_jobs_projects/678)\nУдалённо\n\n[**Стажер Руководитель проектов в крупнейший интегратор**](https://www.vseti.app/vakansii/3484394343043043949433)\nУдалённо\n**\n****📍****Маркетинг**\n\n[**Middle+ Influence Manager в международную финтех-компанию**](https://www.vseti.app/vakansii/43734843943043043434343)\nУдалённо (Мир)\n\n[**Middle Маркетолог в строительную компанию**](https://www.vseti.app/vakansii/438348439344343043043434343)\n100 000₽\nУдалённо\n\n[**Junior Контент-менеджер в EdTech**](https://www.vseti.app/vakansii/3839430394343843834434334)\nУдалённо\n**\n****📍****Дизайн**\n\n[**Middle+ Product Designer в один из крупнейших российских B2C-бигтехов**](https://www.vseti.app/vakansii/43374438439430430433493434)\nУдалённо\n\n[**Middle Motion Designer в Дизайн-агентство**](https://www.vseti.app/vakansii/438439434304343043434334)\nУдалённо\n\n[**Стажер Дизайнер продуктов в пул Helpy**](https://www.vseti.app/vakansii/4384383493430343403493493434)\nМосква, гибрид\n\n**\n**———\n\n🖤[ ](http://ya.ru/)[Разместить вакансию](https://www.vseti.app/b2b) \n💚 [Джунам](https://t.me/+6lnhesy-WoxjNzBi) 🫶 [Удалёнка джунам](https://t.me/+1yyM8jKGVr8xZjMy) \n💜[ За рубежом](https://t.me/+BO4DcXIAKqg1ODYy) 💚[ Разрабам](https://t.me/+QiDNhxIWmTUwMTdi)\n💖[ Дизайнерам](https://t.me/+9cosivWJhhE4M2Ri) 🟠[ Маркетологам](https://t.me/+vJsBiYSXJ65mNTky) \n🖤 [HR](https://t.me/+1bnvboBdNRViZmMy) 💜 [QA](https://t.me/+H9UAixzqTEQ3Zjky) 🟡 [Менеджерам](https://t.me/+riZ3PFenvGJkNTAy)\n🔴 [Аналитикам](https://t.me/+Y61B38iIuAtiMWE6)\n\n__мы также есть там, куда всех хотят отправить — ____https://max.ru/it_vakansii_jobs__",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "80c4403347caa2b7",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Дизайнер продуктов (стажёр) в пул Helpy",
+    "company": "Яндекс",
+    "salary": null,
+    "experience": {
+      "value": "Intern",
+      "strict": false
+    },
+    "workFormat": "Hybrid",
+    "location": "Москва",
+    "requirements": [
+      "Понимаете принципы атомарного дизайна",
+      "Уверенно владеете Figma (переменные, Auto Layout, компоненты и их варианты)",
+      "Применяете продуктовый подход",
+      "Самостоятельны",
+      "Умеете честно оценивать сроки",
+      "Быстро обучаетесь и открыты к фидбэку"
+    ],
+    "sourceExcerpt": "[Стажер Дизайнер продуктов в пул Helpy](https://www.vseti.app/vakansii/4384383493430343403493493434)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer internship matches user profile."
+        },
+        {
+          "type": "good",
+          "text": "Office location in Saint Petersburg is not specified but role is open to hybrid work."
+        }
+      ]
+    },
+    "channel_username": "it_vakansii_jobs",
+    "channel_title": "СЕТИ — IT & Digital вакансии",
+    "date": "2026-08-03T07:03:02+00:00",
+    "link": "https://t.me/it_vakansii_jobs/3120",
+    "original_text": "**С понедельником, коллеги!**\n\nЧтобы поднять вам настроение, мы подготовили **эти** 🔢 **вакансий.** \nПриятного просмотра!\n\n**📍****HR**\n\n[**Middle+ Менеджер по оценке и развитию персонала в EdTech**](https://www.vseti.app/vakansii/434734384394343034034434343)\nУдалённо\n\n[**Стажер HR / IT-сорсер в крупнейший интегратор**](https://www.vseti.app/vakansii/4384343943430430434343)\nУдалённо\n**\n****📍****Backend**\n\n[**Senior CV Engineer / Team Lead в NDA**](https://www.vseti.app/vakansii/438349340430434834343433432)\nНовосибирск, офис\n\n[**Стажер AI-разработчик в крупнейший интегратор**](https://www.vseti.app/vakansii/433449349343043043434343)\nУдалённо\n**\n****📍****Аналитика**\n\n[**Senior Data Scientist в Lamoda**](https://www.vseti.app/vakansii/4383493443043430434343)\nМосква, гибрид\n\n[**Middle Researcher в HR-партнер крупных компаний**](https://www.vseti.app/vakansii/4347343834934430340433443433)\nУдалённо\n**\n****📍****Тестирование**\n\n[**Middle Инженер по автоматизации тестирования в ДОМ.РФ**](https://www.vseti.app/vakansii/348438439439434393483443434343)\nМосква, гибрид\n\n**📍****Менеджмент**\n\n[**Senior Product Manager в антивирус**](https://www.vseti.app/vakansii/3473483493443434383483434)\nот 3 500 до 5 000$\nУдалённо (Мир)\n\n[**Senior Product Manager в международный продукт**](https://www.vseti.app/vakansii/4873484394343430349344343)\nПольша, удалённо\n\n[**Middle+ Аккаунт-менеджер в digital-интегратор**](https://t.me/products_jobs_projects/678)\nУдалённо\n\n[**Стажер Руководитель проектов в крупнейший интегратор**](https://www.vseti.app/vakansii/3484394343043043949433)\nУдалённо\n**\n****📍****Маркетинг**\n\n[**Middle+ Influence Manager в международную финтех-компанию**](https://www.vseti.app/vakansii/43734843943043043434343)\nУдалённо (Мир)\n\n[**Middle Маркетолог в строительную компанию**](https://www.vseti.app/vakansii/438348439344343043043434343)\n100 000₽\nУдалённо\n\n[**Junior Контент-менеджер в EdTech**](https://www.vseti.app/vakansii/3839430394343843834434334)\nУдалённо\n**\n****📍****Дизайн**\n\n[**Middle+ Product Designer в один из крупнейших российских B2C-бигтехов**](https://www.vseti.app/vakansii/43374438439430430433493434)\nУдалённо\n\n[**Middle Motion Designer в Дизайн-агентство**](https://www.vseti.app/vakansii/438439434304343043434334)\nУдалённо\n\n[**Стажер Дизайнер продуктов в пул Helpy**](https://www.vseti.app/vakansii/4384383493430343403493493434)\nМосква, гибрид\n\n**\n**———\n\n🖤[ ](http://ya.ru/)[Разместить вакансию](https://www.vseti.app/b2b) \n💚 [Джунам](https://t.me/+6lnhesy-WoxjNzBi) 🫶 [Удалёнка джунам](https://t.me/+1yyM8jKGVr8xZjMy) \n💜[ За рубежом](https://t.me/+BO4DcXIAKqg1ODYy) 💚[ Разрабам](https://t.me/+QiDNhxIWmTUwMTdi)\n💖[ Дизайнерам](https://t.me/+9cosivWJhhE4M2Ri) 🟠[ Маркетологам](https://t.me/+vJsBiYSXJ65mNTky) \n🖤 [HR](https://t.me/+1bnvboBdNRViZmMy) 💜 [QA](https://t.me/+H9UAixzqTEQ3Zjky) 🟡 [Менеджерам](https://t.me/+riZ3PFenvGJkNTAy)\n🔴 [Аналитикам](https://t.me/+Y61B38iIuAtiMWE6)\n\n__мы также есть там, куда всех хотят отправить — ____https://max.ru/it_vakansii_jobs__",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "3d9460907d475381",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Senior Product Designer",
+    "company": "российский B2C-бигтех (сервис лояльности)",
+    "salary": null,
+    "experience": {
+      "value": "Senior",
+      "strict": false
+    },
+    "workFormat": "Remote / Hybrid",
+    "location": "Москва",
+    "requirements": [
+      "опыт работы в продуктовой команде",
+      "сильный визуальный вкус и умение проектировать эмоциональный UI",
+      "опыт работы с дизайн-системами",
+      "понимание исследований и проверки продуктовых гипотез",
+      "опыт использования AI-инструментов в работе",
+      "самостоятельность и инициативность"
+    ],
+    "sourceExcerpt": "Product Designer в один из крупнейших российских B2C-бигтехов (сервис лояльности)\nУдалённо\nЗ/П не указана\nMiddle\nSenior\nУдалённо\nЗ/П не указана\nИщем Senior Product Designer в один из крупнейших российских B2C-бигтехов (сервис лояльности) \n‍\n🤩 Привет, это Сёрч! Мы помогаем топовым компаниям в digital & it находить лучших специалистов, а классным профессионалам — расти в карьере и получать офферы мечты. Наш канал: \n@search_hragency\nСейчас мы в поиске сильного продуктового дизайнера, который поможет развивать сервис с многомиллионной аудиторией. Будет возможность влиять не только на интерфейсы, но и на сам продукт: проектировать пользовательские сценарии, усиливать визуальный язык и работать в связке с аналитикой и продуктовой командой. Оформление по ТК или ГПХ, удалёнка по России или гибрид в Москве.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product/UX/UI design role"
+        },
+        {
+          "type": "good",
+          "text": "Remote format supported"
+        },
+        {
+          "type": "warn",
+          "text": "Role is marked as Senior, but experience requirements text does not explicitly forbid junior/middle candidates with strong portfolios"
+        }
+      ]
+    },
+    "channel_username": "design_jobs_uxui",
+    "channel_title": "Вакансии для Дизайнеров",
+    "date": "2026-08-03T07:03:01+00:00",
+    "link": "https://t.me/design_jobs_uxui/1220",
+    "original_text": "[**Product Designer в один из крупнейших российских B2C-бигтехов (сервис лояльности)**](https://www.vseti.app/vakansii/43374438439430430433493434)\nУдалённо\n\nИщем Senior Product Designer в один из крупнейших российских B2C-бигтехов (сервис лояльности)\n‍\n🤩 Привет, это Сёрч! Мы помогаем топовым компаниям в digital & it находить лучших специалистов, а классным профессионалам — расти в карьере и получать офферы мечты.\n\n**Наш канал: **[@search_hragency](https://t.me/search_hragency)\n\nСейчас мы в поиске сильного продуктового дизайнера, который поможет развивать сервис с многомиллионной аудиторией. Будет возможность влиять не только на интерфейсы, но и на сам продукт: проектировать пользовательские сценарии, усиливать визуальный язык и работать в связке с аналитикой и продуктовой командой. Оформление по ТК или ГПХ, удалёнка по России или гибрид в Москве.\n‍\n**Что нужно делать:**\n— проектировать и развивать продуктовые сценарии внутри сервиса лояльности\n— работать над UX/UI-решениями вместе с продуктовой командой и аналитиками\n— развивать и поддерживать дизайн-систему\n— усиливать визуальное качество продукта, создавая выразительные интерфейсы\n— участвовать в развитии процессов команды и внедрении современных инструментов\n‍\nЕсли у тебя есть опыт работы в продуктовой команде, ты умеешь проектировать сильный эмоциональный UI, работал с дизайн-системами и используешь AI в ежедневной работе — это может быть отличный мэтч.\n‍\n**Подробности и отклик **— [https://forms.gle/7oWuv6UxQmLk6nGYA](https://forms.gle/7oWuv6UxQmLk6nGYA)\nЕсли остались вопросы или хочешь откликнуться напрямую — пиши нашему менеджеру: [@recruitment_search](https://t.me/recruitment_search) 🤩\n\n\nПонравилась вакансия?\n💚 — да\n🌚 — нет\n\n\n———\n\n🖤[ ](http://ya.ru/)[Разместить вакансию](https://www.vseti.app/b2b) \n💙 [Удалёнка](https://t.me/+LyGXnOpjrztmN2Ix) 🫶 [Удалёнка джунам](https://t.me/+1yyM8jKGVr8xZjMy) \n🫶[ ](https://t.me/+BO4DcXIAKqg1ODYy)[Стажировки](https://t.me/+hDTdPzgIbhozMTUy) 💚[ Разрабам](https://t.me/+QiDNhxIWmTUwMTdi)\n💖[ Дизайнерам](https://t.me/+9cosivWJhhE4M2Ri) 🟠[ Маркетологам](https://t.me/+vJsBiYSXJ65mNTky) \n🖤 [HR](https://t.me/+jHYEvaAUg_5kNWZi) 💜 [QA](https://t.me/+UxBpbQAyg6M0ZjUy) 🟡 [Менеджерам](https://t.me/+riZ3PFenvGJkNTAy)\n\n__мы также есть там, куда всех хотят отправить — ____https://max.ru/it_vakansii_jobs__",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "6739ba558f5ae6d8",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Senior/Staff Product Designer",
+    "company": "TaxDome",
+    "salary": null,
+    "experience": {
+      "value": "Senior/Staff",
+      "strict": false
+    },
+    "workFormat": "Remote",
+    "location": "Remote",
+    "requirements": [],
+    "sourceExcerpt": "[**Senior/Staff Product Designer / TaxDome**](https://wantapply.com/ux-architect-at-taxdome?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile."
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-03T07:00:20+00:00",
+    "link": "https://t.me/wantapply_design/494",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Product Designer Junior/Junior+ / Banco Plata**](https://wantapply.com/product-designer-junior-junior-at-banco-plata?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGeorgia, Serbia. \n\n[**Motion Designer / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.\n\n[**Senior Web Designer / Exness**](https://wantapply.com/senior-web-designer-at-exness?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, relocation.\n\n[**Senior Product Designer (Design System) / OLX**](https://wantapply.com/senior-product-designer-design-system-at-olx-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nPortugal, Spain, Poland. Remote. \n\n[**Senior/Staff Product Designer / TaxDome**](https://wantapply.com/ux-architect-at-taxdome?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Wrike**](https://wantapply.com/senior-product-designer-at-wrike?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, Czechia, Estonia. \n\n\n⭐️**С подпиской Plus +**\n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote.\n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan. \n\n[**Product Designer / Acclaim**](https://wantapply.com/product-designer-at-acclaim?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n[**Head of Design/ Art Director / Tangem**](https://wantapply.com/head-of-design-art-director-at-tangem?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "6479d3062d6a6155",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Senior UI/UX Designer",
+    "company": "HyperHug",
+    "salary": null,
+    "experience": {
+      "value": "Senior",
+      "strict": false
+    },
+    "workFormat": "Remote",
+    "location": "Cyprus",
+    "requirements": [],
+    "sourceExcerpt": "[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UX/UI Designer role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile."
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-03T07:00:20+00:00",
+    "link": "https://t.me/wantapply_design/494",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Product Designer Junior/Junior+ / Banco Plata**](https://wantapply.com/product-designer-junior-junior-at-banco-plata?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGeorgia, Serbia. \n\n[**Motion Designer / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.\n\n[**Senior Web Designer / Exness**](https://wantapply.com/senior-web-designer-at-exness?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, relocation.\n\n[**Senior Product Designer (Design System) / OLX**](https://wantapply.com/senior-product-designer-design-system-at-olx-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nPortugal, Spain, Poland. Remote. \n\n[**Senior/Staff Product Designer / TaxDome**](https://wantapply.com/ux-architect-at-taxdome?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Wrike**](https://wantapply.com/senior-product-designer-at-wrike?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, Czechia, Estonia. \n\n\n⭐️**С подпиской Plus +**\n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote.\n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan. \n\n[**Product Designer / Acclaim**](https://wantapply.com/product-designer-at-acclaim?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n[**Head of Design/ Art Director / Tangem**](https://wantapply.com/head-of-design-art-director-at-tangem?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "756e27821c9f7f0a",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Product Designer",
+    "company": "Acclaim",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": "Cyprus",
+    "requirements": [],
+    "sourceExcerpt": "[**Product Designer / Acclaim**](https://wantapply.com/product-designer-at-acclaim?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile."
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-03T07:00:20+00:00",
+    "link": "https://t.me/wantapply_design/494",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Product Designer Junior/Junior+ / Banco Plata**](https://wantapply.com/product-designer-junior-junior-at-banco-plata?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGeorgia, Serbia. \n\n[**Motion Designer / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.\n\n[**Senior Web Designer / Exness**](https://wantapply.com/senior-web-designer-at-exness?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, relocation.\n\n[**Senior Product Designer (Design System) / OLX**](https://wantapply.com/senior-product-designer-design-system-at-olx-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nPortugal, Spain, Poland. Remote. \n\n[**Senior/Staff Product Designer / TaxDome**](https://wantapply.com/ux-architect-at-taxdome?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Wrike**](https://wantapply.com/senior-product-designer-at-wrike?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus, Czechia, Estonia. \n\n\n⭐️**С подпиской Plus +**\n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote.\n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan. \n\n[**Product Designer / Acclaim**](https://wantapply.com/product-designer-at-acclaim?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n[**Head of Design/ Art Director / Tangem**](https://wantapply.com/head-of-design-art-director-at-tangem?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "b842a071203c5e15",
+    "fetchedAt": "2026-08-03T23:35:21.423750+00:00",
+    "batchId": "2026-08-03T23:35:21.423750+00:00"
+  },
+  {
+    "title": "Дизайнер web-to-app воронок",
+    "company": "Onlyapps",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Опыт в продуктовом, мобильном или веб-дизайне",
+      "Портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты)",
+      "Понимание принципов конверсионного дизайна",
+      "Уверенное использование AI-инструментов"
+    ],
+    "sourceExcerpt": "**Дизайнер web-to-app воронок**\n__Onlyapps\n__\n**Что делать:**\n— Проектировать маркетинговые воронки/онбординги от первого экрана до оплаты и Upsell-экранов (экраны продажи доп. продуктов, special offers).\n— Создавать онбординги, квизы, paywall'ы и checkout-процессы.\n— Предлагать и тестировать новые идеи для повышения конверсии.\n— Создавать современные визуалы и креативы с помощью AI-инструментов.\n— Иногда участвовать в улучшении веб- и iOS-продуктов.\n\n**Требования:**\n— Опыт в продуктовом, мобильном или веб-дизайне.\n— Портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты).\n— Понимание принципов конверсионного дизайна.\n— Уверенное использование AI-инструментов.\n\n**Условия:**\n— Удалёнка.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format accepted"
+        },
+        {
+          "type": "warn",
+          "text": "Experience is not strictly defined, considering as match"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-04T09:00:10+00:00",
+    "link": "https://t.me/designwork_vacansii/8647",
+    "original_text": "**Дизайнер web-to-app воронок**\n__Onlyapps\n__\n**Что делать:**\n— Проектировать маркетинговые воронки/онбординги от первого экрана до оплаты и Upsell-экранов (экраны продажи доп. продуктов, special offers).\n— Создавать онбординги, квизы, paywall'ы и checkout-процессы.\n— Предлагать и тестировать новые идеи для повышения конверсии.\n— Создавать современные визуалы и креативы с помощью AI-инструментов.\n— Иногда участвовать в улучшении веб- и iOS-продуктов.\n\n**Требования:**\n— Опыт в продуктовом, мобильном или веб-дизайне.\n— Портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты).\n— Понимание принципов конверсионного дизайна.\n— Уверенное использование AI-инструментов.\n\n**Условия:**\n— Удалёнка.\n\n**Контакты:**\n@skyluckwalker",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "d3062e6061220802",
+    "fetchedAt": "2026-08-04T23:40:06.094206+00:00",
+    "batchId": "2026-08-04T23:40:06.094206+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер в МТС",
+    "company": "МТС",
+    "salary": null,
+    "experience": {
+      "value": "3-6 лет",
+      "strict": false
+    },
+    "workFormat": "гибрид",
+    "location": "Москва",
+    "requirements": [
+      "Опыт более 4-х лет в продуктовом дизайне, из них опыт с дизайн-системами не менее двух лет",
+      "Системное мышление — проектировать не один компонент, а систему",
+      "Глубокое понимание UI/UX, хорошая насмотренность в дизайне, уверенный опыт работы с Figma, понимание frontend-архитектуры (React / iOS / Android)",
+      "Опыт синхронизации дизайна с кодом (storybook, npm, sdk)",
+      "Уверенный опыт в цифровой разработке: провести ресерч, собрать референсы, собрать недостающую инфу, опросить пользователей и выдать варианты решения",
+      "Развитые софт-скиллы: вам предстоит быть лицом продукта, которым пользуются профессиональные дизайнеры и разработчики, необходимо уметь договариваться, выдерживать критику"
+    ],
+    "sourceExcerpt": "3. Продуктовый дизайнер в МТС\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Job](https://job.mts.ru/vacancy/668559255791473756)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Hybrid format matches preference"
+        },
+        {
+          "type": "warn",
+          "text": "Experience listed as 3-6 years, but not explicitly stated as strict requirement; applying per profile condition"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-04T08:08:10+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1314",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Коммуникационный дизайнер в Яндекс**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Yandex](https://yandex.ru/jobs/vacancies/starshiy-kommunikatsionniy-dizayner-v-yandex-b2b-tech-47600)\n\n**2. Иллюстратор в Astrum Entertainment**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #офис\n✉️ [Hirehi](https://hirehi.ru/design/illiustrator-70623)\n\n**3. Продуктовый дизайнер в МТС**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Job](https://job.mts.ru/vacancy/668559255791473756)\n\n**4. Product Designer в Overgear**\n💪 Грейд: #lead\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/product-designer-70798)\n\n**5. Web дизайнер в Ozon**\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Hirehi](https://hirehi.ru/design/web-dizainer-70539)\n\n**6. Дизайнер коммуникаций в Магнит**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид\n✉️ [Hirehi](https://hirehi.ru/design/dizainer-kommunikatsii-71137)\n\n**7. UX/UI Designer в ИнфоТеКС**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис Рязань\n✉️ [Headhunter](https://hh.ru/vacancy/135868441)\n\n**8. Веб дизайнер в Книга - практикум Человек Нового Времени**\n💪 Грейд: #middle\n💰 Вилка: от 25к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/135838463)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "85c3252c45475a77",
+    "fetchedAt": "2026-08-04T23:40:06.094206+00:00",
+    "batchId": "2026-08-04T23:40:06.094206+00:00"
+  },
+  {
+    "title": "Product Designer в Overgear",
+    "company": "Overgear",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "удалёнка",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "4. Product Designer в Overgear\n💪 Грейд: #lead\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/product-designer-70798)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote format matches preference"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-04T08:08:10+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1314",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Коммуникационный дизайнер в Яндекс**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Yandex](https://yandex.ru/jobs/vacancies/starshiy-kommunikatsionniy-dizayner-v-yandex-b2b-tech-47600)\n\n**2. Иллюстратор в Astrum Entertainment**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #офис\n✉️ [Hirehi](https://hirehi.ru/design/illiustrator-70623)\n\n**3. Продуктовый дизайнер в МТС**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Job](https://job.mts.ru/vacancy/668559255791473756)\n\n**4. Product Designer в Overgear**\n💪 Грейд: #lead\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/product-designer-70798)\n\n**5. Web дизайнер в Ozon**\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Hirehi](https://hirehi.ru/design/web-dizainer-70539)\n\n**6. Дизайнер коммуникаций в Магнит**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид\n✉️ [Hirehi](https://hirehi.ru/design/dizainer-kommunikatsii-71137)\n\n**7. UX/UI Designer в ИнфоТеКС**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис Рязань\n✉️ [Headhunter](https://hh.ru/vacancy/135868441)\n\n**8. Веб дизайнер в Книга - практикум Человек Нового Времени**\n💪 Грейд: #middle\n💰 Вилка: от 25к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/135838463)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "444a25af87522252",
+    "fetchedAt": "2026-08-04T23:40:06.094206+00:00",
+    "batchId": "2026-08-04T23:40:06.094206+00:00"
+  },
+  {
+    "title": "Веб-дизайнер",
+    "company": null,
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "Web design",
+      "Нейросети"
+    ],
+    "sourceExcerpt": "#вебдизайнер\nИщут веб-дизайнера для нескольких проектов с большим объёмом работы. Заказчик предоставляет технические задания и прототипы. Приветствуется использование нейросетей\n➡️ @lena_len_n",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Web design matches Product/UX/UI profile"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check work format and project scope"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-04T08:00:04+00:00",
+    "link": "https://t.me/designwork_vacansii/8645",
+    "original_text": "[​](https://hooks.pro/media/2026/08/03/bot2039943905/photos/Q1Mt/file_3954.jpg)#motionдизайнер\nИщут монтажёра с навыками motion-дизайна для горизонтальных видео. Возможны задачи по Reels, AI-генерации и работа с другими клиентскими проектами\n➡️ @andrew_postprod\n\n#дизайнер\nИщут дизайнера с навыками работы в Figma и Illustrator. Нужно уметь собирать макеты и дорабатывать материалы даже при отсутствии готовых исходников\n➡️ @sariiit\n\n#motionдизайнер\nИщут монтажёра роликов с анимацией. Бюджет — 2000–2500 ₽ за видео. Работа только по договору с ИП или ООО\n➡️ @dkovaly\n\n#дизайнер\nИщут дизайнера YouTube-обложек для регулярной работы. Объём — 2–4 видео в месяц. Нужно тестировать разные варианты и подобрать эффективный визуальный стиль\n➡️ @dich_creator\n\n#aiвидеомейкер\nИщут AI-видеомейкера для регулярного создания реалистичных коротких роликов и оживления фотографий. Оплата за каждое видео, предусмотрены большие объёмы\n➡️ @dashasolin\n\n#дизайнер\nИщут дизайнера на регулярное проектное сотрудничество. Ежемесячный объём — около 100 единиц статичного и видеоконтента\n➡️ @ankhlus\n\n#дизайнер\nИщут дизайнера для регулярного оформления постов, Stories и обложек Reels для бизнеса. При отклике необходимо указать стоимость и прислать примеры работ\n➡️ @llisptr\n\n#вебдизайнер\nИщут веб-дизайнера для нескольких проектов с большим объёмом работы. Заказчик предоставляет технические задания и прототипы. Приветствуется использование нейросетей\n➡️ @lena_len_n\n\n#дизайнер\nСалону красоты нужен дизайнер для регулярного оформления постов, Stories и обложек Reels. Визуальная стилистика — в том числе в духе Cosmopolitan\n➡️ @ntszlh\n\n#motionдизайнер\nИщут монтажёра с опытом motion-дизайна и уверенными навыками работы в After Effects или DaVinci Resolve\n➡️ @romchik9865",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "8406637bf5622d63",
+    "fetchedAt": "2026-08-04T23:40:06.094206+00:00",
+    "batchId": "2026-08-04T23:40:06.094206+00:00"
+  },
+  {
+    "title": "Product Designer - Observability & Data Visualization",
+    "company": "Nebius",
+    "salary": null,
+    "experience": {
+      "value": "Several years",
+      "strict": false
+    },
+    "workFormat": "Remote",
+    "location": null,
+    "requirements": [
+      "Several years of experience in data visualization design",
+      "Deep understanding of data visualization principles",
+      "Strong understanding of metrics and time-series data",
+      "Ability to define best practices for dashboard design",
+      "Solid understanding of the product design process"
+    ],
+    "sourceExcerpt": "Product Designer - Observability & Data Visualization / Nebius\nRemote\n\nThe Nebius AI Cloud brings powerful full-stack infrastructure for AI developers and practitioners across startups, enterprises and science institutes to build and deploy generative AI applications and\n\nТребования к кандидату:\n- Several years of experience in data visualization design  \n- Deep understanding of data visualization principles  \n- Strong understanding of metrics and time-series data  \n- Ability to define best practices for dashboard design  \n- Solid understanding of the product design process",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches preferences"
+        },
+        {
+          "type": "warn",
+          "text": "Experience requirement is not explicitly strict"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-04T07:04:18+00:00",
+    "link": "https://t.me/wantapply_design/495",
+    "original_text": "#product\n**Product Designer - Observability & Data Visualization / Nebius**\nRemote\n\nThe Nebius AI Cloud brings powerful full-stack infrastructure for AI developers and practitioners across startups, enterprises and science institutes to build and deploy generative AI applications and\n\n**Требования к кандидату:**\n- Several years of experience in data visualization design  \n- Deep understanding of data visualization principles  \n- Strong understanding of metrics and time-series data  \n- Ability to define best practices for dashboard design  \n- Solid understanding of the product design process  \n\n**Читать подробнее: **\n[→ Откликнуться тут](https://wantapply.com/senior-product-designer-observability-data-visualization-at-nebius?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)",
+    "pipeline_version": "2026-07-28-v8",
+    "id": "4192d733fb155e75",
+    "fetchedAt": "2026-08-04T23:40:06.094206+00:00",
+    "batchId": "2026-08-04T23:40:06.094206+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "СберМаркетинг",
+    "salary": "по рынку ≈ 189 841 ₽",
+    "experience": {
+      "value": "более 3 лет",
+      "strict": true
+    },
+    "workFormat": "Гибрид, Офис",
+    "location": "Москва",
+    "requirements": [
+      "Опыт работы продуктовым дизайнером - более 3 лет",
+      "Опыт работы с дашбордами, таблицами, личными кабинетами и B2B-сервисами",
+      "Уверенное знание Figma",
+      "Внимание к деталям и ответственность за качество финального результата",
+      "Умение писать UX-тексты"
+    ],
+    "sourceExcerpt": "🏢 [Продуктовый дизайнер](https://h.careers/job/f00e407a-3e66-4578-be86-1ff488103009?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        }
+      ]
+    },
+    "channel_username": "hcareers_jobs",
+    "channel_title": "Эйч Вакансии",
+    "date": "2026-08-05T15:02:34+00:00",
+    "link": "https://t.me/hcareers_jobs/2228",
+    "original_text": "**Подборка вакансий для дизайнеров:**\n\n🚶‍♂️ [Моушен дизайнер](https://h.careers/job/85897af2-52f4-460e-80de-6c7a46f17be9?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Flo Health\nMiddle, Remote (Польша)\n\n🏢 [Дизайнер презентаций](https://h.careers/job/91d002f3-73b1-45e0-8ed9-6cdc74fb5328?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Сбер\nMiddle, г Москва\n\n🏢 [Коммуникационный дизайнер](https://h.careers/job/5d57662a-9e84-43f4-b04e-1b9dc08a7e96?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Делимобиль\nLead, Москва\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/f00e407a-3e66-4578-be86-1ff488103009?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в СберМаркетинг\nMiddle, Москва\n\n🏢 [Графический дизайнер](https://h.careers/job/394aebe9-8401-4539-a3de-337353345efa?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в МегаФон\nJunior, Москва\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/05500476-d60f-4801-adac-32a372fa57fe?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Фоксфорд\nMiddle, Удалённо\n\n______________________\n\n⚡ Сервисы Эйч:\n\n[Найти ментора](https://h.careers/curators?utm_source=tg_hjobs&utm_medium=jobpost)\n[Готовое резюме](https://h.careers/your-cv/ready-resume?utm_source=tg_hjobs&utm_medium=jobpost)\n[Сопровождение до оффера](https://h.careers/offer?utm_source=tg_hjobs&utm_medium=jobpost)\n[Все вакансии (39115)](https://h.careers/jobs?utm_source=tg_hjobs&utm_medium=jobpost)\n[Трекер откликов](https://h.careers/mentee/tracker?utm_source=tg_hjobs&utm_medium=jobpost)\n[Конструктор резюме](https://h.careers/mentee/resumes?utm_source=tg_hjobs&utm_medium=jobpost)\n[Вопросы с собеседований](https://h.careers/interview-questions?utm_source=tg_hjobs&utm_medium=jobpost)\n[Задачи с собеседований](https://h.careers/interview-tasks?utm_source=tg_hjobs&utm_medium=jobpost)\n[AI-Проверятор резюме](https://h.careers/mentee/cv-check?utm_source=tg_hjobs&utm_medium=jobpost)\n[Генератор сопроводительных](https://h.careers/mentee/cover-letters?utm_source=tg_hjobs&utm_medium=jobpost)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "bb250d8367b80ae6",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "Фоксфорд",
+    "salary": "по рынку ≈ 189 841 ₽",
+    "experience": {
+      "value": "от 2-х лет",
+      "strict": true
+    },
+    "workFormat": "Удалённо",
+    "location": "Удалённо",
+    "requirements": [
+      "от 2-х лет опыта в продуктовом дизайне",
+      "уверенное владение фигмой",
+      "опыт проектирования веб-продуктов, в том числе мобильных",
+      "навык проектирования и проведения UX-исследований",
+      "знание и применение фреймворков (CJM, JTBD и др.)",
+      "понимание продуктовых метрик",
+      "умение работать в ограничениях и понимание итерационного подхода"
+    ],
+    "sourceExcerpt": "🏢 [Продуктовый дизайнер](https://h.careers/job/05500476-d60f-4801-adac-32a372fa57fe?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        }
+      ]
+    },
+    "channel_username": "hcareers_jobs",
+    "channel_title": "Эйч Вакансии",
+    "date": "2026-08-05T15:02:34+00:00",
+    "link": "https://t.me/hcareers_jobs/2228",
+    "original_text": "**Подборка вакансий для дизайнеров:**\n\n🚶‍♂️ [Моушен дизайнер](https://h.careers/job/85897af2-52f4-460e-80de-6c7a46f17be9?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Flo Health\nMiddle, Remote (Польша)\n\n🏢 [Дизайнер презентаций](https://h.careers/job/91d002f3-73b1-45e0-8ed9-6cdc74fb5328?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Сбер\nMiddle, г Москва\n\n🏢 [Коммуникационный дизайнер](https://h.careers/job/5d57662a-9e84-43f4-b04e-1b9dc08a7e96?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Делимобиль\nLead, Москва\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/f00e407a-3e66-4578-be86-1ff488103009?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в СберМаркетинг\nMiddle, Москва\n\n🏢 [Графический дизайнер](https://h.careers/job/394aebe9-8401-4539-a3de-337353345efa?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в МегаФон\nJunior, Москва\n\n🏢 [Продуктовый дизайнер](https://h.careers/job/05500476-d60f-4801-adac-32a372fa57fe?utm_source=tg_h&utm_medium=post&utm_campaign=05.08.26) в Фоксфорд\nMiddle, Удалённо\n\n______________________\n\n⚡ Сервисы Эйч:\n\n[Найти ментора](https://h.careers/curators?utm_source=tg_hjobs&utm_medium=jobpost)\n[Готовое резюме](https://h.careers/your-cv/ready-resume?utm_source=tg_hjobs&utm_medium=jobpost)\n[Сопровождение до оффера](https://h.careers/offer?utm_source=tg_hjobs&utm_medium=jobpost)\n[Все вакансии (39115)](https://h.careers/jobs?utm_source=tg_hjobs&utm_medium=jobpost)\n[Трекер откликов](https://h.careers/mentee/tracker?utm_source=tg_hjobs&utm_medium=jobpost)\n[Конструктор резюме](https://h.careers/mentee/resumes?utm_source=tg_hjobs&utm_medium=jobpost)\n[Вопросы с собеседований](https://h.careers/interview-questions?utm_source=tg_hjobs&utm_medium=jobpost)\n[Задачи с собеседований](https://h.careers/interview-tasks?utm_source=tg_hjobs&utm_medium=jobpost)\n[AI-Проверятор резюме](https://h.careers/mentee/cv-check?utm_source=tg_hjobs&utm_medium=jobpost)\n[Генератор сопроводительных](https://h.careers/mentee/cover-letters?utm_source=tg_hjobs&utm_medium=jobpost)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "f3a8555c6fceabd4",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер в команду «Программирования»",
+    "company": "Онлайн-школа Фоксфорд",
+    "salary": null,
+    "experience": {
+      "value": "junior, от 2-х лет опыта в продуктовом дизайне",
+      "strict": true
+    },
+    "workFormat": "remote or office",
+    "location": "Москва",
+    "requirements": [
+      "от 2-х лет опыта в продуктовом дизайне",
+      "уверенное владение фигмой: шорткаты, автолейаты, компоненты",
+      "опыт проектирования веб-продуктов, в том числе мобильных",
+      "навык проектирования и проведения UX-исследований",
+      "знание и применение фреймворков (CJM, JTBD и др.)",
+      "понимание продуктовых метрик",
+      "базовое знание UX-редактуры, анимации, иллюстрации"
+    ],
+    "sourceExcerpt": "- [Продуктовый дизайнер в команду «Программирования» в Онлайн-школа Фоксфорд](https://youngjunior.ru/дизайнер/jobs/46512)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote option available"
+        },
+        {
+          "type": "warn",
+          "text": "Requires 2+ years experience; consider user's self-directed practice as comparable"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-08-05T15:00:19+00:00",
+    "link": "https://t.me/newdirections/6897",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Стажер в Дирекцию по ESG в ПАО Сбербанк](https://youngjunior.ru/data/jobs/46817)\n- [Системный-аналитик Битрикс24 (Junior) в МАКСИС АЙ ТИ](https://youngjunior.ru/analyst/jobs/46687)\n- [Продуктовый аналитик-стажер в ПАО Сбербанк](https://youngjunior.ru/analyst/jobs/46825)\n\n**__Дизайн/UX:__**\n- [Разработчик-дизайнер Tilda интернет-магазина в АвроРА](https://youngjunior.ru/дизайнер/jobs/46627)\n- [Продуктовый дизайнер в команду «Программирования» в Онлайн-школа Фоксфорд](https://youngjunior.ru/дизайнер/jobs/46512)\n- [User Interface Designer в GOFOXDESIGN OU](https://youngjunior.ru/дизайнер/jobs/46734)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "53619ffa67af10b6",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "UX/UI Designer",
+    "company": "AbeloHost B.V.",
+    "salary": "120 000 – 260 000 ₽/мес",
+    "experience": {
+      "value": "middle",
+      "strict": null
+    },
+    "workFormat": "remote",
+    "location": "Алматы",
+    "requirements": [
+      "Опыт самостоятельного ведения проекта",
+      "Уверенное владение Figma",
+      "Чувство композиции и типографики",
+      "Знание основ UX и UI дизайна",
+      "Знание Adobe Photoshop и Illustrator",
+      "Понимание принципов HTML/CSS-вёрстки",
+      "Способность быстро погружаться в продукт",
+      "Умение аргументировать решения"
+    ],
+    "sourceExcerpt": "- [UX/UI Designer в AbeloHost B.V.](https://youngjunior.ru/дизайнер/jobs/46730)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches UX/UI Designer profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported."
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-05T15:00:07+00:00",
+    "link": "https://t.me/junior_designers/1455",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Специалист по сборке лендингов и квизов в МАЙСТРИМ](https://youngjunior.ru/дизайнер/jobs/45673)\n\n**__Junior-дизайнер:__**\n- [UX/UI Designer в AbeloHost B.V.](https://youngjunior.ru/дизайнер/jobs/46730)\n- [Продуктовый дизайнер в команду «Программирования» в Онлайн-школа Фоксфорд](https://youngjunior.ru/дизайнер/jobs/46512)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "59b3d5542e130075",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер в команду «Программирования»",
+    "company": "Онлайн-школа Фоксфорд",
+    "salary": null,
+    "experience": {
+      "value": "от 2-х лет",
+      "strict": true
+    },
+    "workFormat": "remote",
+    "location": "Москва",
+    "requirements": [
+      "от 2-х лет опыта в продуктовом дизайне",
+      "уверенное владение фигмой",
+      "опыт проектирования веб-продуктов",
+      "навык проектирования и проведения UX-исследований",
+      "знание и применение фреймворков (CJM, JTBD и др.)",
+      "понимание продуктовых метрик"
+    ],
+    "sourceExcerpt": "- [Продуктовый дизайнер в команду «Программирования» в Онлайн-школа Фоксфорд](https://youngjunior.ru/дизайнер/jobs/46512)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported."
+        },
+        {
+          "type": "warn",
+          "text": "2+ years of experience required."
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-05T15:00:07+00:00",
+    "link": "https://t.me/junior_designers/1455",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Специалист по сборке лендингов и квизов в МАЙСТРИМ](https://youngjunior.ru/дизайнер/jobs/45673)\n\n**__Junior-дизайнер:__**\n- [UX/UI Designer в AbeloHost B.V.](https://youngjunior.ru/дизайнер/jobs/46730)\n- [Продуктовый дизайнер в команду «Программирования» в Онлайн-школа Фоксфорд](https://youngjunior.ru/дизайнер/jobs/46512)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "c631161b7d148e27",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Арт-директор",
+    "company": "Палиндром",
+    "salary": null,
+    "experience": {
+      "value": "2 года",
+      "strict": true
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "опыт от 2 лет",
+      "курирование проектов от идеи до финала",
+      "разработка и защита креативных идей и визуальных концепций",
+      "UX/UI",
+      "AI (Artificial Intelligence)"
+    ],
+    "sourceExcerpt": "— **Арт-директора** от 2 лет опыта (что? ну ладно) который будет курировать проекты от идеи до финала, разрабатывать и защищать креативные идеи и визуальные концепции, вот это вот все. важно что в требованиях прям особенно подчеркивается UX/UI",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role includes UX/UI design responsibilities"
+        },
+        {
+          "type": "warn",
+          "text": "Art Director role often implies more management than hands-on design, but UX/UI focus matches profile"
+        }
+      ]
+    },
+    "channel_username": "sweetmartinvacancies",
+    "channel_title": "сладенькие вакансии в дизайне",
+    "date": "2026-08-05T09:29:58+00:00",
+    "link": "https://t.me/sweetmartinvacancies/1059",
+    "original_text": "**так, ладно, тут **[**«Палиндром»**](https://palindrome.media/)** ищет графического дизайнера и арт-директора в команду **\n\nэто чуваки, которые придумали «Кинжал», «Код» и ещё 15 бренд-медиа, которые я никогда не читал (но кстати Коля по моему там где-то работал? Коль дай знать)\n\nне супер пристально слежу за чуваками, но то что видел и слышал всегда очень нравилось. чо уж там говорить, вся моя команда росла на Ильяхове, при всей иронии про инфостиль и пиши сокращай, считаю что это правда оч сильно повлияло на индустрию\n\nищут:\n— **Арт-директора** от 2 лет опыта (что? ну ладно) который будет курировать проекты от идеи до финала, разрабатывать и защищать креативные идеи и визуальные концепции, вот это вот все. важно что в требованиях прям особенно подчеркивается UX/UI – жесть как бы мне самому не хотелось всей этой ебатней заниматься, но видимо никуда не деться уже в 2026. ну про AI молчу\n\n— **Графического дизайнера**, тоже от 2 лет, тут все вполне стандартно. грейд не указан, но кажется что чето мидловое, СММ веб и все такое, хотя есть какие-то штуки типа разрабатывать айдентику???... но в целом норм\n\nсчитаю это супер возможность поработать на диверсифицированный набор проектов и задачек, думаю что попробовать поболтать точно стоит. для этого надо заполнить [анкету](https://forms.yandex.ru/cloud/6a71983d9029022fe3f3ef2f/) и ждать ответа HR (жуть как не люблю такое, но как уж есть)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "69be6dfe0bba6c3f",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "UX/UI-дизайнер",
+    "company": null,
+    "salary": null,
+    "experience": {
+      "value": "middle или senior",
+      "strict": true
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "опыт уровня middle или senior",
+      "внесение правок в проект хоккейного клуба",
+      "проекты по китайским видеоиграм"
+    ],
+    "sourceExcerpt": "#uiuxдизайнер\nИщут UX/UI-дизайнера уровня middle или senior. На старте нужно внести правки в проект хоккейного клуба, затем предусмотрены проекты по китайским видеоиграм\n➡️ @thewinday",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches role: UX/UI Designer"
+        },
+        {
+          "type": "warn",
+          "text": "Experience level requested: middle or senior"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-05T08:00:07+00:00",
+    "link": "https://t.me/designwork_vacansii/8653",
+    "original_text": "[​](https://hooks.pro/media/2026/08/05/bot2039943905/photos/Wkni/file_3978.jpg)#aiкреатор\nИщут AI-креатора для постоянного создания кинематографичных Reels. Объём — около 20 роликов в месяц. При отклике необходимы портфолио и стоимость работы\n➡️ @viki2301\n\n#дизайнер\nИщут дизайнера для оформления социальных сетей. Основные задачи — разработка публикаций и обложек. При отклике необходимо сразу прислать примеры работ\n➡️ @thrownalone\n\n#графическийдизайнер\nКлуб ищет графического или motion-дизайнера для создания афиш и промоматериалов. Важны современный визуальный стиль, понимание молодёжных трендов и отсутствие шаблонных решений\n➡️ @levelovich\n\n#дизайнер\nАгентство ищет нескольких дизайнеров для постоянного сотрудничества над разными проектами. Задачи: презентации, карусели, рекламные макеты, социальные сети и сайты на Tilda\n➡️ @mishka_krutishka\n\n#дизайнеродежды\nИщут дизайнера одежды, желательно с опытом разработки специальной или профессиональной одежды\n➡️ @ahmadov_u\n\n#графическийдизайнер\nИщут опытного графического дизайнера для подготовки материалов к печати. Работа официальная, по договору и NDA. При отклике необходимы портфолио и стоимость услуг\n➡️ @alina_krapivnaya\n\n#графическийдизайнер\nВидеопродакшен NOTAKITCHEN ищет графического дизайнера в команду. Подробности обязанностей и условий работы можно уточнить лично\n➡️ @wiktus\n\n#uiuxдизайнер\nИщут UX/UI-дизайнера уровня middle или senior. На старте нужно внести правки в проект хоккейного клуба, затем предусмотрены проекты по китайским видеоиграм\n➡️ @thewinday\n\n#дизайнервизуализатор\nИщут опытного дизайнера-визуализатора. Начинающих не рассматривают, при отклике необходимо сразу прислать сильные кейсы\n➡️ @voroninex",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "089bf1802242d90d",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Senior Product Designer",
+    "company": "Nebius",
+    "salary": null,
+    "experience": {
+      "value": "Senior",
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "Senior Product Designer / Nebius",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-05T07:15:11+00:00",
+    "link": "https://t.me/wantapply_design/497",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Nebius**](https://wantapply.com/senior-product-designer-observability-data-visualization-at-nebius?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Motion Designer / DualEntry**](https://wantapply.com/senior-motion-designer-remote-at-dualentry?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. $45,000 - $75,000.\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. Remote. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Ticketmaster**](https://wantapply.com/senior-product-designer-at-ticketmaster?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Motion Designer (Performance Marketing) / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n⭐️**С подпиской Plus +**\n\n[**Product Designer / Resend**](https://wantapply.com/product-designer-eu-at-resend?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Creative Designer - Motion & AI Content / Pepperstone**](https://wantapply.com/creative-designer-motion-ai-content-at-pepperstone?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "5d92dca61cec8466",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Technical UI Designer",
+    "company": "HyperHug",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "Technical UI Designer / HyperHug",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UI Designer role matches user profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-05T07:15:11+00:00",
+    "link": "https://t.me/wantapply_design/497",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Nebius**](https://wantapply.com/senior-product-designer-observability-data-visualization-at-nebius?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Motion Designer / DualEntry**](https://wantapply.com/senior-motion-designer-remote-at-dualentry?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. $45,000 - $75,000.\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. Remote. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Ticketmaster**](https://wantapply.com/senior-product-designer-at-ticketmaster?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Motion Designer (Performance Marketing) / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n⭐️**С подпиской Plus +**\n\n[**Product Designer / Resend**](https://wantapply.com/product-designer-eu-at-resend?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Creative Designer - Motion & AI Content / Pepperstone**](https://wantapply.com/creative-designer-motion-ai-content-at-pepperstone?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "a750b6e390f2d312",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Senior UI/UX Designer",
+    "company": "HyperHug",
+    "salary": null,
+    "experience": {
+      "value": "Senior",
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": "Cyprus",
+    "requirements": [],
+    "sourceExcerpt": "Senior UI/UX Designer / HyperHug",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UI/UX Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-05T07:15:11+00:00",
+    "link": "https://t.me/wantapply_design/497",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Nebius**](https://wantapply.com/senior-product-designer-observability-data-visualization-at-nebius?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Motion Designer / DualEntry**](https://wantapply.com/senior-motion-designer-remote-at-dualentry?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. $45,000 - $75,000.\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. Remote. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Ticketmaster**](https://wantapply.com/senior-product-designer-at-ticketmaster?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Motion Designer (Performance Marketing) / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n⭐️**С подпиской Plus +**\n\n[**Product Designer / Resend**](https://wantapply.com/product-designer-eu-at-resend?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Creative Designer - Motion & AI Content / Pepperstone**](https://wantapply.com/creative-designer-motion-ai-content-at-pepperstone?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "00d6c1256e4edf0f",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Product Designer",
+    "company": "Resend",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "Product Designer / Resend",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-05T07:15:11+00:00",
+    "link": "https://t.me/wantapply_design/497",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Nebius**](https://wantapply.com/senior-product-designer-observability-data-visualization-at-nebius?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Motion Designer / DualEntry**](https://wantapply.com/senior-motion-designer-remote-at-dualentry?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. $45,000 - $75,000.\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. Remote. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer / Ticketmaster**](https://wantapply.com/senior-product-designer-at-ticketmaster?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Motion Designer (Performance Marketing) / Eneba**](https://wantapply.com/motion-designer-performance-marketing-at-eneba-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior UI/UX Designer / HyperHug**](https://wantapply.com/senior-ui-ux-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus. Remote. \n\n⭐️**С подпиской Plus +**\n\n[**Product Designer / Resend**](https://wantapply.com/product-designer-eu-at-resend?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Creative Designer - Motion & AI Content / Pepperstone**](https://wantapply.com/creative-designer-motion-ai-content-at-pepperstone?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Product Designer / Higgsfield AI**](https://wantapply.com/product-designer-at-higgsfield-ai-1?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nKazakhstan.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "e06b8a009bdd9313",
+    "fetchedAt": "2026-08-05T23:54:54.297004+00:00",
+    "batchId": "2026-08-05T23:54:54.297004+00:00"
+  },
+  {
+    "title": "Стажёр / Джуниор Продуктовый дизайнер",
+    "company": "Invitro",
+    "salary": null,
+    "experience": {
+      "value": "Стажер/Джуниор",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "Энергия разбираться, учиться на ходу и не сдаваться",
+      "Умение признавать ошибки",
+      "Способность доводить дела до конца",
+      "Готовность спрашивать и пробовать самому"
+    ],
+    "sourceExcerpt": "**Стажёр / Джуниор Продуктовый дизайнер**\nв **Invitro** — крупная частная медицинская компания, специализирующаяся на лабораторной диагностике и предоставлении базовых медицинских услуг.\nИщет Константин Петраков, его [пост на LinkedIn](https://www.linkedin.com/posts/%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD-%D0%BF%D0%B5%D1%82%D1%80%D0%B0%D0%BA%D0%BE%D0%B2-03445796_aukauoaunaugaupaut-auxauyaugaumauoauwauuauiauqaug-share-7491065699621216256-u1BJ/)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Design role matches user profile"
+        },
+        {
+          "type": "good",
+          "text": "Junior/Internship position fits user's experience level"
+        },
+        {
+          "type": "warn",
+          "text": "Work format is not specified in the post"
+        }
+      ]
+    },
+    "channel_username": "fordesigner",
+    "channel_title": "Job for Designers",
+    "date": "2026-08-06T17:54:58+00:00",
+    "link": "https://t.me/fordesigner/6150",
+    "original_text": "**Стажёр / Джуниор Продуктовый дизайнер**\nв **Invitro** — крупная частная медицинская компания, специализирующаяся на лабораторной диагностике и предоставлении базовых медицинских услуг.\nИщет Константин Петраков, его [пост на LinkedIn](https://www.linkedin.com/posts/%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD-%D0%BF%D0%B5%D1%82%D1%80%D0%B0%D0%BA%D0%BE%D0%B2-03445796_aukauoaunaugaupaut-auxauyaugaumauoauwauuauiauqaug-share-7491065699621216256-u1BJ/).\n\n**Больше вакансий для junior-специалистов:** @jobforjunior",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "229796bd428a1f9e",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Стажёр / Джуниор Продуктовый дизайнер",
+    "company": "Invitro",
+    "salary": null,
+    "experience": {
+      "value": "Стажёр / Джуниор",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "Энергия разбираться, учиться на ходу и не сдаваться",
+      "Готовность работать в команде",
+      "Самостоятельность в поиске решений"
+    ],
+    "sourceExcerpt": "**Стажёр / Джуниор Продуктовый дизайнер**\nв **Invitro** — крупная частная медицинская компания, специализирующаяся на лабораторной диагностике и предоставлении базовых медицинских услуг.\nИщет Константин Петраков, его [пост на LinkedIn](https://www.linkedin.com/posts/%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%BИН-%D0%BF%D0%B5%D1%82%D1%80%D0%B0%D0%BA%D0%BE%D0%B2-03445796_aukauoaunaugaupaut-auxauyaugaumauoauwauuauiauqaug-share-7491065699621216256-u1BJ/)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Junior/Internship level aligns with self-directed practice experience condition"
+        },
+        {
+          "type": "warn",
+          "text": "Work format and location are not specified in the post"
+        }
+      ]
+    },
+    "channel_username": "jobforjunior",
+    "channel_title": "Job for Junior",
+    "date": "2026-08-06T17:45:43+00:00",
+    "link": "https://t.me/jobforjunior/8375",
+    "original_text": "**Стажёр / Джуниор Продуктовый дизайнер**\nв **Invitro** — крупная частная медицинская компания, специализирующаяся на лабораторной диагностике и предоставлении базовых медицинских услуг.\nИщет Константин Петраков, его [пост на LinkedIn](https://www.linkedin.com/posts/%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD-%D0%BF%D0%B5%D1%82%D1%80%D0%B0%D0%BA%D0%BE%D0%B2-03445796_aukauoaunaugaupaut-auxauyaugaumauoauwauuauiauqaug-share-7491065699621216256-u1BJ/).\n \n**Больше вакансий в дизайне:** @fordesigner",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "416bb60338f3417d",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Product Designer",
+    "company": "Авиасейлс",
+    "salary": "по рынку ≈ 189 841 ₽",
+    "experience": {
+      "value": "3 года",
+      "strict": false
+    },
+    "workFormat": "Удалённо",
+    "location": null,
+    "requirements": [
+      "не менее трёх лет опыта в продуктовом дизайне",
+      "умение проектировать сложные пользовательские сценарии",
+      "способность находить проблемы и идеи с помощью качественных и количественных исследований",
+      "умения формулировать и проверять гипотезы, проводить интервью и работать с продуктовой аналитикой",
+      "уверенное владение Figma",
+      "понимания принципов дизайн-систем и работы с библиотеками компонентов",
+      "портфолио с продуктовыми кейсами"
+    ],
+    "sourceExcerpt": "🏢 [Product Designer](https://h.careers/job/5f425cd8-7fbb-4bfe-967a-460a9ea2a091?utm_source=tg_h&utm_medium=post&utm_campaign=06.08.26)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported."
+        },
+        {
+          "type": "warn",
+          "text": "Requires 3+ years of experience; condition in profile allows matching this if skills are strong."
+        }
+      ]
+    },
+    "channel_username": "hcareers_jobs",
+    "channel_title": "Эйч Вакансии",
+    "date": "2026-08-06T15:04:07+00:00",
+    "link": "https://t.me/hcareers_jobs/2233",
+    "original_text": "**Подборка вакансий для дизайнеров:**\n\n🏢 [Графический дизайнер](https://h.careers/job/761d1677-ba7d-4343-a038-996d65a54a3a?utm_source=tg_h&utm_medium=post&utm_campaign=06.08.26) в Галс-Девелопмент\nMiddle, Москва\n\n🏢 [Product Designer](https://h.careers/job/5f425cd8-7fbb-4bfe-967a-460a9ea2a091?utm_source=tg_h&utm_medium=post&utm_campaign=06.08.26) в Авиасейлс\nMiddle, Remote\n\n______________________\n\n⚡ Сервисы Эйч:\n\n[Найти ментора](https://h.careers/curators?utm_source=tg_hjobs&utm_medium=jobpost)\n[Готовое резюме](https://h.careers/your-cv/ready-resume?utm_source=tg_hjobs&utm_medium=jobpost)\n[Сопровождение до оффера](https://h.careers/offer?utm_source=tg_hjobs&utm_medium=jobpost)\n[Все вакансии (39238)](https://h.careers/jobs?utm_source=tg_hjobs&utm_medium=jobpost)\n[Трекер откликов](https://h.careers/mentee/tracker?utm_source=tg_hjobs&utm_medium=jobpost)\n[Конструктор резюме](https://h.careers/mentee/resumes?utm_source=tg_hjobs&utm_medium=jobpost)\n[Вопросы с собеседований](https://h.careers/interview-questions?utm_source=tg_hjobs&utm_medium=jobpost)\n[Задачи с собеседований](https://h.careers/interview-tasks?utm_source=tg_hjobs&utm_medium=jobpost)\n[AI-Проверятор резюме](https://h.careers/mentee/cv-check?utm_source=tg_hjobs&utm_medium=jobpost)\n[Генератор сопроводительных](https://h.careers/mentee/cover-letters?utm_source=tg_hjobs&utm_medium=jobpost)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "5ca9f00abc834335",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "UX/UI-дизайнер",
+    "company": "Даниленко Елена Рафхатовна",
+    "salary": "200 000 – 300 000 ₽/мес",
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "office",
+    "location": "Москва",
+    "requirements": [
+      "Опыт работы UX/UI-дизайнером (с пониманием frontend)",
+      "Отличное знание Figma",
+      "Понимание принципов UX и UI",
+      "Знание адаптивной верстки",
+      "Понимание HTML/CSS и React.js",
+      "Общее понимание Node.js и Yii2",
+      "Опыт работы с REST API будет плюсом",
+      "Понимание Git будет преимуществом"
+    ],
+    "sourceExcerpt": "- [UX/UI-дизайнер в Даниленко Елена Рафхатовна](https://youngjunior.ru/дизайнер/jobs/47277)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Design"
+        },
+        {
+          "type": "warn",
+          "text": "Office format only"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-08-06T15:00:33+00:00",
+    "link": "https://t.me/newdirections/6900",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Стажер-аналитик данных в ПАО Сбербанк](https://youngjunior.ru/analyst/jobs/47460)\n- [Системный аналитик (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47038)\n- [Аналитик 1С (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47311)\n\n**__Продакт/Менеджер:__**\n- [Менеджер проектов (1С) в Волга-Волга](https://youngjunior.ru/project/jobs/47331)\n- [Project Manager в Seven Winds Studio](https://youngjunior.ru/project/jobs/47387)\n\n**__Дизайн/UX:__**\n- [UX/UI-дизайнер в Даниленко Елена Рафхатовна](https://youngjunior.ru/дизайнер/jobs/47277)\n- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)\n- [Дизайнер отдела интерактивных сервисов в Донской государственный технический университет](https://youngjunior.ru/дизайнер/jobs/47268)\n\n**__Зарубежом:__**\n- [Junior / Junior+ Product Designer в Plata](https://youngjunior.ru/дизайнер/jobs/46921) (Мексика)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "36844a37ad0f4eda",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Junior Web Designer / Веб-дизайнер",
+    "company": "Evernet",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Уверенно работать в Figma",
+      "Понимать основы веб-дизайна и UI/UX",
+      "Иметь 2–3 объёмных проекта в портфолио",
+      "Внимательно относиться к деталям"
+    ],
+    "sourceExcerpt": "- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Design"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-08-06T15:00:33+00:00",
+    "link": "https://t.me/newdirections/6900",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Стажер-аналитик данных в ПАО Сбербанк](https://youngjunior.ru/analyst/jobs/47460)\n- [Системный аналитик (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47038)\n- [Аналитик 1С (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47311)\n\n**__Продакт/Менеджер:__**\n- [Менеджер проектов (1С) в Волга-Волга](https://youngjunior.ru/project/jobs/47331)\n- [Project Manager в Seven Winds Studio](https://youngjunior.ru/project/jobs/47387)\n\n**__Дизайн/UX:__**\n- [UX/UI-дизайнер в Даниленко Елена Рафхатовна](https://youngjunior.ru/дизайнер/jobs/47277)\n- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)\n- [Дизайнер отдела интерактивных сервисов в Донской государственный технический университет](https://youngjunior.ru/дизайнер/jobs/47268)\n\n**__Зарубежом:__**\n- [Junior / Junior+ Product Designer в Plata](https://youngjunior.ru/дизайнер/jobs/46921) (Мексика)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "9f746d075fa70927",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Junior / Junior+ Product Designer",
+    "company": "Plata",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": "Mexico City",
+    "requirements": [],
+    "sourceExcerpt": "- [Junior / Junior+ Product Designer в Plata](https://youngjunior.ru/дизайнер/jobs/46921)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Design"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-08-06T15:00:33+00:00",
+    "link": "https://t.me/newdirections/6900",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Стажер-аналитик данных в ПАО Сбербанк](https://youngjunior.ru/analyst/jobs/47460)\n- [Системный аналитик (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47038)\n- [Аналитик 1С (ученик) в Aston](https://youngjunior.ru/analyst/jobs/47311)\n\n**__Продакт/Менеджер:__**\n- [Менеджер проектов (1С) в Волга-Волга](https://youngjunior.ru/project/jobs/47331)\n- [Project Manager в Seven Winds Studio](https://youngjunior.ru/project/jobs/47387)\n\n**__Дизайн/UX:__**\n- [UX/UI-дизайнер в Даниленко Елена Рафхатовна](https://youngjunior.ru/дизайнер/jobs/47277)\n- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)\n- [Дизайнер отдела интерактивных сервисов в Донской государственный технический университет](https://youngjunior.ru/дизайнер/jobs/47268)\n\n**__Зарубежом:__**\n- [Junior / Junior+ Product Designer в Plata](https://youngjunior.ru/дизайнер/jobs/46921) (Мексика)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "47a243f34ece0acc",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Дизайнер web-to-app воронок",
+    "company": "Onlyapps",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": "remote",
+    "requirements": [
+      "опыт в продуктовом, мобильном или веб-дизайне",
+      "портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты)",
+      "понимание принципов конверсионного дизайна",
+      "уверенное использование AI-инструментов",
+      "самостоятельность и внимание к деталям"
+    ],
+    "sourceExcerpt": "Onlyapps —** Дизайнер web-to-app воронок **\n\nМы создаём мобильные и веб-приложения в нишах AI-инструментов, контент-креатива и Social Analytics. Один из ключевых каналов привлечения и монетизации наших продуктов — web-to-app воронки: онбординги, квизы, paywall'ы и другие сценарии, которые помогают пользователю принять решение о покупке.\n\nИщем дизайнера, который будет проектировать и улучшать эти сценарии, напрямую влияя на конверсию и выручку продуктов.\n\nЗадачи: проектировать маркетинговые воронки/онбординги от первого экрана до оплаты и Upsell-экранов (экраны продажи доп. продуктов, special offers); создавать онбординги, квизы, paywall'ы и checkout-процессы; предлагать и тестировать новые идеи для повышения конверсии; создавать современные визуалы и креативы с помощью AI-инструментов; иногда участвовать в улучшении веб- и iOS-продуктов.\n\nЧто важно: опыт в продуктовом, мобильном или веб-дизайне; портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты); понимание принципов конверсионного дизайна; уверенное использование AI-инструментов; самостоятельность и внимание к деталям.\n\nУсловия: удаленка,  желательно пересечение с часовым поясом CEST, небольшая команда без бюрократии, прямое влияние на рост продукта.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer / UX/UI design profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches preferences"
+        },
+        {
+          "type": "good",
+          "text": "Focus on conversion design, onboarding and product flows matches candidate's experience"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-06T15:00:08+00:00",
+    "link": "https://t.me/designwork_vacansii/8663",
+    "original_text": "Всем привет! У нас открыта новая вакансия. \n\nOnlyapps —** Дизайнер web-to-app воронок **\n\nМы создаём мобильные и веб-приложения в нишах AI-инструментов, контент-креатива и Social Analytics. Один из ключевых каналов привлечения и монетизации наших продуктов — web-to-app воронки: онбординги, квизы, paywall'ы и другие сценарии, которые помогают пользователю принять решение о покупке.\n\nИщем дизайнера, который будет проектировать и улучшать эти сценарии, напрямую влияя на конверсию и выручку продуктов.\n\nЗадачи: проектировать маркетинговые воронки/онбординги от первого экрана до оплаты и Upsell-экранов (экраны продажи доп. продуктов, special offers); создавать онбординги, квизы, paywall'ы и checkout-процессы; предлагать и тестировать новые идеи для повышения конверсии; создавать современные визуалы и креативы с помощью AI-инструментов; иногда участвовать в улучшении веб- и iOS-продуктов.\n\nЧто важно: опыт в продуктовом, мобильном или веб-дизайне; портфолио (онбординги, paywall'ы, мобильные приложения, маркетинговые креативы или другие релевантные проекты); понимание принципов конверсионного дизайна; уверенное использование AI-инструментов; самостоятельность и внимание к деталям.\n\nУсловия: удаленка,  желательно пересечение с часовым поясом CEST, небольшая команда без бюрократии, прямое влияние на рост продукта.\n\nРезюме и портфолио присылайте нашей Алине в Telegram @skyluckwalker",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "a9f76a6440d17d3a",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "UX/UI дизайнер игровых интерфейсов",
+    "company": null,
+    "salary": "35 000 – 50 000 ₽/мес",
+    "experience": {
+      "value": "от 2 лет",
+      "strict": true
+    },
+    "workFormat": "удалённо",
+    "location": null,
+    "requirements": [
+      "Опыт работы с UX/UI от 2 лет в вебе или продукте и базовый опыт в игровых интерфейсах",
+      "Профессиональное владение Figma (компоненты, варианты, плагины) и Adobe Photoshop",
+      "Наличие портфолио"
+    ],
+    "sourceExcerpt": "- [UX/UI дизайнер игровых интерфейсов в TG @wntddesign](https://youngjunior.ru/дизайнер/jobs/47008)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product/UX/UI Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-06T15:00:07+00:00",
+    "link": "https://t.me/junior_designers/1458",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Видеомонтажер / Motion Designer (AI) в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/47025)\n- [UX/UI дизайнер игровых интерфейсов в TG @wntddesign](https://youngjunior.ru/дизайнер/jobs/47008)\n- [Дизайнер статической графики в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/47026)\n\n**__Junior-дизайнер:__**\n- [Миддл Motion-дизайнер в Createx](https://youngjunior.ru/дизайнер/jobs/46884)\n- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)\n- [Дизайнер отдела интерактивных сервисов в Донской государственный технический университет](https://youngjunior.ru/дизайнер/jobs/47268)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "a2f72fcb03df4a8c",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Junior Web Designer / Веб-дизайнер",
+    "company": "Evernet",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "удалённо",
+    "location": null,
+    "requirements": [
+      "Уверенно работать в Figma",
+      "Понимать основы веб-дизайна и UI/UX",
+      "Иметь 2–3 объёмных проекта в портфолио"
+    ],
+    "sourceExcerpt": "- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches UX/UI Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-06T15:00:07+00:00",
+    "link": "https://t.me/junior_designers/1458",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Видеомонтажер / Motion Designer (AI) в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/47025)\n- [UX/UI дизайнер игровых интерфейсов в TG @wntddesign](https://youngjunior.ru/дизайнер/jobs/47008)\n- [Дизайнер статической графики в TG @workfordesigner](https://youngjunior.ru/дизайнер/jobs/47026)\n\n**__Junior-дизайнер:__**\n- [Миддл Motion-дизайнер в Createx](https://youngjunior.ru/дизайнер/jobs/46884)\n- [Junior Web Designer / Веб-дизайнер в Evernet](https://youngjunior.ru/дизайнер/jobs/46923)\n- [Дизайнер отдела интерактивных сервисов в Донской государственный технический университет](https://youngjunior.ru/дизайнер/jobs/47268)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "f98334515ca6226c",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "p.stepanov1",
+    "salary": null,
+    "experience": {
+      "value": "intern",
+      "strict": null
+    },
+    "workFormat": "удалёнка",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "4. Продуктовый дизайнер в p.stepanov1\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-72561)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches user profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work matches user profile"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-06T14:52:17+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1323",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Коммуникационный дизайнер в Краснополянская косметика**\n💪 Грейд: #junior\n💰 Вилка: от 90к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/kommunikatsionnyi-dizainer-72001)\n\n**2. Графический дизайнер (Digital + Print) в NDA**\n💪 Грейд: #middle\n💰 Вилка: от 90к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/graficheskii-dizainer-digital-print-72769)\n\n**3. Digital дизайнер в Clickise**\n💪 Грейд: #middle\n💰 Вилка: до 120к ₽\n🏠 Формат: #гибрид Казань\n✉️ [Hirehi](https://hirehi.ru/design/digital-dizainer-73220)\n\n**4. Продуктовый дизайнер в p.stepanov1**\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-72561)\n\n**5. UX дизайнер в БПМСОФТ**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Hirehi](https://hirehi.ru/design/ux-dizainer-72339)\n\n**6. Продуктовый дизайнер в Хайерлэб**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/135900880)\n\n**7. Graphic Designer в JSC Bank of Georgia**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Тбилиси\n✉️ [Jsc-bank-of-georgia](https://jsc-bank-of-georgia.hirehive.com/senior-graphic-designer-tbilisi-ez9cma)\n\n**8. Graphic Designer в NDA**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Comeet](https://www.comeet.com/jobs/comm-it/76.008/marketing--multimedia-designer/86.F6D)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "041048c0d54e2d61",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Senior Product Designer",
+    "company": "Хайерлэб",
+    "salary": null,
+    "experience": {
+      "value": "3–6 лет",
+      "strict": true
+    },
+    "workFormat": "удалёнка",
+    "location": "Москва",
+    "requirements": [
+      "опыт работы в роли Product Designer от 3 лет",
+      "визуальное мастерство",
+      "опыт работы с B2C-продуктами",
+      "продуктовые методологии (User Story, CJM, JTBD)",
+      "AI-инструменты"
+    ],
+    "sourceExcerpt": "6. Продуктовый дизайнер в Хайерлэб\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/135900880)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches user profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work matches user profile"
+        },
+        {
+          "type": "warn",
+          "text": "3+ years of experience required, treated as negotiable per user's self-directed practice"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-06T14:52:17+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1323",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Коммуникационный дизайнер в Краснополянская косметика**\n💪 Грейд: #junior\n💰 Вилка: от 90к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/kommunikatsionnyi-dizainer-72001)\n\n**2. Графический дизайнер (Digital + Print) в NDA**\n💪 Грейд: #middle\n💰 Вилка: от 90к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/graficheskii-dizainer-digital-print-72769)\n\n**3. Digital дизайнер в Clickise**\n💪 Грейд: #middle\n💰 Вилка: до 120к ₽\n🏠 Формат: #гибрид Казань\n✉️ [Hirehi](https://hirehi.ru/design/digital-dizainer-73220)\n\n**4. Продуктовый дизайнер в p.stepanov1**\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-72561)\n\n**5. UX дизайнер в БПМСОФТ**\n💪 Грейд: #junior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Hirehi](https://hirehi.ru/design/ux-dizainer-72339)\n\n**6. Продуктовый дизайнер в Хайерлэб**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/135900880)\n\n**7. Graphic Designer в JSC Bank of Georgia**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #офис Тбилиси\n✉️ [Jsc-bank-of-georgia](https://jsc-bank-of-georgia.hirehive.com/senior-graphic-designer-tbilisi-ez9cma)\n\n**8. Graphic Designer в NDA**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Comeet](https://www.comeet.com/jobs/comm-it/76.008/marketing--multimedia-designer/86.F6D)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "ccdf55cdc1c3725b",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Senior Product Designer",
+    "company": "7taps",
+    "salary": null,
+    "experience": {
+      "value": "senior",
+      "strict": null
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Системное мышление",
+      "интуиция в enterprise B2B (bulk operations, admin workflows, permissions)",
+      "самостоятельность",
+      "русский язык обязателен",
+      "английский — плюс"
+    ],
+    "sourceExcerpt": "**Senior Product Designer в 7taps**\n\n Удалёнка\n\nДизайн end-to-end для двусторонней enterprise платформы (администраторы, создатели курсов, учащиеся): проектирование систем и флоу, быстрое тестирование гипотез, развитие дизайн-системы.\n\nСистемное мышление, интуиция в enterprise B2B (bulk operations, admin workflows, permissions), самостоятельность, русский язык обязателен, английский — плюс.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Design role matches"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        }
+      ]
+    },
+    "channel_username": "mnogovakansiy",
+    "channel_title": "Многовакансий | Design, IT вакансии",
+    "date": "2026-08-06T12:14:43+00:00",
+    "link": "https://t.me/mnogovakansiy/1472",
+    "original_text": "**Senior Product Designer в 7taps**\n\n Удалёнка\n\nДизайн end-to-end для двусторонней enterprise платформы (администраторы, создатели курсов, учащиеся): проектирование систем и флоу, быстрое тестирование гипотез, развитие дизайн-системы.\n\nСистемное мышление, интуиция в enterprise B2B (bulk operations, admin workflows, permissions), самостоятельность, русский язык обязателен, английский — плюс.\n\n[7taps](https://www.7taps.com/?gad_source=1&gad_campaignid=21650894525&gbraid=0AAAAABLaP0ZldPDDo9na0PyJkbNKw_rGf&gclid=CjwKCAjw4dDTBhAqEiwAkHYmSphM4sgNcLh-lpbQN__RgK4z9Jtwi4khU_U2Qhr2tN5MrsTLO1WQBhoCVGwQAvD_BwE) — платформа для корпоративного микро-обучения (клиенты: Amazon, Tesla).\n\n[Откликнуться](https://jobs.ashbyhq.com/hirehire/c868d564-8608-446e-bd9e-25f7bc8e77a2)",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "f85ae7151bb07493",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Дизайнер баннер-мейкер SMM",
+    "company": "А101",
+    "salary": null,
+    "experience": {
+      "value": "1–3 года",
+      "strict": false
+    },
+    "workFormat": "удалённо",
+    "location": null,
+    "requirements": [
+      "Опыт от 1 года в digital-дизайне",
+      "Отличное владение Adobe Photoshop, Adobe Illustrator, Figma",
+      "Умение работать с типографикой, композицией и цветом",
+      "Знание трендов в соцсетях (мемы, микрокопирайтинг, визуальные фишки)",
+      "Навыки создания простой анимации (GIF, видео для Stories) – желательно",
+      "Портфолио с примерами работ для соцсетей (обязательно)",
+      "Умение работать быстро и в режиме многозадачности"
+    ],
+    "sourceExcerpt": "— [Дизайнер баннер-мейкер SMM А101](https://hh.ru/vacancy/135647861)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UX/UI Designer related skills (digital design, Figma, layouts)"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format matches profile"
+        }
+      ]
+    },
+    "channel_username": "vitrinajobs",
+    "channel_title": "витрина | vitrina.jobs",
+    "date": "2026-08-06T12:01:35+00:00",
+    "link": "https://t.me/vitrinajobs/7473",
+    "original_text": "17 вакансий на случай, если вы ищете работу в сфере девелопмента 📐\n\n__Смотрим!__\n\n**Перед откликом на вакансии укажите, пожалуйста, что вы от витрины | ****vitrina.jobs** 🖱\n\n— [Младший менеджер по продукту STONE](https://hh.ru/vacancy/135145689)\n— [Младший SMM-менеджер STONE](https://hh.ru/vacancy/135659608)\n— [Младший менеджер по рекламе группы офлайн продвижения А101](https://hh.ru/vacancy/135394662)\n— [Стажер в отдел закупок работ и услуг А101](https://hh.ru/vacancy/135637065)\n— [Дизайнер баннер-мейкер SMM А101](https://hh.ru/vacancy/135647861)\n— [Архитектор Capital Group](https://hh.ru/vacancy/135202853)\n— [Младший аналитик Sminex](https://hh.ru/vacancy/135760058) \n— [Стажер службы снабжения Pridex ](https://hh.ru/vacancy/135485320)\n— [Менеджер по подбору персонала ПИК](https://hh.ru/vacancy/135289196)\n— [Бренд-менеджер Level Group](https://hh.ru/vacancy/133981855)\n— [Младший аналитик Level Group](https://hh.ru/vacancy/135489502)\n— [Ассистент отдела продаж R4S](https://hh.ru/vacancy/135202100)\n— [Креативный/Графический дизайнер](https://hh.ru/vacancy/135395925) [R4S](https://hh.ru/vacancy/135395925)\n— [Контент-менеджер MR Group](https://hh.ru/vacancy/135460847)\n— [Менеджер CRM маркетинга Гранель](https://hh.ru/vacancy/135440952)\n— [Стажер отдела развития клиентского опыта Галс-Девелопмент](https://hh.ru/vacancy/135464564)\n— [Младший аналитик рынка недвижимости Галс-Девелопмент](https://hh.ru/vacancy/134996441)\n\n[Разместить свою вакансию\n](https://vitrina.jobs/main#rec637981865)\n[Пройти опрос по карьерным предпочтениям](https://t.me/vitrinaroles_bot)\n\n#дайджест_витрина",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "3be18b9e17a6a3a1",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер",
+    "company": "RWB (Wildberries&Russ)",
+    "salary": null,
+    "experience": {
+      "value": "от 3 лет",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "Опыт от 3 лет в цифровом дизайне (готовы обсуждать меньше при сильном портфолио)",
+      "Продуктовый бэкграунд",
+      "Понимание метрик (конверсия, retention, воронка, A/B-тесты)",
+      "Знание HIG, Material, паттернов e-commerce",
+      "Визуальный уровень выше среднего (типографика, сетки, композиция, цвет, иерархия)",
+      "Figma на уровне уверенного владения (auto layout, компоненты, переменные, прототипирование)"
+    ],
+    "sourceExcerpt": "**Ищем продуктового дизайнера** в RWB (Wildberries&Russ): \n\nЧто важно (must have)\nОпыт от 3 лет в цифровом дизайне. Если опыта меньше, но портфолио и мышление совпадают с тем, что мы ищем, — готовы обсуждать, исключения делаем\nПродуктовый бэкграунд обязателен. Не только красивая картинка, но и понимание, зачем экран существует и как он влияет на бизнес\nОбщее понимание метрик. Конверсия, retention, воронка, что такое A/B-тест и как читать его результат. Не требуем уровня аналитика — требуем, чтобы решения не были «потому что красиво»\nЗнание и осознанное применение лучших практик. HIG, Material, паттерны e-commerce. Важно уметь и следовать им, и аргументированно отступать\nВизуальный уровень выше среднего. Твёрдая база — типографика, сетки, композиция, цвет, иерархия — плюс умение добавить те самые вкусные детали, за счёт которых интерфейс запоминается\nFigma на уровне уверенного владения: auto layout, компоненты и варианты, переменные, прототипирование",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer profile"
+        },
+        {
+          "type": "warn",
+          "text": "Experience requirement is '3+ years', but explicitly stated that they are open to discussion if portfolio is strong"
+        },
+        {
+          "type": "warn",
+          "text": "Work format and location are not specified in the post"
+        }
+      ]
+    },
+    "channel_username": "designwork_vacansii",
+    "channel_title": "ВАКАНСИИ ДЛЯ ДИЗАЙНЕРА | РАБОТА",
+    "date": "2026-08-06T12:00:10+00:00",
+    "link": "https://t.me/designwork_vacansii/8662",
+    "original_text": "**Ищем продуктового дизайнера** в RWB (Wildberries&Russ): \n\nЧто важно (must have)\nОпыт от 3 лет в цифровом дизайне. Если опыта меньше, но портфолио и мышление совпадают с тем, что мы ищем, — готовы обсуждать, исключения делаем\nПродуктовый бэкграунд обязателен. Не только красивая картинка, но и понимание, зачем экран существует и как он влияет на бизнес\nОбщее понимание метрик. Конверсия, retention, воронка, что такое A/B-тест и как читать его результат. Не требуем уровня аналитика — требуем, чтобы решения не были «потому что красиво»\nЗнание и осознанное применение лучших практик. HIG, Material, паттерны e-commerce. Важно уметь и следовать им, и аргументированно отступать\nВизуальный уровень выше среднего. Твёрдая база — типографика, сетки, композиция, цвет, иерархия — плюс умение добавить те самые вкусные детали, за счёт которых интерфейс запоминается\nFigma на уровне уверенного владения: auto layout, компоненты и варианты, переменные, прототипирование\n\n\nБудет плюсом (nice to have)\nОпыт работы в студии или агентстве — ценим насмотренность, скорость и умение работать с разными задачами и заказчиками\nОпыт в e-commerce, маркетплейсах, семейных продуктах\nMotion и микроанимации: понимание, где анимация решает задачу, а где отвлекает\nОпыт работы с дизайн-системой на масштабе\nИллюстрация, базовое понимание фронтенда\nУмение объяснить и защитить решение: перед продактом, перед разработкой, перед стейкхолдером\nУмение в нейросетки: генерировать, понимать как они работают, желание пробовать новое и учиться\n\nОтправляйте CV вот сюда: @mamaybabay",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "7a0674a6138b3dd2",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Product Designer",
+    "company": "Rooh Co.",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "[**Product Designer / Rooh Co.**](https://wantapply.com/product-designer-at-rooh-co?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-06T07:15:16+00:00",
+    "link": "https://t.me/wantapply_design/500",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Sumup**](https://wantapply.com/senior-product-designer-at-sumup?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Senior Product Designer / TradingView**](https://wantapply.com/senior-product-designer-at-tradingview-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus (помогают с релокацией)\n\n[**Product Designer / Rooh Co.**](https://wantapply.com/product-designer-at-rooh-co?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Lead Brand Designer / INOPRO**](https://wantapply.com/lead-designer-at-inopro?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Product Designer, Design Systems / Pliant**](https://wantapply.com/senior-product-designer-design-systems-m-f-d-at-pliant?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany..\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. Remote. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "82bab311a109ce64",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
+  },
+  {
+    "title": "Senior Product Designer",
+    "company": "Raisin",
+    "salary": null,
+    "experience": {
+      "value": "Senior",
+      "strict": null
+    },
+    "workFormat": "Remote",
+    "location": "Germany",
+    "requirements": [],
+    "sourceExcerpt": "[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. Remote. ",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product Designer role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        },
+        {
+          "type": "warn",
+          "text": "Senior level specified, but experience requirements not explicitly restricted to commercial"
+        }
+      ]
+    },
+    "channel_username": "wantapply_design",
+    "channel_title": "Вакансии дизайнерам за границей",
+    "date": "2026-08-06T07:15:16+00:00",
+    "link": "https://t.me/wantapply_design/500",
+    "original_text": "#дайджест\n__Дизайнеры__\n\n[**Senior Product Designer / Sumup**](https://wantapply.com/senior-product-designer-at-sumup?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Senior Product Designer / TradingView**](https://wantapply.com/senior-product-designer-at-tradingview-2?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nCyprus (помогают с релокацией)\n\n[**Product Designer / Rooh Co.**](https://wantapply.com/product-designer-at-rooh-co?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Lead Brand Designer / INOPRO**](https://wantapply.com/lead-designer-at-inopro?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Product Designer, Design Systems / Pliant**](https://wantapply.com/senior-product-designer-design-systems-m-f-d-at-pliant?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany..\n\n[**Marketing Brand Designer / Welltory**](https://wantapply.com/marketing-brand-designer-at-welltory?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote. \n\n[**Senior Product Designer (m/f/d) / Raisin**](https://wantapply.com/senior-product-designer-m-f-d-at-raisin?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nGermany. Remote. \n\n[**Brand Designer / Chainguard**](https://wantapply.com/brand-designer-at-chainguard?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUSA. \n\n[**Marketing Designer / InvestEngine**](https://wantapply.com/marketing-designer-at-investengine?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nUnited Kingdom. \n\n[**Technical UI Designer / HyperHug**](https://wantapply.com/technical-ui-designer-at-hyperhug?utm_source=telegram&utm_medium=social&utm_campaign=organic_posts)\nRemote.",
+    "pipeline_version": "2026-07-29-v9",
+    "id": "aad0fb64508f2bd9",
+    "fetchedAt": "2026-08-06T22:41:32.246643+00:00",
+    "batchId": "2026-08-06T22:41:32.246643+00:00"
   }
 ]

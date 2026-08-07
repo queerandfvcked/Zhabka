@@ -119,7 +119,7 @@ export default function App() {
   const searchRef = useRef(null)
   const scrollWrapperRef = useRef(null)
 
-  const inboxCount = vacancies.length
+  const inboxCount = vacancies.filter((v) => !seenIds.has(vacancyId(v))).length
 
   const triggerToast = useCallback(() => {
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
@@ -229,9 +229,8 @@ export default function App() {
     // 3. Сортировка через .getTime() (гарантирует корректное сравнение чисел)
     return items.sort((a, b) => a.sortTime.getTime() - b.sortTime.getTime())
   }, [messages, filteredVacancies])
-  
-  const markSeen = useCallback((v) => {
-    const id = vacancyId(v)
+
+  const markSeenById = useCallback((id) => {
     setSeenIds((prev) => {
       if (prev.has(id)) return prev
       const next = new Set(prev)
@@ -239,6 +238,15 @@ export default function App() {
       saveSeen(next)
       return next
     })
+  }, [])
+
+  const markSeen = useCallback((v) => markSeenById(vacancyId(v)), [markSeenById])
+
+  // Ref-карта на DOM-узлы карточек вакансий в таймлайне (id вакансии -> элемент)
+  const vacancyRefs = useRef(new Map())
+  const setVacancyRef = useCallback((id) => (el) => {
+    if (el) vacancyRefs.current.set(id, el)
+    else vacancyRefs.current.delete(id)
   }, [])
 
   useEffect(() => {
@@ -406,6 +414,31 @@ export default function App() {
     return () => wrapper.removeEventListener('scroll', onScroll)
   }, [activeView, filteredVacancies.length, messages.length])
 
+  // Помечаем вакансию прочитанной, когда её карточку полностью проскроллили —
+  // то есть она целиком ушла за верхнюю границу scroll-wrapper.
+  useEffect(() => {
+    const wrapper = scrollWrapperRef.current
+    if (activeView !== 'inbox' || !wrapper) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.dataset.vacancyId
+          if (!id) return
+          const rootTop = entry.rootBounds?.top ?? 0
+          // Не пересекается с вьюпортом И ушла именно вверх (а не ещё не доскроллена снизу)
+          if (!entry.isIntersecting && entry.boundingClientRect.bottom < rootTop) {
+            markSeenById(id)
+          }
+        })
+      },
+      { root: wrapper, threshold: 0 }
+    )
+
+    vacancyRefs.current.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [activeView, timeline, markSeenById])
+
   const handleJumpToBottom = () => {
     const wrapper = scrollWrapperRef.current
     if (!wrapper) return
@@ -535,8 +568,16 @@ export default function App() {
                         msgBuffer.push(item)
                       } else {
                         flushMsgBuffer()
+                        const vId = vacancyId(item.data)
                         elements.push(
-                          <div key={item.id} id={`timeline-item-${item.id}`}>{renderTimelineItem(item)}</div>
+                          <div
+                            key={item.id}
+                            id={`timeline-item-${item.id}`}
+                            ref={setVacancyRef(vId)}
+                            data-vacancy-id={vId}
+                          >
+                            {renderTimelineItem(item)}
+                          </div>
                         )
                       }
                     })

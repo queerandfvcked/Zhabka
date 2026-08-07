@@ -66,12 +66,12 @@
   border-radius: var(--radius-full);
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   transition: background 0.12s, color 0.12s;
 }
 
-.mc-day:hover:not(.empty):not(.muted) {
+.mc-day:hover:not(.empty):not(.muted):not(.selected):not(.today) {
   background: var(--bg-hover);
   color: var(--text-primary);
 }
@@ -85,15 +85,16 @@
   cursor: default;
 }
 
-.mc-day.today {
-  font-weight: 700;
-  color: var(--text-primary);
+.mc-day.selected {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
 }
 
-.mc-day.selected {
+.mc-day.today {
   background: var(--accent);
   color: var(--btn-primary-text);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .mc-clear {

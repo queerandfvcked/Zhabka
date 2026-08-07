@@ -67,7 +67,7 @@ export default function MiniCalendar({ selectedDate, onDateSelect, availableDate
             <button
               key={cell.dateStr}
               type="button"
-              className={`mc-day ${cell.isSelected ? 'selected' : ''} ${!cell.isAvailable ? 'muted' : ''} ${cell.isToday ? 'today' : ''}`}
+              className={`mc-day ${cell.isSelected ? 'selected' : ''} ${!cell.isAvailable ? 'muted' : ''} ${cell.isAvailable && cell.isToday ? 'today' : ''}`}
               onClick={() => cell.isAvailable && onDateSelect(cell.dateStr)}
               disabled={!cell.isAvailable}
             >
