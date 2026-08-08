@@ -38,6 +38,10 @@
       "text": "Tilda (web-building platforms)"
     },
     {
+      "type": "exclude",
+      "text": "Senior, Lead, Art Director roles where senior-level experience is explicitly required"
+    },
+    {
       "type": "condition",
       "text": "3+ years is fine if not stated as strictly required"
     },

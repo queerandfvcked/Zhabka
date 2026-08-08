@@ -51,7 +51,7 @@ PROFILE_FILE = "profile.json"
 # Версия пайплайна — меняй эту строку при ЛЮБОМ изменении промпта/схемы
 # в этом файле или в resolver.py. Записи с другой версией считаются
 # устаревшими и пересчитываются автоматически, без ручного удаления файла.
-PIPELINE_VERSION = "2026-07-29-v9"
+PIPELINE_VERSION = "2026-08-08-v10"
 
 
 SYSTEM_PROMPT = """Ты — модуль извлечения структуры из постов о вакансиях
@@ -170,8 +170,39 @@ SYSTEM_PROMPT = """Ты — модуль извлечения структуры
      самостоятельная практика вместо коммерческого опыта) — это
      полноценный опыт для целей сравнения, а не "опыта нет".
 
-   В целом: при неоднозначности по ОПЫТУ И УСЛОВИЯМ склоняйся к
-   show=true. При неоднозначности по РОЛИ (это вообще не та профессия
+   ВАЖНО про формат работы и город — здесь, в отличие от опыта, снисходительность
+   НЕ действует, если формат/город прямо указаны в тексте и противоречат
+   профилю. Профиль содержит workFormat = {remote, hybrid, office, relocate}
+   (булевы флаги) и officeLocations (список городов, релевантен только когда
+   hybrid или office = true).
+
+   Алгоритм:
+   - Если по тексту вакансия ПОЛНОСТЬЮ удалённая (remote) — сверяй только
+     с profile.workFormat.remote. Город вакансии в этом случае не имеет
+     значения, даже если он не совпадает с officeLocations.
+   - Если по тексту вакансия office или hybrid — сначала проверь
+     соответствующий флаг профиля (workFormat.office / workFormat.hybrid).
+     Если флаг false — show=false, это жёсткое условие, снисходительности
+     здесь нет.
+     Если флаг true — дополнительно сверь город вакансии со списком
+     officeLocations (сравнение нестрогое, по вхождению/синонимам города,
+     например "СПб" = "Санкт-Петербург" = "Питер"). Явное несовпадение
+     города (например профиль просит Санкт-Петербург, а в вакансии указан
+     Москва или другой конкретный город) — show=false, даже если по роли
+     и опыту всё подходит. Если officeLocations пуст — считай любой город
+     допустимым для office/hybrid, раз пользователь его не ограничил.
+   - Если формат работы или город в посте вообще НЕ указаны (не удаётся
+     определить по тексту) — вот здесь можно вернуться к общей
+     снисходительности: не скрывай вакансию только из-за отсутствия этих
+     данных, но добавь в reasons предупреждение type "warn" вида
+     "Work format/location not stated — check original post".
+   - Не путай "формат не указан в посте" с "формат указан и не подходит" —
+     это разные случаи, снисходительность применима только к первому.
+
+   В целом: при неоднозначности по ОПЫТУ склоняйся к show=true (см. выше).
+   Формат работы и город, когда они явно указаны в тексте, — это НЕ повод
+   для снисходительности, при явном противоречии всегда show=false.
+   При неоднозначности по РОЛИ (это вообще не та профессия
    или явно другая специализация дизайна) — склоняйся к show=false.
    Пользователь ищет работу без коммерческого опыта, релевантных вакансий
    и так мало каждый день — лучше показать пограничный случай по опыту с
@@ -334,6 +365,72 @@ def is_non_design_management_role(title: str, profile: dict) -> bool:
     return True
 
 
+# Синонимы городов для нестрогого сравнения officeLocations с текстом
+# вакансии — модель и площадки пишут по-разному ("СПб", "Питер",
+# "Санкт-Петербург"), точное совпадение строк тут бесполезно.
+CITY_SYNONYMS = {
+    "санкт-петербург": ["спб", "питер", "санкт петербург", "saint petersburg", "st petersburg", "st. petersburg"],
+    "москва": ["мск", "moscow"],
+}
+
+
+def _city_variants(city: str) -> set[str]:
+    norm = normalize_text(city)
+    variants = {norm}
+    for canonical, aliases in CITY_SYNONYMS.items():
+        if norm == canonical or norm in aliases:
+            variants.add(canonical)
+            variants.update(aliases)
+    return variants
+
+
+def violates_work_location(v: dict, profile: dict) -> bool:
+    """
+    Механическая подстраховка на формат работы/город: модель иногда
+    показывает офисные/гибридные вакансии не в том городе или из
+    формата, выключенного в профиле, несмотря на инструкцию в промпте.
+    Не полагаемся только на промпт (аналогично is_non_design_management_role) —
+    если из текста вакансии явно следует office/hybrid с конкретным
+    городом, а профиль это исключает, отсекаем принудительно.
+
+    Осознанно консервативна: если данных недостаточно (город/формат не
+    распознаны однозначно), НЕ блокирует — ложноположительное скрытие
+    вредит продукту больше, чем случайный пропуск.
+    """
+    wf_profile = profile.get("workFormat", {}) or {}
+    wf_text = normalize_text(v.get("workFormat") or "")
+    location_text = normalize_text(v.get("location") or "")
+
+    is_remote = bool(re.search(r"удал|remote", wf_text))
+    if is_remote:
+        return False  # remote не зависит от города
+
+    is_office = bool(re.search(r"\bофис", wf_text))
+    is_hybrid = bool(re.search(r"гибрид|hybrid", wf_text))
+    if not is_office and not is_hybrid:
+        return False  # формат не распознан из текста — не блокируем механически
+
+    if is_office and not wf_profile.get("office") and not wf_profile.get("hybrid"):
+        # Явно офис, а у пользователя office и hybrid оба выключены —
+        # город можно даже не проверять, формат уже не подходит.
+        return True
+    if is_hybrid and not wf_profile.get("hybrid") and not wf_profile.get("office"):
+        return True
+
+    office_locations = profile.get("officeLocations") or []
+    if not office_locations or not location_text:
+        return False  # нечего сравнивать — не блокируем
+
+    allowed_variants = set()
+    for city in office_locations:
+        allowed_variants |= _city_variants(city)
+
+    if any(variant in location_text for variant in allowed_variants):
+        return False  # город совпал
+
+    return True
+
+
 def is_bare_footer_link(v: dict) -> bool:
     """
     Ловит случаи вида "Другие вакансии в компании: — [Senior Product
@@ -490,6 +587,15 @@ def main():
             if is_non_design_management_role(v.get("title", ""), profile):
                 print(f"  Пропускаю '{v.get('title')}' — менеджерская роль, "
                       f"не дизайн (несмотря на слово 'Product' в названии)")
+                continue
+
+            # Защита от несовпадения формата работы/города с профилем —
+            # модель иногда всё равно показывает офис/гибрид не в том
+            # городе, несмотря на явную инструкцию в промпте.
+            if violates_work_location(v, profile):
+                print(f"  Пропускаю '{v.get('title')}' — формат/город "
+                      f"({v.get('workFormat')}, {v.get('location')}) не "
+                      f"подходит профилю")
                 continue
 
             v["channel_username"] = post["channel_username"]

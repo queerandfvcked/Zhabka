@@ -118,6 +118,9 @@ export default function App() {
 
   const searchRef = useRef(null)
   const scrollWrapperRef = useRef(null)
+  // Флаг: синк только что завершился — следующий скролл должен идти
+  // не вниз (как для обычных сообщений), а к первым непрочитанным вакансиям
+  const justSyncedRef = useRef(false)
 
   const inboxCount = vacancies.filter((v) => !seenIds.has(vacancyId(v))).length
 
@@ -332,6 +335,7 @@ export default function App() {
               msg = 'Sync complete. Check the feed for new vacancies.'
             }
             const freshVacancies = await getVacancies()
+            justSyncedRef.current = true
             setVacancies(freshVacancies)
             setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
             setMessages((prev) => [...prev, { type: 'ai', text: msg, _ts: Date.now() }])
@@ -388,6 +392,25 @@ export default function App() {
     if (activeView !== 'inbox' || !scrollWrapperRef.current) return
     scrollWrapperRef.current.scrollTop = scrollWrapperRef.current.scrollHeight
   }, [activeView, filteredVacancies.length])
+
+  // После завершения синка скроллим не вниз (к сообщению чата), а вверх —
+  // к первой непрочитанной вакансии (Unread-разделитель). Эффект стоит
+  // ПОСЛЕ двух scroll-to-bottom эффектов выше, поэтому выполняется позже
+  // и переопределяет их скролл в рамках того же коммита.
+  useEffect(() => {
+    if (!justSyncedRef.current) return
+    justSyncedRef.current = false
+    const wrapper = scrollWrapperRef.current
+    if (!wrapper) return
+    requestAnimationFrame(() => {
+      const target = document.getElementById('unread-divider')
+      if (target) {
+        const top = target.offsetTop - wrapper.offsetTop - 100
+        wrapper.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      }
+      // Если непрочитанных нет (новых вакансий не пришло) — оставляем как есть
+    })
+  }, [vacancies])
 
   // Jump to date: плавно скроллим к заголовку выбранного дня, не фильтруя ленту.
   useEffect(() => {
@@ -558,7 +581,7 @@ export default function App() {
                         flushMsgBuffer()
                         seenUnreadDivider = true
                         elements.push(
-                          <div key="unread-divider" className="seen-divider">
+                          <div key="unread-divider" id="unread-divider" className="seen-divider">
                             <span>Unread</span>
                           </div>
                         )
