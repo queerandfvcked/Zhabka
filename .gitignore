@@ -25,3 +25,6 @@ dist-ssr
 
 # Environment variables
 .env
+
+# Secrets / config with API keys
+ai_config.json
