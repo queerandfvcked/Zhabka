@@ -252,33 +252,6 @@
   color: var(--text-muted);
 }
 
-.role-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-4);
-}
-
-.role-pill {
-  height: 34px;
-  padding: var(--space-3) var(--space-5);
-  font-size: var(--fs-sub);
-  display: flex;
-  align-items: center;
-  border-radius: var(--radius-full);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.role-pill:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--text-primary);
-}
-
 /* Custom input — rounded like chat pill */
 .custom-input {
   width: 100%;

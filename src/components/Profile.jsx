@@ -9,7 +9,6 @@ const workFormatKeys = ['remote', 'hybrid', 'office', 'relocate']
 
 const currencyOptions = ['\u20BD', '$', '\u20AC']
 const experienceOptions = ['Any experience', 'No experience', '0\u20131 years', '1\u20133 years', '3+ years']
-const roleSuggestions = ['Product Designer', 'UX/UI Designer', 'Product + UX/UI']
 
 function completenessInfo(profile) {
   const checks = [
@@ -191,13 +190,6 @@ export default function Profile({ profile, onUpdate }) {
             onChange={(e) => setRoleInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addRole(roleInput) } }}
           />
-        </div>
-        <div className="role-suggestions">
-          {roleSuggestions.filter((r) => !profile.role.includes(r)).map((r) => (
-            <button key={r} type="button" className="role-pill" onClick={() => addRole(r)}>
-              + {r}
-            </button>
-          ))}
         </div>
       </div>
 
