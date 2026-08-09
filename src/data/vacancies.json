@@ -3371,5 +3371,134 @@
     "id": "6c76aad586a8e7fc",
     "fetchedAt": "2026-08-07T23:58:13.406358+00:00",
     "batchId": "2026-08-07T23:58:13.406358+00:00"
+  },
+  {
+    "title": "Дизайнер для сайтов на HTML в Альта",
+    "company": "Альта",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "remote, hybrid, office",
+    "location": "Санкт-Петербург",
+    "requirements": [
+      "Уверенное владение Figma",
+      "Опыт разработки дизайна сайтов с нуля",
+      "Понимание принципов UX/UI",
+      "Опыт анализа конкурентов",
+      "Понимание основ SEO и структуры коммерческих сайтов",
+      "Умение самостоятельно организовывать свою работу",
+      "Ответственный подход к срокам выполнения задач",
+      "Наличие портфолио обязательно"
+    ],
+    "sourceExcerpt": "- [Дизайнер для сайтов на HTML в Альта](https://youngjunior.ru/дизайнер/jobs/48313)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product/UX/UI Designer profile"
+        },
+        {
+          "type": "good",
+          "text": "Location Saint Petersburg matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote, hybrid, and office formats supported"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-08-08T15:00:24+00:00",
+    "link": "https://t.me/newdirections/6905",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Business Analysis Trainee в Andersen](https://youngjunior.ru/analyst/jobs/48354)\n- [Стажер Data Science в ПАО Сбербанк](https://youngjunior.ru/data/jobs/48443)\n\n**__Продакт/Менеджер:__**\n- [Стажёр Product/Project Manager (IT проекты) в Рекруто](https://youngjunior.ru/project/jobs/48356)\n- [IT менеджер (Лидерская программа) в Aston](https://youngjunior.ru/product/jobs/48357)\n\n**__Дизайн/UX:__**\n- [Дизайнер для сайтов на HTML в Альта](https://youngjunior.ru/дизайнер/jobs/48313)\n- [UI/UX designer iGaming в Spinbetter](https://youngjunior.ru/дизайнер/jobs/48298)\n\n**__Зарубежом:__**\n- [Product Analyst в Plata](https://youngjunior.ru/analyst/jobs/48007) (Мексика)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-08-v10",
+    "id": "334a9723981b1e8e",
+    "fetchedAt": "2026-08-09T00:35:52.612794+00:00",
+    "batchId": "2026-08-09T00:35:52.612794+00:00"
+  },
+  {
+    "title": "Дизайнер для сайтов на HTML",
+    "company": "Альта",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": null
+    },
+    "workFormat": "remote, hybrid, or office",
+    "location": "Санкт-Петербург",
+    "requirements": [
+      "Уверенное владение Figma",
+      "Опыт разработки дизайна сайтов с нуля",
+      "Понимание принципов UX/UI",
+      "Опыт анализа конкурентов",
+      "Понимание основ SEO и структуры коммерческих сайтов",
+      "Наличие портфолио обязательно"
+    ],
+    "sourceExcerpt": "- [Дизайнер для сайтов на HTML в Альта](https://youngjunior.ru/дизайнер/jobs/48313)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches role (UX/UI)"
+        },
+        {
+          "type": "good",
+          "text": "Location matches (Санкт-Петербург)"
+        },
+        {
+          "type": "good",
+          "text": "Remote/Hybrid format supported"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-08T15:00:06+00:00",
+    "link": "https://t.me/junior_designers/1462",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [UX/UI Designer в Softnetix](https://youngjunior.ru/дизайнер/jobs/48020)\n- [Продуктовый дизайнер в ПАО Сбербанк](https://youngjunior.ru/дизайнер/jobs/48458)\n- [Коммуникационный дизайнер в Иви](https://youngjunior.ru/дизайнер/jobs/47996)\n\n**__Junior-дизайнер:__**\n- [Дизайнер для сайтов на HTML в Альта](https://youngjunior.ru/дизайнер/jobs/48313)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-08-v10",
+    "id": "ecd70451e9d073fc",
+    "fetchedAt": "2026-08-09T00:35:52.612794+00:00",
+    "batchId": "2026-08-09T00:35:52.612794+00:00"
+  },
+  {
+    "title": "Стажёр дизайнер продукта",
+    "company": "Яндекс Директ",
+    "salary": null,
+    "experience": {
+      "value": "стажёр",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "⚫[️Стажёр дизайнер продукта в Яндекс Директ](https://t.me/mirkreatorovjob/1469)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer/UX/UI profile"
+        },
+        {
+          "type": "warn",
+          "text": "Work format/location not stated — check original post"
+        }
+      ]
+    },
+    "channel_username": "mirkreatorovjob",
+    "channel_title": "МИР КРЕАТОРОВ | Вакансии",
+    "date": "2026-08-08T09:10:22+00:00",
+    "link": "https://t.me/mirkreatorovjob/1473",
+    "original_text": "**ВАКАНСИИ НЕДЕЛИ В МИРЕ КРЕАТОРОВ **\n\n⚫️ [Копирайтер](https://t.me/mirkreatorovjob/1470) [в Иви](https://t.me/mirkreatorovjob/1470)\n\n⚫[️Стажёр дизайнер продукта в Яндекс Директ](https://t.me/mirkreatorovjob/1469)\n\n⚫[️Креативный продюсер спецпроектов во ВкусВилл](https://t.me/mirkreatorovjob/1465)\n\n⚫[️](https://t.me/mirkreatorovjob/1465)[UGC-креатор в Х5 Media](https://t.me/mirkreatorovjob/1467)\n\n[**Разместить вакансию **](https://clck.ru/3ByV5G)📍\n\n@mirkreatorovjob",
+    "pipeline_version": "2026-08-08-v10",
+    "id": "b8a3a46d98c2deff",
+    "fetchedAt": "2026-08-09T00:35:52.612794+00:00",
+    "batchId": "2026-08-09T00:35:52.612794+00:00"
   }
 ]

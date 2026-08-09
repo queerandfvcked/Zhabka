@@ -20,8 +20,12 @@
   color: var(--text-secondary);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s, transform 0.12s;
   outline: none;
+}
+
+.calendar-trigger-btn:active {
+  transform: scale(0.92);
 }
 
 .calendar-trigger-btn:hover {
@@ -53,6 +57,10 @@
   animation: popoverIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.jump-to-date-popover.closing {
+  animation: popoverOut 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 @keyframes popoverIn {
   from {
     opacity: 0;
@@ -61,6 +69,17 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popoverOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
   }
 }
 
@@ -90,9 +109,13 @@
   justify-content: center;
   padding: var(--space-2);
   border-radius: var(--radius-full);
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
   width: var(--btn-icon-sm);
   height: var(--btn-icon-sm);
+}
+
+.popover-close-btn:active {
+  transform: scale(0.9);
 }
 
 .popover-close-btn:hover {

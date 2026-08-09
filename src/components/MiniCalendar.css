@@ -27,7 +27,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.mc-nav:active {
+  transform: scale(0.9);
 }
 
 .mc-nav:hover {
@@ -68,7 +72,11 @@
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.mc-day:active:not(.empty):not(.muted) {
+  transform: scale(0.88);
 }
 
 .mc-day:hover:not(.empty):not(.muted):not(.selected):not(.today) {

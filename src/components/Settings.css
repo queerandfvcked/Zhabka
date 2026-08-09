@@ -224,7 +224,11 @@
   color: var(--text-muted);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.source-remove:active {
+  transform: scale(0.9);
 }
 
 .source-remove:hover {
@@ -305,7 +309,11 @@
   font-size: var(--fs-sub);
   cursor: pointer;
   box-sizing: border-box;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.add-time-btn:active {
+  transform: scale(0.95);
 }
 
 .add-time-btn:hover {

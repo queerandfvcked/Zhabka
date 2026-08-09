@@ -49,12 +49,16 @@
   font-size: var(--fs-body);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
 }
 
 .nav-item:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
+}
+
+.nav-item:active {
+  transform: scale(0.97);
 }
 
 .nav-item.active {
@@ -80,6 +84,14 @@
 .nav-icon {
   flex-shrink: 0;
   display: flex;
+}
+
+.nav-icon svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-item:hover .nav-icon svg {
+  transform: scale(1.12);
 }
 
 .divider {
@@ -152,6 +164,10 @@
   color: var(--text-primary);
 }
 
+.foot-sync-btn:active {
+  transform: scale(0.9);
+}
+
 .foot-sep {
   display: none;
 }
@@ -180,6 +196,11 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 30;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .sidebar-mobile-overlay.closing {
+    animation: fadeOut 0.2s ease forwards;
   }
 
   .sidebar-mobile {
@@ -196,6 +217,25 @@
     padding: var(--space-6) var(--space-4);
     overflow-y: auto;
     animation: slideIn 0.2s ease;
+  }
+
+  .sidebar-mobile.closing {
+    animation: slideOut 0.2s ease forwards;
+  }
+
+  @keyframes slideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
   }
 
   /* Подгоняем отступы шапки внутри мобильной шторки */

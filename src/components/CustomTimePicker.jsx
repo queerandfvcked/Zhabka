@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { X } from 'lucide-react'
 import './CustomTimePicker.css'
 
@@ -7,19 +7,34 @@ const MINUTES = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '
 
 export default function CustomTimePicker({ value, onChange, onRemove, canRemove }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [closing, setClosing] = useState(false)
   const containerRef = useRef(null)
 
   const [currentHour, currentMinute] = (value || '09:00').split(':')
 
+  const close = useCallback(() => {
+    if (!isOpen || closing) return
+    setClosing(true)
+    setTimeout(() => {
+      setIsOpen(false)
+      setClosing(false)
+    }, 180)
+  }, [isOpen, closing])
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setIsOpen(false)
+        close()
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  }, [close])
+
+  const toggle = () => {
+    if (isOpen) close()
+    else setIsOpen(true)
+  }
 
   const handleSelectHour = (h) => {
     onChange(`${h}:${currentMinute || '00'}`)
@@ -34,7 +49,7 @@ export default function CustomTimePicker({ value, onChange, onRemove, canRemove 
       {/* Кнопка-пилюля */}
       <div
         className={`time-picker-trigger ${isOpen ? 'open' : ''} ${canRemove ? 'has-remove' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggle}
       >
         <span className="time-picker-val">{value}</span>
 
@@ -62,8 +77,8 @@ export default function CustomTimePicker({ value, onChange, onRemove, canRemove 
       </div>
 
       {/* Выпадающее меню для десктопа */}
-      {isOpen && (
-        <div className="time-picker-menu">
+      {(isOpen || closing) && (
+        <div className={`time-picker-menu ${closing ? 'closing' : ''}`}>
           <div className="time-picker-cols">
             {/* Часы */}
             <div className="time-picker-col">

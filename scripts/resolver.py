@@ -57,6 +57,52 @@ def fetch_hh_vacancy(vacancy_id: str):
     }
 
 
+def extract_telegram_post_id(url: str):
+    """Ловит ссылки вида t.me/канал/123 — на другой пост в Telegram
+    (не на бота, не на канал целиком — именно на конкретное сообщение)."""
+    match = re.search(r"t\.me/([A-Za-z0-9_]+)/(\d+)(?:\?|$)", url)
+    return match.group(0) if match else None
+
+
+def fetch_telegram_post(url: str):
+    """
+    Ссылки на другой пост в Telegram (например, дайджест ссылается на
+    более подробный пост в этом же канале) отдают через обычный fetch
+    только урезанный превью-сниппет (~180 символов), не полный текст.
+    У Telegram есть отдельный embed-виджет (?embed=1) — им пользуются
+    сайты, которые встраивают посты Telegram себе на страницу, и он
+    отдаёт HTML с полным текстом поста.
+    """
+    embed_url = url.split("?")[0] + "?embed=1"
+    try:
+        resp = requests.get(embed_url, headers=HEADERS, timeout=15)
+    except requests.RequestException as e:
+        print(f"    [resolver] {url} (telegram embed) -> ошибка запроса: {type(e).__name__}")
+        return None
+
+    if resp.status_code != 200:
+        print(f"    [resolver] {url} (telegram embed) -> HTTP {resp.status_code}, пропускаю")
+        return None
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    # Специфичный класс виджета Telegram для текста поста
+    msg = soup.find("div", class_="tgme_widget_message_text")
+    if msg:
+        text = msg.get_text(separator="\n").strip()
+    else:
+        # На случай если разметка виджета изменилась — общий fallback
+        for tag in soup(["script", "style"]):
+            tag.decompose()
+        text = soup.get_text(separator="\n").strip()
+
+    if len(text) < 50:
+        print(f"    [resolver] {url} (telegram embed) -> получено всего "
+              f"{len(text)} символов, пропускаю")
+        return None
+
+    return {"description": text}
+
+
 def fetch_generic_page(url: str):
     """Универсальный fallback: любая публичная страница без логина."""
     try:
@@ -109,6 +155,11 @@ def enrich_links_in_text(text: str, max_chars_per_link: int = 4000) -> str:
         hh_id = extract_hh_id(url)
         if hh_id:
             result = fetch_hh_vacancy(hh_id)
+            if result:
+                details = result["description"]
+
+        if details is None and extract_telegram_post_id(url):
+            result = fetch_telegram_post(url)
             if result:
                 details = result["description"]
 

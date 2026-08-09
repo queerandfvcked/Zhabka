@@ -59,7 +59,7 @@ export default function RightDrawer({ vacancy, onClose, isBookmarked, onToggleBo
         </div>
 
         {/* Тело */}
-        <div className="drawer-body">
+        <div className="drawer-body" key={`${v.id || ''}${v.link || ''}`}>
           {/* Хэндл виден только на мобилке */}
           <div className="drawer-handle" />
 

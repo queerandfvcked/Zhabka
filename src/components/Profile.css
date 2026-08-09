@@ -105,7 +105,11 @@
   cursor: pointer;
   padding: 4px;
   border-radius: 50%;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.resume-delete:active:not(:disabled) {
+  transform: scale(0.9);
 }
 
 .resume-delete:hover {
@@ -224,7 +228,11 @@
   margin-left: 6px;
   /* Гарантированный воздух между текстом и крестиком */
   border-radius: 50%;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.role-chip button:active {
+  transform: scale(0.85);
 }
 
 .role-chip button:hover {
@@ -297,6 +305,10 @@
   color: var(--text-secondary);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
+}
+
+.checkbox-label:active {
+  transform: scale(0.95);
 }
 
 .checkbox-label:hover {

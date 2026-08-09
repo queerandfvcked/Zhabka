@@ -1,5 +1,5 @@
 import { Inbox, Bookmark, User, Settings, RefreshCw, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Sidebar.css'
 
 const navItems = [
@@ -23,6 +23,21 @@ export default function Sidebar({
   onSync,
 }) {
   const [syncing, setSyncing] = useState(false)
+  const [closing, setClosing] = useState(false)
+  const wasOpenRef = useRef(false)
+
+  useEffect(() => {
+    if (isMobileOpen) {
+      wasOpenRef.current = true
+      setClosing(false)
+      return
+    }
+    if (wasOpenRef.current) {
+      setClosing(true)
+      const t = setTimeout(() => setClosing(false), 220)
+      return () => clearTimeout(t)
+    }
+  }, [isMobileOpen])
 
   const handleSync = async () => {
     setSyncing(true)
@@ -104,9 +119,9 @@ export default function Sidebar({
       </nav>
 
       {/* Мобильный сайдбар (с крестиком) */}
-      {isMobileOpen && (
-        <div className="sidebar-mobile-overlay" onClick={onMobileClose}>
-          <div className="sidebar-mobile" onClick={(e) => e.stopPropagation()}>
+      {(isMobileOpen || closing) && (
+        <div className={`sidebar-mobile-overlay ${closing ? 'closing' : ''}`} onClick={onMobileClose}>
+          <div className={`sidebar-mobile ${closing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
             {renderHeader(true)}
             {renderNavigation()}
           </div>

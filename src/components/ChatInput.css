@@ -86,6 +86,27 @@
   font-size: var(--fs-body);
   line-height: 1.5;
   word-break: break-word;
+  animation: msgIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.msg-row-user .msg-bubble {
+  transform-origin: bottom right;
+}
+
+.msg-row-ai .msg-bubble {
+  transform-origin: bottom left;
+}
+
+@keyframes msgIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* User bubble (right) */
@@ -140,7 +161,11 @@
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.pill-icon-btn:active {
+  transform: scale(0.9);
 }
 
 .pill-icon-btn:hover {
@@ -179,7 +204,11 @@
   color: var(--btn-primary-text);
   cursor: pointer;
   flex-shrink: 0;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.pill-send:active:not(:disabled) {
+  transform: scale(0.9);
 }
 
 .pill-send:hover {

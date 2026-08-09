@@ -79,6 +79,10 @@
   cursor: pointer;
 }
 
+.drawer-icon-btn:active {
+  transform: scale(0.9);
+}
+
 .drawer-icon-btn:hover {
   background: var(--bg-hover);
   border-color: var(--border-strong);
@@ -100,6 +104,28 @@
   flex-direction: column;
   gap: var(--space-6);
   word-break: break-word;
+}
+
+.drawer-body > * {
+  animation: drawerFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.drawer-body > *:nth-child(1) { animation-delay: 0.02s; }
+.drawer-body > *:nth-child(2) { animation-delay: 0.07s; }
+.drawer-body > *:nth-child(3) { animation-delay: 0.12s; }
+.drawer-body > *:nth-child(4) { animation-delay: 0.17s; }
+.drawer-body > *:nth-child(5) { animation-delay: 0.22s; }
+
+@keyframes drawerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* AI-Вердикт */

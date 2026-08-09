@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { FileText, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import { uploadResume, API_BASE } from '../api'
+import { useReveal } from '../utils/useReveal'
 import '../shared/Toggle.css'
 import './Profile.css'
 
@@ -29,6 +30,7 @@ export default function Profile({ profile, onUpdate }) {
   const [uploading, setUploading] = useState(false)
   const fileRef = useRef(null)
   const chipsRef = useRef(null)
+  const revealRef = useReveal()
 
   // Радиус чип-инпута зависит от высоты: в одну строку — полный радиус
   // (пилюля), при переносе на несколько строк скругление уменьшается,
@@ -86,14 +88,14 @@ export default function Profile({ profile, onUpdate }) {
     onUpdate({ role: profile.role.filter((r) => r !== role) })
 
   return (
-    <div className="profile">
+    <div className="profile" ref={revealRef}>
       <div className="profile-title">Profile</div>
       <div className="profile-subtitle">
         Profile completeness: {filled} of {total} fields &mdash; more detail improves matching
       </div>
 
       {/* Resume */}
-      <div className="section">
+      <div className="section reveal">
         <div className="section-head">Resume</div>
         <div className={`resume-area ${uploading ? 'uploading' : ''}`}>
           {profile.resume.filename ? (
@@ -156,7 +158,7 @@ export default function Profile({ profile, onUpdate }) {
 
       {/* AI Notes — read-only typed */}
       {profile.aiNotes.length > 0 && (
-        <div className="section">
+        <div className="section reveal">
           <div className="section-head">AI understands</div>
           <div className="ai-notes">
             {profile.aiNotes.map((note, i) => (
@@ -171,7 +173,7 @@ export default function Profile({ profile, onUpdate }) {
       )}
 
       {/* Role — chip input */}
-      <div className="section">
+      <div className="section reveal">
         <div className="section-head">Role</div>
         <div className="role-chips-input" ref={chipsRef}>
           {profile.role.map((r) => (
@@ -194,7 +196,7 @@ export default function Profile({ profile, onUpdate }) {
       </div>
 
       {/* Experience */}
-      <div className="section">
+      <div className="section reveal">
         <div className="section-head">Experience</div>
         <CustomSelect
           value={profile.experience}
@@ -204,7 +206,7 @@ export default function Profile({ profile, onUpdate }) {
       </div>
 
       {/* Work format */}
-      <div className="section">
+      <div className="section reveal">
         <div className="section-head">Work format</div>
         <div className="checkbox-group">
           {workFormatKeys.map((key) => {
@@ -249,7 +251,7 @@ export default function Profile({ profile, onUpdate }) {
       </div>
 
       {/* Salary */}
-      <div className="section">
+      <div className="section reveal">
         <div className="section-head">Salary</div>
         <div className="salary-row">
           <input

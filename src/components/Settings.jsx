@@ -3,10 +3,12 @@ import { Plus, X } from 'lucide-react'
 import CustomSelect from './CustomSelect'
 import CustomTimePicker from './CustomTimePicker'
 import { getSources, getProfile, saveProfile, getAiConfig, saveAiConfig, getSourcesConfig, saveSourcesConfig } from '../api'
+import { useReveal } from '../utils/useReveal'
 import '../shared/Toggle.css'
 import './Settings.css'
 
 export default function Settings({ onToast }) {
+  const revealRef = useReveal()
   const [provider, setProvider] = useState('OpenRouter')
   const [apiKey, setApiKey] = useState('')
   const [sourceSearch, setSourceSearch] = useState('')
@@ -147,12 +149,12 @@ export default function Settings({ onToast }) {
   const sourceCount = sources.length
 
   return (
-    <div>
+    <div ref={revealRef}>
       <div className="settings-title">Settings</div>
       <div className="settings-subtitle">App config &amp; sources</div>
 
       {/* 1. AI Provider */}
-      <div className="settings-card">
+      <div className="settings-card reveal">
         <div className="section-head">AI</div>
         <div className="field-group">
           <div className="field-label">Provider</div>
@@ -176,7 +178,7 @@ export default function Settings({ onToast }) {
       </div>
 
       {/* 2. Sources */}
-      <div className="settings-card">
+      <div className="settings-card reveal">
         <div className="section-head">
           Sources <span className="source-count-badge">{sourceCount}</span>
         </div>
@@ -242,7 +244,7 @@ export default function Settings({ onToast }) {
       </div>
 
       {/* 3. Auto Synchronization (теперь в самом конце) */}
-      <div className="settings-card">
+      <div className="settings-card reveal">
         <div className="sync-header">
           <div className="section-head" style={{ marginBottom: 0 }}>
             Auto Synchronization

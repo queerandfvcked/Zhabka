@@ -30,12 +30,12 @@ function hl(value, query) {
   return highlightText(value, query)
 }
 
-export default function JobCard({ vacancy, onClick, searchQuery }) {
+export default function JobCard({ vacancy, onClick, searchQuery, style }) {
   const v = vacancy;
   const q = searchQuery?.trim()
 
   return (
-    <div className="card" onClick={onClick}>
+    <div className="card" onClick={onClick} style={style}>
       {/* Шапка */}
       <div className="card-meta">
         <span className="card-channel">@{hl(v.channel_username, q)}</span>

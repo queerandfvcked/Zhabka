@@ -471,7 +471,7 @@ export default function App() {
   const renderContent = () => {
     if (activeView === 'profile') {
       return (
-        <div className="scroll-wrapper">
+        <div className="scroll-wrapper" key="view-profile">
           <div className="view-page">
             <Profile profile={profile} onUpdate={handleProfileUpdate} />
           </div>
@@ -481,7 +481,7 @@ export default function App() {
 
     if (activeView === 'settings') {
       return (
-        <div className="scroll-wrapper">
+        <div className="scroll-wrapper" key="view-settings">
           <div className="view-page">
             <Settings onToast={triggerToast} />
           </div>
@@ -496,7 +496,7 @@ export default function App() {
         ? vacancies.filter((v) => isBookmarked(v))
         : []
 
-    const renderTimelineItem = (item, idxInTimeline) => {
+    const renderTimelineItem = (item, delay = 0) => {
       if (item.type === 'message') {
         const msg = item.data
         if (msg.type === 'user') {
@@ -520,13 +520,18 @@ export default function App() {
         )
       }
       return (
-        <JobCard vacancy={item.data} onClick={() => handleCardClick(item.data)} searchQuery={searchQuery} />
+        <JobCard
+          vacancy={item.data}
+          onClick={() => handleCardClick(item.data)}
+          searchQuery={searchQuery}
+          style={{ animationDelay: `${delay}s` }}
+        />
       )
     }
 
     return (
       <>
-        <div className="scroll-wrapper" ref={scrollWrapperRef}>
+        <div className="scroll-wrapper" ref={scrollWrapperRef} key={`view-${activeView}`}>
           <div className="main-inner">
             {activeView === 'bookmarks' && (
               <div className="bookmarks-header">
@@ -547,6 +552,7 @@ export default function App() {
                     let lastDateStr = null
                     let msgBuffer = []
                     let seenUnreadDivider = false
+                    let vacIdx = 0
 
                     const flushMsgBuffer = () => {
                       if (msgBuffer.length > 0) {
@@ -592,14 +598,17 @@ export default function App() {
                       } else {
                         flushMsgBuffer()
                         const vId = vacancyId(item.data)
+                        const currentVac = searchQuery.trim() ? filteredVacancies[currentMatchIdx] : null
+                        const isCurrent = currentVac && vId === vacancyId(currentVac)
                         elements.push(
                           <div
                             key={item.id}
                             id={`timeline-item-${item.id}`}
                             ref={setVacancyRef(vId)}
                             data-vacancy-id={vId}
+                            className={isCurrent ? 'timeline-item current-match' : 'timeline-item'}
                           >
-                            {renderTimelineItem(item)}
+                            {renderTimelineItem(item, Math.min(vacIdx++, 10) * 0.05)}
                           </div>
                         )
                       }
@@ -613,8 +622,13 @@ export default function App() {
               <div className="empty-state">Nothing saved yet.</div>
             ) : (
               <div className="feed">
-                {items.map((v) => (
-                  <JobCard key={vacancyId(v)} vacancy={v} onClick={() => handleCardClick(v)} />
+                {items.map((v, i) => (
+                  <JobCard
+                    key={vacancyId(v)}
+                    vacancy={v}
+                    onClick={() => handleCardClick(v)}
+                    style={{ animationDelay: `${Math.min(i, 10) * 0.05}s` }}
+                  />
                 ))}
               </div>
             )}
@@ -622,7 +636,7 @@ export default function App() {
         </div>
 
         {isMainInbox && (
-          <div className="chat-area">
+          <div className="chat-area" key={`chat-${activeView}`}>
             {syncStatus && (
               <div className="sync-status-bubble">
                 <span className="sync-status-dot" />

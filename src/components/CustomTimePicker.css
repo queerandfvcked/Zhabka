@@ -57,7 +57,11 @@
   cursor: pointer;
   padding: 0;
   margin-left: var(--space-2);
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+
+.time-picker-remove:active {
+  transform: scale(0.85);
 }
 
 .time-picker-remove:hover {
@@ -96,6 +100,10 @@
   animation: timePickerIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.time-picker-menu.closing {
+  animation: timePickerOut 0.18s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 @keyframes timePickerIn {
   from {
     opacity: 0;
@@ -105,6 +113,18 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes timePickerOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
   }
 }
 
