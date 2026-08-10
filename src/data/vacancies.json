@@ -3500,5 +3500,53 @@
     "id": "b8a3a46d98c2deff",
     "fetchedAt": "2026-08-09T00:35:52.612794+00:00",
     "batchId": "2026-08-09T00:35:52.612794+00:00"
+  },
+  {
+    "title": "UX/UI Дизайнер (разработка iOS-приложений)",
+    "company": "Кушнарев Александ Александрович",
+    "salary": "80 000 – 120 000 ₽/мес",
+    "experience": {
+      "value": "от 2 лет",
+      "strict": true
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Опыт работы UI/UX или Product Designer от 2 лет.",
+      "Сильное портфолио с примерами дизайна мобильных приложений (iOS — предпочтительно).",
+      "Уверенное владение Figma (Components, Variants, Auto Layout, Prototype).",
+      "Понимание принципов UX, информационной архитектуры и пользовательских сценариев.",
+      "Опыт работы с дизайн-системами.",
+      "Знание Apple Human Interface Guidelines.",
+      "Умение аргументировать дизайнерские решения.",
+      "Внимательность к деталям и чувство визуального стиля."
+    ],
+    "sourceExcerpt": "- [UX/UI Дизайнер (разработка iOS-приложений) в Кушнарев Александ Александрович](https://youngjunior.ru/дизайнер/jobs/48593)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Designer role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote format matches profile."
+        },
+        {
+          "type": "warn",
+          "text": "Experience of 2+ years is required."
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-09T15:00:14+00:00",
+    "link": "https://t.me/junior_designers/1464",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Дизайнер в VK](https://youngjunior.ru/дизайнер/jobs/48535)\n- [Графический дизайнер в БФ Второе дыхание](https://youngjunior.ru/дизайнер/jobs/48509)\n- [Стажёр дизайнер продукта в Яндекс Директ в Яндекс](https://youngjunior.ru/дизайнер/jobs/47516)\n\n**__Junior-дизайнер:__**\n- [Нарративный дизайнер / Сценарист детективных игр в Retwired Studio](https://youngjunior.ru/дизайнер/jobs/48548)\n- [3D-художник (дженералист) в Ambiencive Games](https://youngjunior.ru/дизайнер/jobs/48546)\n- [UX/UI Дизайнер (разработка iOS-приложений) в Кушнарев Александ Александрович](https://youngjunior.ru/дизайнер/jobs/48593)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "3b2789f794474301",
+    "fetchedAt": "2026-08-09T21:56:30.407512+00:00",
+    "batchId": "2026-08-09T21:56:30.407512+00:00"
   }
 ]

@@ -9,6 +9,7 @@ import Settings from './components/Settings'
 import JumpToDatePopover from './components/JumpToDatePopover'
 import Toast from './components/Toast'
 import TypewriterText from './components/TypewriterText'
+import SplashScreen from './components/SplashScreen'
 import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage, getSources } from './api'
 import './App.css'
 
@@ -252,8 +253,37 @@ export default function App() {
     else vacancyRefs.current.delete(id)
   }, [])
 
+  // Сплэш-скрин при старте: держим, пока не готовы (а) данные и (б) минимальное
+  // время показа — раздельно, чтобы быстрый бэкенд не "мигал" сплэшем на 50мс,
+  // а медленный не держал пользователя дольше необходимого.
+  const [vacanciesReady, setVacanciesReady] = useState(false)
+  const [profileReady, setProfileReady] = useState(false)
+  const dataReady = vacanciesReady && profileReady
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false)
+  const [splashGone, setSplashGone] = useState(false)
+  const showSplash = !splashGone
+  const splashLeaving = dataReady && minTimeElapsed
+
   useEffect(() => {
-    getVacancies().then(setVacancies)
+    const timer = setTimeout(() => setMinTimeElapsed(true), 900)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (!splashLeaving) return
+    // Ждём конца CSS-перехода (0.3s в SplashScreen.css) перед размонтированием,
+    // иначе фейд-аут не успеет доиграть.
+    const timer = setTimeout(() => setSplashGone(true), 320)
+    return () => clearTimeout(timer)
+  }, [splashLeaving])
+
+  useEffect(() => {
+    getVacancies()
+      .then((v) => {
+        setVacancies(v)
+        setVacanciesReady(true)
+      })
+      .catch(() => setVacanciesReady(true))
   }, [])
 
   useEffect(() => {
@@ -267,7 +297,8 @@ export default function App() {
   useEffect(() => {
     getProfile().then((p) => {
       if (p && Object.keys(p).length > 0) setProfile(p)
-    })
+      setProfileReady(true)
+    }).catch(() => setProfileReady(true))
   }, [])
 
   const handleCardClick = useCallback((v) => {
@@ -678,7 +709,9 @@ export default function App() {
   }, [selectedVacancy, markSeen])
 
   return (
-    <div className="app" onKeyDown={handleKeyDown}>
+    <>
+      {showSplash && <SplashScreen leaving={splashLeaving} />}
+      <div className="app" onKeyDown={handleKeyDown}>
       <Sidebar
         activeView={activeView}
         onViewChange={setActiveView}
@@ -761,5 +794,6 @@ export default function App() {
 
       <Toast show={showToast} message="Changes saved" />
     </div>
+    </>
   )
 }
