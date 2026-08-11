@@ -1,0 +1,26 @@
+.mascot {
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Ролики на сплошном чёрном фоне: screen-блендинг делает чёрный
+   прозрачным на тёмном фоне приложения (--bg-app). */
+.mascot-black-bg {
+  mix-blend-mode: screen;
+}
+
+.mascot-sm {
+  width: 120px;
+  height: 120px;
+}
+
+.mascot-md {
+  width: 180px;
+  height: 180px;
+}
+
+.mascot-lg {
+  width: 240px;
+  height: 240px;
+}

@@ -3548,5 +3548,206 @@
     "id": "3b2789f794474301",
     "fetchedAt": "2026-08-09T21:56:30.407512+00:00",
     "batchId": "2026-08-09T21:56:30.407512+00:00"
+  },
+  {
+    "title": "Веб дизайнер, Программист",
+    "company": "САПАР",
+    "salary": "72 000 – 144 000 ₽/мес",
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Опыт в веб-дизайне и/или программировании",
+      "Понимание современных принципов UI/UX",
+      "Умение работать самостоятельно и соблюдать сроки",
+      "Ответственный подход к задачам",
+      "Портфолио будет преимуществом"
+    ],
+    "sourceExcerpt": "- [Веб дизайнер, Программист в САПАР](https://youngjunior.ru/дизайнер/jobs/49574)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Web Design role matches profile."
+        },
+        {
+          "type": "good",
+          "text": "Remote."
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-08-10T15:00:07+00:00",
+    "link": "https://t.me/junior_designers/1466",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Стажёр-дизайнер:__**\n- [Продуктовый UX/UI дизайнер (Website & App) в Комфорт-сервис Домовёнок](https://youngjunior.ru/дизайнер/jobs/49627)\n- [2D Motion / UA Designer в Ardor Media](https://youngjunior.ru/дизайнер/jobs/49647)\n\n**__Junior-дизайнер:__**\n- [Motion Designer в Octopus by RTG](https://youngjunior.ru/дизайнер/jobs/49514)\n- [Веб дизайнер, Программист в САПАР](https://youngjunior.ru/дизайнер/jobs/49574)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "11f82960bd942900",
+    "fetchedAt": "2026-08-10T22:30:46.130867+00:00",
+    "batchId": "2026-08-10T22:30:46.130867+00:00"
+  },
+  {
+    "title": "Стажёр (Дизайн-стажировка)",
+    "company": "Яндекс",
+    "salary": null,
+    "experience": {
+      "value": "стажёр",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": null,
+    "requirements": [
+      "готовность к обучению",
+      "умение спрашивать"
+    ],
+    "sourceExcerpt": "Подавайся на стажировку ▶️ [yandex.ru/yaintern](https://yandex.ru/yaintern?utm_source=telegram&utm_medium=internal&utm_campaign=yaintern26&utm_content=july&utm_term=kayak1008)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Internship in product/UX environment is relevant to profile"
+        },
+        {
+          "type": "warn",
+          "text": "Work format/location not stated — check original post"
+        }
+      ]
+    },
+    "channel_username": "Young_and_Yandex",
+    "channel_title": "Young&&Yandex",
+    "date": "2026-08-10T14:56:49+00:00",
+    "link": "https://t.me/Young_and_Yandex/4583",
+    "original_text": "**Встреча 1:1 — на каяках и на одной волне\n**\nТехнолето — переносим синки из переговорок на реку. \n\nСтажёр и её ментор поговорили про адаптацию новичков, про то, как ментор сама начинала со стажировки, и про главное правило Яндекса — спрашивать можно всё.\n\nПодавайся на стажировку ▶️ [yandex.ru/yaintern](https://yandex.ru/yaintern?utm_source=telegram&utm_medium=internal&utm_campaign=yaintern26&utm_content=july&utm_term=kayak1008)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "d8fdff863220d19a",
+    "fetchedAt": "2026-08-10T22:30:46.130867+00:00",
+    "batchId": "2026-08-10T22:30:46.130867+00:00"
+  },
+  {
+    "title": "Веб-дизайнер",
+    "company": "Сбер",
+    "salary": null,
+    "experience": {
+      "value": "можно без опыта",
+      "strict": false
+    },
+    "workFormat": null,
+    "location": "Москва",
+    "requirements": [
+      "уверенное владение Figma или Pixso (компоненты, варианты, автолэйауты, стили)",
+      "понимание современных дизайн-трендов",
+      "технические особенности форматов: размеров сеток, цветовых пространств, различных платформ, устройств и разрешений",
+      "базовые знания HTML и CSS",
+      "навыки визуализации (инфографика, сторителлинг)",
+      "навыки работы с AI-инструментами",
+      "портфолио и готовность выполнить тестовое задание"
+    ],
+    "sourceExcerpt": "**Веб-дизайнер** [в Сбер](https://www.sberbank.ru/ru/person)\n📍 Москва\n\n__🖇 Задачи:__\n— создавать макеты email-дайджестов, лендингов и баннеров для цифровых коммуникаций;\n— помогать с оформлением презентаций и визуализацией информации;\n— адаптировать контент для разных форматов и взаимодействовать со смежными командами.\n\n__🖇 Требования:__\n— уверенное владение Figma или Pixso;\n— понимание современных дизайн-трендов и технических особенностей цифровых форматов;\n— базовые знания HTML и CSS;\n— навыки работы с AI-инструментами для генерации и обработки графики;\n— портфолио и готовность выполнить тестовое задание.\n\n__🖇 Условия:__\n— официальное оформление и стабильный оклад;\n— расширенный ДМС с первого дня;\n— корпоративное обучение в Виртуальной школе Сбера;\n— подписка СберПрайм для себя и трех близких;\n— корпоративная пенсионная программа и льготные условия по ипотеке.\n__\nОткликнуться с резюме и портфолио (с пометкой «От CHANCE»):\n— [здесь](https://rabota.sber.ru/search/dizayner-stazher-4555215/)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product Designer / UX/UI Designer"
+        },
+        {
+          "type": "warn",
+          "text": "Work format/location not stated (official office in Moscow) — check original post"
+        }
+      ]
+    },
+    "channel_username": "artdesignjob",
+    "channel_title": "CHANCE | Дизайн — работа, стажировки, конкурсы",
+    "date": "2026-08-10T09:04:50+00:00",
+    "link": "https://t.me/artdesignjob/1622",
+    "original_text": "**Веб-дизайнер** [в Сбер](https://www.sberbank.ru/ru/person)\n📍 Москва\n\n__🖇 Задачи:__\n— создавать макеты email-дайджестов, лендингов и баннеров для цифровых коммуникаций;\n— помогать с оформлением презентаций и визуализацией информации;\n— адаптировать контент для разных форматов и взаимодействовать со смежными командами.\n\n__🖇 Требования:__\n— уверенное владение Figma или Pixso;\n— понимание современных дизайн-трендов и технических особенностей цифровых форматов;\n— базовые знания HTML и CSS;\n— навыки работы с AI-инструментами для генерации и обработки графики;\n— портфолио и готовность выполнить тестовое задание.\n\n__🖇 Условия:__\n— официальное оформление и стабильный оклад;\n— расширенный ДМС с первого дня;\n— корпоративное обучение в Виртуальной школе Сбера;\n— подписка СберПрайм для себя и трех близких;\n— корпоративная пенсионная программа и льготные условия по ипотеке.\n__\nОткликнуться с резюме и портфолио (с пометкой «От CHANCE»):__\n— [здесь](https://rabota.sber.ru/search/dizayner-stazher-4555215/)\n\n#стажировка\n#дизайн \n\n[Telegram](https://t.me/artdesignjob) | [MAX](https://max.ru/id7714030726_gos62) | [mediiia](https://mediiia.com/teams/abfbe5d0c840472883260019caea0db7)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "86493c0847aec26a",
+    "fetchedAt": "2026-08-10T22:30:46.130867+00:00",
+    "batchId": "2026-08-10T22:30:46.130867+00:00"
+  },
+  {
+    "title": "Продуктовый дизайнер для образовательного проекта",
+    "company": "Фоксфорд",
+    "salary": null,
+    "experience": {
+      "value": "middle",
+      "strict": null
+    },
+    "workFormat": "удалёнка",
+    "location": "РФ",
+    "requirements": [],
+    "sourceExcerpt": "3. Продуктовый дизайнер для образовательного проекта в Фоксфорд\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка по РФ\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-dlia-obrazovatelnogo-proekta-73995)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer matches profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-08-10T07:22:06+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1326",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Motion Designer for original media projects в ЧК ОНБИР LTD.**\n💪 Грейд: #middle\n💰 Вилка: от 61к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/136045654)\n\n**2. Motion Designer for mobile games в Tripledot Studios**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Тбилиси\n✉️ [Hirehi](https://hirehi.ru/design/motion-designer-for-mobile-games-73946)\n\n**3. Продуктовый дизайнер для образовательного проекта в Фоксфорд**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка по РФ\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-dlia-obrazovatelnogo-proekta-73995)\n\n**4. UX/UI designer in game interfaces в Scorewarrior**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис\n✉️ [Hirehi](https://hirehi.ru/design/uxui-designer-in-game-interfaces-73379)\n\n**5. Game designer for a live game в Xsolla**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/game-designer-for-a-live-game-73376)\n\n**6. Web дизайнер digital-коммуникаций банковских продуктов в Сбер**\n💪 Грейд: #intern\n💰 Вилка: зп не указана\n🏠 Формат: #офис Москва\n✉️ [Rabota](https://rabota.sber.ru/search/dizayner-stazher-4555215/)\n\n**7. UX/UI designer в iGaming в Spinbetter**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/136033241)\n\n**8. UX/UI дизайнер для веб- и мобильных приложений в True Engineering**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Новосибирск\n✉️ [Headhunter](https://hh.ru/vacancy/132387806)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "2460118f701a3dd6",
+    "fetchedAt": "2026-08-10T22:30:46.130867+00:00",
+    "batchId": "2026-08-10T22:30:46.130867+00:00"
+  },
+  {
+    "title": "UX-дизайнер",
+    "company": "project ×",
+    "salary": null,
+    "experience": {
+      "value": "Middle-Senior",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "исследование потребностей и поведения пользователей",
+      "проектирование пользовательских сценариев и User Flow",
+      "создание информационной архитектуры и прототипов",
+      "тестирование интерфейсов и улучшение UX"
+    ],
+    "sourceExcerpt": "[**Middle+ UX-дизайнер в project ×**](https://www.vseti.app/vakansii/4373448343934943943434343)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        }
+      ]
+    },
+    "channel_username": "it_vakansii_jobs",
+    "channel_title": "СЕТИ — IT & Digital вакансии",
+    "date": "2026-08-10T07:08:01+00:00",
+    "link": "https://t.me/it_vakansii_jobs/3129",
+    "original_text": "**С понедельником, коллеги!**\n\nЧтобы поднять вам настроение, мы подготовили **эти** 🔢 **вакансий.** \nПриятного просмотра!\n\n**📍****HR**\n\n[**Head of People Operations в Manychat**](https://www.vseti.app/vakansii/34839494304343943834434343)\nНидерланды, релокация\n**\n****📍****Frontend**\n[**\nModdle Frontend-разработчик в ВК**](https://www.vseti.app/vakansii/4338494394334843843434334)\nУдалённо\n**\n****📍****Аналитика**\n\n[**Middle+ Дата-аналитик в Честный ЗНАК**](https://www.vseti.app/vakansii/48343483493933434343)\nУдалённо\n**\n****📍****Тестирование**\n\n[**Middle+ QA-cпециалист в ВК**](https://www.vseti.app/vakansii/348384439349934434343)\nУдалённо\n\n**📍****Менеджмент**\n\n[**Middle Project Manager в Reputation house**](https://www.vseti.app/vakansii/3473483434934943943433434)\n1 500$\nУдалённо\n**\n****📍****Маркетинг**\n\n[**Junior+ Инфлюенс-менеджер в MANIFEST agency**](https://www.vseti.app/vakansii/3443743843943943934434343)\nУдаленно\n\n[**Junior+ SMM Manager в SabioTrade**](https://www.vseti.app/vakansii/4374348439349348343843434)\nПитер, гибрид или удаленно\n\n[**Junior+ Growth Engineer в AEVO**](https://www.vseti.app/vakansii/34734834493439439434343)\nУдаленно\n\n[**Junior Product Marketing Manager в Фоксфорд**](https://www.vseti.app/vakansii/43734843943934934344343434334)\nУдалённо\n**\n****📍****Финансы\n**\n[**Head of Finance в Whizz**](https://www.vseti.app/vakansii/4373484394393443943434343)\nУдалённо (Мир)\n**\n****📍****Дизайн**\n\n[**Middle+ UX-дизайнер в project ×**](https://www.vseti.app/vakansii/4373448343934943943434343)\nУдалённо\n\n[**Middle+ Дизайнер визуальных коммуникаций в АТОН**](https://www.vseti.app/vakansii/348344393493838343434343434)\nМосква, гибрид\n\n**\n**———\n\n🖤[ ](http://ya.ru/)[Разместить вакансию](https://www.vseti.app/b2b) \n💚 [Джунам](https://t.me/+6lnhesy-WoxjNzBi) 🫶 [Удалёнка джунам](https://t.me/+1yyM8jKGVr8xZjMy) \n💜[ За рубежом](https://t.me/+BO4DcXIAKqg1ODYy) 💚[ Разрабам](https://t.me/+QiDNhxIWmTUwMTdi)\n💖[ Дизайнерам](https://t.me/+9cosivWJhhE4M2Ri) 🟠[ Маркетологам](https://t.me/+vJsBiYSXJ65mNTky) \n🖤 [HR](https://t.me/+1bnvboBdNRViZmMy) 💜 [QA](https://t.me/+H9UAixzqTEQ3Zjky) 🟡 [Менеджерам](https://t.me/+riZ3PFenvGJkNTAy)\n🔴 [Аналитикам](https://t.me/+Y61B38iIuAtiMWE6)\n\n__мы также есть там, куда всех хотят отправить — ____https://max.ru/it_vakansii_jobs__",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "b801575eebd49a7a",
+    "fetchedAt": "2026-08-10T22:30:46.130867+00:00",
+    "batchId": "2026-08-10T22:30:46.130867+00:00"
   }
 ]

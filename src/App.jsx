@@ -10,6 +10,7 @@ import JumpToDatePopover from './components/JumpToDatePopover'
 import Toast from './components/Toast'
 import TypewriterText from './components/TypewriterText'
 import SplashScreen from './components/SplashScreen'
+import Mascot from './components/Mascot'
 import { getVacancies, getProfile, saveProfile, startRefresh, getRefreshStatus, sendChatMessage, getSources } from './api'
 import './App.css'
 
@@ -572,9 +573,15 @@ export default function App() {
             )}
 
             {activeView === 'inbox' ? (
-              timeline.length === 0 ? (
+              searchQuery.trim() && matchCount === 0 ? (
                 <div className="empty-state">
-                  No vacancies yet.<br />Zhabka is watching your sources.
+                  <Mascot variant="notfound" />
+                  <p>Nothing found.</p>
+                </div>
+              ) : timeline.length === 0 ? (
+                <div className="empty-state">
+                  <Mascot variant="neutral" />
+                  <p>No vacancies yet.<br />Zhabka is watching your sources.</p>
                 </div>
               ) : (
                 <div className="timeline">
@@ -650,7 +657,10 @@ export default function App() {
                 </div>
               )
             ) : items.length === 0 ? (
-              <div className="empty-state">Nothing saved yet.</div>
+              <div className="empty-state">
+                <Mascot variant="neutral" />
+                <p>Nothing saved yet.</p>
+              </div>
             ) : (
               <div className="feed">
                 {items.map((v, i) => (
