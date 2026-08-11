@@ -28,7 +28,9 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  animation: viewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  /* viewFadeIn здесь намеренно нет: анимация opacity/transform у предка
+     изолирует mix-blend-mode у роликов маскота (чёрный фон пробивается).
+     Пер-карточные анимации в ленте при этом сохраняются. */
 }
 
 @keyframes viewFadeIn {
