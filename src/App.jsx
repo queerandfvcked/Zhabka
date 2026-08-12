@@ -183,6 +183,7 @@ export default function App() {
   }, [matchCount])
 
   useEffect(() => {
+    if (!searchQuery.trim()) return
     const vac = filteredVacancies[currentMatchIdx]
     if (!vac) return
     const id = `timeline-item-vac-${vacancyId(vac)}`
@@ -196,7 +197,7 @@ export default function App() {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     }
-  }, [currentMatchIdx, filteredVacancies])
+  }, [currentMatchIdx, filteredVacancies, searchQuery])
 
   const timeline = useMemo(() => {
     const items = []
@@ -367,8 +368,10 @@ export default function App() {
               msg = 'Sync complete. Check the feed for new vacancies.'
             }
             const freshVacancies = await getVacancies()
+            const freshSources = await getSources()
             justSyncedRef.current = true
             setVacancies(freshVacancies)
+            setSources(freshSources)
             setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
             setMessages((prev) => [...prev, { type: 'ai', text: msg, _ts: Date.now() }])
             resolve()
