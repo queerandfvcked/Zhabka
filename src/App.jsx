@@ -118,6 +118,10 @@ export default function App() {
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
+  // Ref на интервал опроса статуса синхронизации — защищает от дублей
+  // и позволяет перехватить уже идущий синк после перезагрузки страницы.
+  const statusPollRef = useRef(null)
+
   const searchRef = useRef(null)
   const scrollWrapperRef = useRef(null)
   // Флаг: синк только что завершился — следующий скролл должен идти
@@ -336,11 +340,60 @@ export default function App() {
     }
   }, [])
 
+  // Общий опрос статуса синхронизации: показываем плашку, а когда бэкенд
+  // закончит — обновляем ленту и пишем сообщение в чат. Используется и при
+  // запуске по кнопке, и при «перехвате» уже идущего синка после перезагрузки.
+  const pollSyncStatus = useCallback(() => {
+    if (statusPollRef.current) return Promise.resolve()
+
+    return new Promise((resolve) => {
+      statusPollRef.current = setInterval(async () => {
+        try {
+          const status = await getRefreshStatus()
+          if (status.running) {
+            setSyncStatus(status.message || 'Sync in progress...')
+            return
+          }
+          clearInterval(statusPollRef.current)
+          statusPollRef.current = null
+          setSyncStatus(null)
+          const log = status.log || []
+          const errors = log.filter((l) => l.includes('ошибкой'))
+          const tail = log.slice(-6).join('\n')
+          let msg
+          if (errors.length > 0) {
+            msg = `Sync finished with errors:\n\`\`\`\n${tail}\n\`\`\``
+          } else {
+            msg = 'Sync complete. Check the feed for new vacancies.'
+          }
+          const freshVacancies = await getVacancies()
+          const freshSources = await getSources()
+          justSyncedRef.current = true
+          setVacancies(freshVacancies)
+          setSources(freshSources)
+          setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
+          setMessages((prev) => [...prev, { type: 'ai', text: msg, _ts: Date.now() }])
+          resolve()
+        } catch {
+          clearInterval(statusPollRef.current)
+          statusPollRef.current = null
+          setSyncStatus(null)
+          setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.', _ts: Date.now() }])
+          resolve()
+        }
+      }, 2000)
+    })
+  }, [setLastSync])
+
   const handleSyncNow = useCallback(async () => {
     try {
       const res = await startRefresh()
       if (res.status === 'already_running') {
         setMessages((prev) => [...prev, { type: 'ai', text: 'Sync already in progress.', _ts: Date.now() }])
+        // Синк идёт на бэкенде (например, после перезагрузки страницы) —
+        // подхватываем его, чтобы показать плашку и дождаться обновления ленты.
+        setSyncStatus('Sync in progress...')
+        pollSyncStatus()
         return
       }
     } catch {
@@ -350,40 +403,32 @@ export default function App() {
 
     setSyncStatus('Starting sync...')
 
-    return new Promise((resolve) => {
-      const poll = setInterval(async () => {
-        try {
-          const status = await getRefreshStatus()
-          if (status.message) setSyncStatus(status.message)
-          if (!status.running) {
-            clearInterval(poll)
-            setSyncStatus(null)
-            const log = status.log || []
-            const errors = log.filter((l) => l.includes('ошибкой'))
-            const tail = log.slice(-6).join('\n')
-            let msg
-            if (errors.length > 0) {
-              msg = `Sync finished with errors:\n\`\`\`\n${tail}\n\`\`\``
-            } else {
-              msg = 'Sync complete. Check the feed for new vacancies.'
-            }
-            const freshVacancies = await getVacancies()
-            const freshSources = await getSources()
-            justSyncedRef.current = true
-            setVacancies(freshVacancies)
-            setSources(freshSources)
-            setLastSync(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }))
-            setMessages((prev) => [...prev, { type: 'ai', text: msg, _ts: Date.now() }])
-            resolve()
-          }
-        } catch {
-          clearInterval(poll)
-          setSyncStatus(null)
-          setMessages((prev) => [...prev, { type: 'ai', text: 'Sync failed — network error.', _ts: Date.now() }])
-          resolve()
+    return pollSyncStatus()
+  }, [pollSyncStatus])
+
+  // Если страница перезагружена (или окно закрыто и открыто заново) во время
+  // синхронизации — плашка сбивается, хотя синк на бэкенде продолжается.
+  // Здесь мы это подхватываем: показываем плашку и продолжаем опрашивать статус.
+  useEffect(() => {
+    let cancelled = false
+    getRefreshStatus()
+      .then((status) => {
+        if (cancelled) return
+        if (status.running) {
+          setSyncStatus(status.message || 'Sync in progress...')
+          pollSyncStatus()
         }
-      }, 2000)
-    })
+      })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [pollSyncStatus])
+
+  // Чистим интервал опроса при размонтировании, чтобы не утекло после HMR.
+  useEffect(() => () => {
+    if (statusPollRef.current) {
+      clearInterval(statusPollRef.current)
+      statusPollRef.current = null
+    }
   }, [])
 
   const handleBookmark = () => {
