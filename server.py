@@ -50,10 +50,12 @@ app = FastAPI()
 app.mount("/uploads", StaticFiles(directory=str(RESUME_DIR)), name="uploads")
 
 # Vite dev server и FastAPI — разные порты, нужен CORS, иначе браузер
-# заблокирует запросы с фронтенда к этому серверу.
+# заблокирует запросы с фронтенда к этому серверу. Локальный dev-бэкенд
+# без cookie/credentials, поэтому разрешаем все origin — так фронтенд
+# работает и с телефона (origin http://<LAN-IP>:5173 при запуске --host).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -229,7 +231,7 @@ def _run_pipeline():
         base_env["GCP_API_KEY"] = saved_api_key
     try:
         for script in scripts:
-            pipeline_state["message"] = f"Running {script}..."
+            pipeline_state["message"] = f"Running {script}"
             pipeline_state["log"].append(f"--- запускаю {script} ---")
             env = dict(base_env)
             proc = subprocess.Popen(

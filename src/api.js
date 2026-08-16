@@ -1,4 +1,15 @@
-export const API_BASE = 'http://localhost:8000'
+const API_PORT = 8000
+
+function resolveApiBase() {
+  // Переопределение через env (VITE_API_BASE=...) имеет приоритет.
+  if (import.meta.env.VITE_API_BASE) return import.meta.env.VITE_API_BASE
+  // Бэкенд живёт на том же хосте, что и фронтенд (работает и с телефона,
+  // когда сайт открыт через --host: localhost на телефоне — это сам телефон).
+  const host = window.location.hostname || 'localhost'
+  return `http://${host}:${API_PORT}`
+}
+
+export const API_BASE = resolveApiBase()
 
 export async function getVacancies() {
   const res = await fetch(`${API_BASE}/vacancies`)

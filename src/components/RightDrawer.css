@@ -382,7 +382,8 @@
   }
 
   .drawer-body {
-    padding: var(--space-5) var(--space-5) var(--space-6);
+    padding: var(--space-5) var(--space-5)
+      calc(var(--space-6) + env(safe-area-inset-bottom));
     gap: var(--space-5);
   }
 

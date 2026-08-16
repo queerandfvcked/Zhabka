@@ -1,6 +1,7 @@
 .app {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -408,6 +409,13 @@ mark.search-highlight {
 
 /* --- MOBILE BREAKPOINT --- */
 @media (max-width: 768px) {
+  /* iOS не зумит инпуты, только если шрифт >= 16px */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
   .topbar {
     display: none !important;
   }
@@ -416,7 +424,7 @@ mark.search-highlight {
   .mobile-top-bar {
     display: flex;
     position: sticky;
-    top: 12px;
+    top: calc(12px + env(safe-area-inset-top));
     z-index: 20;
     align-items: center;
     justify-content: space-between;
@@ -487,7 +495,7 @@ mark.search-highlight {
 
   .floating-header {
     position: absolute;
-    top: 12px;
+    top: calc(12px + env(safe-area-inset-top));
     right: var(--space-4);
     margin: 0;
     padding: 0;
@@ -521,7 +529,8 @@ mark.search-highlight {
   }
 
   .chat-area {
-    padding: var(--space-5) var(--space-4) var(--space-4);
+    padding: var(--space-5) var(--space-4)
+      calc(var(--space-4) + env(safe-area-inset-bottom));
     background: linear-gradient(to top,
         var(--bg-app) 0%,
         var(--bg-app) 80%,
@@ -546,6 +555,7 @@ mark.search-highlight {
   /* Отодвигаем весь контент от плавающей шапки */
   .view-page,
   .main-inner {
-    padding: 82px var(--space-4) var(--space-5) !important;
+    padding: calc(82px + env(safe-area-inset-top)) var(--space-4)
+      calc(var(--space-5) + env(safe-area-inset-bottom)) !important;
   }
 }
