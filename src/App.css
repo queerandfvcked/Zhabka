@@ -528,14 +528,24 @@ mark.search-highlight {
     min-width: 0 !important;
   }
 
+  /* В standalone PWA env(safe-area-inset-bottom) отдаёт избыточный зазор
+     поверх уже учтённой в 100dvh геометрии — капсула чата уезжала высоко
+     вверх. 12px дизайн-отступа достаточно: под инпутом остаётся место
+     под home indicator, к краю не липнет. */
   .chat-area {
-    padding: var(--space-5) var(--space-4)
-      calc(var(--space-4) + env(safe-area-inset-bottom));
+    padding: var(--space-5) var(--space-4) var(--space-4);
     background: linear-gradient(to top,
         var(--bg-app) 0%,
         var(--bg-app) 80%,
         transparent 100%);
     margin-top: calc(-1 * var(--space-5));
+  }
+
+  /* Нижний зазор уже несёт .chat-area (12px + safe-area-inset-bottom).
+     Если оставить и padding-bottom у .chat-wrapper, дизайн-отступ
+     дублируется (12+12px) и капсула чата висит высоко над жестовой зоной. */
+  .chat-area .chat-wrapper {
+    padding-bottom: 0;
   }
 
   /* Скрываем дублирующие заголовки H1 на мобилке */
