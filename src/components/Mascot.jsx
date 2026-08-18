@@ -5,6 +5,7 @@ const MASCOT_SRC = {
   neutral: '/mascot-neutral.webm',
   notfound: '/mascot-notfound.webm',
   splash: '/animation.webm',
+  error: '/error.mp4',
 }
 
 // Универсальный маскот. variant — какой ролик показывать,

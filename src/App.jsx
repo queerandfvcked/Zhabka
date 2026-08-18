@@ -105,6 +105,12 @@ export default function App() {
   // Стейт для живого статуса синхронизации
   const [syncStatus, setSyncStatus] = useState(null)
 
+  // Итог последнего синка: 'error' | 'nothing' | null (null — синка не было)
+  const [syncOutcome, setSyncOutcome] = useState(null)
+
+  // Стойкое сообщение об ошибке синка (в отличие от aiError, не сбрасывается само)
+  const [syncErrorMsg, setSyncErrorMsg] = useState(null)
+
   // Стейт для ошибок AI (неверный ключ, таймаут и т.п.)
   const [aiError, setAiError] = useState(null)
 
@@ -351,20 +357,28 @@ export default function App() {
         try {
           const status = await getRefreshStatus()
           if (status.running) {
+            // синк пошёл (или уже шёл) — старый итог больше не актуален
+            setSyncErrorMsg(null)
+            setSyncOutcome(null)
             setSyncStatus(status.message || 'Sync in progress...')
             return
           }
           clearInterval(statusPollRef.current)
           statusPollRef.current = null
           setSyncStatus(null)
-          const log = status.log || []
-          const errors = log.filter((l) => l.includes('ошибкой'))
-          const tail = log.slice(-6).join('\n')
+          const syncError = status.error || null
+          const newCount = status.new_count || 0
           let msg
-          if (errors.length > 0) {
-            msg = `Sync finished with errors:\n\`\`\`\n${tail}\n\`\`\``
+          if (syncError) {
+            msg = syncError.message
+            setSyncErrorMsg(syncError.message)
+            setSyncOutcome('error')
           } else {
-            msg = 'Sync complete. Check the feed for new vacancies.'
+            setSyncErrorMsg(null)
+            setSyncOutcome(newCount > 0 ? null : 'nothing')
+            msg = newCount > 0
+              ? `Sync complete. ${newCount} new vacancy${newCount === 1 ? '' : 'ies'} added.`
+              : 'Sync complete. Nothing new this window.'
           }
           const freshVacancies = await getVacancies()
           const freshSources = await getSources()
@@ -628,8 +642,14 @@ export default function App() {
                 </div>
               ) : timeline.length === 0 ? (
                 <div className="empty-state">
-                  <Mascot variant="neutral" />
-                  <p>No vacancies yet.<br />Zhabka is watching your sources.</p>
+                  <Mascot variant={syncOutcome === 'error' ? 'error' : syncOutcome === 'nothing' ? 'notfound' : 'neutral'} />
+                  {syncOutcome === 'error' ? (
+                    <p>Sync failed.<br />Zhabka couldn't classify new posts.</p>
+                  ) : syncOutcome === 'nothing' ? (
+                    <p>Nothing found this time.<br />Zhabka is still watching your sources.</p>
+                  ) : (
+                    <p>No vacancies yet.<br />Zhabka is watching your sources.</p>
+                  )}
                 </div>
               ) : (
                 <div className="timeline">
@@ -730,6 +750,12 @@ export default function App() {
               <div className="sync-status-bubble">
                 <span className="sync-status-dot" />
                 <TypewriterText text={syncStatus} />
+              </div>
+            )}
+            {syncErrorMsg && !syncStatus && (
+              <div className="sync-status-bubble error">
+                <span className="sync-status-dot error" />
+                {syncErrorMsg}
               </div>
             )}
             {aiError && (

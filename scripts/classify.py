@@ -274,7 +274,7 @@ SYSTEM_PROMPT = """Ты — модуль извлечения структуры
 """
 
 
-def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[dict]:
+def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[dict] | None:
     user_content = (
         f"ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ:\n{json.dumps(profile, ensure_ascii=False)}\n\n"
         f"ТЕКСТ ПОСТА:\n{post_text}"
@@ -318,7 +318,7 @@ def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[d
                     print(f"  Сырой ответ (первые 300 символов): {raw_text[:300]!r}")
                 else:
                     print(f"  Сырой ответ API: {str(data)[:300]!r}")
-                return []
+                return None
 
         if resp.status_code == 429:
             print(f"  429 (лимит), жду {wait}с и пробую снова "
@@ -328,10 +328,10 @@ def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[d
             continue
 
         print(f"  Ошибка API ({resp.status_code}): {resp.text[:200]}")
-        return []
+        return None
 
     print("  Не удалось получить ответ после всех попыток, пропускаю пост")
-    return []
+    return None
 
 
 def normalize_text(text: str) -> str:
@@ -458,6 +458,41 @@ def is_bare_footer_link(v: dict) -> bool:
     return not has_any_data
 
 
+FOOTER_MARKER_PATTERN = re.compile(
+    r"(другие вакансии в (?:этой )?компан|похожие вакансии|ещё вакансии|"
+    r"смотрите также|other (?:open )?(?:positions|vacancies|jobs) at)",
+    re.IGNORECASE,
+)
+
+
+def is_footer_list_item(v: dict, original_text: str) -> bool:
+    """
+    Более надёжная версия is_bare_footer_link — не полагается на то,
+    что ВСЕ поля пустые (модель иногда подтягивает 1-2 поля из
+    соседнего контекста поста, из-за чего is_bare_footer_link
+    ошибочно пропускает такую запись, как уже случалось). Вместо
+    этого проверяем сам текст поста: если excerpt — голая ссылка И
+    в посте есть маркер "Другие вакансии в компании"/"Похожие
+    вакансии" и т.п. ДО этой ссылки — это сноска, а не пункт дайджеста,
+    независимо от того, что модель успела заполнить в остальных полях.
+    """
+    excerpt = (v.get("sourceExcerpt") or "").strip()
+    if not BARE_LINK_PATTERN.match(excerpt):
+        return False
+
+    marker_match = FOOTER_MARKER_PATTERN.search(original_text)
+    if not marker_match:
+        return False
+
+    excerpt_pos = original_text.find(excerpt)
+    if excerpt_pos == -1:
+        # Дословно не нашли (могли быть небольшие расхождения в
+        # пробелах/тире), но раз маркер сноски в посте вообще есть,
+        # а excerpt — голая ссылка — лучше перестраховаться и отсечь.
+        return True
+    return excerpt_pos > marker_match.start()
+
+
 def excerpt_is_grounded(excerpt: str, source_text: str, threshold: float = 0.6) -> bool:
     """
     Проверяет, что sourceExcerpt реально взят из исходного текста поста,
@@ -542,6 +577,7 @@ def main():
     ]
     print(f"К обработке: {len(posts_to_process)} из {len(raw_posts)} постов.")
 
+    failures = 0
     for i, post in enumerate(posts_to_process):
         print(f"[{i + 1}/{len(posts_to_process)}] @{post['channel_username']}...")
 
@@ -556,12 +592,20 @@ def main():
             # Что угодно неожиданное на одном посте — не должно ронять
             # весь прогон на оставшихся сотнях постов. Пропускаем и идём
             # дальше, уже сохранённое не теряется.
+            failures += 1
             print(f"  Неожиданная ошибка на этом посте, пропускаю: "
                   f"{type(e).__name__}: {e}")
             time.sleep(5)
             continue
 
-        for v in vacancies:
+        if vacancies is None:
+            # Модель не ответила (ошибка API, лимит, сеть) — это НЕ «вакансий
+            # не нашлось», это технический сбой. Не сохраняем ничего, но
+            # считаем, чтобы потом честно сообщить об ошибке в статусе синка.
+            failures += 1
+            print("  API не ответил после всех попыток, пропускаю пост")
+
+        for v in vacancies or []:
             if not v.get("aiVerdict", {}).get("show", True):
                 # AI решил не показывать — не сохраняем совсем, без архива.
                 # При следующем сборе окно постов обновится естественным
@@ -579,7 +623,7 @@ def main():
             # Защита от "других вакансий в компании" — модель иногда
             # превращает ссылку из сноски в отдельную вакансию, несмотря
             # на прямой запрет в промпте. Механическая подстраховка.
-            if is_bare_footer_link(v):
+            if is_bare_footer_link(v) or is_footer_list_item(v, post["text"]):
                 print(f"  Пропускаю '{v.get('title')}' — похоже на ссылку "
                       f"из сноски 'другие вакансии', а не реальный пункт")
                 continue
@@ -626,6 +670,8 @@ def main():
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     print(f"\nГотово: {len(results)} вакансий -> {OUTPUT_FILE}")
+    if failures:
+        print(f"Ошибок API: {failures} из {len(posts_to_process)}")
 
 
 if __name__ == "__main__":

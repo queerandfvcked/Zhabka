@@ -190,6 +190,10 @@ pipeline_state = {
     "log": [],
     "message": "",
     "last_finished_at": None,
+    # Результат последнего синка: None, если всё ок, или объект с описанием.
+    "error": None,
+    # Сколько НОВЫХ вакансий добавил последний синк (для состояния «ничего не нашлось»).
+    "new_count": 0,
 }
 
 
@@ -209,6 +213,8 @@ def _load_vacancies_snapshot() -> dict:
 def _run_pipeline():
     pipeline_state["running"] = True
     pipeline_state["log"] = []
+    pipeline_state["error"] = None
+    pipeline_state["new_count"] = 0
 
     # Снэпшот ДО запуска — нужен, чтобы после мёржа не потерять старые
     # вакансии и не перештамповать им fetchedAt, даже если скрипты
@@ -229,6 +235,7 @@ def _run_pipeline():
         base_env["ZHABKA_MANUAL_SOURCES"] = json.dumps(manual_sources)
     if saved_api_key:
         base_env["GCP_API_KEY"] = saved_api_key
+    script_error = None
     try:
         for script in scripts:
             pipeline_state["message"] = f"Running {script}"
@@ -252,9 +259,9 @@ def _run_pipeline():
                     pipeline_state["log"] = pipeline_state["log"][-800:]
             proc.wait()
             if proc.returncode != 0:
-                pipeline_state["log"].append(
-                    f"--- {script} завершился с ошибкой (код {proc.returncode}) ---"
-                )
+                msg = f"{script} завершился с ошибкой (код {proc.returncode})"
+                pipeline_state["log"].append(f"--- {msg} ---")
+                script_error = msg
     finally:
         pipeline_state["running"] = False
         pipeline_state["message"] = ""
@@ -275,6 +282,7 @@ def _run_pipeline():
             fresh_vacs = json.load(f)
 
         merged_by_id = dict(previous_by_id)  # стартуем со старого снэпшота
+        new_count = 0
         for vac in fresh_vacs:
             vid = _vacancy_id(vac)
             if not vid:
@@ -288,11 +296,43 @@ def _run_pipeline():
                           "batchId": old.get("batchId", now_iso)}
             else:
                 merged = {**vac, "fetchedAt": now_iso, "batchId": now_iso}
+                new_count += 1
             merged_by_id[vid] = merged
 
         merged_vacs = list(merged_by_id.values())
         with open(VACANCIES_FILE, "w", encoding="utf-8") as f:
             json.dump(merged_vacs, f, ensure_ascii=False, indent=2)
+        pipeline_state["new_count"] = new_count
+
+    # Разбор результата в отдельное поле error — фронт покажет его
+    # пользователю вместо молчаливого «Sync complete». Раньше это не
+    # работало: classify.py проглатывал ошибки API (возвращал пустой
+    # результат и код 0), и синк «успешно» завершался с нулём новых.
+    if script_error:
+        pipeline_state["error"] = {
+            "kind": "script",
+            "message": script_error,
+        }
+    else:
+        m = re.search(
+            r"Ошибок API: (\d+) из (\d+)",
+            "\n".join(pipeline_state["log"]),
+        )
+        if m:
+            failures, total = int(m.group(1)), int(m.group(2))
+            if failures:
+                pipeline_state["error"] = {
+                    "apiFailures": failures,
+                    "total": total,
+                    "kind": "full" if failures == total else "partial",
+                    "message": (
+                        f"Классификация не сработала: {failures} из {total} "
+                        f"постов не обработаны (ошибка API)."
+                        if failures == total
+                        else f"Синк прошёл, но {failures} из {total} постов "
+                             f"не классифицированы (ошибка API)."
+                    ),
+                }
 
 
 @app.post("/refresh")
