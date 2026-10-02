@@ -259,21 +259,26 @@ export default function Settings({ onToast }) {
         </div>
 
         {autoSyncEnabled && (
-          <div className="sync-slots-container">
-            {syncTimes.map((time, idx) => (
-              <CustomTimePicker
-                key={idx}
-                value={time}
-                onChange={(newTime) => handleTimeChange(idx, newTime)}
-                onRemove={() => handleRemoveTime(idx)}
-                canRemove={syncTimes.length > 1}
-              />
-            ))}
+          <>
+            <div className="sync-desc" style={{ marginTop: 'var(--space-3)', marginBottom: 0 }}>
+              Runs while Zhabka is running on your computer. A missed time catches up on next launch.
+            </div>
+            <div className="sync-slots-container">
+              {syncTimes.map((time, idx) => (
+                <CustomTimePicker
+                  key={idx}
+                  value={time}
+                  onChange={(newTime) => handleTimeChange(idx, newTime)}
+                  onRemove={() => handleRemoveTime(idx)}
+                  canRemove={syncTimes.length > 1}
+                />
+              ))}
 
-            <button className="add-time-btn" onClick={handleAddTime}>
-              <Plus size={14} /> Add time
-            </button>
-          </div>
+              <button className="add-time-btn" onClick={handleAddTime}>
+                <Plus size={14} /> Add time
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>

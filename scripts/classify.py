@@ -26,12 +26,14 @@ import json
 import os
 import re
 import time
+from datetime import datetime, timedelta, timezone
 import hashlib
 import difflib
 import requests
 from dotenv import load_dotenv
 
 from resolver import enrich_links_in_text
+from sync_state import MAX_LOOKBACK_DAYS, promote_success
 
 load_dotenv()
 
@@ -39,14 +41,37 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GCP_API_KEY")
 MODEL_NAME = "gemini-3.1-flash-lite"  # проверь через scripts/list_models.py, что доступно именно тебе
 
+# Ключ передаём в заголовке, а не в URL: иначе при сетевой ошибке requests
+# печатает URL целиком, и ключ утекает в лог пайплайна (/refresh/status).
 GEMINI_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
+    f"{MODEL_NAME}:generateContent"
 )
+GEMINI_HEADERS = {"x-goog-api-key": GEMINI_API_KEY or ""}
+
+# Коды, при которых запрос стоит повторить: лимит (429) и временные сбои
+# на стороне Google (500/502/503/504, в т.ч. "high demand" у бесплатных моделей).
+RETRYABLE_STATUSES = {429, 500, 502, 503, 504}
+
+# Если столько постов подряд не получили ответ даже после всех повторов —
+# скорее всего, у Google затяжной сбой или кончилась дневная квота. Дальше
+# молотить бессмысленно: каждый пост ждал бы по ~4 минуты.
+MAX_CONSECUTIVE_FAILURES = 5
 
 INPUT_FILE = "src/data/raw_vacancies.json"
 OUTPUT_FILE = "src/data/vacancies.json"
 PROFILE_FILE = "profile.json"
+
+# Список постов, которые Gemini УЖЕ успешно обработал (включая отклонённые —
+# их в vacancies.json нет, поэтому без этого файла они уходили бы в AI
+# заново при каждом повторном синке в течение дня). Хранятся только короткие
+# ключи, не тексты. Записи старше PROCESSED_TTL_DAYS удаляются — такие посты
+# уже не попадут в окно сбора. Файл привязан к "отпечатку" профиля: при любом
+# изменении профиля список сбрасывается, чтобы новые настройки применились.
+PROCESSED_FILE = "src/data/processed_posts.json"
+# Должен быть строго больше максимальной глубины окна сбора: иначе пост,
+# который ещё попадает в окно, мог бы "забыться" и уйти в AI повторно.
+PROCESSED_TTL_DAYS = MAX_LOOKBACK_DAYS + 2
 
 # Версия пайплайна — меняй эту строку при ЛЮБОМ изменении промпта/схемы
 # в этом файле или в resolver.py. Записи с другой версией считаются
@@ -289,7 +314,7 @@ def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[d
     wait = 15  # стартовая пауза при 429, растёт с каждой повторной попыткой
     for attempt in range(max_retries):
         try:
-            resp = requests.post(GEMINI_URL, json=payload, timeout=30)
+            resp = requests.post(GEMINI_URL, json=payload, headers=GEMINI_HEADERS, timeout=30)
         except requests.exceptions.RequestException as e:
             # Таймаут, обрыв соединения и т.п. — не роняем весь скрипт,
             # ждём и пробуем снова, как при 429. Данные уже сохранённых
@@ -318,11 +343,19 @@ def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[d
                     print(f"  Сырой ответ (первые 300 символов): {raw_text[:300]!r}")
                 else:
                     print(f"  Сырой ответ API: {str(data)[:300]!r}")
+                # Запрос заблокирован фильтром — повтор бессмысленен.
+                if data.get("promptFeedback", {}).get("blockReason"):
+                    return None
+                # Иначе это обычно разовый сбой генерации — пробуем ещё раз.
+                if attempt < max_retries - 1:
+                    print(f"  Пробую снова (попытка {attempt + 1}/{max_retries})...")
+                    time.sleep(3)
+                    continue
                 return None
 
-        if resp.status_code == 429:
-            print(f"  429 (лимит), жду {wait}с и пробую снова "
-                  f"(попытка {attempt + 1}/{max_retries})...")
+        if resp.status_code in RETRYABLE_STATUSES:
+            print(f"  {resp.status_code} (лимит или временный сбой Google), жду "
+                  f"{wait}с и пробую снова (попытка {attempt + 1}/{max_retries})...")
             time.sleep(wait)
             wait *= 2  # экспоненциальный backoff: 15 -> 30 -> 60 -> 120
             continue
@@ -516,6 +549,58 @@ def excerpt_is_grounded(excerpt: str, source_text: str, threshold: float = 0.6) 
     return coverage >= threshold
 
 
+# Поля profile.json, которые к классификации не относятся: метаданные
+# загруженного резюме и настройки автосинка из интерфейса. Они не должны
+# уходить в Gemini и не должны влиять на отпечаток профиля (иначе смена
+# времени автосинка сбрасывала бы список уже обработанных постов).
+NON_CLASSIFICATION_KEYS = {"resume", "autoSync", "syncTimes"}
+
+
+def classification_profile(profile: dict) -> dict:
+    return {k: v for k, v in profile.items() if k not in NON_CLASSIFICATION_KEYS}
+
+
+def profile_fingerprint(profile: dict) -> str:
+    """Отпечаток профиля — только по полям, влияющим на классификацию."""
+    relevant = classification_profile(profile)
+    dumped = json.dumps(relevant, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(dumped.encode("utf-8")).hexdigest()[:16]
+
+
+def load_processed(fingerprint: str) -> dict:
+    """Возвращает {ключ_поста: время_обработки}. Пустой словарь, если файла
+    нет, он повреждён, или профиль изменился с прошлого раза."""
+    try:
+        with open(PROCESSED_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+    if data.get("profile") != fingerprint:
+        print("Профиль изменился с прошлого запуска — список уже "
+              "просмотренных постов сброшен.")
+        return {}
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=PROCESSED_TTL_DAYS)
+    fresh = {}
+    for key, ts in data.get("posts", {}).items():
+        try:
+            if datetime.fromisoformat(ts) >= cutoff:
+                fresh[key] = ts
+        except (TypeError, ValueError):
+            continue
+    return fresh
+
+
+def save_processed(fingerprint: str, posts: dict) -> None:
+    # Пишем через временный файл, чтобы обрыв посреди записи не оставил
+    # наполовину записанный json.
+    tmp = PROCESSED_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump({"profile": fingerprint, "posts": posts}, f, ensure_ascii=False)
+    os.replace(tmp, PROCESSED_FILE)
+
+
 def already_processed_key(post: dict) -> str:
     """Уникальный ключ поста для проверки, классифицирован ли он уже."""
     return f"{post['channel_username']}|{post['date']}|{post['text'][:50]}"
@@ -526,7 +611,7 @@ def main():
         raw_posts = json.load(f)
 
     with open(PROFILE_FILE, "r", encoding="utf-8") as f:
-        profile = json.load(f)
+        profile = classification_profile(json.load(f))
 
     # Дедупликация: один и тот же пост нередко репостят в несколько каналов.
     # Сравниваем по точному тексту (без учёта пробелов/регистра) — не
@@ -572,12 +657,21 @@ def main():
     except FileNotFoundError:
         pass
 
+    fingerprint = profile_fingerprint(profile)
+    processed_posts = load_processed(fingerprint)
+
     posts_to_process = [
-        p for p in raw_posts if already_processed_key(p) not in processed_keys
+        p for p in raw_posts
+        if already_processed_key(p) not in processed_keys
+        and already_processed_key(p) not in processed_posts
     ]
+    skipped = len(raw_posts) - len(posts_to_process)
+    if skipped:
+        print(f"Пропущено как уже обработанные: {skipped}.")
     print(f"К обработке: {len(posts_to_process)} из {len(raw_posts)} постов.")
 
     failures = 0
+    consecutive_failures = 0
     for i, post in enumerate(posts_to_process):
         print(f"[{i + 1}/{len(posts_to_process)}] @{post['channel_username']}...")
 
@@ -603,7 +697,18 @@ def main():
             # не нашлось», это технический сбой. Не сохраняем ничего, но
             # считаем, чтобы потом честно сообщить об ошибке в статусе синка.
             failures += 1
+            consecutive_failures += 1
             print("  API не ответил после всех попыток, пропускаю пост")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                remaining = len(posts_to_process) - (i + 1)
+                print(f"  {consecutive_failures} постов подряд без ответа API — "
+                      f"похоже на затяжной сбой или исчерпанную квоту. "
+                      f"Прерываю прогон, не обработано ещё {remaining} постов.")
+                failures += remaining
+                break
+            time.sleep(5)
+            continue
+        consecutive_failures = 0
 
         for v in vacancies or []:
             if not v.get("aiVerdict", {}).get("show", True):
@@ -659,10 +764,18 @@ def main():
 
             results.append(v)
 
+        # Сюда доходят только посты, на которые Gemini ответил (сбои API
+        # ушли выше через continue) — помечаем пост как обработанный,
+        # даже если вакансий в нём не нашлось или все были отклонены.
+        processed_posts[already_processed_key(post)] = (
+            datetime.now(timezone.utc).isoformat()
+        )
+
         # сохраняем прогресс после каждого поста — если скрипт прервётся
         # или упрётся в лимит, уже классифицированное не потеряется
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
+        save_processed(fingerprint, processed_posts)
 
         time.sleep(5)  # бесплатный тир Gemini ограничен по запросам в минуту
 
@@ -670,8 +783,16 @@ def main():
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     print(f"\nГотово: {len(results)} вакансий -> {OUTPUT_FILE}")
+
+    # Граница окна сбора сдвигается, только если ВСЕ посты обработаны без
+    # ошибок. Иначе следующий синк начнёт с прежнего места и соберёт упавшие
+    # посты заново (уже обработанные пропустятся по processed_posts.json).
     if failures:
+        print("Окно сбора не сдвинуто: упавшие посты будут собраны при "
+              "следующем синке.")
         print(f"Ошибок API: {failures} из {len(posts_to_process)}")
+    else:
+        promote_success()
 
 
 if __name__ == "__main__":

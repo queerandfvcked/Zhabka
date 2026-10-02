@@ -18,6 +18,12 @@ const SEEN_KEY = 'zhabka:seenIds'
 const MESSAGES_KEY = 'zhabka:messages'
 const LASTSYNC_KEY = 'zhabka:lastSync'
 
+// Сколько живёт плашка с ошибкой синка. Текст дублируется сообщением в
+// чате, так что подробности никуда не деваются. Таймер идёт реальным
+// временем: если синк закончился, пока вкладка была в фоне, к моменту
+// возвращения плашка уже протухнет и пользователь её не увидит.
+const SYNC_ERROR_TTL = 5000
+
 const defaultProfile = {
   role: [],
   experience: '1-3 years',
@@ -436,6 +442,42 @@ export default function App() {
       .catch(() => {})
     return () => { cancelled = true }
   }, [pollSyncStatus])
+
+  // Подхват синка, который бэкенд запустил сам (автосинк по расписанию),
+  // пока страница уже открыта: раз в 15 с и при возврате на вкладку
+  // спрашиваем статус. Если синк идёт — показываем плашку и ждём результат
+  // тем же pollSyncStatus, что и при запуске по кнопке.
+  useEffect(() => {
+    const check = () => {
+      if (statusPollRef.current) return // уже опрашиваем
+      getRefreshStatus()
+        .then((status) => {
+          if (status.running && !statusPollRef.current) {
+            setSyncStatus(status.message || 'Sync in progress...')
+            pollSyncStatus()
+          }
+        })
+        .catch(() => {})
+    }
+    const id = setInterval(check, 15000)
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') check()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => {
+      clearInterval(id)
+      document.removeEventListener('visibilitychange', onVisible)
+    }
+  }, [pollSyncStatus])
+
+  // Плашка с ошибкой синка самопротухает: в чате уже лежит то же самое
+  // сообщение, поэтому вечно висять ей не надо. Новый синк сбрасывает
+  // плашку раньше (в pollSyncStatus при status.running).
+  useEffect(() => {
+    if (!syncErrorMsg) return
+    const timer = setTimeout(() => setSyncErrorMsg(null), SYNC_ERROR_TTL)
+    return () => clearTimeout(timer)
+  }, [syncErrorMsg])
 
   // Чистим интервал опроса при размонтировании, чтобы не утекло после HMR.
   useEffect(() => () => {

@@ -13,11 +13,14 @@
 
 import json
 import os
-from datetime import datetime, timedelta, timezone
+import time
+from datetime import datetime, timezone
 
 from telethon.sync import TelegramClient
 from telethon.tl.functions.chatlists import CheckChatlistInviteRequest
 from telethon.tl.types.chatlists import ChatlistInvite, ChatlistInviteAlready
+
+from sync_state import compute_since, mark_collected, MAX_LOOKBACK_DAYS
 
 # --- Заполни своими данными ---
 API_ID = 12345678
@@ -26,8 +29,10 @@ API_HASH = "your_api_hash_here"
 SESSION_NAME = "job_radar_session"
 
 FOLDER_LINK = "https://t.me/addlist/jyx71VPASmJjNmJl"
-HOURS_BACK = 24
-MESSAGES_PER_CHANNEL = 20
+# Окно сбора больше не задаётся здесь: оно считается от последнего успешного
+# синка (см. sync_state.py). Это только предохранитель на один канал — чтобы
+# аномально активный канал не растянул сбор на часы.
+MAX_MESSAGES_PER_CHANNEL = 500
 
 
 def extract_slug(link: str) -> str:
@@ -52,27 +57,44 @@ def get_channels_from_folder(client, folder_link: str):
     return channels
 
 
-def collect_posts(client, channels, hours_back: int):
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours_back)
+def collect_posts(client, channels, since: datetime):
+    """Собирает все посты новее `since`. Листаем канал от новых к старым и
+    останавливаемся, как только дошли до границы — поэтому окно может быть
+    любой длины (раньше брали фиксированные 20 последних сообщений, и
+    активные каналы обрезались уже на одних сутках)."""
     posts = []
 
     for ch in channels:
-        try:
-            entity = client.get_entity(ch["username"])
-            messages = client.get_messages(entity, limit=MESSAGES_PER_CHANNEL)
-        except Exception as e:
-            print(f"  Пропускаю @{ch['username']}: {e}")
-            continue
+        for attempt in range(2):  # одна повторная попытка на сетевой сбой
+            channel_posts = []
+            seen = 0
+            try:
+                entity = client.get_entity(ch["username"])
+                for m in client.iter_messages(entity, limit=MAX_MESSAGES_PER_CHANNEL):
+                    if not m.date or m.date <= since:
+                        break
+                    seen += 1
+                    if m.text:
+                        channel_posts.append({
+                            "channel_username": ch["username"],
+                            "channel_title": ch["title"],
+                            "date": m.date.isoformat(),
+                            "text": m.text,
+                            "link": f"https://t.me/{ch['username']}/{m.id}",
+                        })
+            except Exception as e:
+                if attempt == 0:
+                    time.sleep(3)
+                    continue
+                print(f"  Пропускаю @{ch['username']}: {e}")
+                break
 
-        for m in messages:
-            if m.date and m.date > cutoff and m.text:
-                posts.append({
-                    "channel_username": ch["username"],
-                    "channel_title": ch["title"],
-                    "date": m.date.isoformat(),
-                    "text": m.text,
-                    "link": f"https://t.me/{ch['username']}/{m.id}",
-                })
+            if seen >= MAX_MESSAGES_PER_CHANNEL:
+                print(f"  ВНИМАНИЕ: @{ch['username']} — достигнут лимит "
+                      f"{MAX_MESSAGES_PER_CHANNEL} сообщений, самые старые "
+                      f"посты окна могли не попасть в сбор")
+            posts.extend(channel_posts)
+            break
 
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
@@ -424,8 +446,18 @@ def main():
             channels = [ch for ch in channels if ch["username"] not in disabled_sources]
             print(f"Исключено выключенных каналов: {before - len(channels)}")
 
-        print(f"Собираю посты за последние {HOURS_BACK}ч...")
-        posts = collect_posts(client, channels, HOURS_BACK)
+        started_at = datetime.now(timezone.utc)
+        since, reason = compute_since(started_at)
+        hours_ago = (started_at - since).total_seconds() / 3600
+        span = f"{hours_ago:.0f}ч" if hours_ago < 48 else f"{hours_ago / 24:.1f} дн."
+        if reason == "first":
+            print(f"Первый запуск — собираю посты за последние {span}...")
+        elif reason == "capped":
+            print(f"С прошлого успешного синка прошло больше {MAX_LOOKBACK_DAYS} дн. — "
+                  f"собираю только за последние {span}...")
+        else:
+            print(f"Собираю посты с прошлого успешного синка (~{span} назад)...")
+        posts = collect_posts(client, channels, since)
         print(f"Собрано постов: {len(posts)}")
 
     # Пишем напрямую туда же, откуда читает classify.py — без ручного
@@ -435,6 +467,9 @@ def main():
     with open("src/data/raw_vacancies.json", "w", encoding="utf-8") as f:
         json.dump(posts, f, ensure_ascii=False, indent=2)
     print("Сохранено: src/data/raw_vacancies.json")
+    # Сначала файл с постами, потом отметка — не наоборот: если упадём между
+    # ними, граница окна останется прежней (лишний запас, но ничего не потеряем).
+    mark_collected(started_at)
 
     # Полный список активных каналов (папка + ручные, минус выключенные).
     # Только для отображения в UI — источником данных он НЕ является.
