@@ -20,7 +20,7 @@ import subprocess
 import sys
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -194,6 +194,8 @@ pipeline_state = {
     "error": None,
     # Сколько НОВЫХ вакансий добавил последний синк (для состояния «ничего не нашлось»).
     "new_count": 0,
+    # Кто запустил последний синк: "manual" (кнопка) или "auto" (расписание).
+    "trigger": None,
 }
 
 
@@ -335,18 +337,142 @@ def _run_pipeline():
                 }
 
 
+# Один общий вход для запуска синка (кнопка и расписание), под замком —
+# чтобы два запуска в одну секунду не породили два параллельных пайплайна.
+_start_lock = threading.Lock()
+
+
+def _start_pipeline_if_idle(trigger: str = "manual") -> bool:
+    with _start_lock:
+        if pipeline_state["running"]:
+            return False
+        pipeline_state["running"] = True
+        pipeline_state["trigger"] = trigger
+        _record_attempt()
+        threading.Thread(target=_run_pipeline, daemon=True).start()
+        return True
+
+
 @app.post("/refresh")
 def refresh():
-    if pipeline_state["running"]:
+    if not _start_pipeline_if_idle("manual"):
         return {"status": "already_running"}
-    thread = threading.Thread(target=_run_pipeline, daemon=True)
-    thread.start()
     return {"status": "started"}
 
 
 @app.get("/refresh/status")
 def refresh_status():
     return pipeline_state
+
+
+# ---------- Автосинк по расписанию из настроек ----------
+#
+# Настройки (profile.json): autoSync — включён ли, syncTimes — список "HH:MM"
+# по локальному времени компьютера. Работает, пока запущен этот сервер:
+# фоновый поток раз в SCHEDULER_TICK_SECONDS секунд проверяет, не наступило ли
+# время. Если слот пропущен (ноутбук спал, сервер был выключен), синк
+# запустится при первой возможности — один раз, а не за каждый пропущенный
+# слот: окно сбора и так считается от последнего успешного синка.
+
+SCHEDULER_STATE_FILE = BASE_DIR / "src" / "data" / "scheduler_state.json"
+SCHEDULER_TICK_SECONDS = 20
+_scheduler_prev_cfg = None  # (включён, времена) с прошлого тика
+
+
+def _read_last_attempt():
+    """Когда в последний раз стартовал синк (кнопкой или расписанием)."""
+    try:
+        with open(SCHEDULER_STATE_FILE, "r", encoding="utf-8") as f:
+            return datetime.fromisoformat(json.load(f)["last_attempt_at"])
+    except (FileNotFoundError, KeyError, ValueError, TypeError, json.JSONDecodeError):
+        return None
+
+
+def _record_attempt(when=None):
+    when = when or datetime.now().astimezone()
+    SCHEDULER_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    tmp = SCHEDULER_STATE_FILE.with_suffix(".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump({"last_attempt_at": when.isoformat()}, f)
+    os.replace(tmp, SCHEDULER_STATE_FILE)
+
+
+def _parse_slots(times) -> list:
+    slots = set()
+    for t in times or []:
+        try:
+            h, m = str(t).split(":")
+            h, m = int(h), int(m)
+        except ValueError:
+            continue
+        if 0 <= h < 24 and 0 <= m < 60:
+            slots.add((h, m))
+    return sorted(slots)
+
+
+def _latest_slot(slots, now):
+    """Самый поздний слот расписания, который уже наступил (сегодня или вчера)."""
+    best = None
+    for h, m in slots:
+        for days_back in (0, 1):
+            cand = (now - timedelta(days=days_back)).replace(
+                hour=h, minute=m, second=0, microsecond=0
+            )
+            if cand <= now and (best is None or cand > best):
+                best = cand
+    return best
+
+
+def _scheduler_tick(now=None):
+    global _scheduler_prev_cfg
+    now = now or datetime.now().astimezone()
+
+    if not PROFILE_FILE.exists():
+        return
+    with open(PROFILE_FILE, "r", encoding="utf-8") as f:
+        profile = json.load(f)
+
+    enabled = bool(profile.get("autoSync"))
+    slots = _parse_slots(profile.get("syncTimes"))
+    cfg = (enabled, tuple(slots))
+
+    # Пользователь только что включил автосинк или поменял времена: точка
+    # отсчёта — "сейчас". Иначе добавленное задним числом время (например,
+    # 12:00, когда уже 15:40) вызвало бы немедленный синк "за прошедший слот".
+    if _scheduler_prev_cfg is not None and cfg != _scheduler_prev_cfg and enabled:
+        _record_attempt(now)
+    _scheduler_prev_cfg = cfg
+
+    if not enabled or not slots:
+        return
+
+    last = _read_last_attempt()
+    if last is None:
+        # Первый запуск планировщика: ставим точку отсчёта и ничего не
+        # запускаем — не стартуем синк сами, пока ты его ни разу не просил.
+        _record_attempt(now)
+        return
+
+    slot = _latest_slot(slots, now)
+    if slot is None or last >= slot:
+        return  # после последнего слота синк уже запускался
+
+    if _start_pipeline_if_idle("auto"):
+        print(f"[scheduler] автосинк: слот {slot.strftime('%H:%M')}", flush=True)
+
+
+def _scheduler_loop():
+    while True:
+        try:
+            _scheduler_tick()
+        except Exception as e:  # планировщик не должен падать от одной ошибки
+            print(f"[scheduler] ошибка: {type(e).__name__}: {e}", flush=True)
+        time.sleep(SCHEDULER_TICK_SECONDS)
+
+
+@app.on_event("startup")
+def _start_scheduler():
+    threading.Thread(target=_scheduler_loop, daemon=True, name="zhabka-scheduler").start()
 
 
 # ---------- POST /resume — загрузка PDF резюме ----------

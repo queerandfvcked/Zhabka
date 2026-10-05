@@ -59,33 +59,41 @@ export default function Settings({ onToast }) {
     await saveSourcesConfig({ ...(cfg || {}), disabledSources: disabled })
   }
 
+  // Сохраняем настройку на бэкенд и показываем toast только после успешного
+  // ответа — иначе плашка «Changes saved» появилась бы при упавшем бэкенде.
+  const persistProfile = async (patch) => {
+    try {
+      const prof = await getProfile()
+      await saveProfile({ ...(prof || {}), ...patch })
+      if (onToast) onToast()
+    } catch {
+      // Бэкенд не отвечает — молча оставляем настройки только в интерфейсе.
+    }
+  }
+
   const handleToggleAutoSync = async () => {
     const nextState = !autoSyncEnabled
     setAutoSyncEnabled(nextState)
-    const prof = await getProfile()
-    await saveProfile({ ...(prof || {}), autoSync: nextState, syncTimes })
+    await persistProfile({ autoSync: nextState, syncTimes })
   }
 
   const handleTimeChange = async (index, newTime) => {
     const nextTimes = [...syncTimes]
     nextTimes[index] = newTime
     setSyncTimes(nextTimes)
-    const prof = await getProfile()
-    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+    await persistProfile({ syncTimes: nextTimes })
   }
 
   const handleAddTime = async () => {
     const nextTimes = [...syncTimes, '12:00']
     setSyncTimes(nextTimes)
-    const prof = await getProfile()
-    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+    await persistProfile({ syncTimes: nextTimes })
   }
 
   const handleRemoveTime = async (index) => {
     const nextTimes = syncTimes.filter((_, i) => i !== index)
     setSyncTimes(nextTimes)
-    const prof = await getProfile()
-    await saveProfile({ ...(prof || {}), syncTimes: nextTimes })
+    await persistProfile({ syncTimes: nextTimes })
   }
 
   const handleProviderChange = async (val) => {
