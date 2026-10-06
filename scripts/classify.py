@@ -137,6 +137,14 @@ SYSTEM_PROMPT = """Ты — модуль извлечения структуры
    указан таким тегом в тексте поста — это такая же валидная
    информация, как обычная фраза "требуется опыт от 3 лет".
 
+   Пометки вида "[в адресе ссылки: senior product designer at x]" после
+   ссылки добавлены автоматически из самого URL: слова из адреса (senior,
+   lead, junior, middle и т.п.) — часть настоящего названия вакансии на
+   сайте. Если уровень в адресе отличается от видимого названия в посте
+   (в посте "Product Designer", в адресе "senior-product-designer"),
+   считай уровень из адреса фактом о вакансии: пиши его в title и
+   experience.value и учитывай при проверке правил профиля.
+
    ВАЖНО про приоритет источников: если по ссылке на площадку удалось
    получить и (а) общую категорию/грейд с сайта (например выпадающий
    список "опыт: 3-6 лет"), и (б) явную текстовую формулировку в
@@ -297,6 +305,49 @@ SYSTEM_PROMPT = """Ты — модуль извлечения структуры
   }
 }
 """
+
+
+# Слова уровня, которые встречаются в адресах ссылок на вакансии
+# (wantapply.com/senior-product-designer-at-x, job.alfabank.ru/.../dizain-lid-...).
+LEVEL_WORDS = {
+    "senior", "sr", "lead", "lid", "principal", "staff", "head", "director",
+    "junior", "jr", "middle", "mid", "intern", "trainee",
+}
+_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\)\s]+)\)")
+
+
+def add_link_level_hints(text: str) -> str:
+    """Если в адресе ссылки на вакансию есть слово уровня (senior, lead, ...),
+    а в видимом названии его нет — дописывает после ссылки пометку с
+    названием из адреса. Площадки вроде wantapply в дайджестах обрезают
+    уровень в названии, но оставляют его в URL, а текст страницы мы получить
+    не можем (403). Пометка берётся только из самой ссылки поста, ничего не
+    выдумывается, и от профиля пользователя не зависит."""
+
+    def repl(m):
+        label, url = m.group(1), m.group(2)
+        path = url.split("?")[0].split("#")[0].rstrip("/")
+        slug = path.rsplit("/", 1)[-1]
+        if not slug or "." in slug.split("-")[0]:
+            return m.group(0)
+        words = [w for w in re.split(r"[-_]+", slug.lower()) if w]
+        # хвостовой числовой id ("-2", "_38528") в подсказку не нужен
+        while words and words[-1].isdigit():
+            words.pop()
+        found = set()
+        for i, w in enumerate(words):
+            if w not in LEVEL_WORDS:
+                continue
+            if w == "lead" and words[i + 1:i + 2] in (["generation"], ["gen"]):
+                continue  # "lead generation" — не уровень
+            found.add(w)
+        label_words = set(re.findall(r"[a-zа-яё]+", label.lower()))
+        missing = {w for w in found if w not in label_words}
+        if not missing:
+            return m.group(0)
+        return f"{m.group(0)} [в адресе ссылки: {' '.join(words)}]"
+
+    return _LINK_RE.sub(repl, text)
 
 
 def classify_post(post_text: str, profile: dict, max_retries: int = 4) -> list[dict] | None:
@@ -679,7 +730,7 @@ def main():
             # Обогащаем ВСЕ ссылки внутри текста поста (не только одну ссылку
             # на сам пост в Telegram) — для дайджестов это критично, там на
             # каждую вакансию своя ссылка на hh.ru/другую площадку.
-            enriched_text = enrich_links_in_text(post["text"])
+            enriched_text = add_link_level_hints(enrich_links_in_text(post["text"]))
 
             vacancies = classify_post(enriched_text, profile)
         except Exception as e:
