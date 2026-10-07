@@ -423,6 +423,49 @@ def normalize_text(text: str) -> str:
     return re.sub(r"\s+", " ", text.strip().lower())
 
 
+def strip_hashtag_lines(text: str) -> str:
+    """Убирает строки, состоящие только из хештегов ("#Вакансии",
+    "#дизайн #remote"). Один и тот же пост в разных каналах часто отличается
+    только такой служебной строкой — по тексту это один и тот же пост."""
+    kept = []
+    for line in text.split("\n"):
+        if "#" in line and not re.sub(r"#[\w\-]+", "", line).strip(" \t,.;:|/•·—-*_"):
+            continue
+        kept.append(line)
+    return "\n".join(kept)
+
+
+def post_dedup_key(text: str) -> str:
+    """Ключ для отсева буквальных повторов поста: текст без строк-хештегов,
+    без разницы в пробелах и регистре. Если после очистки ничего не осталось
+    (пост из одних хештегов) — сравниваем целиком, чтобы не склеить всё."""
+    return normalize_text(strip_hashtag_lines(text)) or normalize_text(text)
+
+
+def _sig_text(value) -> str:
+    return re.sub(r"[^\w]+", " ", normalize_text(str(value or ""))).strip()
+
+
+def vacancy_signature(v: dict):
+    """Строгая "подпись" карточки: компания, название, числа зарплаты,
+    формат, город, уровень и список требований. Две карточки с одинаковой
+    подписью выглядят для пользователя одинаково — это одна и та же вакансия,
+    опубликованная в разных каналах или дайджестах. Сравниваем числа зарплаты
+    (а не строку: "90 000 рублей" и "90 000 RUB" — одно и то же) и значение
+    уровня (без флага strict, который модель иногда ставит по-разному).
+    Без компании или названия подпись не строится — такое не склеиваем."""
+    company, title = _sig_text(v.get("company")), _sig_text(v.get("title"))
+    if not company or not title:
+        return None
+    salary_raw = re.sub(r"(?<=\d)[,.](?=\d{3}\b)", "", str(v.get("salary") or ""))
+    salary = tuple(re.sub(r"\s+", "", n) for n in re.findall(r"\d[\d\s]*\d|\d", salary_raw))
+    exp = v.get("experience")
+    exp_value = _sig_text(exp.get("value") if isinstance(exp, dict) else exp)
+    reqs = tuple(sorted(r for r in (_sig_text(x) for x in (v.get("requirements") or [])) if r))
+    return (company, title, salary, _sig_text(v.get("workFormat")),
+            _sig_text(v.get("location")), exp_value, reqs)
+
+
 BARE_LINK_PATTERN = re.compile(r"^[—\-•]\s*\[[^\]]+\]\(https?://\S+\)\s*$")
 
 NON_DESIGN_ROLE_PATTERN = re.compile(
@@ -671,7 +714,7 @@ def main():
     seen_texts = set()
     deduped_posts = []
     for p in raw_posts:
-        norm = normalize_text(p["text"])
+        norm = post_dedup_key(p["text"])
         if norm in seen_texts:
             continue
         seen_texts.add(norm)
@@ -723,6 +766,16 @@ def main():
 
     failures = 0
     consecutive_failures = 0
+
+    # Подписи уже сохранённых карточек: новая карточка, один в один похожая
+    # на уже имеющуюся (из другого канала или дайджеста, в том числе в
+    # прошлых синках), не добавляется второй раз.
+    known_signatures = {}
+    for r in results:
+        sig = vacancy_signature(r)
+        if sig is not None:
+            known_signatures.setdefault(sig, r)
+
     for i, post in enumerate(posts_to_process):
         print(f"[{i + 1}/{len(posts_to_process)}] @{post['channel_username']}...")
 
@@ -800,6 +853,14 @@ def main():
                       f"подходит профилю")
                 continue
 
+            # Повтор: точно такая же карточка уже есть (другой канал/дайджест).
+            sig = vacancy_signature(v)
+            twin = known_signatures.get(sig) if sig is not None else None
+            if twin is not None:
+                print(f"  Пропускаю '{v.get('title')}' — такая же карточка уже "
+                      f"есть (@{twin.get('channel_username')})")
+                continue
+
             v["channel_username"] = post["channel_username"]
             v["channel_title"] = post["channel_title"]
             v["date"] = post["date"]
@@ -814,6 +875,8 @@ def main():
             v["id"] = hashlib.sha256(id_source.encode("utf-8")).hexdigest()[:16]
 
             results.append(v)
+            if sig is not None:
+                known_signatures[sig] = v
 
         # Сюда доходят только посты, на которые Gemini ответил (сбои API
         # ушли выше через continue) — помечаем пост как обработанный,

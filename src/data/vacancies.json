@@ -7037,5 +7037,375 @@
     "id": "5300502132f7daea",
     "fetchedAt": "2026-10-05T23:32:09.006861+00:00",
     "batchId": "2026-10-05T23:32:09.006861+00:00"
+  },
+  {
+    "title": "Junior UI/UX-дизайнер",
+    "company": "Квитто",
+    "salary": "70 000 – 90 000 ₽",
+    "experience": {
+      "value": "без опыта",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Работать в Figma: Auto Layout, компоненты, стили",
+      "Чувствовать композицию, шрифты и цвет",
+      "Думать о том, как человеку будет удобно пользоваться интерфейсом",
+      "Объяснять, почему вы сделали именно так"
+    ],
+    "sourceExcerpt": "Junior UI/UX-дизайнер\n\nОписание:\nВилка: 70 000 – 90 000 ₽ в месяц\nФормат: удалённо из РФ\nCвободный график \nОпыт: можно без опыта \n\nКвитто — сервис, через который онлайн-школы и эксперты принимают оплату: картой, через СБП, в рассрочку или частями. Мы молодой стартап, и сейчас нам нужен дизайнер, который будет расти вместе с продуктом.\n\nЧем предстоит заниматься\n\n- Рисовать страницы сайта, лендинги и интерфейсы продукта\n- Делать мобильные версии макетов\n- Собирать кнопки, поля и карточки в компоненты Figma\n- Передавать макеты разработчикам и отвечать на их вопросы\n- Иногда делать баннеры, креативы и презентации\n\nЧто нужно уметь\n\n- Работать в Figma: Auto Layout, компоненты, стили\n- Чувствовать композицию, шрифты и цвет\n- Думать о том, как человеку будет удобно пользоваться интерфейсом\n- Объяснять, почему вы сделали именно так\n\nБудет плюсом, но не обязательно: нейросети для графики, прототипы, анимация, опыт с формами или финтехом.\n\nЧто предлагаем\n\n- Обратную связь на каждую задачу — растёте быстрее, чем в одиночку\n- Платную Figma, ИИ-инструменты и обучение за счёт компании\n- 21 оплачиваемый день отдыха в год и ещё 21 — на случай болезни\n\nОткликнуться: @kristina_vporu",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        },
+        {
+          "type": "good",
+          "text": "Junior level / no commercial experience required"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-10-06T15:31:11+00:00",
+    "link": "https://t.me/junior_designers/1665",
+    "original_text": "Junior UI/UX-дизайнер\n\nОписание:\nВилка: 70 000 – 90 000 ₽ в месяц\nФормат: удалённо из РФ\nCвободный график \nОпыт: можно без опыта \n\nКвитто — сервис, через который онлайн-школы и эксперты принимают оплату: картой, через СБП, в рассрочку или частями. Мы молодой стартап, и сейчас нам нужен дизайнер, который будет расти вместе с продуктом.\n\nЧем предстоит заниматься\n\n- Рисовать страницы сайта, лендинги и интерфейсы продукта\n- Делать мобильные версии макетов\n- Собирать кнопки, поля и карточки в компоненты Figma\n- Передавать макеты разработчикам и отвечать на их вопросы\n- Иногда делать баннеры, креативы и презентации\n\nЧто нужно уметь\n\n- Работать в Figma: Auto Layout, компоненты, стили\n- Чувствовать композицию, шрифты и цвет\n- Думать о том, как человеку будет удобно пользоваться интерфейсом\n- Объяснять, почему вы сделали именно так\n\nБудет плюсом, но не обязательно: нейросети для графики, прототипы, анимация, опыт с формами или финтехом.\n\nЧто предлагаем\n\n- Обратную связь на каждую задачу — растёте быстрее, чем в одиночку\n- Платную Figma, ИИ-инструменты и обучение за счёт компании\n- 21 оплачиваемый день отдыха в год и ещё 21 — на случай болезни\n\nОткликнуться: @kristina_vporu",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "92080c2fc552265a",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "Junior Web Designer",
+    "company": "TG @wntddesign",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": null
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Уверенно работать в Figma",
+      "Понимать основы композиции и визуальной иерархии",
+      "Понимать базовые принципы UI/UX",
+      "Уметь работать с Auto Layout и Components"
+    ],
+    "sourceExcerpt": "- [Junior Web Designer в TG @wntddesign](https://youngjunior.ru/design/jobs/65760?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product/UX/UI Design match"
+        },
+        {
+          "type": "good",
+          "text": "Remote"
+        }
+      ]
+    },
+    "channel_username": "newdirections",
+    "channel_title": "New directions: вакансии и стажировки",
+    "date": "2026-10-06T15:00:13+00:00",
+    "link": "https://t.me/newdirections/7059",
+    "original_text": "**Подборка вакансий: Data, Продакт, Дизайн**\n\n**__Data/ML/Аналитика:__**\n- [Junior Data Analyst в Emerging Travel Tech](https://youngjunior.ru/analytics/jobs/65944?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)\n- [Junior Data Analyst в TG @revacancy](https://youngjunior.ru/analytics/jobs/65789?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)\n- [Process Improvement Specialist в asrcfh](https://youngjunior.ru/analytics/jobs/65946?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)\n\n**__Дизайн/UX:__**\n- [Креативный Контент Дизайнер в PropAlive](https://youngjunior.ru/design/jobs/65756?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)\n- [Junior Web Designer в TG @wntddesign](https://youngjunior.ru/design/jobs/65760?utm_source=telegram&utm_medium=newdirections&utm_campaign=digest)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "9b8cd6821bdc22df",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "Junior Web Designer",
+    "company": "TG @wntddesign",
+    "salary": null,
+    "experience": {
+      "value": "junior",
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Уверенно работать в Figma",
+      "Понимать основы композиции и визуальной иерархии",
+      "Понимать базовые принципы UI/UX",
+      "Уметь работать с Auto Layout и Components"
+    ],
+    "sourceExcerpt": "- [Junior Web Designer в TG @wntddesign](https://youngjunior.ru/design/jobs/65760?utm_source=telegram&utm_medium=designer&utm_campaign=digest)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Matches Product/UX/UI design role"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        }
+      ]
+    },
+    "channel_username": "junior_designers",
+    "channel_title": "Джун Дизайнер - вакансии",
+    "date": "2026-10-06T15:00:05+00:00",
+    "link": "https://t.me/junior_designers/1664",
+    "original_text": "**Подборка для дизайнеров**\n\n**__Junior-дизайнер:__**\n- [Креативный Контент Дизайнер в PropAlive](https://youngjunior.ru/design/jobs/65756?utm_source=telegram&utm_medium=designer&utm_campaign=digest)\n- [Junior Web Designer в TG @wntddesign](https://youngjunior.ru/design/jobs/65760?utm_source=telegram&utm_medium=designer&utm_campaign=digest)\n\n[Вакансии](https://t.me/+L3DCwtFGhB8yM2Fi) │ [Стажировки](https://t.me/+LgchVFqUUlBjYjcy) │ [За рубежом](https://t.me/+i6aurpW0uJY3NzJi) │ [Удалёнка](https://t.me/+lrX0JSXjpyc5N2Uy) │ [БИГТЕХ](https://t.me/+6BEQGEFBEeIxNmI0) │ [Мероприятия](https://t.me/+Kszn0Z-eIaIwYjc0) │ [По всему миру](https://t.me/+zosNrH32TkIwYzNi) │ [IT и DIGITAL ](https://t.me/+o_oYaIpqWNc1YTUy)\n\n🐣 [Софи - первый ai ассистент для автооткликов и поиска работы.](https://t.me/+r2QLDYuu_fE3NjY8)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "307a0479c196159b",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "UX/UI Designer (B2B Travel App)",
+    "company": "C Teleport",
+    "salary": null,
+    "experience": {
+      "value": "3+ years",
+      "strict": true
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "3+ года опыта в разработке B2B- или SaaS-продуктов",
+      "Claude Design",
+      "Figma",
+      "понимание пользователя и его задач",
+      "навыки быстрого прототипирования"
+    ],
+    "sourceExcerpt": "**UX/UI Designer (B2B Travel App) в C Teleport\n**\n📍Remote/Нидерланды\n💎3+ года опыта в разработке B2B- или SaaS-продуктов, которыми пользуются реальные пользователи, Claude Design, Figma Make\n🚀В компании работают русскоязычные ребята",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format supported"
+        },
+        {
+          "type": "warn",
+          "text": "3+ years of experience required"
+        }
+      ]
+    },
+    "channel_username": "zarubezhom_jobs",
+    "channel_title": "Connectable Jobs",
+    "date": "2026-10-06T11:00:48+00:00",
+    "link": "https://t.me/zarubezhom_jobs/4290",
+    "original_text": "**UX/UI Designer (B2B Travel App) в C Teleport\n**\n📍Remote/Нидерланды\n💎3+ года опыта в разработке B2B- или SaaS-продуктов, которыми пользуются реальные пользователи, Claude Design, Figma Make\n🚀В компании работают русскоязычные ребята\n\n[C Teleport](https://cteleport.com/press/rotterdam-based-online-maritime-travel-agency-c-teleport-raises-e1-2-million/) — платформа для управления командировками в компаниях.\n\nРазмер команды — 51-200 | Инвестиции — €1.2M\n\n**Узнать подробнее:** [тут](https://careers.cteleport.com/jobs/8462458-ux-ui-designer-b2b-travel-app-remote)\n\n**🤝Еще 150+ вакансий для дизайнеров** в компаниях с русскоговорящими ребятами — [**в нашей рассылке**](https://t.me/zarubezhom_jobs/3562)\n\nДругие вакансии:\n— [Marketing Content Specialist](https://careers.cteleport.com/jobs/8302693-marketing-content-specialist)\n— [Customer Support Agent](https://careers.cteleport.com/jobs/8282080-customer-support-agent-remote)\n— [Sales Development Representative – Maritime & Aviation](https://careers.cteleport.com/jobs/8189823-sales-development-representative-maritime-aviation-remote-eu)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "367e82346e352120",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "UI/UX-дизайнер",
+    "company": "Клуб ВсеЛенской терапии",
+    "salary": "90 000 - 150 000 рублей",
+    "experience": {
+      "value": null,
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Портфолио с реальными кейсами по UX",
+      "Уверенное владение Figma",
+      "Опыт с личными кабинетами, подписочными сервисами или клубными платформами",
+      "Эмпатия к пользователю"
+    ],
+    "sourceExcerpt": "UI/UX-дизайнер\nCompany: Клуб ВсеЛенской терапии\n\nУ нас необычный продукт: не маркетплейс и не банковское приложение, а пространство, куда люди приходят разбираться в себе. Клубная платформа и приложение - это личный кабинет, темы месяца, практики, записи эфиров, маркет за баллы. То есть интерфейс, через который проходит не покупка, а личный процесс - и это меняет требования к тому, как он должен ощущаться.\n\n\nЧем предстоит заниматься:\n\nПроектировать и дорабатывать интерфейсы личного кабинета, клубной платформы и мобильного приложения.\nПродумывать сценарии - как человек заходит в тему месяца, находит нужную практику, возвращается к своим прошлым записям.\nРаботать над онбордингом новых участников клуба: первые касания с продуктом должны быть предельно понятными, без лишней когнитивной нагрузки.\nПриводить интерфейс к единой логике - сейчас продукт растёт быстрее, чем успевает систематизироваться.\n\n\nКого мы ищем:\n\nПортфолио с реальными кейсами по UX, не только красивые макеты - покажите, как вы думаете про сценарии, а не только про визуал.\nУверенное владение Figma.\nОпыт с личными кабинетами, подписочными сервисами или клубными платформами.\nЭмпатию к пользователю - здесь это не красивое слово, а буквально рабочий инструмент.\n\n\nФормат:\nПолностью удалённо.\n\n\nУсловия:\nОплата — от 90 000 до 150 000 рублей в месяц, в зависимости от опыта.\nГибкий график, важен результат, а не часы онлайн.\nПрямая работа с командой продукта.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer"
+        },
+        {
+          "type": "good",
+          "text": "Remote format matches user preference"
+        }
+      ]
+    },
+    "channel_username": "uiux_jobs_resumes",
+    "channel_title": "UI/UX Jobs — канал вакансий и резюме дизайнеров",
+    "date": "2026-10-06T08:31:30+00:00",
+    "link": "https://t.me/uiux_jobs_resumes/4808",
+    "original_text": "#Вакансии\n\n**UI/UX-дизайнер**\n**__Company: Клуб ВсеЛенской терапии__**\n\n__У нас необычный продукт: не маркетплейс и не банковское приложение, а пространство, куда люди приходят разбираться в себе. Клубная платформа и приложение - это личный кабинет, темы месяца, практики, записи эфиров, маркет за баллы. То есть интерфейс, через который проходит не покупка, а личный процесс - и это меняет требования к тому, как он должен ощущаться.__\n\n\n**Чем предстоит заниматься:**\n\nПроектировать и дорабатывать интерфейсы личного кабинета, клубной платформы и мобильного приложения.\nПродумывать сценарии - как человек заходит в тему месяца, находит нужную практику, возвращается к своим прошлым записям.\nРаботать над онбордингом новых участников клуба: первые касания с продуктом должны быть предельно понятными, без лишней когнитивной нагрузки.\nПриводить интерфейс к единой логике - сейчас продукт растёт быстрее, чем успевает систематизироваться.\n\n\n**Кого мы ищем:**\n\nПортфолио с реальными кейсами по UX, не только красивые макеты - покажите, как вы думаете про сценарии, а не только про визуал.\nУверенное владение Figma.\nОпыт с личными кабинетами, подписочными сервисами или клубными платформами.\nЭмпатию к пользователю - здесь это не красивое слово, а буквально рабочий инструмент.\n\n\n**Формат:**\nПолностью удалённо.\n\n**Условия:**\nОплата — от 90 000 до 150 000 рублей в месяц, в зависимости от опыта.\nГибкий график, важен результат, а не часы онлайн.\nПрямая работа с командой продукта.\n\n**Отклик — пришлите портфолио и пару слов о себе, ответим в течение 1–2 дней.\n****@jannnnnnnnnnnna**",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "1bd33e5c947512dc",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "UI/UX-дизайнер",
+    "company": "Клуб ВсеЛенской терапии",
+    "salary": "90 000 - 150 000 RUB",
+    "experience": {
+      "value": null,
+      "strict": false
+    },
+    "workFormat": "remote",
+    "location": null,
+    "requirements": [
+      "Портфолио с реальными кейсами по UX",
+      "Уверенное владение Figma",
+      "Опыт с личными кабинетами, подписочными сервисами или клубными платформами",
+      "Эмпатия к пользователю"
+    ],
+    "sourceExcerpt": "UI/UX-дизайнер\nCompany: Клуб ВсеЛенской терапии\n\nУ нас необычный продукт: не маркетплейс и не банковское приложение, а пространство, куда люди приходят разбираться в себе. Клубная платформа и приложение - это личный кабинет, темы месяца, практики, записи эфиров, маркет за баллы. То есть интерфейс, через который проходит не покупка, а личный процесс - и это меняет требования к тому, как он должен ощущаться.\n\n\nЧем предстоит заниматься:\n\nПроектировать и дорабатывать интерфейсы личного кабинета, клубной платформы и мобильного приложения.\nПродумывать сценарии - как человек заходит в тему месяца, находит нужную практику, возвращается к своим прошлым записям.\nРаботать над онбордингом новых участников клуба: первые касания с продуктом должны быть предельно понятными, без лишней когнитивной нагрузки.\nПриводить интерфейс к единой логике - сейчас продукт растёт быстрее, чем успевает систематизироваться.\n\n\nКого мы ищем:\n\nПортфолио с реальными кейсами по UX, не только красивые макеты - покажите, как вы думаете про сценарии, а не только про визуал.\nУверенное владение Figma.\nОпыт с личными кабинетами, подписочными сервисами или клубными платформами.\nЭмпатию к пользователю - здесь это не красивое слово, а буквально рабочий инструмент.\n\n\nФормат:\nПолностью удалённо.\n\nУсловия:\nОплата — от 90 000 до 150 000 рублей в месяц, в зависимости от опыта.\nГибкий график, важен результат, а не часы онлайн.\nПрямая работа с командой продукта.",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Role matches Product/UX/UI Designer"
+        },
+        {
+          "type": "good",
+          "text": "Remote format matches profile"
+        }
+      ]
+    },
+    "channel_username": "designer_jobs",
+    "channel_title": "Вакансии и заказы на дизайн. Работа и фриланс подработка для дизайнеров.",
+    "date": "2026-10-06T08:19:10+00:00",
+    "link": "https://t.me/designer_jobs/60386",
+    "original_text": "**UI/UX-дизайнер**\n**__Company: Клуб ВсеЛенской терапии__**\n\n__У нас необычный продукт: не маркетплейс и не банковское приложение, а пространство, куда люди приходят разбираться в себе. Клубная платформа и приложение - это личный кабинет, темы месяца, практики, записи эфиров, маркет за баллы. То есть интерфейс, через который проходит не покупка, а личный процесс - и это меняет требования к тому, как он должен ощущаться.__\n\n\n**Чем предстоит заниматься:**\n\nПроектировать и дорабатывать интерфейсы личного кабинета, клубной платформы и мобильного приложения.\nПродумывать сценарии - как человек заходит в тему месяца, находит нужную практику, возвращается к своим прошлым записям.\nРаботать над онбордингом новых участников клуба: первые касания с продуктом должны быть предельно понятными, без лишней когнитивной нагрузки.\nПриводить интерфейс к единой логике - сейчас продукт растёт быстрее, чем успевает систематизироваться.\n\n\n**Кого мы ищем:**\n\nПортфолио с реальными кейсами по UX, не только красивые макеты - покажите, как вы думаете про сценарии, а не только про визуал.\nУверенное владение Figma.\nОпыт с личными кабинетами, подписочными сервисами или клубными платформами.\nЭмпатию к пользователю - здесь это не красивое слово, а буквально рабочий инструмент.\n\n\n**Формат:**\nПолностью удалённо.\n\n**Условия:**\nОплата — от 90 000 до 150 000 рублей в месяц, в зависимости от опыта.\nГибкий график, важен результат, а не часы онлайн.\nПрямая работа с командой продукта.\n\n**Отклик — пришлите портфолио и пару слов о себе, ответим в течение 1–2 дней.\n****@jannnnnnnnnnnna**",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "c6c992f051c42625",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "Middle/Senior Продуктовый дизайнер UX/UI / Product designer",
+    "company": "ЛАЙТХАУС",
+    "salary": null,
+    "experience": {
+      "value": "1–3 года",
+      "strict": false
+    },
+    "workFormat": "удалёнка",
+    "location": null,
+    "requirements": [
+      "Опыт работы дизайнером интерфейсов в продуктовой команде и уровень не ниже middle",
+      "Свободное владение Figma",
+      "Опыт создания прототипов",
+      "Понимание базовых принципов разработки",
+      "Знание принципов UI/UX",
+      "Опыт проектирования и отрисовки интерфейсов",
+      "Опыт работы с дизайн системами"
+    ],
+    "sourceExcerpt": "3. Продуктовый дизайнер в ЛАЙТХАУС\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138141155)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Product Designer role matches"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Experience 1-3 years mentioned (not strictly prohibitive per profile conditions)"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-10-06T07:18:02+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1382",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Графический дизайнер продуктовых коммуникаций в INTEGRA CITY - fzco**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Headhunter](https://hh.ru/vacancy/138129574)\n\n**2. Графический дизайнер для digital-проектов в СМАРТСЕРВИС**\n💪 Грейд: #junior\n💰 Вилка: от 80к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138115589)\n\n**3. Продуктовый дизайнер в ЛАЙТХАУС**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138141155)\n\n**4. Веб дизайнер для международных стартапов в adelt agency**\n💪 Грейд: #middle\n💰 Вилка: от 110к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/veb-dizainer-dlia-mezhdunarodnykh-startapov-102499)\n\n**5. Technical animator for quadruped characters в Xsolla**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/technical-animator-for-quadruped-characters-102062)\n\n**6. UX/UI дизайнер медицинских интерфейсов в Васильев Дмитрий Олегович**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Санкт-Петербург\n✉️ [Hirehi](https://hirehi.ru/design/uxui-dizainer-meditsinskikh-interfeisov-101628)\n\n**7. Продуктовый дизайнер ИИ-сервисов в Комос Групп**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис Ижевск\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-ii-servisov-102299)\n\n**8. Ретушёр предметной съёмки в МОЦАРТ**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Forms](https://forms.yandex.ru/cloud/6abd3a95d046884ca91da504)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "67b85c353468d46b",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "веб дизайнер для международных стартапов",
+    "company": "adelt agency",
+    "salary": "от 110 000 ₽",
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "удалёнка",
+    "location": null,
+    "requirements": [],
+    "sourceExcerpt": "4. Веб дизайнер для международных стартапов в adelt agency\n💪 Грейд: #middle\n💰 Вилка: от 110к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/veb-dizainer-dlia-mezhdunarodnykh-startapov-102499)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "Web design is close to UX/UI profile"
+        },
+        {
+          "type": "good",
+          "text": "Remote work format"
+        },
+        {
+          "type": "warn",
+          "text": "Not enough details in the post — open original to check"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-10-06T07:18:02+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1382",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Графический дизайнер продуктовых коммуникаций в INTEGRA CITY - fzco**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Headhunter](https://hh.ru/vacancy/138129574)\n\n**2. Графический дизайнер для digital-проектов в СМАРТСЕРВИС**\n💪 Грейд: #junior\n💰 Вилка: от 80к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138115589)\n\n**3. Продуктовый дизайнер в ЛАЙТХАУС**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138141155)\n\n**4. Веб дизайнер для международных стартапов в adelt agency**\n💪 Грейд: #middle\n💰 Вилка: от 110к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/veb-dizainer-dlia-mezhdunarodnykh-startapov-102499)\n\n**5. Technical animator for quadruped characters в Xsolla**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/technical-animator-for-quadruped-characters-102062)\n\n**6. UX/UI дизайнер медицинских интерфейсов в Васильев Дмитрий Олегович**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Санкт-Петербург\n✉️ [Hirehi](https://hirehi.ru/design/uxui-dizainer-meditsinskikh-interfeisov-101628)\n\n**7. Продуктовый дизайнер ИИ-сервисов в Комос Групп**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис Ижевск\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-ii-servisov-102299)\n\n**8. Ретушёр предметной съёмки в МОЦАРТ**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Forms](https://forms.yandex.ru/cloud/6abd3a95d046884ca91da504)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "0ce321de264ac40c",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
+  },
+  {
+    "title": "ux/ui дизайнер медицинских интерфейсов",
+    "company": "Васильев Дмитрий Олегович",
+    "salary": null,
+    "experience": {
+      "value": null,
+      "strict": null
+    },
+    "workFormat": "гибрид",
+    "location": "Санкт-Петербург",
+    "requirements": [],
+    "sourceExcerpt": "6. UX/UI дизайнер медицинских интерфейсов в Васильев Дмитрий Олегович\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Санкт-Петербург\n✉️ [Hirehi](https://hirehi.ru/design/uxui-dizainer-meditsinskikh-interfeisov-101628)",
+    "aiVerdict": {
+      "show": true,
+      "reasons": [
+        {
+          "type": "good",
+          "text": "UX/UI Designer role matches"
+        },
+        {
+          "type": "good",
+          "text": "Location matches profile"
+        }
+      ]
+    },
+    "channel_username": "jun_hi_vacancies",
+    "channel_title": "Вакансии дизайнерам",
+    "date": "2026-10-06T07:18:02+00:00",
+    "link": "https://t.me/jun_hi_vacancies/1382",
+    "original_text": "**Вакансии на сегодня:**\n\n💎 Хотите опубликовать вакансию? \nВходите как рекрутер на hirehi.ru и размещайте 🙂\n\n———\n\n**1. Графический дизайнер продуктовых коммуникаций в INTEGRA CITY - fzco**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Москва\n✉️ [Headhunter](https://hh.ru/vacancy/138129574)\n\n**2. Графический дизайнер для digital-проектов в СМАРТСЕРВИС**\n💪 Грейд: #junior\n💰 Вилка: от 80к ₽\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138115589)\n\n**3. Продуктовый дизайнер в ЛАЙТХАУС**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Headhunter](https://hh.ru/vacancy/138141155)\n\n**4. Веб дизайнер для международных стартапов в adelt agency**\n💪 Грейд: #middle\n💰 Вилка: от 110к ₽\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/veb-dizainer-dlia-mezhdunarodnykh-startapov-102499)\n\n**5. Technical animator for quadruped characters в Xsolla**\n💪 Грейд: #senior\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Hirehi](https://hirehi.ru/design/technical-animator-for-quadruped-characters-102062)\n\n**6. UX/UI дизайнер медицинских интерфейсов в Васильев Дмитрий Олегович**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #гибрид Санкт-Петербург\n✉️ [Hirehi](https://hirehi.ru/design/uxui-dizainer-meditsinskikh-interfeisov-101628)\n\n**7. Продуктовый дизайнер ИИ-сервисов в Комос Групп**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #офис Ижевск\n✉️ [Hirehi](https://hirehi.ru/design/produktovyi-dizainer-ii-servisov-102299)\n\n**8. Ретушёр предметной съёмки в МОЦАРТ**\n💪 Грейд: #middle\n💰 Вилка: зп не указана\n🏠 Формат: #удалёнка\n✉️ [Forms](https://forms.yandex.ru/cloud/6abd3a95d046884ca91da504)\n\n⚠️ Осторожно с мошенниками. Никому не давайте личные данные, пароли или коды из SMS. Не устанавливайте программы и не переходите по чужим ссылкам. Не вводите данные iCloud или других аккаунтов — могут украсть доступ. Будьте внимательны.\n\n———\n\n💻 [**Вакансии в IT и digital**](https://hirehi.ru/?utm_source=tgkanali)\n🔥 [**Закрытый канал с вакансиями**](https://t.me/tribute/app?startapp=sqlu)\n😍 [**Про дизайн**](https://t.me/+4m4FP9Zy-ss4Yzhi)\n🎨 [**Референсы**](https://t.me/+MTnSrClFgDkwNmEy)",
+    "pipeline_version": "2026-08-09-v11",
+    "id": "d6c5f693ea1e40b3",
+    "fetchedAt": "2026-10-07T00:15:26.029905+00:00",
+    "batchId": "2026-10-07T00:15:26.029905+00:00"
   }
 ]
